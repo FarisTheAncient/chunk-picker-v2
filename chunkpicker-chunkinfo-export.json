@@ -779,10 +779,18 @@
 				"Chunks": ["11310-1"],
 				"Level": 32,
 				"Priority": 2,
-				"Primary": true,
+				"Primary": false,
 				"Tasks": {
 					"~|Shilo Village|~ Complete the quest": "Quest"
 				},
+				"NoPet": true
+			},
+			"Access the stepping stones ~|shortcut|~ east of Shilo Village": {
+				"Category": ["Shortcut"],
+				"Chunks": ["SteppingStonesKaramja[+]"],
+				"Level": 30,
+				"Priority": 2,
+				"Primary": false,
 				"NoPet": true
 			},
 			"Access the Slayer Tower advanced spiked chain climb ~|shortcut|~": {
@@ -1499,9 +1507,10 @@
 				"NoBoost": true
 			},
 			"Catch a ~|leaping salmon|~": {
-				"Items": ["Barbarian rod[+]", "Barbarian bait[+]"],
+				"Items": ["Barbarian rod[+]", "Barbarian bait[+]*"],
 				"Level": 30,
 				"Objects": ["Fishing spot (barbarian)"],
+				"Output": "Leaping salmon",
 				"Primary": true,
 				"Skills": {
 					"Fishing": 58,
@@ -1511,9 +1520,10 @@
 				"NoPet": true
 			},
 			"Catch a ~|leaping sturgeon|~": {
-				"Items": ["Barbarian rod[+]", "Barbarian bait[+]"],
+				"Items": ["Barbarian rod[+]", "Barbarian bait[+]*"],
 				"Level": 45,
 				"Objects": ["Fishing spot (barbarian)"],
+				"Output": "Leaping sturgeon",
 				"Primary": true,
 				"Skills": {
 					"Fishing": 70,
@@ -1523,9 +1533,10 @@
 				"NoPet": true
 			},
 			"Catch a ~|leaping trout|~": {
-				"Items": ["Barbarian rod[+]", "Barbarian bait[+]"],
+				"Items": ["Barbarian rod[+]", "Barbarian bait[+]*"],
 				"Level": 15,
 				"Objects": ["Fishing spot (barbarian)"],
+				"Output": "Leaping trout",
 				"Primary": true,
 				"Skills": {
 					"Fishing": 48,
@@ -7265,7 +7276,9 @@
 				},
 				"Skills": {
 					"Crafting": 99
-				}
+				},
+				"Not F2P": true,
+				"NoBoost": true
 			},
 			"Change your family crest at ~|Sir Renitee|~": {
 				"Category": ["MilestonePOH"],
@@ -7747,7 +7760,8 @@
 				},
 				"Priority": 5,
 				"Not F2P": true,
-				"Primary": false
+				"Primary": false,
+				"Output": "Forester's ration"
 			},
 			"Make a ~|forester's ration|~ (alt)": {
 				"Items": ["RationMeat[+]", "TreeLeaves[+]*"],
@@ -9626,7 +9640,7 @@
 				"Items": ["Venator icon*", "Chromium ingot*", "Ring mould"],
 				"Level": 80,
 				"NPCs": ["Peer the Seer"],
-				"Object": ["Furnace[+]"],
+				"Objects": ["Furnace[+]"],
 				"Priority": 9,
 				"Not F2P": true,
 				"Primary": true,
@@ -9636,7 +9650,7 @@
 				"Items": ["Bellator icon*", "Chromium ingot*", "Ring mould"],
 				"Level": 80,
 				"NPCs": ["Peer the Seer"],
-				"Object": ["Furnace[+]"],
+				"Objects": ["Furnace[+]"],
 				"Priority": 10,
 				"Not F2P": true,
 				"Primary": true,
@@ -9646,7 +9660,7 @@
 				"Items": ["Ultor icon*", "Chromium ingot*", "Ring mould"],
 				"Level": 80,
 				"NPCs": ["Peer the Seer"],
-				"Object": ["Furnace[+]"],
+				"Objects": ["Furnace[+]"],
 				"Priority": 11,
 				"Not F2P": true,
 				"Primary": true,
@@ -9656,7 +9670,7 @@
 				"Items": ["Magus icon*", "Chromium ingot*", "Ring mould"],
 				"Level": 80,
 				"NPCs": ["Peer the Seer"],
-				"Object": ["Furnace[+]"],
+				"Objects": ["Furnace[+]"],
 				"Priority": 12,
 				"Not F2P": true,
 				"Primary": true,
@@ -10267,7 +10281,7 @@
 				"Not F2P": true
 			},
 			"Craft a ~|colossal pouch|~": {
-				"Items": ["Abyssal needle", "Small pouch", "Medium pouch", "Large pouch", "Giant pouch"],
+				"Items": ["Abyssal needle*", "Small pouch*", "Medium pouch*", "Large pouch*", "Giant pouch*"],
 				"Level": 56,
 				"Primary": false,
 				"Not F2P": true,
@@ -14790,7 +14804,7 @@
 				"Not F2P": true
 			},
 			"Burn a ~|magic pyre ship|~": {
-				"Items": ["Magic logs", "Pyre bones[+]", "Tinderbox"],
+				"Items": ["Magic logs*", "Pyre bones[+]*", "Tinderbox"],
 				"Level": 85,
 				"Objects": ["Pyre site"],
 				"Output": "Chewed bones loot",
@@ -14801,7 +14815,7 @@
 				"Not F2P": true
 			},
 			"Burn a ~|mahogany pyre ship|~": {
-				"Items": ["Mahogany logs", "Pyre bones[+]", "Tinderbox"],
+				"Items": ["Mahogany logs*", "Pyre bones[+]*", "Tinderbox"],
 				"Level": 60,
 				"Objects": ["Pyre site"],
 				"Output": "Chewed bones loot",
@@ -14813,7 +14827,7 @@
 				"Not F2P": true
 			},
 			"Burn a ~|maple pyre ship|~": {
-				"Items": ["Maple logs", "Pyre bones[+]", "Tinderbox"],
+				"Items": ["Maple logs*", "Pyre bones[+]*", "Tinderbox"],
 				"Level": 55,
 				"Objects": ["Pyre site"],
 				"Output": "Chewed bones loot",
@@ -14825,7 +14839,7 @@
 				"Not F2P": true
 			},
 			"Burn a ~|pyre ship|~": {
-				"Items": ["Logs", "Pyre bones[+]", "Tinderbox"],
+				"Items": ["Logs*", "Pyre bones[+]*", "Tinderbox"],
 				"Level": 11,
 				"Objects": ["Pyre site"],
 				"Output": "Chewed bones loot",
@@ -14849,7 +14863,7 @@
 				"Not F2P": true
 			},
 			"Burn a ~|teak pyre ship|~": {
-				"Items": ["Teak logs", "Pyre bones[+]", "Tinderbox"],
+				"Items": ["Teak logs*", "Pyre bones[+]*", "Tinderbox"],
 				"Level": 45,
 				"Objects": ["Pyre site"],
 				"Output": "Chewed bones loot",
@@ -14861,7 +14875,7 @@
 				"Not F2P": true
 			},
 			"Burn a ~|willow pyre ship|~": {
-				"Items": ["Willow logs", "Pyre bones[+]", "Tinderbox"],
+				"Items": ["Willow logs*", "Pyre bones[+]*", "Tinderbox"],
 				"Level": 40,
 				"Objects": ["Pyre site"],
 				"Output": "Chewed bones loot",
@@ -14873,7 +14887,7 @@
 				"Not F2P": true
 			},
 			"Burn a ~|yew pyre ship|~": {
-				"Items": ["Yew logs", "Pyre bones[+]", "Tinderbox"],
+				"Items": ["Yew logs*", "Pyre bones[+]*", "Tinderbox"],
 				"Level": 70,
 				"Objects": ["Pyre site"],
 				"Output": "Chewed bones loot",
@@ -14884,7 +14898,7 @@
 				"Not F2P": true
 			},
 			"Burn an ~|achey pyre ship|~": {
-				"Items": ["Achey tree logs", "Pyre bones[+]", "Tinderbox"],
+				"Items": ["Achey tree logs*", "Pyre bones[+]*", "Tinderbox"],
 				"Level": 11,
 				"Objects": ["Pyre site"],
 				"Output": "Chewed bones loot",
@@ -14896,7 +14910,7 @@
 				"Not F2P": true
 			},
 			"Burn an ~|arctic pine pyre ship|~": {
-				"Items": ["Arctic pine logs", "Pyre bones[+]", "Tinderbox"],
+				"Items": ["Arctic pine logs*", "Pyre bones[+]*", "Tinderbox"],
 				"Level": 52,
 				"Objects": ["Pyre site"],
 				"Output": "Chewed bones loot",
@@ -14908,7 +14922,7 @@
 				"Not F2P": true
 			},
 			"Burn an ~|oak pyre ship|~": {
-				"Items": ["Oak logs", "Pyre bones[+]", "Tinderbox"],
+				"Items": ["Oak logs*", "Pyre bones[+]*", "Tinderbox"],
 				"Level": 25,
 				"Objects": ["Pyre site"],
 				"Output": "Chewed bones loot",
@@ -18165,7 +18179,7 @@
 				"Primary": true
 			},
 			"Mix an ~|irit tar|~": {
-				"Items": ["Irit*", "Swamp tar*"],
+				"Items": ["Irit leaf*", "Swamp tar*"],
 				"Level": 55,
 				"Output": "Irit tar",
 				"Primary": true
@@ -18575,7 +18589,7 @@
 				"Priority": 1
 			},
 			"Mix an ~|antidote+ mix|~": {
-				"Items": ["Antidote++*", "Caviar*"],
+				"Items": ["Antidote+(2)*", "Caviar*"],
 				"Level": 74,
 				"Primary": true,
 				"Output": "Antidote+ mix(2)",
@@ -19084,7 +19098,7 @@
 			"Barehanded catch a ~|moonlight moth|~": {
 				"BackupParent": "Catch a ~|moonlight moth|~",
 				"Level": 85,
-				"NPCs": ["Moonlight Moth"],
+				"NPCs": ["Moonlight moth"],
 				"Primary": true,
 				"Priority": 3
 			},
@@ -19463,7 +19477,7 @@
 				"Level": 58,
 				"Output": "Nature impling jar",
 				"Primary": false,
-				"Priorit": 1
+				"Priority": 1
 			},
 			"Catch a wandering ~|nature impling|~": {
 				"Category": ["Wandering implings"],
@@ -20156,7 +20170,7 @@
 			},
 			"Cast ~|civitas illa fortis teleport|~": {
 				"Category": ["Spells", "Combat and Teleport Spells"],
-				"Chunks": ["6704"],
+				"Chunks": ["6704-1"],
 				"Items": ["Fire rune[+]*", "Earth rune[+]*", "Law rune*"],
 				"Level": 54,
 				"Primary": true,
@@ -22781,7 +22795,7 @@
 				"Not F2P": true
 			},
 			"Infuse dragon boots into ~|primordial boots|~": {
-				"Items": ["Dragon boots", "Primorial crystal"],
+				"Items": ["Dragon boots*", "Primordial crystal*"],
 				"Level": 60,
 				"Output": "Primordial boots",
 				"Primary": false,
@@ -22793,7 +22807,7 @@
 				"NoBoost": true
 			},
 			"Infuse infinity boots into ~|eternal boots|~": {
-				"Items": ["Infinty boots", "Eternal crystal"],
+				"Items": ["Infinity boots*", "Eternal crystal*"],
 				"Level": 60,
 				"Output": "Eternal boots",
 				"Primary": false,
@@ -22805,7 +22819,7 @@
 				"NoBoost": true
 			},
 			"Infuse ranger boots into ~|Pegasian boots|~": {
-				"Items": ["Ranger boots", "Pegasian crystal"],
+				"Items": ["Ranger boots*", "Pegasian crystal*"],
 				"Level": 60,
 				"Output": "Pegasian boots",
 				"Primary": false,
@@ -22818,16 +22832,17 @@
 			},
 			"Smith an ~|ancient wyvern shield|~": {
 				"Chunks": ["14908-2"],
-				"Items": ["Hammer[+]", "Wyvern visage", "Elemental ore", "Coal"],
-				"Level": 66,
-				"Objects": ["Furnace[+]"],
-				"Primary": false,
-				"Skills": {
-					"Smithing": 66
-				},
-				"Priority": 7,
-				"Not F2P": true
-			},
+                "Items": ["Hammer[+]", "Wyvern visage", "Elemental ore", "Coal"],
+                "Level": 66,
+                "Objects": ["Strange Machine", "Furnace[+]"],
+                "Output": "Ancient wyvern shield",
+                "Primary": false,
+                "Skills": {
+                    "Smithing": 66
+                },
+                "Priority": 3,
+                "Not F2P": true
+            },
 			"Wear a ~|god cape|~": {
 				"Items": ["God cape[+]"],
 				"Level": 60,
@@ -24020,6 +24035,7 @@
 				"Items": ["Smouldering stone", "Dragon pickaxe"],
 				"Level": 61,
 				"Primary": false,
+				"Output": "Infernal pickaxe",
 				"Skills": {
 					"Smithing": 85
 				},
@@ -25224,7 +25240,7 @@
 				"Not F2P": true
 			},
 			"Canifis Werewolf": {
-				"Chunks": ["13878"],
+				"Chunks": ["13878-1"],
 				"Not F2P": true
 			},
 			"Create a hat of the eye (blue)*": {
@@ -26115,6 +26131,110 @@
 				"ConnectsSections": true,
 				"Not F2P": true
 			},
+			"4763 to 4663-3": {
+				"Sections": ["4763", "4663-3"],
+				"Tasks": {
+					"~|Tale of the Righteous|~ 5": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"4918 to 4661": {
+				"Sections": ["4918", "4661"],
+				"Tasks": {
+					"~|Desert Treasure II - The Fallen Empire|~ 5a3": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"14129 to 14641": {
+				"Sections": ["14129", "14641"],
+				"Tasks": {
+					"~|Sins of the Father|~ 9": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"14643 to 14641": {
+				"Sections": ["14643", "14641"],
+				"Tasks": {
+					"~|Sins of the Father|~ 13": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"10553 to 9275": {
+				"Sections" : ["10553", "9275"],
+				"Tasks" : {
+					"~|The Fremennik Isles|~ 1": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"10553 to 9531-1": {
+				"Sections" : ["10553", "9531-1"],
+				"Tasks" : {
+					"~|The Fremennik Isles|~ 1": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"10297-1 to 8763": {
+				"Sections" : ["10297-1", "8763"],
+				"Tasks" : {
+					"~|Lunar Diplomacy|~ 2": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"10297-1 to 10042-1": {
+				"Sections" : ["10297-1", "10042-1"],
+				"Tasks" : {
+					"~|The Fremennik Trials|~ 1": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"13109-2 to 6705-1": {
+				"Sections" : ["13109-2", "6705-1"],
+				"Tasks" : {
+					"~|Children of the Sun|~ Complete the quest": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"10553 to 10300": {
+				"Sections" : ["10553", "10300"],
+				"Tasks" : {
+					"~|The Fremennik Trials|~ Complete the quest": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"10553 to 9023": {
+				"Sections" : ["10553", "9023"],
+				"Tasks" : {
+					"~|Dragon Slayer II|~ 17c1": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"13365 to 14907-1": {
+				"Sections" : ["13365", "14907-1"],
+				"Tasks" : {
+					"~|Bone Voyage|~ 10": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"8763 to 8508": {
+				"Sections" : ["8763", "8508"],
+				"Tasks" : {
+					"~|Lunar Diplomacy|~ 5": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
 			"10292 to 10035-1": {
 				"Sections": ["10292", "10035-1"],
 				"Tasks": {
@@ -26175,6 +26295,14 @@
 				"Sections": ["10028-1", "10028-2"],
 				"Tasks": {
 					"Access the Corsair Cove ~|shortcut|~": "Agility"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"11566-1 to 11566-3": {
+				"Sections": ["11566-1","11566-3"],
+				"Tasks": {
+					"Access the stepping stones ~|shortcut|~ east of Shilo Village": "Agility"
 				},
 				"ConnectsSections": true,
 				"Not F2P": true
@@ -26545,6 +26673,45 @@
 					"Access the stepping stone into Morytania west of the Nature Grotto ~|shortcut|~": "Agility"
 				},
 				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"8496-1": {
+				"Chunks": ["CharterShips[+]"],
+				"Tasks": {
+					"~|Regicide|~ Complete the quest": "Quest"
+				},
+				"UnlocksArea": true,
+				"Not F2P": true
+			},
+			"11562": {
+				"Tasks": {
+					"~|Monkey Madness I|~ 4": "Quest"
+				},
+				"UnlocksArea": true,
+				"Not F2P": true
+			},
+			"8500": {
+				"Chunks": ["CharterShips[+]"],
+				"Tasks": {
+					"~|Song of the Elves|~ Complete the quest": "Quest"
+				},
+				"UnlocksArea": true,
+				"Not F2P": true
+			},
+			"14646-1": {
+				"Chunks": ["CharterShips[+]"],
+				"Tasks": {
+					"~|Priest in Peril|~ Complete the quest": "Quest"
+				},
+				"UnlocksArea": true,
+				"Not F2P": true
+			},
+			"14637": {
+				"Chunks": ["CharterShips[+]"],
+				"Tasks": {
+					"~|Cabin Fever|~ Complete the quest": "Quest"
+				},
+				"UnlocksArea": true,
 				"Not F2P": true
 			},
 			"Brimhaven Dungeon#Section 1": {
@@ -27143,7 +27310,7 @@
 				"Not F2P": true
 			},
 			"Drink an elven dawn for a beer glass*": {
-				"Items": ["Elvan dawn*"],
+				"Items": ["Elven dawn*"],
 				"Output": "Beer glass",
 				"Not F2P": true
 			},
@@ -27579,7 +27746,7 @@
 				"Chunks": ["ArdyGuard[+]"]
 			},
 			"Ardougne guard dog": {
-				"Chunks": ["10547"]
+				"Chunks": ["10547-1"]
 			},
 			"Ardougne monk": {
 				"Chunks": ["10290"]
@@ -31188,7 +31355,7 @@
 			},
 			"Heat cup of water": {
 				"Items": ["Cup of water*"],
-				"Objects": ["Cooking Range[+]"],
+				"Objects": ["Cooking range[+]"],
 				"Output": "Cup of hot water",
 				"Not F2P": true
 			},
@@ -40217,7 +40384,7 @@
 			"Ancient Cavern": {
 				"UnlocksArea": true,
 				"Items": ["Oak logs", "BarbarianBow[+]"],
-				"SkillsNeeded": {
+				"Skills": {
 					"Firemaking": 35
 				},
 				"Not F2P": true
@@ -40486,7 +40653,7 @@
 			},
 			"Digsite Dungeon": {
 				"UnlocksArea": true,
-				"SkillsNeeded": {
+				"Skills": {
 					"Agility": 10
 				},
 				"Tasks": {
@@ -40857,14 +41024,11 @@
 				"Items": ["Rope"],
 				"Not F2P": true
 			},
-			"Karuulm Slayer Dungeon#Lobby": {
-				"UnlocksArea": true,
-				"Not F2P": true
-			},
 			"Karuulm Slayer Dungeon": {
 				"UnlocksArea": true,
+				"Chunks": ["Karuulm Slayer Dungeon#Lobby"],
 				"Items": ["Boots of stone"],
-				"SkillsNeeded": {
+				"Skills": {
 					"Slayer": 44
 				},
 				"Not F2P": true
@@ -41199,7 +41363,7 @@
 			},
 			"Puro-Puro": {
 				"UnlocksArea": true,
-				"SkillsNeeded": {
+				"Skills": {
 					"Hunter": 17
 				},
 				"Not F2P": true
@@ -42569,6 +42733,7 @@
 			},
 			"Wear ~|Void Knight equipment|~": {
 				"Category": ["Minigame"],
+				"Chunks": ["10537", "10536"],
 				"Items": ["Void Knight equipment[+]"],
 				"Level": 22,
 				"Primary": false,
@@ -42988,6 +43153,7 @@
 			},
 			"Wear ~|Void Knight equipment|~": {
 				"Category": ["Minigame"],
+				"Chunks": ["10537", "10536"],
 				"Items": ["Void Knight equipment[+]"],
 				"Level": 42,
 				"Primary": false,
@@ -46757,7 +46923,7 @@
 			"Create an ~|elidinis' ward (f)|~": {
 				"Items": ["Elidinis' ward", "Arcane sigil", "Soul rune"],
 				"Level": 90,
-				"Output": "Arcane spirit shield",
+				"Output": "Elidinis' ward (f)",
 				"Primary": false,
 				"Skills": {
 					"Prayer": 90
@@ -49099,6 +49265,7 @@
 				"Not F2P": true
 			},
 			"Smith an ~|ancient wyvern shield|~": {
+				"Chunks": ["14908-2"],
 				"Items": ["Hammer[+]", "Wyvern visage", "Elemental ore", "Coal"],
 				"Level": 66,
 				"Objects": ["Strange Machine", "Furnace[+]"],
@@ -49461,9 +49628,10 @@
 				"NoBoost": true
 			},
 			"Catch a ~|leaping salmon|~": {
-				"Items": ["Barbarian rod[+]", "Barbarian bait[+]"],
+				"Items": ["Barbarian rod[+]", "Barbarian bait[+]*"],
 				"Level": 30,
 				"Objects": ["Fishing spot (barbarian)"],
+				"Output": "Leaping salmon",
 				"Primary": true,
 				"Skills": {
 					"Agility": 30,
@@ -49474,9 +49642,10 @@
 				"Not F2P": true
 			},
 			"Catch a ~|leaping sturgeon|~": {
-				"Items": ["Barbarian rod[+]", "Barbarian bait[+]"],
+				"Items": ["Barbarian rod[+]", "Barbarian bait[+]*"],
 				"Level": 45,
 				"Objects": ["Fishing spot (barbarian)"],
+				"Output": "Leaping sturgeon",
 				"Primary": true,
 				"Skills": {
 					"Agility": 45,
@@ -49487,9 +49656,10 @@
 				"Not F2P": true
 			},
 			"Catch a ~|leaping trout|~": {
-				"Items": ["Barbarian rod[+]", "Barbarian bait[+]"],
+				"Items": ["Barbarian rod[+]", "Barbarian bait[+]*"],
 				"Level": 15,
 				"Objects": ["Fishing spot (barbarian)"],
+				"Output": "Leaping trout",
 				"Primary": true,
 				"Skills": {
 					"Agility": 15,
@@ -49523,6 +49693,7 @@
 			},
 			"Wear ~|Void Knight equipment|~": {
 				"Category": ["Minigame"],
+				"Chunks": ["10537", "10536"],
 				"Items": ["Void Knight equipment[+]"],
 				"Level": 42,
 				"Primary": false,
@@ -51342,7 +51513,8 @@
 				},
 				"Priority": 5,
 				"Not F2P": true,
-				"Primary": false
+				"Primary": false,
+				"Output": "Forester's ration"
 			},
 			"Buy the ~|Woodcutting cape|~": {
 				"Category": ["Skillcape"],
@@ -75746,7 +75918,7 @@
 			"~|Kourend and Kebos Diary#Hard|~ Task 4": {
 				"Description": "Mine some Lovakite ore.",
 				"Objects": ["Lovakite rocks"],
-				"Item": ["Pickaxe[+]"],
+				"Items": ["Pickaxe[+]"],
 				"Skills": {
 					"Mining": 65
 				},
@@ -92365,7 +92537,7 @@
 			"~|Getting Ahead|~ 3": {
 				"BaseQuest": "Getting Ahead",
 				"Description": "Kill the headless beast and take the journal from the skeleton.",
-				"Chunks": ["4665"],
+				"Chunks": ["4665-1"],
 				"Tasks": {
 					"~|Getting Ahead|~ 2": "Quest"
 				},
@@ -103727,7 +103899,7 @@
 			"~|While Guthix Sleeps|~ 10": {
 				"BaseQuest": "While Guthix Sleeps",
 				"Description": "Plant the orb on the stranger",
-				"Chunks": ["12338"],
+				"Chunks": ["12338-1"],
 				"Tasks": {
 					"~|While Guthix Sleeps|~ 9": "Quest"
 				},
@@ -104317,9 +104489,6 @@
 				"Tasks": {
 					"~|Barbarian Training|~ 2c5a3": "Quest",
 					"AnySpearHasta[+]": "Nonskill"
-				},
-				"Smithing": {
-					"Fishing": 5
 				},
 				"Not F2P": true
 			},
@@ -105564,9 +105733,6 @@
 				"Tree": 1
 			}
 		},
-		"4759": {
-			"Name": "Underground Pass"
-		},
 		"4763": {
 			"Connect": {
 				"4663": true
@@ -105582,6 +105748,9 @@
 			}
 		},
 		"4883": {
+			"Connect":{
+				"5139":true
+			},
 			"Monster": {
 				"Cerberus": 1
 			},
@@ -105859,32 +106028,12 @@
 				"Hespori patch": 1
 			}
 		},
-		"5022": {
-			"Monster": {
-				"Wyrm": 7
-			},
-			"NPC": {
-				"Garbek quo Maten": 1
-			},
-			"Name": "Karuulm Slayer Dungeon",
-			"Object": {
-				"Lava gap": 1
-			}
-		},
-		"5023": {
-			"Monster": {
-				"Fire giant": 7,
-				"Greater demon": 6,
-				"Wyrm": 8
-			},
-			"Name": "Karuulm Slayer Dungeon",
-			"Object": {
-				"Stone chest": 1
-			}
-		},
 		"5139": {
 			"Connect": {
-				"11417": true
+				"11417": true,
+				"4883": true,
+				"5140": true,
+				"5395": true
 			},
 			"NPC": {
 				"Key Master": 1
@@ -105895,6 +106044,9 @@
 			}
 		},
 		"5140": {
+			"Connect":{
+				"5139":true
+			},
 			"Monster": {
 				"Cerberus": 1
 			},
@@ -106141,7 +106293,7 @@
 		},
 		"5179": {
 			"Connect": {
-				"5280": true
+				"Karuulm Slayer Dungeon":true
 			},
 			"Monster": {
 				"Giant bat": 3
@@ -106230,56 +106382,10 @@
 				"Strange hole": 1
 			}
 		},
-		"5278": {
-			"Monster": {
-				"Sulphur Lizard": 2
-			}
-		},
-		"5279": {
-			"Connect": {
-				"5179": true,
-				"5535": true
-			},
-			"Monster": {
-				"Drake": 4,
-				"Fire giant": 6,
-				"Greater demon": 3,
-				"Hellhound": 7,
-				"Hydra": 4,
-				"Sulphur Lizard": 10,
-				"Wyrm": 1
-			},
-			"NPC": {
-				"Kaal-Ket-Jor": 1,
-				"Kaal-Mej-San": 1,
-				"Kaal-Xil-Dar": 1
-			},
-			"Name": "Karuulm Slayer Dungeon",
-			"Object": {
-				"Cave exit": 1,
-				"Mysterious pipe": 1,
-				"Rocks": 3,
-				"Steps": 4,
-				"Stone chest": 3,
-				"Tunnel": 1
-			}
-		},
-		"5280": {
-			"Monster": {
-				"Drake": 5,
-				"Hydra": 13
-			},
-			"NPC": {
-				"Kormar quo Maten": 1,
-				"Tarfol quo Maten": 1
-			},
-			"Name": "Karuulm Slayer Dungeon#Lobby",
-			"Object": {
-				"Lava gap": 1,
-				"Stone chest": 1
-			}
-		},
 		"5395": {
+			"Connect":{
+				"5139":true
+			},
 			"Monster": {
 				"Cerberus": 1
 			},
@@ -106738,38 +106844,6 @@
 			"Spawn": {
 				"Burnt bones": 1,
 				"Fire rune": 1
-			}
-		},
-		"5535": {
-			"Connect": {
-				"5279": true,
-				"5435": true
-			},
-			"Monster": {
-				"Drake": 3,
-				"Hellhound": 5,
-				"Sulphur Lizard": 1
-			},
-			"Name": "Karuulm Slayer Dungeon",
-			"Object": {
-				"Crate": 3,
-				"Crates": 3,
-				"Mysterious pipe": 1
-			}
-		},
-		"5536": {
-			"Monster": {
-				"Alchemical Hydra": 1,
-				"Drake": 1
-			},
-			"NPC": {
-				"Orrvor quo Maten": 1
-			},
-			"Name": "Karuulm Slayer Dungeon",
-			"Object": {
-				"Broken machinery": 1,
-				"Rocks": 1,
-				"Stone chest": 2
 			}
 		},
 		"5676": {
@@ -111902,7 +111976,8 @@
 		},
 		"7236": {
 			"Connect": {
-				"10142": true
+				"10142": true,
+				"7492": true
 			},
 			"Monster": {
 				"Dagannoth": 27,
@@ -112011,7 +112086,8 @@
 		},
 		"7316": {
 			"Connect": {
-				"7216": true
+				"7216-1": true,
+				"7216-3": true
 			},
 			"Name": "Fortis Colosseum Underground",
 			"NPC": {
@@ -112168,7 +112244,8 @@
 		"7492": {
 			"Connect": {
 				"11588": true,
-				"11589": true
+				"11589": true,
+				"7236": true
 			},
 			"Monster": {
 				"Dagannoth": 19,
@@ -119028,7 +119105,8 @@
 		"10142": {
 			"Connect": {
 				"7236": true,
-				"10042": true
+				"10042-1": true,
+				"10042-2": true
 			},
 			"Monster": {
 				"Dagannoth (Waterbirth Island)": 39,
@@ -124085,6 +124163,9 @@
 
 				},
 				"5": {
+
+				},
+				"6": {
 
 				}
 			},
@@ -135438,6 +135519,9 @@
 		"13622": {
 			"Sections": {
 				"1": {
+					"Connect":{
+						"13466":true
+					},
 					"Monster": {
 						"Monk of Zamorak": 10
 					},
@@ -135464,7 +135548,8 @@
 				},
 				"2": {
 					"Connect": {
-						"9541": true
+						"9541": true,
+						"13722":true
 					},
 					"Diary": {
 						"Morytania": "EA7, HD9"
@@ -135715,13 +135800,19 @@
 				"Fairy ring": 1
 			}
 		},
-		"13722": {
-			"Connect": {
-				"13466": true,
-				"13622": true
+		"13466":{
+			"Connect":{
+				"13722":true,
+				"13622-1":true
 			},
 			"Monster": {
 				"Temple guardian": 1
+			}
+		},
+		"13722": {
+			"Connect": {
+				"13466": true,
+				"13622-2": true
 			},
 			"NPC": {
 				"Drezel": 1,
@@ -141869,10 +141960,6 @@
 			}
 		},
 		"Karuulm Slayer Dungeon#Lobby": {
-			"Connect": {
-				"5179": true,
-				"5279": true
-			},
 			"NPC": {
 				"Kaal-Ket-Jor": 1,
 				"Kaal-Mej-San": 1,
@@ -141888,9 +141975,6 @@
 			}
 		},
 		"Karuulm Slayer Dungeon": {
-			"Connect": {
-				"5280": true
-			},
 			"Diary": {
 				"Kourend & Kebos": "HD9, EL5"
 			},
@@ -146291,9 +146375,10 @@
 			"FaladorChunks[+]": ["11827", "11828-1", "11829-1", "12084-1", "12084-2"],
 			"RockCrabChunks[+]": ["10042-1", "10554", "10810-1"],
 			"FremennikEasy10[+]": ["10296", "10552-1", "10808-1", "10809-1"],
+			"CharterShips[+]": [ "11061","11058","10545","10284-1","11825-2","12081-2"],
 			"FremmyHard3[+]": ["10296", "10297-1", "10297-2", "10552-1", "10553", "10554", "10808-1", "10809-1", "10809-2", "10809-3", "10809-4", "10809-5", "11064-1"],
 			"KandarinDiaryArea[+]": ["10806-1", "10806-2", "10806-3", "11061", "11062-1", "11062-4", "11317-1", "11318-1"],
-			"KaramjaChunks[+]": ["10801", "10802-1", "10802-2", "11053", "11054-1", "11054-2", "11055-1", "11055-2", "11056", "11057", "11058", "11309", "11310-1", "11310-2", "11310-3", "11310-4", "11310-5", "11310-6", "11311", "11312", "11312", "11313", "11565", "11566-1", "11566-2", "11566-3", "11567-1", "11567-2", "11568-1", "11568-2", "11569-1", "11821", "11822-1", "11822-2", "11823"],
+			"KaramjaChunks[+]": ["10801", "10802-1", "10802-2", "11053", "11054-1", "11054-2", "11055-1", "11055-2", "11056", "11057", "11058", "11309", "11310-1", "11310-2", "11310-3", "11310-4", "11310-5", "11310-6", "11311", "11312", "11313", "11565", "11566-1", "11566-2", "11566-3", "11567-1", "11567-2", "11568-1", "11568-2", "11569-1", "11821", "11822-1", "11822-2", "11823"],
 			"KaramjaMedium18[+]": ["8496-1", "8500", "10284-1", "10545", "11058", "11061", "11825-2", "12081-2", "14637", "14646-1"],
 			"KaramjaMedium19[+]": ["11056", "11310-1"],
 			"KKEasy1[+]": ["4923-2", "5179"],
@@ -146436,7 +146521,8 @@
 			"SlugMenaceMindAltar[+]": ["Mind altar", "Temple of the Eye"],
 			"FremennikTwitch[+]": ["10810-1", "10811"],
 			"UzerTeaks[+]": ["13871", "13872"],
-			"CoalTarChunk[+]": ["8752-1", "9008-1", "9008-2"]
+			"CoalTarChunk[+]": ["8752-1", "9008-1", "9008-2"],
+			"SteppingStonesKaramja[+]": ["11566-1","11566-3"]
 		},
 		"chunksPlusNames": {
 			"10Coin[+]": "Any chunk with a 10-coin chest",
@@ -146457,6 +146543,7 @@
 			"FaladorChunks[+]": "Any chunk with a Falador guard",
 			"RockCrabChunks[+]": "Any Fremennik chunk with a rock crab",
 			"FremennikEasy10[+]": "Any Fremennik chunk with an oak tree",
+			"CharterShips[+]":"Any Chunk with a normally unlocked Charter Ship",
 			"FremmyHard3[+]": "Any Fremennik chunk",
 			"KandarinDiaryArea[+]": "Any Kandarin chunk",
 			"KaramjaChunks[+]": "Any Karamja chunk",
@@ -146602,7 +146689,8 @@
 			"SlugMenaceMindAltar[+]": "Either access to the mind altar or Guardians of the Rift",
 			"FremennikTwitch[+]": "Any Fremennik chunk with cerulean twitches in it",
 			"UzerTeaks[+]": "Either chunk with teak tress near Uzer",
-			"CoalTarChunk[+]": "Any chunk with coal tar in it"
+			"CoalTarChunk[+]": "Any chunk with coal tar in it",
+			"SteppingStonesKaramja[+]": "Either side of the Stepping stone shortcut east of Shilo Vilage"
 		},
 		"dropTables": {
 			"AllotmentSeedDropTable+": {
@@ -183377,7 +183465,7 @@
 				"1": "1/512"
 			},
 			"Rune pickaxe": {
-				"5 (noted)": "15.75"
+				"5 (noted)": "1/15.75"
 			},
 			"Rune knife": {
 				"150": "1/25.2"
@@ -195329,41 +195417,6 @@
 					"1": "Always"
 				}
 			},
-			"Fish shoal": {
-				"Clue bottle (medium)": {
-					"1": "Rare"
-				},
-				"Oyster": {
-					"1": "Varies"
-				},
-				"Pufferfish": {
-					"1": "Varies"
-				},
-				"Raw anchovies": {
-					"1": "Varies"
-				},
-				"Raw lobster": {
-					"1": "Varies"
-				},
-				"Raw manta ray": {
-					"1": "Varies"
-				},
-				"Raw sardine": {
-					"1": "Varies"
-				},
-				"Raw sea turtle": {
-					"1": "Varies"
-				},
-				"Raw shark": {
-					"1": "Varies"
-				},
-				"Raw swordfish": {
-					"1": "Varies"
-				},
-				"Raw tuna": {
-					"1": "Varies"
-				}
-			},
 			"Golden warbler": {
 				"Bones": {
 					"1": "Always"
@@ -196223,50 +196276,6 @@
 				},
 				"Yew longbow": {
 					"1": "1/100"
-				}
-			},
-			"Bluegill loot": {
-				"Bluegill": {
-					"1": "Always"
-				},
-				"Golden tench": {
-					"1": "1/20000"
-				},
-				"Molch pearl": {
-					"1": "Varies"
-				}
-			},
-			"Common tench loot": {
-				"Common tench": {
-					"1": "Always"
-				},
-				"Golden tench": {
-					"1": "1/20000"
-				},
-				"Molch pearl": {
-					"1": "Varies"
-				}
-			},
-			"Mottled eel loot": {
-				"Mottled eel": {
-					"1": "Always"
-				},
-				"Golden tench": {
-					"1": "1/20000"
-				},
-				"Molch pearl": {
-					"1": "Varies"
-				}
-			},
-			"Greater siren loot": {
-				"Greater siren": {
-					"1": "Always"
-				},
-				"Golden tench": {
-					"1": "1/20000"
-				},
-				"Molch pearl": {
-					"1": "Varies"
 				}
 			},
 			"Pyre fox": {
@@ -199078,7 +199087,7 @@
 					"5-10 (noted)": "1/35.64"
 				},
 				"Rune arrow": {
-					"102-299": "20.42"
+					"102-299": "1/20.42"
 				},
 				"Rune axe": {
 					"1": "1/45.52"
@@ -199093,7 +199102,7 @@
 					"1": "1/134.9"
 				},
 				"Rune pickaxe": {
-					"1": "38.55"
+					"1": "1/38.55"
 				},
 				"Shield left half": {
 					"1": "1/377.8"
@@ -200550,7 +200559,7 @@
 				"Grimy toadflax": {
 					"1": "1/2"
 				},
-				"Grimy irit": {
+				"Grimy irit leaf": {
 					"1": "1/2"
 				},
 				"Grimy avantoe": {
@@ -226074,12 +226083,12 @@
 		},
 		"5432": {
 			"1": [
-				"5178",
+				"5176-1",
 				"5433",
 				"5688"
 			],
 			"2": [
-				"5176-1",
+				"5176-2",
 				"5431-1"
 			],
 			"3": [
@@ -226431,7 +226440,9 @@
 		"5941": {
 			"0": [
 				"5942-1",
-				"6197"
+				"6197",
+				"7225-1",
+				"12082-1"
 			]
 		},
 		"5942": {
@@ -227380,6 +227391,7 @@
 		},
 		"7225": {
 			"1": [
+				"5941",
 				"6969",
 				"7226",
 				"12082-1"
@@ -227580,7 +227592,9 @@
 		},
 		"8509": {
 			"1": [
+				"8253-1",
 				"8253-2",
+				"8253-3",
 				"8508"
 			],
 			"2": [
@@ -229603,6 +229617,7 @@
 		},
 		"12082": {
 			"1": [
+				"5941",
 				"7225-1",
 				"10537",
 				"11316",
