@@ -30685,8 +30685,6 @@
 			"Unicow": {
 				"Chunks": ["Tower of Life#Basement"],
 				"Items": ["Cowhide*", "Unicorn horn*"],
-				"Source": "drop",
-				"Output": "Unicow loot",
 				"Not F2P": true
 			},
 			"Spidine": {
@@ -31415,7 +31413,7 @@
 				"Output": "Lunar Chest",
 				"Not F2P": true
 			},
-			"Fortis Colosseum loot": {
+			"Fortis Colosseum loot*": {
 				"Category": ["Boss"],
 				"Objects": ["Rewards Chest (Fortis Colosseum)"],
 				"Output": "Rewards Chest (Fortis Colosseum)",
@@ -45536,7 +45534,7 @@
 				},
 				"NoBoost": true
 			},
-			"Slay a ~|spitting wyvern|~": {
+			"Slay a ~|Spitting Wyvern|~": {
 				"Level": 66,
 				"Monsters": ["Spitting Wyvern"],
 				"Primary": false,
@@ -45544,7 +45542,7 @@
 				"Source": "drop",
 				"Output": "Spitting Wyvern"
 			},
-			"Slay a ~|taloned wyvern|~": {
+			"Slay a ~|Taloned Wyvern|~": {
 				"Level": 66,
 				"Monsters": ["Taloned Wyvern"],
 				"Primary": false,
@@ -45552,7 +45550,7 @@
 				"Source": "drop",
 				"Output": "Taloned Wyvern"
 			},
-			"Slay a ~|long-tailed wyvern|~": {
+			"Slay a ~|Long-tailed Wyvern|~": {
 				"Level": 66,
 				"Monsters": ["Long-tailed Wyvern"],
 				"Primary": false,
@@ -45568,7 +45566,7 @@
 				"Source": "drop",
 				"Output": "Banshee"
 			},
-			"Slay a ~|twisted banshee|~": {
+			"Slay a ~|Twisted Banshee|~": {
 				"Level": 15,
 				"Monsters": ["Twisted Banshee"],
 				"Primary": false,
@@ -45576,7 +45574,7 @@
 				"Source": "drop",
 				"Output": "Twisted Banshee"
 			},
-			"Slay a ~|basilisk knight|~": {
+			"Slay a ~|Basilisk Knight|~": {
 				"Level": 60,
 				"Monsters": ["Basilisk Knight"],
 				"Primary": false,
@@ -45600,7 +45598,7 @@
 				"Source": "drop",
 				"Output": "Bloodveld"
 			},
-			"Slay a ~|mutated bloodveld|~": {
+			"Slay a ~|Mutated Bloodveld|~": {
 				"Level": 50,
 				"Monsters": ["Mutated Bloodveld"],
 				"Primary": false,
@@ -45677,7 +45675,7 @@
 				"Output": "Cockatrice",
 				"Priority": 1
 			},
-			"Slay a ~|moonlight cockatrice|~": {
+			"Slay a ~|Moonlight Cockatrice|~": {
 				"Level": 25,
 				"Monsters": ["Moonlight Cockatrice"],
 				"Primary": false,
@@ -45685,7 +45683,7 @@
 				"Output": "Moonlight Cockatrice",
 				"Priority": 2
 			},
-			"Slay a ~|crawling hand|~": {
+			"Slay a ~|Crawling Hand|~": {
 				"Level": 5,
 				"Monsters": ["Crawling Hand"],
 				"Primary": false,
@@ -45699,7 +45697,7 @@
 				"Source": "drop",
 				"Output": "Dark beast"
 			},
-			"Slay a ~|small lizard|~": {
+			"Slay a ~|Small Lizard|~": {
 				"Level": 22,
 				"Items": ["Ice cooler"],
 				"Monsters": ["Small Lizard"],
@@ -45708,7 +45706,7 @@
 				"Output": "Small Lizard",
 				"Priority": 1
 			},
-			"Slay a ~|desert lizard|~": {
+			"Slay a ~|Desert Lizard|~": {
 				"Level": 22,
 				"Items": ["Ice cooler"],
 				"Monsters": ["Desert Lizard"],
@@ -45765,7 +45763,7 @@
 				"Source": "drop",
 				"Output": "Gargoyle"
 			},
-			"Slay a ~|harpie bug swarm|~": {
+			"Slay a ~|Harpie Bug Swarm|~": {
 				"Level": 33,
 				"Items": ["Lit bug lantern"],
 				"Monsters": ["Harpie Bug Swarm"],
@@ -45798,7 +45796,7 @@
 				"Source": "drop",
 				"Output": "Hydra"
 			},
-			"Slay an ~|infernal mage|~": {
+			"Slay an ~|Infernal Mage|~": {
 				"Level": 45,
 				"Monsters": ["Infernal Mage"],
 				"Primary": false,
@@ -45829,7 +45827,7 @@
 				"Source": "drop",
 				"Output": "Chilled jelly"
 			},
-			"Slay a ~|warped jelly|~": {
+			"Slay a ~|Warped Jelly|~": {
 				"Level": 52,
 				"Monsters": ["Warped Jelly"],
 				"Primary": false,
@@ -45874,7 +45872,7 @@
 				"Output": "Molanisk",
 				"NoBoost": true
 			},
-			"Slay a ~|warped terrorbird|~": {
+			"Slay a ~|Warped Terrorbird|~": {
 				"Level": 56,
 				"Items": ["Crystal chime"],
 				"Monsters": ["Warped Terrorbird"],
@@ -45883,7 +45881,7 @@
 				"Source": "drop",
 				"Output": "Warped Terrorbird"
 			},
-			"Slay a ~|warped tortoise|~": {
+			"Slay a ~|Warped Tortoise|~": {
 				"Level": 56,
 				"Items": ["Crystal chime"],
 				"Monsters": ["Warped Tortoise"],
@@ -45908,7 +45906,7 @@
 				"Source": "drop",
 				"Output": "Zygomite#Level 86"
 			},
-			"Slay an ~|ancient zygomite|~": {
+			"Slay an ~|Ancient Zygomite|~": {
 				"Level": 57,
 				"Monsters": ["Ancient Zygomite"],
 				"Primary": false,
@@ -45924,7 +45922,7 @@
 				"Source": "drop",
 				"Output": "Nechryael"
 			},
-			"Slay a ~|greater nechryael|~": {
+			"Slay a ~|Greater Nechryael|~": {
 				"Level": 80,
 				"Monsters": ["Greater Nechryael"],
 				"Primary": false,
@@ -45932,7 +45930,7 @@
 				"Source": "drop",
 				"Output": "Greater Nechryael"
 			},
-			"Slay a ~|greater nechryael#Wilderness Slayer Cave|~": {
+			"Slay a ~|Greater Nechryael#Wilderness Slayer Cave|~": {
 				"Level": 80,
 				"Monsters": ["Greater Nechryael#Wilderness Slayer Cave"],
 				"Primary": false,
@@ -45964,7 +45962,7 @@
 				"Source": "drop",
 				"Output": "Rockslug"
 			},
-			"Slay a ~|sea snake hatchling|~": {
+			"Slay a ~|Sea Snake Hatchling|~": {
 				"Level": 40,
 				"Monsters": ["Sea Snake Hatchling"],
 				"Primary": false,
@@ -45972,7 +45970,7 @@
 				"Output": "Sea Snake Hatchling",
 				"Priority": 3
 			},
-			"Slay a ~|sea snake young|~": {
+			"Slay a ~|Sea Snake Young|~": {
 				"Level": 40,
 				"Monsters": ["Sea Snake Young"],
 				"Primary": false,
@@ -45980,7 +45978,7 @@
 				"Output": "Sea Snake Young",
 				"Priority": 4
 			},
-			"Slay a ~|skeletal wyvern|~": {
+			"Slay a ~|Skeletal Wyvern|~": {
 				"Level": 72,
 				"Monsters": ["Skeletal Wyvern"],
 				"Primary": false,
@@ -46044,7 +46042,7 @@
 				"Output": "Spiritual warrior#Ancient Prison",
 				"Priority": 2
 			},
-			"Slay a ~|sulphur lizard|~": {
+			"Slay a ~|Sulphur Lizard|~": {
 				"Level": 44,
 				"Monsters": ["Sulphur Lizard"],
 				"Primary": false,
@@ -46052,7 +46050,7 @@
 				"Output": "Sulphur Lizard",
 				"Priority": 1
 			},
-			"Slay a ~|grimy lizard|~": {
+			"Slay a ~|Grimy Lizard|~": {
 				"Level": 44,
 				"Monsters": ["Grimy Lizard"],
 				"Primary": false,
@@ -46060,7 +46058,7 @@
 				"Output": "Grimy Lizard",
 				"Priority": 2
 			},
-			"Slay a ~|sulphur nagua|~": {
+			"Slay a ~|Sulphur Nagua|~": {
 				"Level": 48,
 				"Monsters": ["Sulphur Nagua"],
 				"Primary": false,
@@ -46068,7 +46066,7 @@
 				"Output": "Sulphur Nagua",
 				"Priority": 1
 			},
-			"Slay a ~|frost nagua|~": {
+			"Slay a ~|Frost Nagua|~": {
 				"Level": 48,
 				"Monsters": ["Frost Nagua"],
 				"Primary": false,
@@ -46156,7 +46154,7 @@
 				"Source": "drop",
 				"Output": "Abyssal demon#Wilderness Slayer Cave"
 			},
-			"Slay an ~|ancient wyvern|~": {
+			"Slay an ~|Ancient Wyvern|~": {
 				"Level": 82,
 				"Monsters": ["Ancient Wyvern"],
 				"Primary": false,
@@ -55423,6 +55421,12 @@
 				"Items": ["Chasm teleport scroll"],
 				"Not F2P": true
 			},
+			"(Yama) Obtain ~|oathplate shards|~": {
+				"Category": ["Collection Log", "Collection Log Bosses"],
+				"Label": "Collection Log",
+				"Items": ["Oathplate shards"],
+				"Not F2P": true
+			},
 			"(Yama) Obtain an ~|oathplate helm|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
@@ -55447,12 +55451,6 @@
 				"Items": ["Soulflame horn"],
 				"Not F2P": true
 			},
-			"(Yama) Obtain a ~|dragon chainbody|~": {
-				"Category": ["Collection Log", "Collection Log Bosses"],
-				"Label": "Collection Log",
-				"Items": ["Dragon chainbody"],
-				"Not F2P": true
-			},
 			"(Yama) Obtain a ~|rite of vile transference|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
@@ -55475,12 +55473,6 @@
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
 				"Items": ["Barrel of demonic tallow (full)"],
-				"Not F2P": true
-			},
-			"(Yama) Obtain ~|oathplate shards|~": {
-				"Category": ["Collection Log", "Collection Log Bosses"],
-				"Label": "Collection Log",
-				"Items": ["Oathplate shards"],
 				"Not F2P": true
 			},
 			"(Zalcano) Obtain a ~|smolcano|~": {
@@ -74331,7 +74323,7 @@
 				"Not F2P": true
 			},
 			"~|Fremennik Diary#Hard|~ Task 5": {
-				"Description": "Craft a Fremennik shield on Neitiznot.",
+				"Description": "Craft a Neitiznot shield on Neitiznot.",
 				"Objects": ["Woodcutting stump"],
 				"Items": ["Axe[+]", "Arctic pine logs", "Hammer", "Rope", "Bronze nails"],
 				"Skills": {
@@ -82279,6 +82271,30 @@
 				"CombatPoints": 4,
 				"Monsters": ["The Whisperer"]
 			},
+			"~|Combat Achievements#Elite|~ Back so soon?": {
+				"Category": ["Combat Diary Tasks"],
+				"Description": "Defeat Yama without the judge being attacked with the wrong style and without taking more than one instance of damage each time you are exiled from the arena.",
+				"BaseQuest": "Combat Achievements",
+				"Not F2P": true,
+				"CombatPoints": 4,
+				"Monsters": ["Yama"]
+			},
+			"~|Combat Achievements#Elite|~ Yama Speed-Trialist": {
+				"Category": ["Combat Diary Tasks"],
+				"Description": "Defeat Yama in an average time of under 3:38 over your last four kills.",
+				"BaseQuest": "Combat Achievements",
+				"Not F2P": true,
+				"CombatPoints": 4,
+				"Monsters": ["Yama"]
+			},
+			"~|Combat Achievements#Elite|~ Yama Adept": {
+				"Category": ["Combat Diary Tasks"],
+				"Description": "Defeat Yama once.",
+				"BaseQuest": "Combat Achievements",
+				"Not F2P": true,
+				"CombatPoints": 4,
+				"Monsters": ["Yama"]
+			},
 			"~|Combat Achievements#Elite|~ The Spurned Hero": {
 				"Category": ["Combat Diary Tasks"],
 				"Description": "Kill Zalcano as the player who has dealt the most damage to her.",
@@ -82355,7 +82371,7 @@
 					"Any": 25000
 				},
 				"ManualShow": true,
-				"CombatPointsNeeded": 1014,
+				"CombatPointsNeeded": 1026,
 				"Chunks": ["11319-1"],
 				"NPCs": ["Ghommal"]
 			},
@@ -83674,6 +83690,46 @@
 				"CombatPoints": 5,
 				"Monsters": ["The Whisperer"]
 			},
+			"~|Combat Achievements#Master|~ Yama Speed-Chaser": {
+				"Category": ["Combat Diary Tasks"],
+				"Description": "Defeat Yama in an average time of under 3:00 over your last four kills.",
+				"BaseQuest": "Combat Achievements",
+				"Not F2P": true,
+				"CombatPoints": 5,
+				"Monsters": ["Yama"]
+			},
+			"~|Combat Achievements#Master|~ No toppings, no drinks, thanks": {
+				"Category": ["Combat Diary Tasks"],
+				"Description": "Defeat Yama without anybody healing using anything other than plain pizza and without anybody drinking any potions.",
+				"BaseQuest": "Combat Achievements",
+				"Not F2P": true,
+				"CombatPoints": 5,
+				"Monsters": ["Yama"]
+			},
+			"~|Combat Achievements#Master|~ Shadow dancer": {
+				"Category": ["Combat Diary Tasks"],
+				"Description": "Defeat Yama without getting hit by shadows and without being more than one tile away from the center of his shadow crash attack.",
+				"BaseQuest": "Combat Achievements",
+				"Not F2P": true,
+				"CombatPoints": 5,
+				"Monsters": ["Yama"]
+			},
+			"~|Combat Achievements#Master|~ Yama Veteran": {
+				"Category": ["Combat Diary Tasks"],
+				"Description": "Defeat Yama 50 times.",
+				"BaseQuest": "Combat Achievements",
+				"Not F2P": true,
+				"CombatPoints": 5,
+				"Monsters": ["Yama"]
+			},
+			"~|Combat Achievements#Master|~ Fire fighter": {
+				"Category": ["Combat Diary Tasks"],
+				"Description": "Defeat Yama without getting hit by fire and having only killed void flares with special attacks.",
+				"BaseQuest": "Combat Achievements",
+				"Not F2P": true,
+				"CombatPoints": 5,
+				"Monsters": ["Yama"]
+			},
 			"~|Combat Achievements#Master|~ Perfect Zulrah": {
 				"Category": ["Combat Diary Tasks"],
 				"Description": "Kill Zulrah whilst taking no damage from the following: Snakelings, Venom Clouds, Zulrah's Green or Crimson phase.",
@@ -83699,7 +83755,7 @@
 					"Any": 35000
 				},
 				"ManualShow": true,
-				"CombatPointsNeeded": 1804,
+				"CombatPointsNeeded": 1841,
 				"Chunks": ["11319-1"],
 				"NPCs": ["Ghommal"]
 			},
@@ -84604,6 +84660,30 @@
 				"CombatPoints": 6,
 				"Monsters": ["The Whisperer"]
 			},
+			"~|Combat Achievements#Grandmaster|~ Yama Speed-Runner": {
+				"Category": ["Combat Diary Tasks"],
+				"Description": "Defeat Yama in an average time of under 2:34 over your last four kills.",
+				"BaseQuest": "Combat Achievements",
+				"Not F2P": true,
+				"CombatPoints": 6,
+				"Monsters": ["Yama"]
+			},
+			"~|Combat Achievements#Grandmaster|~ Contract Choreographer": {
+				"Category": ["Combat Diary Tasks"],
+				"Description": "Defeat Yama whilst completing 'Shadow Dancer', 'Fire Fighter', 'Back so soon?' and without taking any other avoidable damage.",
+				"BaseQuest": "Combat Achievements",
+				"Not F2P": true,
+				"CombatPoints": 6,
+				"Monsters": ["Yama"]
+			},
+			"~|Combat Achievements#Grandmaster|~ Contractually Unbound": {
+				"Category": ["Combat Diary Tasks"],
+				"Description": "Defeat Yama under the elevated conditions of one of his non-standard contracts.",
+				"BaseQuest": "Combat Achievements",
+				"Not F2P": true,
+				"CombatPoints": 6,
+				"Monsters": ["Yama"]
+			},
 			"~|Combat Achievements#Grandmaster|~ Zulrah Speed-Runner": {
 				"Category": ["Combat Diary Tasks"],
 				"Description": "Kill Zulrah in less than 54 seconds, without a slayer task.",
@@ -84621,7 +84701,7 @@
 					"Any": 50000
 				},
 				"ManualShow": true,
-				"CombatPointsNeeded": 2470,
+				"CombatPointsNeeded": 2525,
 				"Chunks": ["11319-1"],
 				"NPCs": ["Ghommal"]
 			}
@@ -138546,6 +138626,7 @@
 						"Well": 1
 					},
 					"Quest": {
+						"Bone Voyage": "step",
 						"Dragon Slayer II": "step"
 					},
 					"Shop": {
@@ -148292,11 +148373,11 @@
 			"MoonsWeapons[+]": ["Wield a ~|blue moon spear|~", "Wield ~|dual macuahuitl|~", "Wield an ~|eclipse atlatl|~"],
 			"CatchBlackWarlock[+]": ["Catch a ~|black warlock|~", "Barehanded catch a ~|black warlock|~"],
 			"CatchSnowyKnight[+]": ["Catch a ~|snowy knight|~", "Barehanded catch a ~|snowy knight|~"],
-			"SlayBloodveld[+]": ["Slay a ~|bloodveld|~", "Slay a ~|mutated bloodveld|~"],
+			"SlayBloodveld[+]": ["Slay a ~|bloodveld|~", "Slay a ~|Mutated Bloodveld|~"],
 			"ChopJungle[+]": ["Chop ~|dense jungle|~", "Chop ~|medium jungle|~", "Chop ~|light jungle|~"],
 			"WildernessPirateAccess[+]": ["Access wilderness pirates", "Access wilderness zombie pirates"],
 			"ConstructBed[+]": ["Build a ~|wooden bed|~", "Build an ~|oak bed|~", "Build a ~|large oak bed|~", "Build a ~|teak bed|~", "Build a ~|large teak bed|~", "Build a ~|4-poster|~", "Build a ~|gilded 4-poster|~"],
-			"UncutOnyxSource[+]": ["Uncut onyx monster sources", "Bag full of gems loot", "Fortis Colosseum loot", "Elven crystal chest loot"],
+			"UncutOnyxSource[+]": ["Uncut onyx monster sources", "Bag full of gems loot", "Fortis Colosseum loot*", "Elven crystal chest loot"],
 			"Access Zanaris[+]": ["Access Zanaris via 12849", "Access Zanaris via a fairy ring"]
 		},
 		"forceTalisman": {
@@ -185741,7 +185822,7 @@
 				"1": "1/12.68"
 			},
 			"Clue scroll (elite)": {
-				"1": "1/66"
+				"1": "1/30"
 			}
 		},
 		"Yuri": {
@@ -187852,7 +187933,7 @@
 		"Between a Rock...": "10810, 11318, 12085, Dondakan's mine, Dwarven Mine, White Wolf Tunnel, Keldagrim",
 		"Big Chompy Bird Hunting": "10286, 10542, Rantz's cave",
 		"Biohazard": "10035, 10036, 10291, 10292, 11570, 13108",
-		"Bone Voyage": "6454, 12082, 12597, 12853, 13110, 13365, 13366",
+		"Bone Voyage": "6454, 12082, 12597, 12853, 13110, 13365, 13366, 14907",
 		"Cabin Fever": "14638, 14646, 14902",
 		"Children of the Sun": "12853, 12854",
 		"Client of Kourend": "6200, 6202, 6714, 6716, 6968, 7225, 7226",
@@ -215891,54 +215972,6 @@
 			"Skeletal bottoms": [{
 				"~|The Fremennik Trials|~ Complete the quest": "Quest"
 			}],
-			"Fremennik hat": [{
-				"~|The Fremennik Trials|~ Complete the quest": "Quest"
-			}],
-			"Fremennik robe": [{
-				"~|The Fremennik Trials|~ Complete the quest": "Quest"
-			}],
-			"Fremennik skirt": [{
-				"~|The Fremennik Trials|~ Complete the quest": "Quest"
-			}],
-			"Fremennik gloves": [{
-				"~|The Fremennik Trials|~ Complete the quest": "Quest"
-			}],
-			"Fremennik boots": [{
-				"~|The Fremennik Trials|~ Complete the quest": "Quest"
-			}],
-			"Fremennik green cloak": [{
-				"~|The Fremennik Trials|~ Complete the quest": "Quest"
-			}],
-			"Fremennik blue cloak": [{
-				"~|The Fremennik Trials|~ Complete the quest": "Quest"
-			}],
-			"Fremennik brown cloak": [{
-				"~|The Fremennik Trials|~ Complete the quest": "Quest"
-			}],
-			"Fremennik cyan cloak": [{
-				"~|The Fremennik Trials|~ Complete the quest": "Quest"
-			}],
-			"Fremennik red cloak": [{
-				"~|The Fremennik Trials|~ Complete the quest": "Quest"
-			}],
-			"Fremennik grey cloak": [{
-				"~|The Fremennik Trials|~ Complete the quest": "Quest"
-			}],
-			"Fremennik yellow cloak": [{
-				"~|The Fremennik Trials|~ Complete the quest": "Quest"
-			}],
-			"Fremennik teal cloak": [{
-				"~|The Fremennik Trials|~ Complete the quest": "Quest"
-			}],
-			"Fremennik purple cloak": [{
-				"~|The Fremennik Trials|~ Complete the quest": "Quest"
-			}],
-			"Fremennik pink cloak": [{
-				"~|The Fremennik Trials|~ Complete the quest": "Quest"
-			}],
-			"Fremennik black cloak": [{
-				"~|The Fremennik Trials|~ Complete the quest": "Quest"
-			}],
 			"Archer helm": [{
 				"~|The Fremennik Trials|~ Complete the quest": "Quest"
 			}],
@@ -216471,6 +216504,8 @@
 				"F2P Only": "Nonskill"
 			}],
 			"Rat's paper^": [{
+				"~|What Lies Below|~ 1": "Quest"
+			}, {
 				"F2P Only": "Nonskill"
 			}],
 			"Pure essence^": [{
@@ -219198,7 +219233,7 @@
 			},
 			"Gorad": {
 				"10287-2": [{
-					"~|Watchtower|~ 5": "Quest"
+					"~|Watchtower|~ 4": "Quest"
 				}]
 			},
 			"Guard (Ranging Guild)": {
@@ -231907,7 +231942,7 @@
 	},
 	"walkableChunks": ["4403", "4404", "4405", "4659", "4660", "4661", "4662", "4663", "4664", "4665", "4666", "4667", "4916", "4917", "4918", "4919", "4920", "4921", "4922", "4923", "5165", "5166", "5174", "5175", "5176", "5177", "5178", "5179", "5180", "5420", "5421", "5422", "5424", "5425", "5430", "5431", "5432", "5433", "5434", "5435", "5676", "5677", "5678", "5679", "5680", "5681", "5682", "5683", "5686", "5687", "5688", "5689", "5690", "5691", "5692", "5933", "5934", "5935", "5936", "5937", "5938", "5939", "5940", "5941", "5942", "5943", "5944", "5945", "5946", "5947", "5948", "5949", "6189", "6190", "6191", "6192", "6193", "6194", "6195", "6196", "6197", "6198", "6199", "6200", "6201", "6202", "6203", "6204", "6205", "6445", "6446", "6447", "6448", "6449", "6450", "6451", "6453", "6454", "6455", "6456", "6457", "6458", "6459", "6460", "6461", "6462", "6701", "6702", "6703", "6704", "6705", "6706", "6707", "6710", "6711", "6712", "6713", "6714", "6715", "6716", "6717", "6957", "6958", "6959", "6960", "6961", "6965", "6966", "6967", "6968", "6969", "6970", "6971", "6972", "6973", "7215", "7216", "7217", "7221", "7222", "7223", "7224", "7225", "7226", "7227", "7228", "7472", "7478", "7479", "8236", "8237", "8238", "8252", "8253", "8491", "8492", "8493", "8494", "8495", "8496", "8497", "8498", "8499", "8500", "8501", "8508", "8509", "8747", "8748", "8749", "8750", "8751", "8752", "8753", "8754", "8755", "8756", "8757", "8763", "9003", "9004", "9005", "9006", "9007", "9008", "9009", "9010", "9011", "9012", "9013", "9014", "9015", "9016", "9023", "9260", "9261", "9262", "9263", "9264", "9265", "9266", "9267", "9268", "9269", "9270", "9271", "9272", "9273", "9275", "9276", "9519", "9520", "9521", "9523", "9524", "9525", "9526", "9527", "9528", "9531", "9532", "9772", "9773", "9774", "9775", "9776", "9777", "9778", "9779", "9780", "9781", "9782", "9783", "9790", "10028", "10029", "10030", "10031", "10032", "10033", "10034", "10035", "10036", "10037", "10038", "10039", "10040", "10042", "10043", "10044", "10284", "10285", "10286", "10287", "10288", "10289", "10290", "10291", "10292", "10293", "10294", "10296", "10297", "10300", "10536", "10537", "10542", "10543", "10544", "10545", "10546", "10547", "10548", "10549", "10550", "10551", "10552", "10553", "10554", "10556", "10558", "10559", "10794", "10795", "10801", "10802", "10803", "10804", "10805", "10806", "10807", "10808", "10809", "10810", "10811", "11050", "11051", "11053", "11054", "11055", "11056", "11057", "11058", "11059", "11060", "11061", "11062", "11063", "11064", "11065", "11066", "11067", "11068", "11309", "11310", "11311", "11312", "11313", "11314", "11315", "11316", "11317", "11318", "11319", "11320", "11321", "11322", "11323", "11325", "11326", "11562", "11565", "11566", "11567", "11568", "11569", "11570", "11571", "11572", "11573", "11574", "11575", "11576", "11577", "11578", "11579", "11581", "11821", "11822", "11823", "11824", "11825", "11826", "11827", "11828", "11829", "11830", "11831", "11832", "11833", "11834", "11835", "11836", "11837", "12078", "12081", "12082", "12083", "12084", "12085", "12086", "12087", "12088", "12089", "12090", "12091", "12092", "12093", "12332", "12337", "12338", "12339", "12340", "12341", "12342", "12343", "12344", "12345", "12346", "12347", "12348", "12349", "12587", "12588", "12589", "12590", "12591", "12593", "12594", "12595", "12596", "12597", "12598", "12599", "12600", "12601", "12602", "12603", "12604", "12605", "12843", "12844", "12845", "12846", "12847", "12848", "12849", "12850", "12851", "12852", "12853", "12854", "12855", "12856", "12857", "12858", "12859", "12860", "12861", "13098", "13099", "13100", "13101", "13102", "13103", "13104", "13105", "13106", "13107", "13108", "13109", "13110", "13111", "13112", "13113", "13114", "13115", "13116", "13117", "13354", "13355", "13356", "13357", "13358", "13359", "13360", "13361", "13362", "13363", "13364", "13365", "13366", "13367", "13368", "13369", "13370", "13371", "13372", "13373", "13374", "13375", "13376", "13611", "13612", "13613", "13614", "13615", "13616", "13617", "13618", "13619", "13620", "13621", "13622", "13623", "13630", "13631", "13632", "13869", "13870", "13871", "13872", "13873", "13874", "13875", "13876", "13877", "13878", "13879", "13886", "13887", "13888", "14129", "14130", "14131", "14132", "14133", "14134", "14135", "14142", "14385", "14386", "14387", "14388", "14389", "14390", "14391", "14398", "14637", "14638", "14639", "14641", "14642", "14643", "14644", "14645", "14646", "14647", "14649", "14650", "14651", "14652", "14894", "14895", "14898", "14899", "14900", "14901", "14902", "14906", "14907", "14908", "15148", "15150", "15151", "15159", "15162", "15163", "15164", "15406", "15407", "11324"],
 	"walkableChunksF2P": ["9520", "9772", "9773", "9776", "10028", "10284", "11313", "11314", "11315", "11569", "11570", "11571", "11572", "11573", "11574", "11824", "11825", "11826", "11827", "11828", "11829", "11830", "11831", "11832", "11833", "11834", "11835", "11836", "12081", "12082", "12083", "12084", "12085", "12086", "12087", "12088", "12089", "12090", "12091", "12092", "12337", "12338", "12339", "12340", "12341", "12342", "12343", "12344", "12345", "12346", "12347", "12348", "12593", "12594", "12595", "12596", "12597", "12598", "12599", "12600", "12601", "12602", "12603", "12604", "12849", "12850", "12851", "12852", "12853", "12854", "12855", "12856", "12857", "12858", "12859", "12860", "13104", "13105", "13106", "13107", "13108", "13109", "13110", "13111", "13112", "13113", "13114", "13115", "13116", "13361", "13362", "13363", "13367", "13368", "13369", "13370", "13371", "13372", "13617", "13618", "13619", "Crandor and Karamja Dungeon#South", "Crandor and Karamja Dungeon#North", "Melzar's Maze#Basement", "Air altar", "White Knights' Castle#Crypt", "Death's Office", "Mind altar", "Ruins of Camdozaal", "Scrubfoot's cave", "Asgarnian Ice Dungeon", "Dwarven Mine", "Old School Museum", "Mining Guild", "Body altar", "Rune essence mine", "Wizards' Tower#Basement", "Draynor Sewers", "Edgeville Dungeon", "Stronghold of Security", "Varrock Sewers", "Water altar", "H.A.M. Hideout", "Varrock West Bank#Basement", "Clan Hall", "Misthalin Manor", "Lumbridge Castle#Cellar", "Phoenix Gang Hideout", "Fire altar", "Earth altar"],
-	"unnotingChunks": ["4919", "4922", "5179", "5420", "5421", "5691", "5692", "5938", "5939", "5941", "5946", "5948", "6191", "6198", "6448", "6457", "6461", "6710", "6960", "6968", "7223", "7227", "8253", "8748", "9265", "9273", "9275", "9531", "9772", "9776", "9781", "9782", "10039", "10284", "10288", "10292", "10293", "10300", "10537", "10545", "10547", "10804", "10806", "11051", "11056", "11061", "11310", "11319", "11571", "11826", "11828", "11835", "12084", "12338", "12342", "12344", "12588", "12590", "12597", "12598", "12605", "12850", "12853", "13104", "13105", "13358", "13363", "13613", "13874", "13878", "14388", "14638", "14646", "14907", "14908", "15151", "15163", "13631", "Ruins of Camdozaal", "Prifddinas", "Keldagrim", "Blast Furnace", "Mor Ul Rek#Outer Area", "Mor Ul Rek#Inner Area", "Rogues' Den", "Mining Guild", "Motherlode Mine", "Mage Arena bank", "Sophanem Dungeon", "Tarn's Lair", "Hallowed Sepulchre", "Shilo Village mine#Underground", "Giants' Foundry", "Tombs of Amascut Lobby", "Ourania Cave", "Chambers of Xeric", "Cam Torum", "Fortis Colosseum Underground", "Alchemical Society"],
+	"unnotingChunks": ["4919", "4922", "5179", "5420", "5421", "5691", "5692", "5938", "5939", "5941", "5944", "5946", "5948", "6191", "6198", "6448", "6457", "6461", "6710", "6960", "6968", "7223", "7227", "8253", "8748", "9265", "9273", "9275", "9531", "9772", "9776", "9781", "9782", "10039", "10284", "10288", "10292", "10293", "10300", "10537", "10545", "10547", "10804", "10806", "11051", "11056", "11061", "11310", "11319", "11571", "11826", "11828", "11835", "12084", "12338", "12342", "12344", "12588", "12590", "12597", "12598", "12605", "12850", "12853", "13104", "13105", "13358", "13363", "13613", "13874", "13878", "14388", "14638", "14646", "14907", "14908", "15151", "15163", "13631", "Ruins of Camdozaal", "Prifddinas", "Keldagrim", "Blast Furnace", "Mor Ul Rek#Outer Area", "Mor Ul Rek#Inner Area", "Rogues' Den", "Mining Guild", "Motherlode Mine", "Mage Arena bank", "Sophanem Dungeon", "Tarn's Lair", "Hallowed Sepulchre", "Shilo Village mine#Underground", "Giants' Foundry", "Tombs of Amascut Lobby", "Ourania Cave", "Chambers of Xeric", "Cam Torum", "Fortis Colosseum Underground", "Alchemical Society"],
 	"rollingChunks": {
 		"bank": ["4919", "4922", "5179", "5420", "5421", "5691", "5692", "5938", "5939", "5941", "5946", "5948", "6191", "6198", "6448", "6457", "6461", "6710", "6960", "6968", "7223", "7227", "8253", "8748", "9265", "9273", "9275", "9531", "9772", "9776", "9781", "9782", "10039", "10284", "10288", "10292", "10293", "10300", "10537", "10545", "10547", "10804", "10806", "11051", "11061", "11310", "11319", "11571", "11828", "12084", "12338", "12342", "12344", "12588", "12597", "12598", "12850", "12853", "13104", "13105", "13363", "13613", "13874", "13878", "14388", "14638", "14646", "14907", "14908", "15151", "15163", "13631", "9011", "10810", "11313", "11575", "12085", "12349", "13099", "13618", "14644", "13361", "13354", "9778", "4919", "5680", "7216", "5421", "11830"],
 		"noquest": ["4662", "4663", "4664", "4665", "4666", "4667", "4918", "4919", "4920", "4921", "4922", "4923", "5174", "5175", "5176", "5177", "5178", "5179", "5180", "5430", "5431", "5432", "5433", "5434", "5435", "5686", "5687", "5688", "5689", "5690", "5691", "5692", "5941", "5942", "5943", "5944", "5945", "5946", "5947", "5948", "5949", "6197", "6198", "6199", "6200", "6201", "6202", "6203", "6204", "6205", "6453", "6454", "6455", "6456", "6457", "6458", "6459", "6460", "6461", "6462", "6710", "6711", "6712", "6713", "6714", "6715", "6716", "6717", "6965", "6966", "6967", "6968", "6969", "6970", "6971", "6972", "6973", "7221", "7222", "7223", "7224", "7225", "7226", "7227", "7228", "7478", "7479", "8236", "8237", "8238", "8491", "8492", "8493", "8494", "8747", "8748", "8749", "8750", "9003", "9004", "9005", "9006", "9014", "9015", "9016", "9260", "9261", "9262", "9263", "9264", "9268", "9269", "9270", "9271", "9272", "9273", "9519", "9520", "9521", "9524", "9525", "9526", "9527", "9528", "9773", "9774", "9775", "9776", "9777", "9778", "9779", "9780", "9781", "9782", "9783", "10028", "10029", "10030", "10031", "10032", "10033", "10034", "10035", "10036", "10037", "10038", "10039", "10040", "10042", "10284", "10285", "10286", "10287", "10288", "10289", "10290", "10291", "10292", "10293", "10294", "10296", "10297", "10536", "10537", "10542", "10543", "10544", "10545", "10546", "10547", "10548", "10549", "10550", "10551", "10552", "10553", "10554", "10801", "10802", "10803", "10804", "10805", "10806", "10807", "10808", "10809", "10810", "10811", "11053", "11054", "11055", "11056", "11057", "11058", "11060", "11061", "11062", "11063", "11064", "11065", "11309", "11310", "11311", "11312", "11313", "11314", "11316", "11317", "11318", "11319", "11320", "11565", "11566", "11567", "11568", "11569", "11570", "11571", "11572", "11573", "11574", "11575", "11576", "11822", "11823", "11824", "11825", "11826", "11827", "11828", "11829", "11830", "11831", "11832", "11833", "11834", "11835", "11836", "11837", "12078", "12081", "12082", "12083", "12084", "12085", "12086", "12087", "12088", "12089", "12090", "12091", "12092", "12093", "12332", "12337", "12338", "12339", "12340", "12341", "12342", "12343", "12344", "12345", "12346", "12347", "12348", "12349", "12587", "12588", "12589", "12590", "12591", "12593", "12594", "12595", "12596", "12597", "12598", "12599", "12600", "12601", "12602", "12603", "12604", "12605", "12843", "12844", "12845", "12846", "12847", "12848", "12849", "12850", "12851", "12852", "12853", "12854", "12855", "12856", "12857", "12858", "12859", "12860", "12861", "13099", "13100", "13101", "13102", "13103", "13104", "13105", "13106", "13107", "13108", "13109", "13110", "13111", "13112", "13113", "13114", "13115", "13116", "13117", "13355", "13356", "13357", "13358", "13359", "13360", "13361", "13362", "13363", "13364", "13365", "13366", "13367", "13368", "13369", "13370", "13371", "13372", "13373", "13374", "13375", "13376", "13611", "13612", "13613", "13614", "13615", "13616", "13617", "13618", "13619", "13620", "13621", "13622", "13630", "13631", "13632", "13869", "13870", "13871", "13872", "13873", "13886", "13887", "13888"],
@@ -278055,7 +278090,7 @@
 		"Twinflame staff": {
 			"attack_speed": 6,
 			"attack_crush": 28,
-			"attack_magic": 12,
+			"attack_magic": 19,
 			"attack_ranged": 0,
 			"attack_slash": -1,
 			"attack_stab": 7,
