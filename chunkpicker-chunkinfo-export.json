@@ -10135,7 +10135,7 @@
 				"Output": "Clockwork",
 				"Primary": true,
 				"Priority": 4,
-				"SkillsNeeded": {
+				"Skills": {
 					"Construction": 25
 				},
 				"Tasks": {
@@ -10150,7 +10150,7 @@
 				"Level": 10,
 				"Primary": true,
 				"Priority": 101,
-				"SkillsNeeded": {
+				"Skills": {
 					"Construction": 16
 				},
 				"Tasks": {
@@ -10164,7 +10164,7 @@
 				"Level": 13,
 				"Primary": true,
 				"Priority": 102,
-				"SkillsNeeded": {
+				"Skills": {
 					"Construction": 34
 				},
 				"Tasks": {
@@ -10178,7 +10178,7 @@
 				"Level": 16,
 				"Primary": true,
 				"Priority": 103,
-				"SkillsNeeded": {
+				"Skills": {
 					"Construction": 16
 				},
 				"Tasks": {
@@ -10193,7 +10193,7 @@
 				"Level": 18,
 				"Primary": true,
 				"Priority": 104,
-				"SkillsNeeded": {
+				"Skills": {
 					"Construction": 34
 				},
 				"Tasks": {
@@ -10207,7 +10207,7 @@
 				"Level": 23,
 				"Primary": true,
 				"Priority": 105,
-				"SkillsNeeded": {
+				"Skills": {
 					"Construction": 42
 				},
 				"Tasks": {
@@ -10221,7 +10221,7 @@
 				"Level": 28,
 				"Primary": true,
 				"Priority": 106,
-				"SkillsNeeded": {
+				"Skills": {
 					"Construction": 42
 				},
 				"Tasks": {
@@ -10235,7 +10235,7 @@
 				"Level": 30,
 				"Primary": true,
 				"Priority": 107,
-				"SkillsNeeded": {
+				"Skills": {
 					"Construction": 34
 				},
 				"Tasks": {
@@ -10250,7 +10250,7 @@
 				"Level": 33,
 				"Primary": true,
 				"Priority": 108,
-				"SkillsNeeded": {
+				"Skills": {
 					"Construction": 42
 				},
 				"Tasks": {
@@ -10264,7 +10264,7 @@
 				"Level": 85,
 				"Primary": true,
 				"Priority": 109,
-				"SkillsNeeded": {
+				"Skills": {
 					"Construction": 42
 				},
 				"Tasks": {
@@ -14668,7 +14668,7 @@
 			},
 			"~|The Garden of Death|~ Farming skill requirement": {
 				"Category": ["Quest Skill Reqs"],
-				"Chunks": ["5174"],
+				"Chunks": ["5174-1"],
 				"Level": 20,
 				"Primary": false,
 				"Priority": 999,
@@ -15142,7 +15142,7 @@
 				"Tasks": {
 					"~|Shades of Mort'ton|~ 3": "Quest"
 				},
-				"Output": "Phrin remains loot",
+				"Output": "Loar remains loot",
 				"Primary": false,
 				"Not F2P": true
 			},
@@ -18289,7 +18289,7 @@
 				"Priority": 2
 			},
 			"Mix a ~|prayer regeneration potion|~": {
-				"Items": ["Husca potion (unf)*", "Aldarium*"],
+				"Items": ["Huasca potion (unf)*", "Aldarium*"],
 				"Level": 58,
 				"Output": "Prayer regeneration potion(3)",
 				"Primary": true,
@@ -19162,7 +19162,7 @@
 				"Items": ["Small fishing net", "Rope"],
 				"Level": 67,
 				"NPCs": ["Black salamander"],
-				"Output": "Black salamander",
+				"Output": "Black salamander (Hunter)",
 				"Primary": true
 			},
 			"Catch a ~|black warlock|~": {
@@ -19301,7 +19301,7 @@
 				"Items": ["Box trap"],
 				"Level": 27,
 				"NPCs": ["Ferret"],
-				"Output": "Ferret",
+				"Output": "Ferret (Hunter)",
 				"Primary": true,
 				"Priority": 2,
 				"Tasks": {
@@ -19553,7 +19553,7 @@
 				"Items": ["Small fishing net", "Rope"],
 				"Level": 59,
 				"NPCs": ["Red salamander"],
-				"Output": "Red salamander",
+				"Output": "Red salamander (Hunter)",
 				"Primary": true,
 				"Priority": 1
 			},
@@ -19658,7 +19658,7 @@
 				"Items": ["Small fishing net", "Rope"],
 				"Level": 29,
 				"NPCs": ["Swamp lizard"],
-				"Output": "Swamp lizard",
+				"Output": "Swamp lizard (Hunter)",
 				"Primary": true
 			},
 			"Catch a ~|tropical wagtail|~": {
@@ -19792,7 +19792,7 @@
 				"Items": ["Small fishing net", "Rope"],
 				"Level": 47,
 				"NPCs": ["Orange salamander"],
-				"Output": "Orange salamander",
+				"Output": "Orange salamander (Hunter)",
 				"Primary": true
 			},
 			"Dig for a ~|sandworm|~": {
@@ -26094,7 +26094,7 @@
 				"Not F2P": true
 			},
 			"Search the camping equipment south of the Lizardman Settlement for secateurs": {
-				"Chunks": ["5174"],
+				"Chunks": ["5174-1"],
 				"Output": "Secateurs",
 				"Not F2P": true
 			},
@@ -26102,6 +26102,94 @@
 				"Sections": ["13874-1", "13874-3"],
 				"Tasks": {
 					"~|In Aid of the Myreque|~ 2": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"14646-1 to 15159": {
+				"Sections": ["14646-1", "15159"],
+				"Tasks": {
+					"~|Ghosts Ahoy|~ 8": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"13877-1 to 13877-2": {
+				"Sections": ["13877-1", "13877-2"],
+				"Tasks": {
+					"~|In Aid of the Myreque|~ 4": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"12596-4 to 12852-1": {
+				"Sections": ["12596-4", "12852-1"],
+				"Tasks": {
+					"~|Shield of Arrav|~ 2a4": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"Edgeville Dungeon to Varrock Sewers": {
+				"Sections": ["Edgeville Dungeon", "Varrock Sewers"],
+				"Tasks": {
+					"Access the pipe from Edgeville Dungeon to Varrock Sewers ~|shortcut|~": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"12082-1 to 11314-2": {
+				"Sections": ["12082-1", "11314-2"],
+				"Tasks": {
+					"~|Dragon Slayer I|~ 6": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"10810-1 to 10558": {
+				"Sections": ["10810-1", "10558"],
+				"Tasks": {
+					"~|Cold War|~ 2": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"14652 to 14142": {
+				"Sections": ["14652", "14142"],
+				"Tasks": {
+					"~|Dragon Slayer II|~ 9": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"10553 to 9790": {
+				"Sections": ["10553", "9790"],
+				"Tasks": {
+					"~|The Fremennik Exiles|~ 7": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"14638-1 to 15148": {
+				"Sections": ["14638-1", "15148"],
+				"Tasks": {
+					"~|The Great Brain Robbery|~ 1": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"10810-1 to 11325": {
+				"Sections": ["10810-1", "11325"],
+				"Tasks": {
+					"~|Making Friends with My Arm|~ 3": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"6459-1 to 6303": {
+				"Sections": ["6459-1", "6303"],
+				"Tasks": {
+					"~|Tale of the Righteous|~ 1": "Quest"
 				},
 				"ConnectsSections": true,
 				"Not F2P": true
@@ -26675,12 +26763,60 @@
 				"ConnectsSections": true,
 				"Not F2P": true
 			},
-			"8496-1": {
-				"Chunks": ["CharterShips[+]"],
+			"8496-1 Charter Ship": {
+				"Sections": ["8496-1","CharterShips[+]"],
 				"Tasks": {
 					"~|Regicide|~ Complete the quest": "Quest"
 				},
-				"UnlocksArea": true,
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"6961-1 Charter Ship": {
+				"Sections": ["6961-1","CharterShips[+]"],
+				"Tasks": {
+					"~|Children of the Sun|~ Complete the quest": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"5678-1 Charter Ship": {
+				"Sections": ["5678-1","CharterShips[+]"],
+				"Tasks": {
+					"~|Children of the Sun|~ Complete the quest": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"5934-1 Charter Ship": {
+				"Sections": ["5934-1","CharterShips[+]"],
+				"Tasks": {
+					"~|Children of the Sun|~ Complete the quest": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"8500 Charter Ship": {
+				"Sections": ["8500","CharterShips[+]"],
+				"Tasks": {
+					"~|Song of the Elves|~ Complete the quest": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"14646-1 Charter Ship": {
+				"Sections": ["14646-1","CharterShips[+]"],
+				"Tasks": {
+					"~|Priest in Peril|~ Complete the quest": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"14637 Charter Ship": {
+				"Sections": ["14637","CharterShips[+]"],
+				"Tasks": {
+					"~|Cabin Fever|~ 2": "Quest"
+				},
+				"ConnectsSections": true,
 				"Not F2P": true
 			},
 			"11562": {
@@ -26690,26 +26826,51 @@
 				"UnlocksArea": true,
 				"Not F2P": true
 			},
-			"8500": {
-				"Chunks": ["CharterShips[+]"],
+			"11579": {
 				"Tasks": {
-					"~|Song of the Elves|~ Complete the quest": "Quest"
+					"~|While Guthix Sleeps|~ 20": "Quest"
 				},
 				"UnlocksArea": true,
 				"Not F2P": true
 			},
-			"14646-1": {
-				"Chunks": ["CharterShips[+]"],
+			"8855": {
 				"Tasks": {
-					"~|Priest in Peril|~ Complete the quest": "Quest"
+					"~|Song of the Elves|~ 23": "Quest"
 				},
 				"UnlocksArea": true,
 				"Not F2P": true
 			},
-			"14637": {
-				"Chunks": ["CharterShips[+]"],
+			"7249": {
 				"Tasks": {
-					"~|Cabin Fever|~ Complete the quest": "Quest"
+					"~|Dragon Slayer II|~ 15": "Quest"
+				},
+				"UnlocksArea": true,
+				"Not F2P": true
+			},
+			"6991": {
+				"Tasks": {
+					"~|Lunar Diplomacy|~ 17": "Quest"
+				},
+				"UnlocksArea": true,
+				"Not F2P": true
+			},
+			"7247": {
+				"Tasks": {
+					"~|Lunar Diplomacy|~ 17": "Quest"
+				},
+				"UnlocksArea": true,
+				"Not F2P": true
+			},
+			"7248": {
+				"Tasks": {
+					"~|Dream Mentor|~ 6": "Quest"
+				},
+				"UnlocksArea": true,
+				"Not F2P": true
+			},
+			"6722": {
+				"Tasks": {
+					"~|King's Ransom|~ 3": "Quest"
 				},
 				"UnlocksArea": true,
 				"Not F2P": true
@@ -40348,17 +40509,10 @@
 				},
 				"Not F2P": true
 			},
-			"Abyssal Area": {
+			"9285": {
 				"UnlocksArea": true,
 				"Tasks": {
 					"~|Fairytale II - Cure a Queen|~ 2": "Quest"
-				},
-				"Not F2P": true
-			},
-			"Abyssal Nexus": {
-				"UnlocksArea": true,
-				"Tasks": {
-					"Access Abyssal Nexus[+]": "Nonskill"
 				},
 				"Not F2P": true
 			},
@@ -40376,13 +40530,14 @@
 			},
 			"Alchemical Society": {
 				"UnlocksArea": true,
-				"SkillsNeeded": {
+				"Skills": {
 					"Herblore": 60
 				},
 				"Not F2P": true
 			},
-			"Ancient Cavern": {
-				"UnlocksArea": true,
+			"10038-1 to Ancient Cavern": {
+				"ConnectsSections": true,
+				"Sections":["10038-1","Ancient Cavern"],
 				"Items": ["Oak logs", "BarbarianBow[+]"],
 				"Skills": {
 					"Firemaking": 35
@@ -40507,11 +40662,6 @@
 				"UnlocksArea": true,
 				"Not F2P": true
 			},
-			"Catacombs of Kourend": {
-				"UnlocksArea": true,
-				"Chunks": ["6457"],
-				"Not F2P": true
-			},
 			"Cerberus' Lair": {
 				"UnlocksArea": true,
 				"Not F2P": true
@@ -40573,13 +40723,6 @@
 				"UnlocksArea": true,
 				"Tasks": {
 					"Access Cosmic altar[+]": "Nonskill"
-				},
-				"Not F2P": true
-			},
-			"Cosmic entity's plane": {
-				"UnlocksArea": true,
-				"Tasks": {
-					"~|Fairytale II - Cure a Queen|~ 2": "Quest"
 				},
 				"Not F2P": true
 			},
@@ -40737,13 +40880,6 @@
 				},
 				"Not F2P": true
 			},
-			"Enchanted Valley": {
-				"UnlocksArea": true,
-				"Tasks": {
-					"~|Fairytale II - Cure a Queen|~ 2": "Quest"
-				},
-				"Not F2P": true
-			},
 			"Escape Caves": {
 				"UnlocksArea": true,
 				"Not F2P": true
@@ -40783,7 +40919,7 @@
 			"Fisher Realm": {
 				"UnlocksArea": true,
 				"Tasks": {
-					"~|Holy Grail|~ Complete the quest": "Quest"
+					"~|Holy Grail|~ 3": "Quest"
 				},
 				"Not F2P": true
 			},
@@ -40859,13 +40995,6 @@
 				"UnlocksArea": true,
 				"Tasks": {
 					"EnterGodWars[+]": "Nonskill"
-				},
-				"Not F2P": true
-			},
-			"Gorak Plane": {
-				"UnlocksArea": true,
-				"Tasks": {
-					"~|Fairytale II - Cure a Queen|~ 2": "Quest"
 				},
 				"Not F2P": true
 			},
@@ -41439,7 +41568,8 @@
 				"Not F2P": true
 			},
 			"Rune essence mine": {
-				"UnlocksArea": true,
+				"Sections":["Rune essence mine","EnterTheAbyss3[+]"],
+				"ConnectsSections": true,
 				"Tasks": {
 					"~|Rune Mysteries|~ Complete the quest": "Quest"
 				}
@@ -92073,7 +92203,7 @@
 			"~|The Garden of Death|~ 1": {
 				"BaseQuest": "The Garden of Death",
 				"Description": "Search the tent south of the Lizardman Settlement, and complete the section in the dungeon below",
-				"Chunks": ["5174"],
+				"Chunks": ["5174-1"],
 				"Skills": {
 					"Farming": 20
 				},
@@ -106246,9 +106376,6 @@
 			}
 		},
 		"5178": {
-			"Connect": {
-				"9541": true
-			},
 			"Diary": {
 				"Kourend & Kebos": "MD1"
 			},
@@ -107200,6 +107327,8 @@
 			},
 			"NPC": {
 				"Captain Sdiar": 1,
+				"Guard (Shayzien)": 2,
+				"Head Guard": 1,
 				"Hatna": 1
 			},
 			"Nickname": "Shayziens' Gate",
@@ -107248,8 +107377,7 @@
 		"5689": {
 			"Connect": {
 				"5789": true,
-				"6556": true,
-				"9541": true
+				"6556": true
 			},
 			"Monster": {
 				"Imp": 6,
@@ -107931,6 +108059,7 @@
 				"Cat": 1,
 				"Commisioner Anwar": 1,
 				"Father Eysseric": 1,
+				"Guard (Shayzien)": 14,
 				"Mia": 1,
 				"New Recruit Tony": 1,
 				"Old man": 1,
@@ -107978,6 +108107,8 @@
 						"General Babacus": 1,
 						"General Kilian": 1,
 						"General Salara": 1,
+						"Guard (Shayzien)": 5,
+						"Head Guard": 1,
 						"Lord Shiro Shayzien": 1,
 						"Jennifer": 1,
 						"Kaston": 1,
@@ -108202,6 +108333,10 @@
 				"5687": true
 			},
 			"Monster": {
+				"Guard (Shayzien)": 5,
+				"Head Guard": 1
+			},
+			"NPC":{
 				"Guard (Shayzien)": 5,
 				"Head Guard": 1
 			},
@@ -108541,6 +108676,8 @@
 						"Drunken soldier": 1,
 						"Elijah": 1,
 						"Farmer (Shayzien)": 1,
+						"Guard (Shayzien)": 8,
+						"Head Guard": 1,
 						"Oswald": 1,
 						"Phileas Rimor": 1,
 						"Sheryl": 1,
@@ -108603,6 +108740,8 @@
 						"Soldier (Shayzien)": 6
 					},
 					"NPC": {
+						"Guard (Shayzien)": 5,
+						"Head Guard": 1,
 						"Mogrim": 1,
 						"Soldier": 1,
 						"Soldier (tier 1)": 1,
@@ -108654,6 +108793,8 @@
 						"Soldier (Shayzien)": 12
 					},
 					"NPC": {
+						"Guard (Shayzien)": 6,
+						"Head Guard": 2,
 						"Captain Rachelle": 1
 					},
 					"Object": {
@@ -108671,10 +108812,18 @@
 					"Monster": {
 						"Guard (Shayzien)": 4,
 						"Head Guard": 2
+					},
+					"NPC":{
+						"Guard (Shayzien)": 4,
+						"Head Guard": 2
 					}
 				},
 				"3": {
 					"Monster": {
+						"Guard (Shayzien)": 4,
+						"Head Guard": 1
+					},
+					"NPC":{
 						"Guard (Shayzien)": 4,
 						"Head Guard": 1
 					},
@@ -109312,6 +109461,8 @@
 						"Butterfly": 4,
 						"Crow": 2,
 						"Gruff McScruff": 1,
+						"Guard (Shayzien)": 3,
+						"Head Guard": 1,
 						"Sheep": 12,
 						"Squirrel": 8,
 						"Traxi": 1,
@@ -109424,7 +109575,7 @@
 		},
 		"6457": {
 			"Connect": {
-				"6813": true,
+				"Catacombs of Kourend": true,
 				"12633": true
 			},
 			"Diary": {
@@ -109451,6 +109602,8 @@
 				"Elise": 1,
 				"Financial Wizard": 1,
 				"Gem merchant": 1,
+				"Guard (Shayzien)": 22,
+				"Head Guard": 2,
 				"Hosa": 1,
 				"Knight of Varlamore": 1,
 				"Lovada": 1,
@@ -109513,7 +109666,9 @@
 			"NPC": {
 				"Arcis": 1,
 				"Banker": 8,
-				"Dark wizard": 3
+				"Dark wizard": 3,
+				"Guard (Shayzien)": 7,
+				"Head Guard": 2
 			},
 			"Nickname": "West Arceuus",
 			"Object": {
@@ -109567,9 +109722,6 @@
 		"6460": {
 			"Sections": {
 				"1": {
-					"Connect": {
-						"9541": true
-					},
 					"Monster": {
 						"Bat": 4,
 						"Giant bat": 4
@@ -110356,6 +110508,8 @@
 					"NPC": {
 						"Hordal": 1,
 						"Kendall": 1,
+						"Guard (Shayzien)": 21,
+						"Head Guard": 1,
 						"Martin Holt": 1,
 						"Protester": 4,
 						"Reshi": 1,
@@ -111097,7 +111251,8 @@
 				"Father Jean": 1,
 				"Lord Kandur Hosidius": 1,
 				"Marisi": 1,
-				"Tool Leprechaun": 1
+				"Tool Leprechaun": 1,
+				"Guard (Hosidius)": 4
 			},
 			"Nickname": "Hosidius Fields",
 			"Object": {
@@ -111169,6 +111324,7 @@
 						"Estate agent": 1,
 						"Farmer Hayfield": 1,
 						"Golova": 1,
+						"Guard (Hosidius)": 6,
 						"Horace": 1,
 						"Jonathan": 1,
 						"Leela (Mahogany Homes)": 1,
@@ -111247,6 +111403,8 @@
 				"Alexander": 1,
 				"Bast": 1,
 				"Dobwinkle": 1,
+				"Guard (Shayzien)": 7,
+				"Head Guard": 2,
 				"Lorraine": 1,
 				"Raeli": 1,
 				"Ross and Ben": 1,
@@ -111328,6 +111486,9 @@
 					"Monster": {
 						"Guard (Shayzien)": 1
 					},
+					"NPC":{
+						"Guard (Shayzien)": 1
+					},
 					"Object": {
 						"Copper rocks": 3,
 						"Iron rocks": 3,
@@ -111356,6 +111517,7 @@
 						"Rat": 4
 					},
 					"NPC": {
+						"Guard (Shayzien)": 2,
 						"Swarm": 2
 					},
 					"Object": {
@@ -111521,7 +111683,9 @@
 		},
 		"6995": {
 			"Connect": {
-				"6220": true
+				"6220": true,
+				"6483": true,
+				"10038": true
 			},
 			"Monster": {
 				"Angry barbarian spirit": 1,
@@ -111717,9 +111881,6 @@
 			}
 		},
 		"7223": {
-			"Connect": {
-				"9541": true
-			},
 			"Monster": {
 				"Mugger": 1
 			},
@@ -111866,7 +112027,8 @@
 		},
 		"7226": {
 			"Connect": {
-				"7070": true
+				"7070": true,
+				"7326": true
 			},
 			"Diary": {
 				"Kourend & Kebos": "MD7, HD8"
@@ -112043,6 +112205,9 @@
 			}
 		},
 		"7247": {
+			"Connect": {
+				"8253": true
+			},
 			"Monster": {
 				"Me": 1
 			},
@@ -112104,6 +112269,9 @@
 			}
 		},
 		"7322": {
+			"Connect": {
+				"7323": true
+			},
 			"Monster": {
 				"Sarachnis": 1
 			},
@@ -112116,7 +112284,8 @@
 		"7323": {
 			"Connect": {
 				"6711": true,
-				"6812": true
+				"6812": true,
+				"7322": true
 			},
 			"Monster": {
 				"Baby red dragon": 5,
@@ -112245,7 +112414,8 @@
 			"Connect": {
 				"11588": true,
 				"11589": true,
-				"7236": true
+				"7236": true,
+				"7748":true
 			},
 			"Monster": {
 				"Dagannoth": 19,
@@ -112417,16 +112587,21 @@
 			}
 		},
 		"7509": {
+			"Connect": {
+				"10322": true
+			},
+			"Monster":{
+				"Penance Fighter": 1,
+				"Penance Healer": 1,
+				"Penance Ranger": 1,
+				"Penance Runner": 1
+			},
 			"NPC": {
 				"Egg launcher": 2,
 				"Major Attack": 1,
 				"Major Collect": 1,
 				"Major Defend": 1,
-				"Major Heal": 1,
-				"Penance Fighter": 1,
-				"Penance Healer": 1,
-				"Penance Ranger": 1,
-				"Penance Runner": 1
+				"Major Heal": 1
 			},
 			"Object": {
 				"Attacker item machine": 1,
@@ -112442,7 +112617,7 @@
 		},
 		"7512": {
 			"Connect": {
-				"12127": true
+				"Gauntlet Lobby": true
 			},
 			"Object": {
 				"Crystal Singing Recipes": 1,
@@ -112453,6 +112628,17 @@
 				"Teleport Platform": 1,
 				"Tool Storage": 1,
 				"Water Pump": 1
+			},
+			"Monster":{
+				"Crystalline Spider":1,
+				"Crystalline Rat":1,
+				"Crystalline Bat":1,
+				"Crystalline Unicorn":1,
+				"Crystalline Scorpion":1,
+				"Crystalline Wolves":1,
+				"Crystalline Bear":1,
+				"Crystalline Dragon":1,
+				"Crystalline Dark Beast":1
 			}
 		},
 		"7513": {
@@ -112576,7 +112762,8 @@
 		},
 		"7748": {
 			"Connect": {
-				"10140": true
+				"10140": true,
+				"7492":true
 			},
 			"NPC": {
 				"Rock": 14
@@ -112768,7 +112955,7 @@
 		},
 		"7768": {
 			"Connect": {
-				"12127": true
+				"Gauntlet Lobby": true
 			},
 			"Object": {
 				"Crystal Singing Recipes": 1,
@@ -112779,6 +112966,17 @@
 				"Teleport Platform": 1,
 				"Tool Storage": 1,
 				"Water Pump": 1
+			},
+			"Monster":{
+				"Corrupted Spider":1,
+				"Corrupted Rat":1,
+				"Corrupted Bat":1,
+				"Corrupted Unicorn":1,
+				"Corrupted Scorpion":1,
+				"Corrupted Wolves":1,
+				"Corrupted Bear":1,
+				"Corrupted Dragon":1,
+				"Corrupted Dark Beast":1
 			}
 		},
 		"7769": {
@@ -113374,6 +113572,9 @@
 		"8253": {
 			"Sections": {
 				"1": {
+					"Connect":{
+						"9800":true
+					},
 					"NPC": {
 						"'Bird's-Eye' Jack": 1,
 						"Baba Yaga": 1,
@@ -113442,9 +113643,6 @@
 			}
 		},
 		"8267": {
-			"Connect": {
-				"9541": true
-			},
 			"NPC": {
 				"Cosmic Being": 1
 			},
@@ -113613,9 +113811,6 @@
 			"Sections": {
 				"1": {},
 				"2": {
-					"Connect": {
-						"9541": true
-					},
 					"Object": {
 						"Fairy ring": 1
 					}
@@ -113927,7 +114122,8 @@
 		},
 		"8527": {
 			"Connect": {
-				"14647": true
+				"14647": true,
+				"8528":true
 			},
 			"Monster": {
 				"Fever spider": 11,
@@ -113958,6 +114154,9 @@
 			}
 		},
 		"8528": {
+			"Connect": {
+				"8527":true
+			},
 			"Name": "Braindeath Island"
 		},
 		"8530": {
@@ -114136,9 +114335,6 @@
 					}
 				},
 				"2": {
-					"Connect": {
-						"9541": true
-					},
 					"NPC": {
 						"Badger": 3,
 						"Broken Handz": 1
@@ -114593,9 +114789,6 @@
 			"Nickname": "Red Base"
 		},
 		"9006": {
-			"Connect": {
-				"9541": true
-			},
 			"Monster": {
 				"Bird": 1,
 				"Pyrefiend": 10,
@@ -115347,9 +115540,6 @@
 		"9272": {
 			"Sections": {
 				"1": {
-					"Connect": {
-						"9541": true
-					},
 					"Diary": {
 						"Western Provinces": "EA1, EA3"
 					},
@@ -115505,8 +115695,61 @@
 		},
 		"9285": {
 			"Connect": {
+				"5178":true,
+				"5689":true,
+				"6460-1":true,
+				"7223":true,
+				"8267":true,
+				"8495-2":true,
+				"8752-2":true,
+				"9006":true,
+				"9272-1":true,
+				"9519":true,
 				"9541": true,
-				"10044": true
+				"9808":true,
+				"10032-1":true,
+				"10040":true,
+				"10044-2": true,
+				"10286":true,
+				"10544":true,
+				"10546":true,
+				"10547-4":true,
+				"10550":true,
+				"10569":true,
+				"10794-3":true,
+				"10802-3":true,
+				"10804":true,
+				"10807-1":true,
+				"10810":true,
+				"10833":true,
+				"11054-1":true,
+				"11064-1":true,
+				"11089":true,
+				"11568-2":true,
+				"11824":true,
+				"12102":true,
+				"12106":true,
+				"12108":true,
+				"12115":true,
+				"12337":true,
+				"12338-2":true,
+				"12342-1":true,
+				"12848":true,
+				"13098-2":true,
+				"13615":true,
+				"13619-2":true,
+				"13622-2":true,
+				"13877-1":true,
+				"14390-1":true,
+				"Abyssal Area":true,
+				"Abyssal Nexus":true,
+				"Cosmic entity's plane":true,
+				"Dorgesh-Kaan South Dungeon":true,
+				"Enchanted Valley":true,
+				"Fisher Realm":true,
+				"Gorak Plane":true,
+				"Mor Ul Rek#Outer Area":true,
+				"Zanaris":true
 			},
 			"NPC": {
 				"Fairy": 11,
@@ -115798,7 +116041,6 @@
 		},
 		"9519": {
 			"Connect": {
-				"9541": true,
 				"9619": true
 			},
 			"NPC": {
@@ -115925,6 +116167,9 @@
 						"Butterfly": 10,
 						"Ducklings": 1,
 						"Eebel": 1,
+						"Gnome": 24,
+						"Gnome child": 6,
+						"Gnome woman": 7,
 						"Meegle": 1
 					},
 					"Object": {
@@ -115990,10 +116235,13 @@
 						"Carado": 1,
 						"Cheerleader": 2,
 						"Damwin": 1,
+						"Gnome": 6,
+						"Gnome child": 5,
 						"Gnome Coach": 1,
 						"Gnome ball referee": 1,
 						"Gnome baller": 14,
 						"Gnome winger": 2,
+						"Gnome woman": 14,
 						"Mysterious ghost": 1,
 						"Sarble": 1,
 						"Wurbel": 1,
@@ -116236,7 +116484,7 @@
 				"6460": true,
 				"8267": true,
 				"8495": true,
-				"8752": true,
+				"8752-2": true,
 				"9272": true,
 				"9519": true,
 				"9808": true,
@@ -116500,7 +116748,8 @@
 		},
 		"9619": {
 			"Connect": {
-				"9519": true
+				"9519": true,
+				"9363":true
 			},
 			"Monster": {
 				"Smoke devil": 32
@@ -117151,7 +117400,9 @@
 						"Ermin": 1,
 						"Financial Wizard": 1,
 						"Froono": 1,
+						"Gnome": 3,
 						"Gnome banker": 3,
+						"Gnome woman": 21,
 						"Gnome trainer": 11,
 						"Guard Vemmeldo": 1,
 						"Nieve": 1,
@@ -117240,7 +117491,10 @@
 				"Garkor": 2,
 				"Gianne jnr.": 1,
 				"Glough": 1,
+				"Gnome": 37,
+				"Gnome child": 3,
 				"Gnome Waiter": 2,
+				"Gnome woman": 24,
 				"Gnome banker": 2,
 				"Gulluck": 1,
 				"Heckel Funch": 1,
@@ -117491,6 +117745,7 @@
 				"TzHaar-Xil": 7
 			},
 			"NPC": {
+				"TzHaar-Hur": 5,
 				"TzHaar-Hur-Zal": 1,
 				"TzHaar-Ket-Keh": 1,
 				"TzHaar-Mej-Bal": 1
@@ -117505,7 +117760,6 @@
 		},
 		"9808": {
 			"Connect": {
-				"9541": true,
 				"9551": true,
 				"11413": true
 			},
@@ -117516,6 +117770,7 @@
 				"TzHaar-Xil": 19
 			},
 			"NPC": {
+				"TzHaar-Hur": 16,
 				"TzHaar-Hur-Lek": 1,
 				"TzHaar-Hur-Tel": 1,
 				"TzHaar-Ket": 9,
@@ -117963,8 +118218,7 @@
 			"Sections": {
 				"1": {
 					"Connect": {
-						"7257": true,
-						"9541": true
+						"7257": true
 					},
 					"Diary": {
 						"Ardougne": "MD2, MD6, HD10"
@@ -118510,7 +118764,6 @@
 		},
 		"10040": {
 			"Connect": {
-				"9541": true,
 				"10140": true
 			},
 			"NPC": {
@@ -118594,7 +118847,6 @@
 			"Sections": {
 				"1": {
 					"Connect": {
-						"9541": true,
 						"10144": true,
 						"10307": true
 					},
@@ -118757,6 +119009,7 @@
 				"TzHaar-Xil": 13
 			},
 			"NPC": {
+				"TzHaar-Hur": 15,
 				"TzHaar-Hur-Rin": 1
 			},
 			"Name": "Mor Ul Rek#Inner Area",
@@ -118785,6 +119038,7 @@
 				"TzHaar-Xil": 17
 			},
 			"NPC": {
+				"TzHaar-Hur": 10,
 				"TzHaar-Ket-Yil": 1,
 				"TzHaar-Mej-Dir": 1
 			},
@@ -119095,7 +119349,8 @@
 		},
 		"10140": {
 			"Connect": {
-				"10040": true
+				"10040": true,
+				"7748":true
 			},
 			"Monster": {
 				"Dagannoth": 22
@@ -119224,9 +119479,6 @@
 			}
 		},
 		"10286": {
-			"Connect": {
-				"9541": true
-			},
 			"Monster": {
 				"Ogre": 8,
 				"Ogre chieftain": 1,
@@ -120002,7 +120254,7 @@
 		"10307": {
 			"Connect": {
 				"9541": true,
-				"10288": true
+				"Zanaris":true
 			},
 			"NPC": {
 				"Baby impling": 13,
@@ -120104,7 +120356,9 @@
 		},
 		"10322": {
 			"Connect": {
-				"10039": true
+				"10039": true,
+				"7508": true,
+				"7509": true
 			},
 			"NPC": {
 				"Private Paldo": 1,
@@ -120536,9 +120790,6 @@
 			"Nickname": "North Rantz Penninsula"
 		},
 		"10544": {
-			"Connect": {
-				"9541": true
-			},
 			"Monster": {
 				"Jungle spider": 21,
 				"Spider": 2
@@ -120624,7 +120875,6 @@
 			"Sections": {
 				"1": {
 					"Connect": {
-						"9541": true,
 						"12100": true
 					},
 					"Monster": {
@@ -120777,9 +121027,6 @@
 					}
 				},
 				"2": {
-					"Connect": {
-						"9541": true
-					},
 					"Monster": {
 						"Grizzly bear": 2
 					},
@@ -120964,7 +121211,6 @@
 		},
 		"10550": {
 			"Connect": {
-				"9541": true,
 				"10650": true
 			},
 			"Diary": {
@@ -121099,11 +121345,13 @@
 				"BigRedJapan": 1,
 				"Bjorn": 1,
 				"Blanin": 1,
+				"Borrokar": 1,
 				"Brundt the Chieftain": 1,
 				"Dron": 1,
 				"Eldgrim": 1,
 				"Fish monger": 1,
 				"Fisherman": 1,
+				"Freidir": 1,
 				"Freygerd": 1,
 				"Fridgeir": 1,
 				"Fur trader": 1,
@@ -121111,6 +121359,8 @@
 				"Gull": 11,
 				"Inga": 1,
 				"Ingrid Hradson": 1,
+				"Jennella": 1,
+				"Lanzig": 1,
 				"Longhall Bouncer": 1,
 				"Manni the Reveller": 1,
 				"Maria Gunnars": 1,
@@ -121286,8 +121536,8 @@
 			}
 		},
 		"10569": {
-			"Connect": {
-				"9541": true
+			"ConnecT":{
+				"10802-1":true
 			},
 			"Monster": {
 				"Duck": 22,
@@ -121331,7 +121581,8 @@
 		},
 		"10575": {
 			"Connect": {
-				"10037": true
+				"10037": true,
+				"10831":true
 			},
 			"Monster": {
 				"Giant skeleton": 15
@@ -121464,7 +121715,7 @@
 			"NPC": {
 				"Hieve": 1
 			},
-			"Name": "Brimhaven Dungeon Entrance",
+			"Name": "Brimhaven Dungeon",
 			"Object": {
 				"Crevice": 1
 			},
@@ -121667,9 +121918,6 @@
 					}
 				},
 				"3": {
-					"Connect": {
-						"9541": true
-					},
 					"Object": {
 						"Fairy ring": 1,
 						"Monkeybars": 1,
@@ -121799,9 +122047,6 @@
 					}
 				},
 				"3": {
-					"Connect": {
-						"9541": true
-					},
 					"Diary": {
 						"Ardougne": "MD12"
 					},
@@ -121862,7 +122107,6 @@
 		},
 		"10804": {
 			"Connect": {
-				"9541": true,
 				"10904": true
 			},
 			"Diary": {
@@ -122062,9 +122306,6 @@
 		"10807": {
 			"Sections": {
 				"1": {
-					"Connect": {
-						"9541": true
-					},
 					"Monster": {
 						"Chicken": 3,
 						"Cow": 1,
@@ -122243,7 +122484,6 @@
 			"Sections": {
 				"1": {
 					"Connect": {
-						"9541": true,
 						"10910": true,
 						"11166": true
 					},
@@ -122398,6 +122638,9 @@
 			}
 		},
 		"10831": {
+			"Connect":{
+				"10575":true
+			},
 			"Monster": {
 				"Bat": 8,
 				"Giant bat": 1,
@@ -122410,7 +122653,6 @@
 		},
 		"10833": {
 			"Connect": {
-				"9541": true,
 				"13972": true
 			},
 			"Monster": {
@@ -122819,7 +123061,8 @@
 			"Sections": {
 				"1": {
 					"Connect": {
-						"11150": true
+						"11150": true,
+						"Ape Atoll Dungeon":true
 					},
 					"Diary": {
 						"Western Provinces": "MD5, HD5"
@@ -122996,9 +123239,6 @@
 		"11054": {
 			"Sections": {
 				"1": {
-					"Connect": {
-						"9541": true
-					},
 					"Diary": {
 						"Karamja": "MD7"
 					},
@@ -123574,7 +123814,6 @@
 			"Sections": {
 				"1": {
 					"Connect": {
-						"9541": true,
 						"11164": true
 					},
 					"NPC": {
@@ -123837,7 +124076,6 @@
 		},
 		"11089": {
 			"Connect": {
-				"9541": true,
 				"10833": true
 			},
 			"Name": "Yu'biusk",
@@ -124623,7 +124861,8 @@
 			"Sections": {
 				"1": {
 					"Connect": {
-						"11675": true
+						"11675": true,
+						"9034": true
 					},
 					"Diary": {
 						"Falador": "HD10"
@@ -124892,8 +125131,8 @@
 			}
 		},
 		"11325": {
-			"Connect": {
-				"11425": true
+			"Connect":{
+				"10842":true
 			},
 			"Monster": {
 				"Ice wolf": 5
@@ -125307,6 +125546,11 @@
 			}
 		},
 		"11419": {
+			"Connect":{
+				"11318-2":true,
+				"11318-5":true,
+				"11318-6":true
+			},
 			"Monster": {
 				"Ice Queen": 1,
 				"Ice spider": 6,
@@ -125333,6 +125577,7 @@
 				"Eadgar": 1,
 				"Godric": 1,
 				"Guard": 9,
+				"Twig": 1,
 				"Kob": 1,
 				"Mountain goat": 5,
 				"Ug": 1,
@@ -125632,7 +125877,6 @@
 				},
 				"2": {
 					"Connect": {
-						"9541": true,
 						"11668": true
 					},
 					"Diary": {
@@ -126187,7 +126431,8 @@
 		},
 		"11577": {
 			"Connect": {
-				"11676": true
+				"11676": true,
+				"11677":true
 			},
 			"Monster": {
 				"Thrower troll (Trollheim)": 5
@@ -126242,6 +126487,9 @@
 			"Nickname": "God Wars Dungeon"
 		},
 		"11579": {
+			"Connect":{
+				"Black Knights' Catacombs":true
+			},
 			"Monster": {
 				"Skeleton (Lucien's camp)": 24
 			},
@@ -126893,9 +127141,6 @@
 			}
 		},
 		"11824": {
-			"Connect": {
-				"9541": true
-			},
 			"Diary": {
 				"Falador": "MD5"
 			},
@@ -126983,8 +127228,10 @@
 				"Rat": 4
 			},
 			"NPC": {
+				"Anja":1,
 				"Angel": 1,
 				"Brian (Rimmington)": 1,
+				"Hengel": 1,
 				"Henja": 1,
 				"Hetty": 1,
 				"Phials": 1,
@@ -127118,6 +127365,7 @@
 						"Cassie": 1,
 						"Cecilia": 1,
 						"Drake (bird)": 1,
+						"Drunken man": 1,
 						"Duck": 1,
 						"Ducklings": 1,
 						"Emily": 1,
@@ -127225,10 +127473,13 @@
 						"Rusty": 1
 					},
 					"NPC": {
+						"Cuffs": 1,
 						"Doric": 1,
+						"Narf": 1,
 						"Raccoon": 3,
 						"Squirrel": 3,
-						"Willow (Below Ice Mountain)": 1
+						"Willow (Below Ice Mountain)": 1,
+						"Rusty": 1
 					},
 					"Object": {
 						"Anvil": 2,
@@ -127771,6 +128022,9 @@
 			}
 		},
 		"12078": {
+			"Connect":{
+				"12588-1":true
+			},
 			"NPC": {
 				"Captain Dudi": 1,
 				"First Mate Deri": 1,
@@ -128544,9 +128798,6 @@
 			}
 		},
 		"12102": {
-			"Connect": {
-				"9541": true
-			},
 			"Monster": {
 				"Rabbit": 4,
 				"Stag": 2
@@ -128579,9 +128830,6 @@
 			}
 		},
 		"12106": {
-			"Connect": {
-				"9541": true
-			},
 			"Name": "Abyssal Nexus",
 			"Object": {
 				"Appendage": 1,
@@ -128632,9 +128880,6 @@
 			}
 		},
 		"12108": {
-			"Connect": {
-				"9541": true
-			},
 			"Monster": {
 				"Abyssal demon": 13,
 				"Abyssal guardian": 6,
@@ -128707,9 +128952,6 @@
 			}
 		},
 		"12115": {
-			"Connect": {
-				"9541": true
-			},
 			"Monster": {
 				"Gorak": 11
 			},
@@ -128777,7 +129019,8 @@
 		},
 		"12127": {
 			"Connect": {
-				"12895": true
+				"12895": true,
+				"7768": true
 			},
 			"NPC": {
 				"Bryn": 1
@@ -129027,7 +129270,6 @@
 		},
 		"12337": {
 			"Connect": {
-				"9541": true,
 				"11595": true,
 				"12437": true
 			},
@@ -129081,7 +129323,6 @@
 			"Sections": {
 				"1": {
 					"Connect": {
-						"9541": true,
 						"12438": true
 					},
 					"Diary": {
@@ -129248,7 +129489,8 @@
 			"Sections": {
 				"1": {
 					"Connect": {
-						"10577": true
+						"10577": true,
+						"12440":true
 					},
 					"Diary": {
 						"Lumbridge & Draynor": "MD3, HD8"
@@ -129409,7 +129651,6 @@
 			"Sections": {
 				"1": {
 					"Connect": {
-						"9541": true,
 						"12186": true,
 						"12442": true,
 						"12633": true
@@ -129986,6 +130227,9 @@
 		"12588": {
 			"Sections": {
 				"1": {
+					"Connect":{
+						"12078":true
+					},
 					"Diary": {
 						"Desert": "EA4"
 					},
@@ -131300,7 +131544,6 @@
 		},
 		"12848": {
 			"Connect": {
-				"9541": true,
 				"13972": true
 			},
 			"Diary": {
@@ -132736,9 +132979,6 @@
 					}
 				},
 				"2": {
-					"Connect": {
-						"9541": true
-					},
 					"Object": {
 						"Fairy ring": 1,
 						"Stepping stone": 2
@@ -135267,9 +135507,6 @@
 			"Nickname": "Nardah Desert"
 		},
 		"13615": {
-			"Connect": {
-				"9541": true
-			},
 			"Monster": {
 				"Desert Lizard": 5,
 				"Desert snake": 3,
@@ -135406,9 +135643,6 @@
 					}
 				},
 				"2": {
-					"Connect": {
-						"9541": true
-					},
 					"Object": {
 						"Fairy ring": 1,
 						"Stepping stone": 1
@@ -135548,7 +135782,6 @@
 				},
 				"2": {
 					"Connect": {
-						"9541": true,
 						"13722":true
 					},
 					"Diary": {
@@ -136192,9 +136425,6 @@
 		"13877": {
 			"Sections": {
 				"1": {
-					"Connect": {
-						"9541": true
-					},
 					"Monster": {
 						"Bark Blamish Snail": 2,
 						"Blood Blamish Snail#Pointed": 1,
@@ -137243,9 +137473,6 @@
 		"14390": {
 			"Sections": {
 				"1": {
-					"Connect": {
-						"9541": true
-					},
 					"Monster": {
 						"Bat": 10,
 						"Feral Vampyre": 17,
@@ -137823,6 +138050,9 @@
 					}
 				},
 				"2": {
+					"Connect":{
+						"14746": true
+					},
 					"Monster": {
 						"Tortured soul": 2
 					},
@@ -138026,7 +138256,7 @@
 		},
 		"14745": {
 			"Connect": {
-				"14645": true
+				"14645-2": true
 			},
 			"Monster": {
 				"Acidic Araxyte": 3,
@@ -139011,7 +139241,8 @@
 				"11083": true,
 				"11338": true,
 				"11339": true,
-				"12106": true
+				"12106": true,
+				"Abyssal Nexus":true
 			},
 			"Monster": {
 				"Abyssal guardian": 18,
@@ -139047,9 +139278,6 @@
 			}
 		},
 		"Abyssal Area": {
-			"Connect": {
-				"9541": true
-			},
 			"Monster": {
 				"Abyssal demon": 13,
 				"Abyssal guardian": 6,
@@ -139061,9 +139289,6 @@
 			}
 		},
 		"Abyssal Nexus": {
-			"Connect": {
-				"9541": true
-			},
 			"Monster": {
 				"Abyssal Sire": 4
 			},
@@ -139462,7 +139687,8 @@
 		},
 		"Blood altar": {
 			"Connect": {
-				"14232": true
+				"14232": true,
+				"Meiyerditch Laboratories":true
 			},
 			"Object": {
 				"Altar": 1,
@@ -139556,7 +139782,8 @@
 		},
 		"Brimhaven Dungeon#Section 1": {
 			"Connect": {
-				"10901": true
+				"10901": true,
+				"Brimhaven Dungeon":true
 			},
 			"Diary": {
 				"Karamja": "MD15"
@@ -139568,7 +139795,8 @@
 		},
 		"Brimhaven Dungeon#Section 2": {
 			"Connect": {
-				"10901": true
+				"10901": true,
+				"Brimhaven Dungeon":true
 			},
 			"Diary": {
 				"Karamja": "MD16, MD17"
@@ -139584,7 +139812,8 @@
 		},
 		"Brimhaven Dungeon#Section 3": {
 			"Connect": {
-				"10901": true
+				"10901": true,
+				"Brimhaven Dungeon":true
 			},
 			"Diary": {
 				"Karamja": "MD17"
@@ -139606,7 +139835,8 @@
 		},
 		"Brimhaven Dungeon#Section 4": {
 			"Connect": {
-				"10901": true
+				"10901": true,
+				"Brimhaven Dungeon":true
 			},
 			"Diary": {
 				"Karamja": "HD10"
@@ -139634,7 +139864,8 @@
 		},
 		"Brimhaven Dungeon#Section 5": {
 			"Connect": {
-				"10901": true
+				"10901": true,
+				"Brimhaven Dungeon":true
 			},
 			"Monster": {
 				"Baby red dragon": 12,
@@ -139648,7 +139879,8 @@
 		},
 		"Brimhaven Dungeon#Section 6": {
 			"Connect": {
-				"10901": true
+				"10901": true,
+				"Brimhaven Dungeon":true
 			},
 			"Object": {
 				"Log balance": 1
@@ -139656,7 +139888,8 @@
 		},
 		"Brimhaven Dungeon#Section 7": {
 			"Connect": {
-				"10901": true
+				"10901": true,
+				"Brimhaven Dungeon":true
 			},
 			"Monster": {
 				"Wild dog": 1
@@ -139807,7 +140040,6 @@
 				"6203": true,
 				"6457": true,
 				"6716": true,
-				"6810": true,
 				"7323": true
 			},
 			"Monster": {
@@ -139862,7 +140094,8 @@
 		},
 		"Cerberus' Lair": {
 			"Connect": {
-				"11417": true
+				"11417": true,
+				"Taverley Dungeon":true
 			},
 			"Monster": {
 				"Cerberus": 3
@@ -140157,7 +140390,8 @@
 		},
 		"Cosmic altar": {
 			"Connect": {
-				"9540": true
+				"9540": true,
+				"Zanaris":true
 			},
 			"Diary": {
 				"Lumbridge & Draynor": "HD3"
@@ -140171,9 +140405,6 @@
 			}
 		},
 		"Cosmic entity's plane": {
-			"Connect": {
-				"9541": true
-			},
 			"NPC": {
 				"Cosmic Being": 1
 			},
@@ -140214,7 +140445,8 @@
 		"Crandor and Karamja Dungeon#North": {
 			"Connect": {
 				"11314": true,
-				"11413": true
+				"11413": true,
+				"11415":true
 			},
 			"Diary": {
 				"Karamja": "MD2"
@@ -140316,6 +140548,9 @@
 			}
 		},
 		"Crash Site Cavern": {
+			"Connect":{
+				"Crash Site (MM2)":true
+			},
 			"Monster": {
 				"Demonic gorilla": 28,
 				"Tortured gorilla": 8
@@ -140363,7 +140598,8 @@
 		},
 		"Death altar": {
 			"Connect": {
-				"7496": true
+				"7496": true,
+				"Mourner Tunnels & Temple of Light":true
 			},
 			"Diary": {
 				"Ardougne": "HD12"
@@ -140595,7 +140831,6 @@
 		},
 		"Dorgesh-Kaan South Dungeon": {
 			"Connect": {
-				"9541": true,
 				"10834": true,
 				"11089": true,
 				"13972": true
@@ -140910,9 +141145,6 @@
 			}
 		},
 		"Enchanted Valley": {
-			"Connect": {
-				"9541": true
-			},
 			"Monster": {
 				"Rabbit": 4,
 				"River troll": 1,
@@ -140942,7 +141174,8 @@
 		},
 		"Evil Chicken's Lair": {
 			"Connect": {
-				"9797": true
+				"9797": true,
+				"Zanaris":true
 			},
 			"Monster": {
 				"Baby black dragon": 1,
@@ -141008,7 +141241,8 @@
 		},
 		"Fight Caves": {
 			"Connect": {
-				"9808": true
+				"9808": true,
+				"Mor Ul Rek#Outer Area":true
 			},
 			"Diary": {
 				"Karamja": "HD2"
@@ -141041,19 +141275,22 @@
 			}
 		},
 		"Fisher Realm": {
-			"Connect": {
-				"9541": true
+			"Connect":{
+				"10802-1":true
 			},
 			"Monster": {
 				"Duck": 22,
-				"Ram": 3
+				"Ram": 3,
+				"Black Knight Titan": 1
 			},
 			"NPC": {
 				"Ducklings": 3,
 				"Grail Maiden": 6,
 				"King Percival": 1,
 				"Peasant": 5,
-				"Sheep": 10
+				"Sheep": 10,
+				"Fisherman": 1,
+				"The Fisher King": 1
 			},
 			"Object": {
 				"Cabbage": 31,
@@ -141066,7 +141303,11 @@
 				"Range": 1,
 				"Fishing spot (lure, bait)": 3,
 				"Tree": 49,
-				"Wheat": 60
+				"Wheat": 60,
+				"Broken cart": 1,
+				"Broken cart wheel": 1,
+				"Dead tree": 108,
+				"Fire remains": 9
 			},
 			"Quest": {
 				"Holy Grail": "step"
@@ -141179,7 +141420,10 @@
 		},
 		"Gauntlet Lobby": {
 			"Connect": {
-				"12895": true
+				"12895": true,
+				"7768": true,
+				"7512": true,
+				"Prifddinas":true
 			},
 			"NPC": {
 				"Bryn": 1
@@ -141221,7 +141465,9 @@
 		"Ghorrock Dungeon": {
 			"Connect": {
 				"11425": true,
-				"12132": true
+				"12132": true,
+				"Salt Mine":true,
+				"Ghorrock Prison":true
 			},
 			"Monster": {
 				"Phantom Muspah": 1
@@ -141247,7 +141493,8 @@
 		},
 		"Ghorrock Prison": {
 			"Connect": {
-				"11424": true
+				"11424": true,
+				"Ghorrock Dungeon":true
 			},
 			"Monster": {
 				"Duke Sucellus": 1
@@ -141336,7 +141583,8 @@
 		},
 		"Glough's Laboratory": {
 			"Connect": {
-				"10127": true
+				"10127": true,
+				"Kruk's Dungeon":true
 			},
 			"NPC": {
 				"Maniacal monkey": 29,
@@ -141391,7 +141639,8 @@
 		"God Wars Dungeon": {
 			"Connect": {
 				"11345": true,
-				"11578": true
+				"11578": true,
+				"Ancient Prison": true
 			},
 			"Diary": {
 				"Fremennik": "EL5, EL6"
@@ -141455,9 +141704,6 @@
 			}
 		},
 		"Gorak Plane": {
-			"Connect": {
-				"9541": true
-			},
 			"Monster": {
 				"Gorak#Gorak Plane": 11
 			},
@@ -141762,7 +142008,8 @@
 		},
 		"Inferno": {
 			"Connect": {
-				"10063": true
+				"10063": true,
+				"Mor Ul Rek#Inner Area":true
 			},
 			"Monster": {
 				"TzKal-Zuk": 1
@@ -141773,7 +142020,8 @@
 		},
 		"Iorwerth Dungeon": {
 			"Connect": {
-				"12894": true
+				"12894": true,
+				"Prifddinas":true
 			},
 			"Monster": {
 				"Dark beast": 10,
@@ -141975,6 +142223,9 @@
 			}
 		},
 		"Karuulm Slayer Dungeon": {
+			"Connect":{
+				"Karuulm Slayer Dungeon#Lobby":true
+			},
 			"Diary": {
 				"Kourend & Kebos": "HD9, EL5"
 			},
@@ -142012,6 +142263,7 @@
 				"7757": true,
 				"9814": true,
 				"10061": true,
+				"10317":true,
 				"10810": true,
 				"11066": true,
 				"11418": true,
@@ -142779,10 +143031,10 @@
 		},
 		"Mor Ul Rek#Outer Area": {
 			"Connect": {
-				"9541": true,
 				"9551": true,
 				"10063": true,
-				"11413": true
+				"11413": true,
+				"Fight Caves":true
 			},
 			"Diary": {
 				"Karamja": "EA9, HD1, EL2"
@@ -142794,6 +143046,7 @@
 				"TzHaar-Xil": 14
 			},
 			"NPC": {
+				"TzHaar-Hur": 12,
 				"TzHaar-Hur-Lek": 1,
 				"TzHaar-Hur-Tel": 1,
 				"TzHaar-Ket": 5,
@@ -142830,7 +143083,8 @@
 		"Mor Ul Rek#Inner Area": {
 			"Connect": {
 				"9043": true,
-				"9808": true
+				"9808": true,
+				"Mor Ul Rek#Outer Area":true
 			},
 			"Monster": {
 				"TzHaar-Hur": 34,
@@ -142839,6 +143093,7 @@
 				"TzHaar-Xil": 42
 			},
 			"NPC": {
+				"TzHaar-Hur": 34,
 				"TzHaar-Hur-Rin": 1,
 				"TzHaar-Hur-Zal": 1,
 				"TzHaar-Ket": 4,
@@ -143660,7 +143915,8 @@
 		},
 		"Prifddinas Library": {
 			"Connect": {
-				"12895": true
+				"12895": true,
+				"Prifddinas":true
 			},
 			"NPC": {
 				"Eldalote": 1,
@@ -143677,7 +143933,8 @@
 		},
 		"Puro-Puro": {
 			"Connect": {
-				"9541": true
+				"9541": true,
+				"Zanaris":true
 			},
 			"Diary": {
 				"Lumbridge & Draynor": "MD11"
@@ -144160,6 +144417,10 @@
 				"Guard (Shayzien)": 5,
 				"Head Guard": 1
 			},
+			"NPC":{
+				"Guard (Shayzien)": 5,
+				"Head Guard": 1
+			},
 			"Object": {
 				"Gate": 1,
 				"Range": 1,
@@ -144181,7 +144442,7 @@
 		"Sisterhood Sanctuary": {
 			"Connect": {
 				"14899": true,
-				"14900": true
+				"14900-2": true
 			},
 			"Monster": {
 				"Bat": 2,
@@ -144276,8 +144537,7 @@
 		},
 		"Skotizo's Lair": {
 			"Connect": {
-				"6812": true,
-				"6813": true
+				"Catacombs of Kourend": true
 			},
 			"Diary": {
 				"Kourend & Kebos": "EL3"
@@ -144702,7 +144962,8 @@
 		},
 		"Temple of Ikov#Basement": {
 			"Connect": {
-				"10649": true
+				"10649": true,
+				"Temple of Ikov":true
 			},
 			"Monster": {
 				"Giant spider": 2
@@ -144985,7 +145246,8 @@
 		},
 		"Trahaearn Mine": {
 			"Connect": {
-				"13150": true
+				"13150": true,
+				"Prifddinas":true
 			},
 			"Object": {
 				"Adamantite rocks": 7,
@@ -145445,7 +145707,8 @@
 		"Edgeville Dungeon#Wilderness": {
 			"Connect": {
 				"12343": true,
-				"12698": true
+				"12698": true,
+				"Edgeville Dungeon":true
 			},
 			"Diary": {
 				"Wilderness": "EA6, EA9, MD7"
@@ -146068,7 +146331,8 @@
 		},
 		"Zalcano's Lair": {
 			"Connect": {
-				"13150": true
+				"13150": true,
+				"Prifddinas":true
 			},
 			"Monster": {
 				"Zalcano": 1
@@ -146102,7 +146366,7 @@
 				"10286": true,
 				"10307": true,
 				"10546": true,
-				"10547": true,
+				"10547-4": true,
 				"10550": true,
 				"10569": true,
 				"10794": true,
@@ -171848,7 +172112,7 @@
 				"1": "2/513"
 			}
 		},
-		"Muttadile": {
+		"Muttadile#Large": {
 			"Big bones": {
 				"1": "Always"
 			},
@@ -171872,6 +172136,26 @@
 			},
 			"Curved bone": {
 				"1": "1/5012.5"
+			}
+		},
+		"Muttadile#Small": {
+			"Big bones": {
+				"1": "Always"
+			},
+			"Overload (+)(4)": {
+				"1": "Always"
+			},
+			"Prayer enhance (+)(4)": {
+				"1": "Always"
+			},
+			"Long bone": {
+				"1": "1/400"
+			},
+			"Curved bone": {
+				"1": "1/5012.5"
+			},
+			"Stinkhorn mushroom":{
+				"2": "Always"
 			}
 		},
 		"Myre Blamish Snail#Rounded": {
@@ -183255,24 +183539,49 @@
 				"1": "Always"
 			}
 		},
-		"Vanguard": {
+		"Vanguard#Magic": {
 			"Vanguard judgement": {
-				"1": "Always"
-			},
-			"Elder (+)(4)": {
-				"1": "Always"
-			},
-			"Twisted (+)(4)": {
 				"1": "Always"
 			},
 			"Kodai (+)(4)": {
 				"1": "Always"
 			},
 			"Xeric's aid (+)(4)": {
-				"1-2": "Always"
+				"1": "Always"
+			},
+			"Prayer enhance (+)(4)": {
+				"1": "Always"
+			},
+			"Overload (+)(4)": {
+				"1": "1/3"
+			}
+		},
+		"Vanguard#Melee": {
+			"Vanguard judgement": {
+				"1": "Always"
+			},
+			"Elder (+)(4)": {
+				"1": "Always"
+			},
+			"Xeric's aid (+)(4)": {
+				"2": "Always"
+			},
+			"Overload (+)(4)": {
+				"1": "1/3"
+			}
+		},
+		"Vanguard#Ranged": {
+			"Vanguard judgement": {
+				"1": "Always"
+			},
+			"Twisted (+)(4)": {
+				"1": "Always"
+			},
+			"Xeric's aid (+)(4)": {
+				"1": "Always"
 			},
 			"Revitalisation (+)(4)": {
-				"1": "1/2"
+				"2": "1/2"
 			},
 			"Overload (+)(4)": {
 				"1": "1/3"
@@ -185322,7 +185631,7 @@
 			"Aether catalyst": {
 				"850": "1/13.59"
 			},
-			"Barrel of demonic tallow": {
+			"Barrel of demonic tallow (full)": {
 				"1": "1/19.02"
 			},
 			"Battlestaff": {
@@ -197253,7 +197562,7 @@
 				"Contract of bloodied blows": {
 					"3": "18/128"
 				},
-				"Contract of catalyst acquisition": {
+				"Contract of catalytic acquisition": {
 					"1": "3/128"
 				},
 				"Contract of divine severance": {
@@ -214807,80 +215116,92 @@
 				}
 			},
 			"Ogre coffin": {
-				"Black nails": {
-					"1-11": "Common"
+				"Coins":{
+					"6-20": "1/6.667"
 				},
-				"Bronze axe": {
-					"1": "Common"
+				"Rusty sword":{
+					"1": "1/25"
 				},
-				"Bronze dagger": {
-					"1": "Common"
+				"Damaged armour":{
+					"1": "1/25"
 				},
-				"Bronze nails": {
-					"1-11": "Common"
+				"Bronze axe":{
+					"1": "1/33.33"
 				},
-				"Bronze pickaxe": {
-					"1": "Common"
+				"Iron axe":{
+					"1": "1/33.33"
 				},
-				"Buttons": {
-					"1": "Rare"
+				"Steel axe":{
+					"1": "1/33.33"
 				},
-				"Clue scroll (easy)": {
-					"1": "Rare"
+				"Bronze pickaxe":{
+					"1": "1/33.33"
 				},
-				"Coins": {
-					"6-20": "Common"
+				"Iron pickaxe":{
+					"1": "1/33.33"
 				},
-				"Damaged armour": {
-					"1": "Uncommon"
+				"Steel pickaxe":{
+					"1": "1/33.33"
 				},
-				"Grimy lantadyme": {
-					"1": "Rare"
+				"Bronze dagger":{
+					"1": "1/33.33"
 				},
-				"Iron axe": {
-					"1": "Common"
+				"Iron dagger":{
+					"1": "1/33.33"
 				},
-				"Iron dagger": {
-					"1": "Common"
+				"Steel dagger":{
+					"1": "1/33.33"
 				},
-				"Iron nails": {
-					"1-11": "Common"
+				"Knife":{
+					"1": "1/33.33"
 				},
-				"Iron pickaxe": {
-					"1": "Common"
+				"Leather body":{
+					"1": "1/33.33"
 				},
-				"Knife": {
-					"1": "Common"
+				"Uncut opal":{
+					"1": "1/33.33"
 				},
-				"Leather body": {
-					"1": "Uncommon"
+				"Uncut jade":{
+					"1": "1/33.33"
 				},
-				"Nothing": {
-					"1": "Uncommon"
+				"Bronze nails":{
+					"1-11": "1/50"
 				},
-				"Rusty sword": {
-					"1": "Uncommon"
+				"Iron nails":{
+					"1-11": "1/50"
 				},
-				"Steel axe": {
-					"1": "Common"
+				"Steel nails":{
+					"1-11": "1/50"
 				},
-				"Steel dagger": {
-					"1": "Common"
+				"Black nails":{
+					"1-11": "1/50"
 				},
-				"Steel nails": {
-					"1-11": "Common"
+				"Tinderbox":{
+					"1": "1/50"
 				},
-				"Steel pickaxe": {
-					"1": "Common"
+				"Buttons":{
+					"1": "1/50"
 				},
-				"Tinderbox": {
-					"1": "Uncommon"
+				"Clue scroll (easy)":{
+					"1": "1/100"
 				},
-				"Uncut jade": {
-					"1": "Rare"
+				"Grimy lantadyme":{
+					"1": "1/102.4"
 				},
-				"Uncut opal": {
-					"1": "Rare"
+				"Grimy dwarf weed":{
+					"1": "1/4267"
+				},
+				"Zogre bones":{
+					"1": "1/2"
+				},
+				"Fayrg bones":{
+					"1": "1/9.143"
+				},
+				"Raurg bones":{
+					"1": "1/12.8"
+				},
+				"Ourg bones":{
+					"1": "1/25.6"
 				}
 			},
 			"Paladin": {
@@ -225944,7 +226265,7 @@
 		},
 		"5175": {
 			"1": [
-				"5174",
+				"5174-1",
 				"5176-1",
 				"5431-1"
 			],
@@ -226055,7 +226376,7 @@
 		},
 		"5430": {
 			"1": [
-				"5174"
+				"5174-1"
 			],
 			"2": [
 				"5431-1"
@@ -226204,6 +226525,8 @@
 		},
 		"5681": {
 			"1": [
+				"5682-1",
+				"5682-2",
 				"5425-2",
 				"5680-1",
 				"5680-3",
@@ -226700,6 +227023,7 @@
 				"5944-1",
 				"6199-1",
 				"6201-1",
+				"6201-5",
 				"6456-1",
 				"6456-4",
 				"6456-5"
@@ -226912,6 +227236,7 @@
 				"6200-1",
 				"6455-1",
 				"6455-2",
+				"6455-3",
 				"6457",
 				"6712-1"
 			],
@@ -226935,6 +227260,8 @@
 				"6201-3",
 				"6201-4",
 				"6201-5",
+				"6201-6",
+				"6201-7",
 				"6456-1",
 				"6458",
 				"6713-1"
@@ -227223,14 +227550,16 @@
 		},
 		"6965": {
 			"0": [
-				"7221-2"
+				"7221-2",
+				"6966"
 			]
 		},
 		"6966": {
 			"0": [
 				"6710",
 				"6967",
-				"7222"
+				"7222",
+				"6965"
 			]
 		},
 		"6967": {
@@ -227315,6 +227644,16 @@
 		"6973": {
 			"0": [
 				"6972-1"
+			]
+		},
+		"6992": {
+			"0": [
+				"6993"
+			]
+		},
+		"6993": {
+			"0": [
+				"6992"
 			]
 		},
 		"7215": {
@@ -227695,6 +228034,7 @@
 			],
 			"2": [
 				"9011-1",
+				"9011-2",
 				"8754-3"
 			],
 			"3": [
@@ -227809,7 +228149,9 @@
 			"2": [
 				"8754-3",
 				"8754-4",
-				"9009-2"
+				"9009-2",
+				"9011-1",
+				"9011-2"
 			]
 		},
 		"9011": {
@@ -228010,7 +228352,14 @@
 		},
 		"9521": {
 			"0": [
+				"9522",
 				"9777-2"
+			]
+		},
+		"9522":{
+			"0" :[
+				"9521",
+				"9778-1"
 			]
 		},
 		"9523": {
@@ -228037,6 +228386,7 @@
 			"1": [
 				"9524-3",
 				"9526-1",
+				"9526-2",
 				"9781-1"
 			],
 			"2": [
@@ -228168,6 +228518,7 @@
 		},
 		"9778": {
 			"1": [
+				"9522",
 				"9777-2",
 				"9779-1",
 				"10034"
@@ -229141,6 +229492,7 @@
 			"2": [
 				"11318-2",
 				"11318-7",
+				"11318-8",
 				"11573-1"
 			],
 			"3": [
@@ -229739,7 +230091,8 @@
 			"2": [
 				"12092-1",
 				"12347-2",
-				"12347-3"
+				"12347-3",
+				"12347-4"
 			]
 		},
 		"12092": {
@@ -230096,7 +230449,7 @@
 				"12859-1"
 			],
 			"2": [
-				"12604-2",
+				"12604-3",
 				"12859-2"
 			]
 		},
@@ -230680,6 +231033,7 @@
 				"13359-1",
 				"13359-2",
 				"13361-2",
+				"13361-4",
 				"13616"
 			]
 		},
@@ -230873,7 +231227,8 @@
 			"2": [
 				"13361-2",
 				"13616",
-				"13873-2"
+				"13873-2",
+				"13361-4"
 			],
 			"3": [
 				"13361-1",
@@ -230925,7 +231280,9 @@
 		"13621": {
 			"1": [
 				"13620-1",
-				"13622-2",
+				"13622-3",
+				"13622-4",
+				"13622-5",
 				"13877-1"
 			],
 			"2": [
@@ -231036,6 +231393,7 @@
 			"1": [
 				"13619-1",
 				"13874-3",
+				"14131-1",
 				"14131-2"
 			],
 			"2": [
@@ -231063,7 +231421,8 @@
 			"1": [
 				"13621-1",
 				"13876-1",
-				"13878-2"
+				"13878-2",
+				"13878-5"
 			],
 			"2": [
 				"13878-3"
@@ -231359,12 +231718,14 @@
 				"14390-1",
 				"14390-3",
 				"14645-1",
-				"14647-1"
+				"14647-1",
+				"14647-2"
 			]
 		},
 		"14647": {
 			"1": [
 				"14391",
+				"14646-1",
 				"14646-2"
 			],
 			"2": [
@@ -231457,7 +231818,9 @@
 			"1": [
 				"14651",
 				"14906-1",
-				"14908-1"
+				"14908-1",
+				"15163-2",
+				"15163-3"
 			],
 			"2": [
 				"14651",
