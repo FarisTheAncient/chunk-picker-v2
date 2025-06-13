@@ -26106,6 +26106,22 @@
 				"ConnectsSections": true,
 				"Not F2P": true
 			},
+			"11310-1 to 11566-1": {
+				"Sections": ["11310-1", "11566-1"],
+				"Tasks": {
+					"~|Shilo Village|~ Complete the quest": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"11310-1 to 11058": {
+				"Sections": ["11310-1", "11058"],
+				"Tasks": {
+					"~|Shilo Village|~ Complete the quest": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
 			"14646-1 to 15159": {
 				"Sections": ["14646-1", "15159"],
 				"Tasks": {
@@ -26125,7 +26141,7 @@
 			"12596-4 to 12852-1": {
 				"Sections": ["12596-4", "12852-1"],
 				"Tasks": {
-					"~|Shield of Arrav|~ 2a4": "Quest"
+					"~|Shield of Arrav|~ 2a1": "Quest"
 				},
 				"ConnectsSections": true,
 				"Not F2P": true
@@ -115998,7 +116014,8 @@
 		},
 		"9362": {
 			"Connect": {
-				"9777": true
+				"9777-2": true,
+				"9777-3": true
 			},
 			"Monster": {
 				"Goblin#Armed": 13,
@@ -144905,7 +144922,7 @@
 		"Taverley Dungeon": {
 			"Connect": {
 				"5139": true,
-				"11317": true,
+				"11317-6": true,
 				"11573": true
 			},
 			"Diary": {
@@ -231598,7 +231615,8 @@
 		"14386": {
 			"1": [
 				"14385",
-				"14642-1"
+				"14642-1",
+				"14387-1"
 			],
 			"2": [
 				"14642-1"
@@ -231619,7 +231637,6 @@
 		},
 		"14388": {
 			"1": [
-				"14132-1",
 				"14387-2",
 				"14389-2",
 				"14644-2"
