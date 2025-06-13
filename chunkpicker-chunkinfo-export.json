@@ -9164,7 +9164,7 @@
 			},
 			"Make a ~|part wild pie (raw chompy)|~": {
 				"Category": ["Partial Products"],
-				"Items": ["Part wild pie (raw chompy)*", "Raw chompy*"],
+				"Items": ["Part wild pie (raw bear meat)*", "Raw chompy*"],
 				"Level": 85,
 				"Output": "Part wild pie (raw chompy)",
 				"Primary": true,
@@ -40165,6 +40165,38 @@
 				"Not Skiller": true,
 				"Not F2P": true
 			},
+			"Buy the ~|Quest point cape|~":{
+				"Category": ["Skillcape"],
+				"NPCs": ["Wise Old Man"],
+				"QuestPointsNeeded":321,
+				"Output": "Quest point cape",
+				"Priority": 1,
+				"NoPet": true,
+				"NoBoost": true
+			},
+			"Buy the ~|Quest point cape (t)|~":{
+				"Category": ["Skillcape"],
+				"NPCs": ["Wise Old Man"],
+				"QuestPointsNeeded":321,
+				"Output": "Quest point cape (t)",
+				"Priority": 1,
+				"NoPet": true,
+				"NoBoost": true,
+				"Tasks": {
+					"~|Ardougne Diary#Elite|~ Complete the Elite Diary": "Diary",
+					"~|Desert Diary#Elite|~ Complete the Elite Diary": "Diary",
+					"~|Falador Diary#Elite|~ Complete the Elite Diary": "Diary",
+					"~|Fremennik Diary#Elite|~ Complete the Elite Diary": "Diary",
+					"~|Kandarin Diary#Elite|~ Complete the Elite Diary": "Diary",
+					"~|Karamja Diary#Elite|~ Complete the Elite Diary": "Diary",
+					"~|Kourend and Kebos Diary#Elite|~ Complete the Elite Diary": "Diary",
+					"~|Lumbridge and Draynor Diary#Elite|~ Complete the Elite Diary": "Diary",
+					"~|Morytania Diary#Elite|~ Complete the Elite Diary": "Diary",
+					"~|Varrock Diary#Elite|~ Complete the Elite Diary": "Diary",
+					"~|Western Provinces Diary#Elite|~ Complete the Elite Diary": "Diary",
+					"~|Wilderness Diary#Elite|~ Complete the Elite Diary": "Diary"
+				}
+			},
 			"Shooting Stars: Dwarven Mine northern entrance": {
 				"StarRegion": "Asgarnia",
 				"Chunks": ["12085-2"]
@@ -44553,9 +44585,9 @@
 				"Not F2P": true,
 				"NoPet": true
 			},
-			"Turn in ~|sulphurous essense|~ to Eyatlalli": {
+			"Turn in ~|Sulphurous essence|~ to Eyatlalli": {
 				"Chunks": ["Neypotzli"],
-				"Items": ["Sulphurous essense"],
+				"Items": ["Sulphurous essence"],
 				"NPCs": ["Eyatlalli"],
 				"Level": 20,
 				"Primary": true,
@@ -76849,7 +76881,7 @@
 			"~|Lumbridge and Draynor Diary#Elite|~ Task 6": {
 				"Description": "Perform the Quest point cape emote in the Wise Old Man's house.",
 				"Chunks": ["12338-1"],
-				"Items": ["Quest point cape (t)"],
+				"Items": ["Quest point cape"],
 				"Tasks": {
 					"~|Lumbridge and Draynor Diary#Hard|~ Complete the Hard Diary": "Diary"
 				},
@@ -80183,7 +80215,7 @@
 				"CombatPoints": 2,
 				"Monsters": ["Skeletal Wyvern"],
 				"Tasks": {
-					"Slay a ~|skeletal wyvern|~": "Slayer"
+					"Slay a ~|Skeletal Wyvern|~": "Slayer"
 				}
 			},
 			"~|Combat Achievements#Medium|~ Demonbane Weaponry": {
@@ -81119,7 +81151,7 @@
 				"CombatPoints": 4,
 				"Monsters": ["Basilisk Knight"],
 				"Tasks": {
-					"Slay a ~|basilisk knight|~": "Slayer"
+					"Slay a ~|Basilisk Knight|~": "Slayer"
 				}
 			},
 			"~|Combat Achievements#Elite|~ Callisto Veteran": {
@@ -93347,7 +93379,7 @@
 			"~|The Great Brain Robbery|~ 1": {
 				"BaseQuest": "The Great Brain Robbery",
 				"Description": "Talk to Brother Tranquility",
-				"Chunks": ["14638-1", "15148"],
+				"Chunks": ["14638-1"],
 				"NPCs": ["Brother Tranquility"],
 				"Tasks": {
 					"~|Creature of Fenkenstrain|~ Complete the quest": "Quest",
