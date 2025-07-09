@@ -526,7 +526,7 @@ button.menu2 {
 #chunkinfo-sidebar-container {
     float: left;
     height: 85%;
-    overflow: auto;
+    overflow: hidden;
     width: 38%;
     margin-right: 5px;
     border-right: solid;
@@ -534,6 +534,10 @@ button.menu2 {
     font-size: min(1.33vw, 18px);
     background-color: var(--color1);
     border-right-width: 1px;
+}
+
+.mobile #chunkinfo-sidebar-container {
+    font-size: 16px;
 }
 
 #chunkinfo-sidebar-container > div {
@@ -1871,6 +1875,19 @@ input#searchPlayerMaps {
     background-color: var(--color6);
 }
 
+.entry-content-2 {
+    position: fixed;
+    border: solid;
+    text-align: center;
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 150);
+    background-color: var(--color6);
+    margin-top: 30px;
+}
+
+.entry-content-2 > div {
+    padding: 15px;
+}
+
 .import-content {
     position: absolute;
     z-index: 9998 !important;
@@ -2194,6 +2211,11 @@ input#searchPlayerMaps {
     padding: 10px;
 }
 
+.theme-button-container {
+  display: grid !important;
+  grid-template-columns: repeat(4, 20%);
+}
+
 .setting .theme-button {
     width: 100px;
     font-size: 20px;
@@ -2277,6 +2299,14 @@ input#searchPlayerMaps {
 
 .setting .theme-button.autumn:hover {
     color: rgb(154, 15, 55);
+}
+
+.disabled-neighbors {
+    filter: brightness(0.5);
+}
+
+.neighbors-outer {
+    display: flex;
 }
 
 .item {
@@ -2831,12 +2861,20 @@ input#searchPlayerMaps {
     background-color: var(--color2);
 }
 
+.question-help:hover {
+    color: var(--colorLink);
+}
+
 .help {
     position: absolute;
     right: 0;
-    margin-right: 15px;
+    margin-right: 5px;
     color: var(--colorTextAlt);
     display: none;
+}
+
+.help > span > span {
+    padding: 5px;
 }
 
 .help2 {
@@ -2847,67 +2885,94 @@ input#searchPlayerMaps {
     color: var(--colorLink);
 }
 
-.help .tooltiptext {
-    visibility: hidden;
-    width: 220px;
-    background-color: var(--color2);
-    color: var(--colorText);
-    text-align: center;
-    border: 1px var(--colorText) solid;
-    padding: 5px 0;
-    font-size: 14px;
-    position: absolute;
-    z-index: 1;
-    top: 5px;
-    left: 150%;
-}
-
-.help:hover .tooltiptext {
-    visibility: visible;
-}
-
-.help2 .tooltiptext {
-    visibility: hidden;
-    width: 220px;
-    background-color: var(--color2);
-    color: var(--colorText);
-    text-align: center;
-    border: 1px var(--colorText) solid;
-    padding: 5px 0;
-    font-size: 14px;
-    position: absolute;
-    z-index: 1;
-    top: 5px;
-    left: 150%;
-}
-
-.help2:hover .tooltiptext {
-    visibility: visible;
+.help2 > span > span {
+    padding: 8px;
 }
 
 #myModal43.mobile .section-help {
     display: none;
 }
 
-.section-help .tooltiptext {
-    visibility: hidden;
-    width: 300px;
-    background-color: var(--color2);
-    color: var(--colorText);
-    text-align: center;
-    border: 1px var(--colorText) solid;
-    padding: 5px;
-    font-size: 14px;
-    position: absolute;
-    z-index: 1;
-}
-
 .section-help:hover {
     color: var(--colorLink);
 }
 
-.section-help:hover .tooltiptext {
-    visibility: visible;
+.tooltip-base-el {
+    margin: 5px;
+    pointer-events: all;
+}
+
+label .tooltip-base-el:active {
+    pointer-events: none;
+}
+
+.neighbors-question-outer {
+    display: inline;
+    margin: 5px;
+    pointer-events: all;
+}
+
+.neighbors-question:hover {
+    cursor: pointer;
+    color: var(--colorLink);
+}
+
+.custom-tooltiptext {
+    visibility: hidden;
+    width: 220px;
+    background-color: var(--color2);
+    color: var(--colorText);
+    text-align: center;
+    border: 1px var(--colorText) solid;
+    font-size: 14px;
+    position: absolute;
+    z-index: 99999;
+    padding: 5px;
+    pointer-events: none;
+}
+
+.right-tooltip::after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -7px;
+  border-width: 7px;
+  border-style: solid;
+  border-color: transparent var(--colorText) transparent transparent;
+}
+
+.left-tooltip::after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-top: -7px;
+  border-width: 7px;
+  border-style: solid;
+  border-color: transparent transparent transparent var(--colorText);
+}
+
+.top-tooltip::after {
+  content: " ";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -7px;
+  border-width: 7px;
+  border-style: solid;
+  border-color: var(--colorText) transparent transparent transparent;
+}
+
+.bottom-tooltip::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -7px;
+  border-width: 7px;
+  border-style: solid;
+  border-color: transparent transparent var(--colorText) transparent;
 }
 
 .quest-question-outer {
@@ -2915,28 +2980,9 @@ input#searchPlayerMaps {
     margin: 5px;
 }
 
-.quest-question .tooltiptext {
-    visibility: hidden;
-    width: 220px;
-    background-color: var(--color2);
-    color: var(--colorText);
-    text-align: center;
-    border: 1px var(--colorText) solid;
-    padding: 5px 0;
-    font-size: 14px;
-    position: absolute;
-    z-index: 1;
-    margin: 25px -15px;
-    padding: 5px;
-}
-
 .quest-question:hover {
     cursor: pointer;
     color: var(--colorLink);
-}
-
-.quest-question:hover .tooltiptext {
-    visibility: visible;
 }
 
 .diary-question-outer {
@@ -2944,52 +2990,14 @@ input#searchPlayerMaps {
     margin: 5px;
 }
 
-.diary-question .tooltiptext {
-    visibility: hidden;
-    width: 220px;
-    background-color: var(--color2);
-    color: var(--colorText);
-    text-align: center;
-    border: 1px var(--colorText) solid;
-    padding: 5px 0;
-    font-size: 14px;
-    position: absolute;
-    z-index: 1;
-    margin: 25px -15px;
-    padding: 5px;
-}
-
 .diary-question:hover {
     cursor: pointer;
     color: var(--colorLink);
 }
 
-.diary-question:hover .tooltiptext {
-    visibility: visible;
-}
-
-.slayermasterinfo-question .tooltiptext {
-    visibility: hidden;
-    width: 220px;
-    background-color: var(--color2);
-    color: var(--colorText);
-    text-align: center;
-    border: 1px var(--colorText) solid;
-    padding: 5px 0;
-    font-size: 14px;
-    position: absolute;
-    z-index: 1;
-    margin: 25px -15px;
-    padding: 5px;
-}
-
 .slayermasterinfo-question:hover {
     cursor: pointer;
     color: var(--colorLink);
-}
-
-.slayermasterinfo-question:hover .tooltiptext {
-    visibility: visible;
 }
 
 .expand {
@@ -3166,6 +3174,12 @@ input#searchPlayerMaps {
     margin-top: -5%;
 }
 
+#myModal50 > .modal-content {
+    height: 85%;
+    width: 45%;
+    margin-top: -10%;
+}
+
 #myModal12_2 > .modal-content {
     height: 67%;
     width: 45%;
@@ -3201,8 +3215,9 @@ input#searchPlayerMaps {
 }
 
 #myModal29 > .modal-content {
-    height: 50%;
+    height: 66%;
     width: 35%;
+    margin-top: -2.5%;
 }
 
 #myModal17 > .modal-content {
@@ -3663,6 +3678,35 @@ input#searchPlayerMaps {
 }
 
 .primarymethods-context-menu li:hover {
+    background-color: var(--color3);
+}
+
+.trainingmethods-context-menu {
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    overflow: hidden;
+    border: 1px solid var(--color2);
+    white-space: nowrap;
+    font-family: sans-serif;
+    background: var(--color1);
+    color: var(--colorText);
+    border-radius: 5px;
+    padding: 0;
+    z-index: 99999;
+    max-width: 250px;
+}
+
+.trainingmethods-context-menu li {
+    padding: 8px 12px;
+    cursor: pointer;
+    list-style-type: none;
+    transition: all .3s ease;
+    user-select: none;
+    white-space: initial;
+}
+
+.trainingmethods-context-menu li:hover {
     background-color: var(--color3);
 }
 
@@ -4699,9 +4743,9 @@ input#searchChunkSections {
 
 #myModal7 > .modal-content {
     height: 60%;
-    width: 45%;
+    width: 55%;
     background-color: var(--color1);
-    max-width: 600px;
+    max-width: 750px;
 }
 
 #myModal22 > .modal-content {
@@ -5867,6 +5911,26 @@ input#searchChunks {
     color: var(--colorTextAlt);
 }
 
+.double-bis-icon-container {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.double-bis-icon-container > span {
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.bis-upgrades {
+  color: var(--colorLink);
+}
+
+.double-bis-icon-container > span:hover {
+    color: var(--colorTextAlt);
+}
+
 .searchdetails-back {
     font-size: 20px;
     position: absolute;
@@ -6103,7 +6167,7 @@ input#searchChunks {
     padding: 10px;
 }
 
-.highest-data .double-search-icon {
+.highest-data .double-bis-icon-container, .bis-upgrades-data .double-search-icon {
     font-size: 24px;
 }
 
@@ -6324,7 +6388,24 @@ input#searchChunks {
     grid-template-columns: min-content auto;
 }
 
-.style-body .row {
+.bis-upgrades-title {
+    font-size: 3.9vh;
+    font-weight: bold;
+    padding-top: 0px;
+    max-height: 7%;
+    min-height: 7%;
+    line-height: 5.5vh;
+    text-align: center;
+    background-color: var(--color2);
+}
+
+.bis-upgrades-data {
+    height: 90%;
+    overflow: auto;
+    margin-top: 3.75%;
+}
+
+.style-body .row, .bis-upgrades-data .row {
     display: flex;
     align-items: center;
     border: solid 1px var(--color1);
@@ -6333,14 +6414,28 @@ input#searchChunks {
     padding: 2px;
     padding-left: 5px;
     background-color: var(--color3);
-    width: 50%;
+    width: 60%;
     margin-left: auto;
     margin-right: auto;
     position: relative;
 }
 
 .highest-data .style-body .row {
+    padding-right: 65px;
+}
+
+.bis-upgrades-data .row {
     padding-right: 30px;
+}
+
+.bis-upgrades-data .arrow-row {
+    text-align: center;
+    width: 24px;
+    margin: auto;
+    border: solid 1px;
+    border-radius: 5px;
+    background-color: var(--colorText);
+    color: var(--color1);
 }
 
 .Skills-body .row {
@@ -6376,7 +6471,7 @@ input#searchChunks {
     background-color: var(--color2);
 }
 
-#myModal12.mobile .row {
+#myModal12.mobile .row, #myModal50.mobile .row {
     width: 85%;
 }
 
@@ -6733,11 +6828,11 @@ input#searchChunks {
 }
 
 .methods-data > .skill-method .details-info {
-    position: absolute;
-    right: 0;
     margin: 5px;
-    top: 50%;
-    transform: translateY(-66%);
+}
+
+.methods-data > .skill-method .burger {
+    font-size: 24px;
 }
 
 .methods-data > .skill-method > input {
@@ -8682,6 +8777,11 @@ input#searchMonsters {
     transform: none;
     left: 25%;
     top: 20%;
+}
+
+.mobile .entry-content-2 {
+    width: 49%;
+    font-size: 12px;
 }
 
 .gomobiletasks {

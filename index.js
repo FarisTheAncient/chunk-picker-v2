@@ -2,14 +2,11 @@
  * Created by Source Chunk
  * Revision of an idea by Amehzyn
  * With help from Slay to Stay for chunk Ids and Amehzyn for smoother zooming/url decoding
- * 02/19/2024
  */
 
 let onMobile = false;                                                           // Is user on a mobile device
 let viewOnly = false;                                                           // View only mode active
 let isPicking = false;                                                          // Has the user just rolled 2 chunks and is currently picking
-let autoSelectNeighbors = false;                                                // Toggle state for select neighbors button
-let autoRemoveSelected = false;                                                 // Toggle state for remove selected button
 let showChunkIds = false;                                                       // Toggle state for show chunk ids button
 let clicked = false;                                                            // Is mouse being held down
 let screenshotMode = false;                                                     // Is screenshot mode on
@@ -118,6 +115,11 @@ let backlogContextMenuChallenge = null;                                         
 let backlogContextMenuSkill = null;                                              // Skill saved of backlog ellipsis
 let backlogContextMenuChallengeOld = null;                                       // Challenge saved of backlog ellipsis old
 let backlogContextMenuSkillOld = null;                                           // Skill saved of backlog ellipsis old
+
+let trainingMethodsContextMenuChallenge = null;                                  // Challenge saved of training methods ellipsis
+let trainingMethodsContextMenuSkill = null;                                      // Skill saved of training methods ellipsis
+let trainingMethodsContextMenuChallengeOld = null;                               // Challenge saved of training methods ellipsis old
+let trainingMethodsContextMenuSkillOld = null;                                   // Skill saved of training methods ellipsis old
 
 let manualPrimary = {};
 let manualPrimarySkill;
@@ -477,8 +479,8 @@ let ruleNames = {
     "Shortcut Task": "Allow agility shortcuts to count as an Agility skill task",
     "Shortcut": "Allow agility shortcuts to count as a primary method for training Agility",
     "Wield Crafted Items": "Crafted items (e.g. bows, metal armour/weapons, etc.) can be wielded as part of chunks tasks (as BiS gear, wielding requirements, training methods, etc.) <span class='rule-asterisk noscroll'>*</span>",
-    "Wield Crafted Items Override": "Require higher level processing skill tasks if the resulting item would be a BiS (may require longer calculation times)",
-    "Multi Step Processing": "Allow higher level processing of resources to enable other processing tasks <span class='rule-asterisk noscroll'>*</span>",
+    "Wield Crafted Items Override": "Require higher level processing skill tasks if the resulting item would be a BiS (may require longer calculation times)<span class='wieldCraftedItemsOverrideRuleTooltip'></span>",
+    "Multi Step Processing": `Allow higher level processing of resources to enable other processing tasks <span class='rule-asterisk noscroll'>*</span><span class='multiStepProcessingRuleTooltip'></span>`,
     "Shooting Star": "Getting the level to mine all tiers of shooting stars count as Mining skill tasks <span class='rule-asterisk noscroll'>*</span>",
     "Forestry": "Forestry events and rewards count as part of your chunks once you have access to the forestry kit",
     "ForestryXp": "Forestry events count as a primary way to gain xp in Woodcutting/Farming/Construction/Fletching/Hunter/Thieving",
@@ -530,7 +532,7 @@ let ruleNames = {
     "Superheat Furnace": "Allow the Superheat Item spell to act as a furnace for training Smithing <span class='rule-asterisk noscroll'>*</span>",
     "Partial Products": "Require making of partial products as a skill task (partially assembling pies - requires a skill level to make, but gives no xp) <span class='rule-asterisk noscroll'>*</span>",
     "POH Rooms": "Allow building rooms to count as Construction skill tasks",
-    "KeyItem Bosses": "For bosses that require keys to kill (Bryophyta, Obor, Skotizo), factor in the droprate of the key as part of the droprate of each drop"
+    "KeyItem Bosses": "For bosses that require keys to kill (Skotizo), factor in the droprate of the key as part of the droprate of each drop"
 };                                                                              // List of rule definitions
 
 let rulePresets = {
@@ -852,10 +854,13 @@ let taskGeneratingRules = {
     "All Shops": true,
 };                                                                              // List of rule that generate tasks
 
+let ruleTooltips = [
+    'multiStepProcessingRuleTooltip',
+    'wieldCraftedItemsOverrideRuleTooltip'
+];
+
 let settings = {
     "highvis": false,
-    "neighbors": true,
-    "remove": false,
     "roll2": false,
     "unpick": false,
     "recent": true,
@@ -867,8 +872,6 @@ let settings = {
     "randomStartAlways": false,
     "theme": 'light',
     "defaultStickerColor": '#FFFFFF',
-    "walkableRollable": true,
-    "autoWalkableRollable": false,
     "cinematicRoll": true,
     "taskSidebar": false,
     "allTasks": false,
@@ -882,14 +885,13 @@ let settings = {
     "optOutSections": false,
     "unlockedBorderColor": '#FF0000',
     "rollingChunksOptions": { "karamja": true, "fremennik_province": true, "kharidian_desert": true, "tirannwn": true, "kourend": true, "varlamore": true, "wilderness": true, "morytania": true, "kandarin": true, "asgarnia": true, "misthalin":true, "noquest": false, "bank": false },
+    "chunkNeighboursOptions": { "neighbors": true, "walkableRollable": true, "autoWalkableRollable": false, "remove": false },
     "defaultChunkinfo": 'monsters',
     "taskSearchbar": false,
 };                                                                              // Current state of all settings
 
 let settingNames = {
     "highvis": "Display the chunk map with higher visibility, allowing you to see better into locked chunks, with thinner chunk borders, more see-through chunk coloring, and more",
-    "neighbors": "After a new chunk is rolled, automatically mark neighbouring chunks as rollable",
-    "remove": "After a new chunk is rolled, mark all locked chunks as not-rollable",
     "roll2": "Enable the roll 2 button, allowing you to roll two chunks and pick between the two",
     "unpick": "Enable the unpick chunk button, allowing you to unpick, and therefore re-lock, a randomly selected unlocked chunk (useful for forfeits)",
     "recent": "<b class='noscroll'>[Recent Chunks]</b> The recent chunks panel shows you the 5 most recently rolled chunks on your map, the dates you rolled them, how long it's been (in days) since your last roll, and more",
@@ -901,8 +903,6 @@ let settingNames = {
     "randomStartAlways": "Change the 'Pick Chunk' button to always be a 'Random Start' button; every chunk roll picks a random walkable chunk (that isn't already unlocked)",
     "theme": "Set <b class='noscroll'>Theme</b>",
     "defaultStickerColor": "Change the default color of chunk stickers",
-    "walkableRollable": "Only automatically mark <b class='noscroll'>walkable</b> chunks (doesn't take into account if chunk is actually accessible yet)",
-    "autoWalkableRollable": "Automatically mark all actually accessible chunks across the whole map after rolling (doesn't include disconnected chunks)",
     "cinematicRoll": "Enable fancier rolling of chunks",
     "taskSidebar": "Expand the task panel into a large sidebar, to show more tasks at once",
     "allTasks": "Generate a list of all intermediate-level skill tasks to be shown in the Activity Info window",
@@ -928,9 +928,8 @@ let settingStructure = {
     "Random Start Options": {
         "rollingChunksOptions": true
     },
-    "Chunk Neighbours": {
-        "neighbors": ["walkableRollable", "autoWalkableRollable"],
-        "remove": true
+    "Chunk Neighbours Options": {
+        "chunkNeighboursOptions": true
     },
     "Information Panels": {
         "recent": true,
@@ -1226,6 +1225,7 @@ let statsErrorModalOpen = false;
 let searchModalOpen = false;
 let searchDetailsModalOpen = false;
 let highestModalOpen = false;
+let bisUpgradesModalOpen = false;
 let highest2ModalOpen = false;
 let methodsModalOpen = false;
 let completeModalOpen = false;
@@ -1261,6 +1261,7 @@ let gotData = false;
 let questPointTotal = 0;
 let combatPointTotal = 0;
 let highestOverallCompleted = {};
+let bisUpgrades = {};
 let oldChallengeArr = {};
 let futureChunkData = {};
 let futureUnlockedSections = {};
@@ -1406,7 +1407,7 @@ let topbarElements = {
     'Sandbox Mode': `<div><span class='noscroll' onclick="enableTestMode()"><i class="gosandbox fa-solid fa-flask" title='Sandbox Mode'></i></span></div>`,
 };
 
-let currentVersion = '6.6.31';
+let currentVersion = '6.7.3';
 let patchNotesVersion = '6.4.0';
 let updateLevel = 'difference';
 
@@ -1429,6 +1430,7 @@ let patreonMaps = {
     'ggay': true, // Sir Var Lock
     'lums': true, // lumSupreme
     'grim': true, // GrimChunker
+    'tuty': true, // James Charles
 };
 
 let roll5Mid = 'rfr'; // Semanari
@@ -1534,7 +1536,7 @@ let lastUpdated = 0;
 let hintTexts = [
     "Join the ClanChat: 'OneChunkClan'!",
     "Join the Chunk Chat Discord!",
-    "Celebrating over 4 years of Chunk Picking!",
+    "Celebrating over 5 years of Chunk Picking!",
     "Check out our RS3 Sister-site!",
     "Now with Custom Themes!"
 ];
@@ -1570,7 +1572,7 @@ mapImg.addEventListener("load", e => {
         centerCanvas('quick');
     }
 });
-mapImg.src = "osrs_world_map.png?v=6.6.31";
+mapImg.src = "osrs_world_map.png?v=6.7.3";
 
 // Rounded rectangle
 CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
@@ -2019,6 +2021,9 @@ document.body.addEventListener('mousedown', function (event) {
     } else if (addEquipmentModalOpen) {
         rect = $('#myModal15 .modal-content')[0].getBoundingClientRect();
         hasSet = true;
+    } else if (bisUpgradesModalOpen) {
+        rect = $('#myModal50 .modal-content')[0].getBoundingClientRect();
+        hasSet = true;
     } else if (highestModalOpen) {
         rect = $('#myModal12 .modal-content')[0].getBoundingClientRect();
         hasSet = true;
@@ -2132,6 +2137,9 @@ document.body.addEventListener('mouseup', function (event) {
     } else if (addEquipmentModalOpen) {
         rect = $('#myModal15 .modal-content')[0].getBoundingClientRect();
         hasSet = true;
+    } else if (bisUpgradesModalOpen) {
+        rect = $('#myModal50 .modal-content')[0].getBoundingClientRect();
+        hasSet = true;
     } else if (highestModalOpen) {
         rect = $('#myModal12 .modal-content')[0].getBoundingClientRect();
         hasSet = true;
@@ -2209,7 +2217,8 @@ document.body.addEventListener('mouseup', function (event) {
     if (hasSet && !(event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom) && (modalOutsideTime + 100 < Date.now()) && readyToExitModal && event.target.nodeName.toLowerCase() !== 'option' && !event.target.classList.contains('context-menu-item')) {
         manualModalOpen && !detailsModalOpen && closeManualAdd();
         highest2ModalOpen && !detailsModalOpen && !methodsModalOpen && !questStepsModalOpen && !slayerMasterInfoModalOpen && !slayerLockedModalOpen && !constructionLockedModalOpen && !doableClueStepsModalOpen && !clueChunksModalOpen && !passiveSkillModalOpen && closeHighest2();
-        highestModalOpen && !addEquipmentModalOpen && !searchDetailsModalOpen && !detailsModalOpen && closeHighest();
+        highestModalOpen && !addEquipmentModalOpen && !searchDetailsModalOpen && !detailsModalOpen && !bisUpgradesModalOpen && closeHighest();
+        bisUpgradesModalOpen && !searchDetailsModalOpen && !detailsModalOpen && closeBisUpgrades();
         questStepsModalOpen && !detailsModalOpen && closeQuestSteps();
         methodsModalOpen && !detailsModalOpen && closeMethods();
         searchModalOpen && !searchDetailsModalOpen && !detailsModalOpen && closeSearch();
@@ -2615,8 +2624,8 @@ let handleMouseUp = function(e) {
                     delete recentChunks[otherChunkId.toString()];
                 });
                 delete tempChunks['potential'];
-                autoSelectNeighbors && selectNeighborsCanvas(parseInt(chunkId));
-                if (autoRemoveSelected) {
+                settings['chunkNeighboursOptions']['neighbors'] && selectNeighborsCanvas(parseInt(chunkId));
+                if (settings['chunkNeighboursOptions']['remove']) {
                     tempSelectedChunks = [];
                     !!tempChunks['selected'] && Object.keys(tempChunks['selected']).forEach((otherChunkId) => {
                         delete tempChunks['selected'][otherChunkId];
@@ -2963,11 +2972,11 @@ let pickCanvas = function(both, override) {
             tempChunks['unlocked'][el[rand]] = el[rand];
             recentChunks[el[rand]] = el[rand];
             scrollToChunkCanvas(el[rand]);
-            autoSelectNeighbors && !didRandomStart && selectNeighborsCanvas(parseInt(el[rand]));
+            settings['chunkNeighboursOptions']['neighbors'] && !didRandomStart && selectNeighborsCanvas(parseInt(el[rand]));
             setRecentRoll(el[rand]);
             chunkJustRolled = true;
         }
-        if (autoRemoveSelected) {
+        if (settings['chunkNeighboursOptions']['remove']) {
             tempSelectedChunks = [];
             !!tempChunks['selected'] && Object.keys(tempChunks['selected']).forEach((chunkId) => {
                 delete tempChunks['selected'][chunkId];
@@ -3081,8 +3090,8 @@ let pickCanvas = function(both, override) {
     if (!el[rand]) {
         return;
     }
-    autoSelectNeighbors && !didRandomStart && selectNeighborsCanvas(parseInt(el[rand]));
-    if (autoRemoveSelected) {
+    settings['chunkNeighboursOptions']['neighbors'] && !didRandomStart && selectNeighborsCanvas(parseInt(el[rand]));
+    if (settings['chunkNeighboursOptions']['remove']) {
         tempSelectedChunks = [];
         !!tempChunks['selected'] && Object.keys(tempChunks['selected']).forEach((chunkId) => {
             delete tempChunks['selected'][chunkId];
@@ -3268,7 +3277,7 @@ let calcCurrentChallengesCanvas = function(useOld, proceed, fromLoadData, inputT
         setCalculating('.panel-active', useOld);
         setCurrentChallenges(['No tasks currently backlogged.'], ['No tasks currently completed.'], true, true);
         myWorker.terminate();
-        myWorker = new Worker("./worker.js?v=6.6.31");
+        myWorker = new Worker("./worker.js?v=6.7.3");
         myWorker.onmessage = workerOnMessage;
         myWorker.postMessage(['current', tempChunks['unlocked'], rules, chunkInfo, skillNames, processingSkill, maybePrimary, combatSkills, monstersPlus, objectsPlus, chunksPlus, itemsPlus, mixPlus, npcsPlus, tasksPlus, tools, elementalRunes, manualTasks, completedChallenges, backlog, "1/" + rules['Rare Drop Amount'], universalPrimary, elementalStaves, rangedItems, boneItems, highestCurrent, dropTables, possibleAreas, randomLoot, magicTools, bossLogs, bossMonsters, minigameShops, manualEquipment, checkedChallenges, backloggedSources, altChallenges, manualMonsters, slayerLocked, passiveSkill, f2pSkills, assignedXpRewards, mid === diary2Tier, manualAreas, "1/" + rules['Secondary Primary Amount'], constructionLocked, mid === manualAreasOnly, tempSections, settings['optOutSections'], maxSkill, userTasks, manualPrimary, updateLevel]);
         workersOut['current'] = true;
@@ -3572,8 +3581,8 @@ $(document).ready(function() {
 // ------------------------------------------------------------
 
 // Recieve message from worker
-let myWorker = new Worker("./worker.js?v=6.6.31");
-let myWorker2 = new Worker("./worker.js?v=6.6.31");
+let myWorker = new Worker("./worker.js?v=6.7.3");
+let myWorker2 = new Worker("./worker.js?v=6.7.3");
 let workerOnMessage = function(e) {
     if (e.data[0] === 'reload') {
         window.location.reload();
@@ -3648,6 +3657,7 @@ let workerOnMessage = function(e) {
             unlockedSections = e.data[15];
             combatPointTotal = e.data[16];
             highestOverallCompleted = e.data[17];
+            bisUpgrades = e.data[18];
             possibleAreas = {};
             Object.keys(e.data[12]).filter(area => { return e.data[12][area] === true }).forEach((area) => {
                 possibleAreas[area] = true;
@@ -3736,6 +3746,7 @@ let workerOnMessage = function(e) {
             manualAreasModalOpen && searchManualAreas();
             chunkSectionsModalOpen && searchChunkSections();
             addEquipmentModalOpen && searchAddEquipment();
+            bisUpgradesModalOpen && closeBisUpgrades();
             checkSlayerLocked();
             checkConstructionLocked();
             settings['autoWalkableRollable'] && chunkJustRolled && selectAllNeighborsCanvas();
@@ -4146,13 +4157,14 @@ $(document).on({
             if (questStepsModalOpen && !detailsModalOpen) { closeQuestSteps(); modalJustClosed = true; }
             if (methodsModalOpen && !detailsModalOpen) { closeMethods(); modalJustClosed = true; }
             if (searchModalOpen && !searchDetailsModalOpen && !detailsModalOpen) { closeSearch(); modalJustClosed = true; }
-            if (detailsModalOpen && !searchDetailsModalOpen) { closeChallengeDetails(); modalJustClosed = true; }
             if (rulesModalOpen && !presetWarningModalOpen) { closeRules(); modalJustClosed = true; }
             if (settingsModalOpen && !mapIntroOpen) { closeSettings(); modalJustClosed = true; }
             if (randomListModalOpen) { closeRandomList(); modalJustClosed = true; }
             if (statsErrorModalOpen) { closeStatsError(); modalJustClosed = true; }
+            if (highestModalOpen && !addEquipmentModalOpen && !searchDetailsModalOpen && !detailsModalOpen && !bisUpgradesModalOpen) { closeHighest(); modalJustClosed = true; }
+            if (detailsModalOpen && !searchDetailsModalOpen) { closeChallengeDetails(); modalJustClosed = true; }
             if (searchDetailsModalOpen) { closeSearchDetails(); modalJustClosed = true; }
-            if (highestModalOpen && !addEquipmentModalOpen) { closeHighest(); modalJustClosed = true; }
+            if (bisUpgradesModalOpen && !addEquipmentModalOpen) { closeBisUpgrades(); modalJustClosed = true; }
             if (completeModalOpen) { closeComplete(); modalJustClosed = true; }
             if (addEquipmentModalOpen) { closeAddEquipment(); modalJustClosed = true; }
             if (stickerModalOpen) { closeSticker(); modalJustClosed = true; }
@@ -4188,24 +4200,6 @@ $(document).on({
 // Button Functions
 
 // ----------------------------------------------------------
-
-// Toggle functionality for if neighbors are to be selected on chunk pick
-let toggleNeighbors = function(value, extra) {
-    if (locked && extra !== 'startup') {
-        return;
-    }
-    autoSelectNeighbors = value;
-    extra !== 'startup' && !locked && setData();
-}
-
-// Toggle functionality for if other selected chunks are set to unlocked after chunk pick
-let toggleRemove = function(value, extra) {
-    if (locked && extra !== 'startup') {
-        return;
-    }
-    autoRemoveSelected = value;
-    extra !== 'startup' && !locked && setData();
-}
 
 // Toggle functionality for showing chunk ids
 let toggleIds = function(value) {
@@ -5579,7 +5573,7 @@ let toggleInfoPanel = function(pnl) {
                 $('.expand').hide();
             }
             if (pnl === 'quests' && infoPanelVis[pnl]) {
-                $('.help').show();
+                $('.help').html(`${tooltip.generate('questHelpTooltip', '<i class="fa-solid fa-question-circle question-help"></i>', 'questHelpTooltip', onMobile ? 'left' : 'right')}`).show();
             } else {
                 $('.help').hide();
             }
@@ -6432,7 +6426,7 @@ let calcFutureChallenges = function() {
     }
     tempSections = combineJSONs(tempSections, manualSections);
     myWorker2.terminate();
-    myWorker2 = new Worker("./worker.js?v=6.6.31");
+    myWorker2 = new Worker("./worker.js?v=6.7.3");
     myWorker2.onmessage = workerOnMessage;
     myWorker2.postMessage(['future', chunks, rules, chunkInfo, skillNames, processingSkill, maybePrimary, combatSkills, monstersPlus, objectsPlus, chunksPlus, itemsPlus, mixPlus, npcsPlus, tasksPlus, tools, elementalRunes, manualTasks, completedChallenges, backlog, "1/" + rules['Rare Drop Amount'], universalPrimary, elementalStaves, rangedItems, boneItems, highestCurrent, dropTables, possibleAreas, randomLoot, magicTools, bossLogs, bossMonsters, minigameShops, manualEquipment, checkedChallenges, backloggedSources, altChallenges, manualMonsters, slayerLocked, passiveSkill, f2pSkills, assignedXpRewards, mid === diary2Tier, manualAreas, "1/" + rules['Secondary Primary Amount'], constructionLocked, mid === manualAreasOnly, tempSections, settings['optOutSections'], maxSkill, userTasks, manualPrimary, updateLevel]);
     workersOut['future'] = infoLockedId;
@@ -7137,6 +7131,7 @@ let openChunkSectionPicker = async function(chunkId, calculateAfter) {
             }
         });
         $('#chunk-section-picker-selectall-btn').prop('checked', Object.keys(selectedSections).filter(num => selectedSections[num]).length === Object.keys(sectionUrls).length);
+        $('.section-help').html(`${tooltip.generate('sectionHelpTooltip', '<i class="fa-solid fa-question-circle question-help"></i>', 'sectionHelpTooltip', onMobile ? 'bottom' : 'right', '350px')}`);
         $('#myModal43').show();
         modalOutsideTime = Date.now();
     }
@@ -7480,10 +7475,10 @@ let openFriendsList = function() {
     $('.friends-list-data').empty();
     $('.friends-list-data').append(`<div class='addEntry noscroll' onclick='openFriendsListAdd()'>Add Map Entry</div>`);
     Object.keys(friends).sort((a, b) => { return friends[a].toLowerCase().localeCompare(friends[b].toLowerCase()) }).forEach((friendMid) => {
-        $('.friends-list-data').append(`<div class='noscroll friend-item'><a class='noscroll link' href='https://source-chunk.github.io/chunk-picker-v2/?${friendMid.toLowerCase()}' target='_blank'>${DOMPurify.sanitize(friends[friendMid], { ALLOWED_TAGS: [], ALLOWED_ATTR: [] })} (${friendMid})</a><i class="friend-item-x fa-solid fa-times noscrollhard" onclick="removeFriend('${friendMid}', '${friends[friendMid]}')"></i></div>`);
+        $('.friends-list-data').append(`<div class='noscroll friend-item'><a class='noscroll link' href='https://source-chunk.github.io/chunk-picker-v2/?${friendMid.toLowerCase()}-view' target='_blank'>${DOMPurify.sanitize(friends[friendMid], { ALLOWED_TAGS: [], ALLOWED_ATTR: [] })} (${friendMid})</a><i class="friend-item-x fa-solid fa-times noscrollhard" onclick="removeFriend('${friendMid}', '${friends[friendMid]}')"></i></div>`);
     });
     Object.keys(friendsAlt).sort((a, b) => { return friendsAlt[a].toLowerCase().localeCompare(friendsAlt[b].toLowerCase()) }).forEach((friendMid) => {
-        $('.friends-list-data').append(`<div class='noscroll friend-item'><a class='noscroll link' href='https://source-chunk.github.io/chunk-picker-rs3/?${friendMid.toLowerCase()}' target='_blank'>${DOMPurify.sanitize(friendsAlt[friendMid], { ALLOWED_TAGS: [], ALLOWED_ATTR: [] })} (${friendMid})</a><i class="friend-item-x fa-solid fa-times noscrollhard" onclick="removeFriend('${friendMid}', '${friendsAlt[friendMid]}')"></i></div>`);
+        $('.friends-list-data').append(`<div class='noscroll friend-item'><a class='noscroll link' href='https://source-chunk.github.io/chunk-picker-rs3/?${friendMid.toLowerCase()}-view' target='_blank'>${DOMPurify.sanitize(friendsAlt[friendMid], { ALLOWED_TAGS: [], ALLOWED_ATTR: [] })} (${friendMid})</a><i class="friend-item-x fa-solid fa-times noscrollhard" onclick="removeFriend('${friendMid}', '${friendsAlt[friendMid]}')"></i></div>`);
     });
     $('#myModal26').show();
     modalOutsideTime = Date.now();
@@ -7951,7 +7946,7 @@ let loadPoolsData = function() {
         });
         $('.pools-list').empty();
         let tableData = '';
-        Object.keys(formattedData['priority']).forEach((username) => {
+        Object.keys(formattedData['priority']).sort((uA, uB) => formattedData['priority'][uB].daysWaiting - formattedData['priority'][uA].daysWaiting).forEach((username) => {
             tableData += `<tr><td>${username}</td><td><a href="https://source-chunk.github.io/chunk-picker-v2/?${formattedData['priority'][username].mapcode}" target="_blank">${formattedData['priority'][username].mapcode.toUpperCase()}</a></td><td>${formattedData['priority'][username].date}</td><td>${formattedData['priority'][username].daysWaiting}</td></tr>`;
         });
         if (Object.keys(formattedData['priority']).length === 0) {
@@ -7960,7 +7955,7 @@ let loadPoolsData = function() {
             $('.pools-list-a').append(`<table><tr><th>Username</th><th>Chunk Picker Map</th><th>Date Joined</th><th>Days Waiting</th></tr>${tableData}</table>`);
         }
         tableData = '';
-        Object.keys(formattedData['new']).forEach((username) => {
+        Object.keys(formattedData['new']).sort((uA, uB) => formattedData['new'][uB].daysWaiting - formattedData['new'][uA].daysWaiting).forEach((username) => {
             tableData += `<tr><td>${username}</td><td><a href="https://source-chunk.github.io/chunk-picker-v2/?${formattedData['new'][username].mapcode}" target="_blank">${formattedData['new'][username].mapcode.toUpperCase()}</a></td><td>${formattedData['new'][username].date}</td><td>${formattedData['new'][username].daysWaiting}</td></tr>`;
         });
         if (Object.keys(formattedData['new']).length === 0) {
@@ -8162,6 +8157,7 @@ let openSearch = function() {
     if (!inEntry && !importMenuOpen && !manualModalOpen && !detailsModalOpen && !notesModalOpen && !highscoreMenuOpen && !helpMenuOpen) {
         onMobile && hideMobileMenu();
         searchModalOpen = true;
+        $('.help2').html(`${tooltip.generate('searchTermsTooltips', '<span>~</span>', 'searchTermsTooltips', onMobile ? 'bottom' : 'right')}`);
         $('#myModal10').show();
         modalOutsideTime = Date.now();
         $('#searchChunks').val('').focus();
@@ -8277,6 +8273,7 @@ let openSearchDetails = function(category, name, prevCategory, prevName) {
     searchDetailsParams = [category, name, prevCategory, prevName];
     name = decodeQueryParam(name);
     searchDetailsModalOpen = true;
+    $('#searchdetails-sorter-dropdown').val(searchDetailSortBy);
     if (prevCategory && prevName) {
         $('.searchdetails-back').show().html(`<i class="fa-solid fa-arrow-left noscrollhard" onclick="openSearchDetails('${prevCategory}', '${prevName}')"></i>`);
     } else {
@@ -8326,7 +8323,7 @@ let openSearchDetails = function(category, name, prevCategory, prevName) {
                     tempFormattedSource += ` (${baseChunkData[category][name][source].replaceAll('primary-', '').replaceAll('secondary-', '').replaceAll(/\*/g, '')}, qty: ${amount}, ${dropTablesGlobal[source][name][amount]})`;
                     tempFormattedSource += `<span class='double-search-icon' onclick='openSearchDetails("monsters", "${encodeRFC5987ValueChars(source)}", "${category}", "${encodeRFC5987ValueChars(name)}")'><i class="fa-solid fa-search"></i></span>`;
                     shouldRank = true;
-                    tempDroprate = dropTablesGlobal[source][name][amount].split('/')[0] / dropTablesGlobal[source][name][amount].split('/')[1];
+                    tempDroprate = dropTablesGlobal[source][name][amount].split('/')[0].replaceAll(',', '') / dropTablesGlobal[source][name][amount].split('/')[1].replaceAll(',', '');
                     formattedSources.push(tempFormattedSource);
                     rankings[tempFormattedSource] = {
                         shouldRank,
@@ -8337,7 +8334,7 @@ let openSearchDetails = function(category, name, prevCategory, prevName) {
                 });
             } else if (baseChunkData[category][name][source].replaceAll('primary-', '').replaceAll('secondary-', '').replaceAll(/\*/g, '') === 'drop' && dropRatesGlobal.hasOwnProperty(source) && dropRatesGlobal[source].hasOwnProperty(name)) {
                 formattedSource += ` (${baseChunkData[category][name][source].replaceAll('primary-', '').replaceAll('secondary-', '').replaceAll(/\*/g, '')}, ${dropRatesGlobal[source][name]})`;
-                tempDroprate = dropRatesGlobal[source][name].split('/')[0] / dropRatesGlobal[source][name].split('/')[1];
+                tempDroprate = dropRatesGlobal[source][name].split('/')[0].replaceAll(',', '') / dropRatesGlobal[source][name].split('/')[1].replaceAll(',', '');
             } else if (baseChunkData[category][name][source].replaceAll('primary-', '').replaceAll('secondary-', '').replaceAll(/\*/g, '') === 'drop' && chunkInfo['challenges']['Slayer'].hasOwnProperty(source) && chunkInfo['challenges']['Slayer'][source].hasOwnProperty('Output') && ((chunkInfo['skillItems']['Slayer'].hasOwnProperty(chunkInfo['challenges']['Slayer'][source]['Output']) && chunkInfo['skillItems']['Slayer'][chunkInfo['challenges']['Slayer'][source]['Output']].hasOwnProperty(name)) || (!!dropTablesGlobal[source.split('|')[1].charAt(0).toUpperCase() + source.split('|')[1].slice(1)] && !!dropTablesGlobal[source.split('|')[1].charAt(0).toUpperCase() + source.split('|')[1].slice(1)][name]))) {
                 let monster = source.split('|')[1].charAt(0).toUpperCase() + source.split('|')[1].slice(1);
                 if (!!dropTablesGlobal[monster] && !!dropTablesGlobal[monster][name]) {
@@ -8347,7 +8344,7 @@ let openSearchDetails = function(category, name, prevCategory, prevName) {
                         tempFormattedSource += ` (${baseChunkData[category][name][source].replaceAll('primary-', '').replaceAll('secondary-', '').replaceAll(/\*/g, '')}, qty: ${amount}, ${dropTablesGlobal[monster][name][amount]})`;
                         tempFormattedSource += `<span class='double-search-icon' onclick='openSearchDetails("monsters", "${encodeRFC5987ValueChars(monster)}", "${category}", "${encodeRFC5987ValueChars(name)}")'><i class="fa-solid fa-search"></i></span>`;
                         shouldRank = true;
-                        tempDroprate = dropTablesGlobal[monster][name][amount].split('/')[0] / dropTablesGlobal[monster][name][amount].split('/')[1];
+                        tempDroprate = dropTablesGlobal[monster][name][amount].split('/')[0].replaceAll(',', '') / dropTablesGlobal[monster][name][amount].split('/')[1].replaceAll(',', '');
                         formattedSources.push(tempFormattedSource);
                         rankings[tempFormattedSource] = {
                             shouldRank,
@@ -8361,7 +8358,7 @@ let openSearchDetails = function(category, name, prevCategory, prevName) {
                     formattedSource += ` (${baseChunkData[category][name][source].replaceAll('primary-', '').replaceAll('secondary-', '').replaceAll(/\*/g, '')}, ${dropRate})`;
                     formattedSource += `<span class='double-search-icon' onclick='openSearchDetails("monsters", "${encodeRFC5987ValueChars(source.split('|')[1].charAt(0).toUpperCase() + source.split('|')[1].slice(1))}", "${category}", "${encodeRFC5987ValueChars(name)}")'><i class="fa-solid fa-search"></i></span>`;
                     shouldRank = true;
-                    tempDroprate = dropRate.split('/')[0] / dropRate.split('/')[1];
+                    tempDroprate = dropRate.split('/')[0].replaceAll(',', '') / dropRate.split('/')[1].replaceAll(',', '');
                 }
             } else {
                 formattedSource += ` (${baseChunkData[category][name][source].replaceAll('primary-', '').replaceAll('secondary-', '').replaceAll(/\*/g, '')})`;
@@ -8450,13 +8447,13 @@ let openHighest = function() {
             let veracs = {"Verac's helm": true, "Verac's brassard": true, "Verac's plateskirt": true, "Verac's flail": true, "Amulet of the damned (full)": true};
             slots.forEach((slot) => {
                 if (highestOverallLocal.hasOwnProperty(combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()) && highestOverallLocal[combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()] !== 'N/A') {
-                    $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<div class='noscroll row'><span class='noscroll item-pic'><img class='noscroll slot-icon' src='./resources/Clean_slot.png' title='${slot}' /><img class='noscroll' src="./resources/equipment_icons/${highestOverallLocal[combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()].replaceAll(/ /g, '_')}.png" onError='this.onerror=null;this.src="./resources/${slot}_slot.png"' /><img class='noscroll slot-icon hidden-slot-icon' src='./resources/${slot}_slot.png' title='${slot}' /></span><span class='noscroll slot-text'><a class='link' href="${"https://oldschool.runescape.wiki/w/" + encodeURI(highestOverallLocal[combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()])}" target="_blank">${highestOverallLocal[combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()]}</a></span><span class='double-search-icon' onclick='openSearchDetails("items", "${encodeRFC5987ValueChars(highestOverallLocal[combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()])}")'><i class="fa-solid fa-search"></i></span></div>`);
+                    $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<div class='noscroll row'><span class='noscroll item-pic'><img class='noscroll slot-icon' src='./resources/Clean_slot.png' title='${slot}' /><img class='noscroll' src="./resources/equipment_icons/${highestOverallLocal[combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()].replaceAll(/ /g, '_')}.png" onError='this.onerror=null;this.src="./resources/${slot}_slot.png"' /><img class='noscroll slot-icon hidden-slot-icon' src='./resources/${slot}_slot.png' title='${slot}' /></span><span class='noscroll slot-text'><a class='link' href="${"https://oldschool.runescape.wiki/w/" + encodeURI(highestOverallLocal[combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()])}" target="_blank">${highestOverallLocal[combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()]}</a></span><span class='double-bis-icon-container'>${filterByObtainedBiS && bisUpgrades.hasOwnProperty(combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()) ? `<span class='bis-upgrades noscroll' onclick='openBisUpgrades("${combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()}")' title='Slot Upgrade Chart'><i class="fa-solid fa-arrow-trend-up"></i></span>` : ''}<span class='bis-search noscroll' onclick='openSearchDetails("items", "${encodeRFC5987ValueChars(highestOverallLocal[combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()])}")'><i class="fa-solid fa-search"></i></span></span></div>`);
                     !!chunkInfo['equipment'][highestOverallLocal[combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()]] && (prayerBonus += chunkInfo['equipment'][highestOverallLocal[combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()]]['prayer']);
                 } else if (highestOverallLocal.hasOwnProperty(combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()) && highestOverallLocal[combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()] === 'N/A') {
-                    $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<div class='noscroll row'><img class='noscroll slot-icon' src='./resources/${slot}_slot.png' title='${slot}' /><span class='noscroll slot-text'>${highestOverallLocal[combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()]}</span></div>`);
+                    $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<div class='noscroll row'><img class='noscroll slot-icon' src='./resources/${slot}_slot.png' title='${slot}' /><span class='noscroll slot-text'>${highestOverallLocal[combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()]}</span><span class='double-bis-icon-container'>${filterByObtainedBiS && bisUpgrades.hasOwnProperty(combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()) ? `<span class='bis-upgrades noscroll' onclick='openBisUpgrades("${combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()}")' title='Slot Upgrade Chart'><i class="fa-solid fa-arrow-trend-up"></i></span>` : ''}</span></div>`);
                     !!chunkInfo['equipment'][highestOverallLocal[combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()]] && (prayerBonus += chunkInfo['equipment'][highestOverallLocal[combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()]]['prayer']);
                 } else if (slot !== 'Ammo (2h)') {
-                    $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<div class='noscroll row'><img class='noscroll slot-icon' src='./resources/${slot}_slot.png' title='${slot}' /><span class='noscroll slot-text'>None</span></div>`);
+                    $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<div class='noscroll row'><img class='noscroll slot-icon' src='./resources/${slot}_slot.png' title='${slot}' /><span class='noscroll slot-text'>None</span><span class='double-bis-icon-container'>${filterByObtainedBiS && bisUpgrades.hasOwnProperty(combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()) ? `<span class='bis-upgrades noscroll' onclick='openBisUpgrades("${combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()}")' title='Slot Upgrade Chart'><i class="fa-solid fa-arrow-trend-up"></i></span>` : ''}</span></div>`);
                     !!chunkInfo['equipment'][highestOverallLocal[combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()]] && (prayerBonus += chunkInfo['equipment'][highestOverallLocal[combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()]]['prayer']);
                 }
                 if (combatStyle === 'Prayer' && !!highestOverallLocal[combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()] && veracs.hasOwnProperty(highestOverallLocal[combatStyle.replaceAll(' ', '_') + '-' + slot.toLowerCase()])) {
@@ -8486,6 +8483,21 @@ let openHighest = function() {
 let changeBiSFilterBy = function() {
     filterByObtainedBiS = !filterByObtainedBiS;
     openHighest();
+}
+
+// Opens the bis upgrades modal
+let openBisUpgrades = function(key) {
+    bisUpgradesModalOpen = true;
+    $('.bis-upgrades-data').empty();
+    $('.bis-upgrades-slot-name').text(`[${key.replaceAll('_', ' ').replaceAll('-', ' ')}]`);
+    let slot = key.split('-')[1];
+    bisUpgrades[key].forEach((equip, i) => {
+        $(`.bis-upgrades-data`).append(`<div class='noscroll row'><span class='noscroll item-pic'><img class='noscroll slot-icon' src='./resources/Clean_slot.png' title="${equip}" /><img class='noscroll' src="./resources/equipment_icons/${equip.replaceAll(/ /g, '_')}.png" onError='this.onerror=null;this.src="./resources/${slot}_slot.png"' title="${equip}" /></span><span class='noscroll slot-text'><a class='link' href="${"https://oldschool.runescape.wiki/w/" + encodeURI(equip)}" target="_blank">${equip}</a></span><span class='double-search-icon' onclick='openSearchDetails("items", "${encodeRFC5987ValueChars(equip)}")'><i class="fa-solid fa-search"></i></span></div>`);
+        (i < (bisUpgrades[key].length - 1)) && $(`.bis-upgrades-data`).append(`<div class='noscroll arrow-row' title='Upgrades to'><i class="fa-solid fa-angles-up"></i></div>`);
+    });
+    $('#myModal50').show();
+    modalOutsideTime = Date.now();
+    document.getElementById('bis-upgrades-data').scrollTop = 0;
 }
 
 // Opens the highest2 modal
@@ -8559,7 +8571,8 @@ let openHighest2 = function(notScrollTop) {
                 (testMode || !(viewOnly || inEntry || locked)) && $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<div class='noscroll construction-lock-container'><span class='noscroll construction-lock-button' onclick='openConstructionLocked()'>${!!constructionLocked ? '<i class="fa-solid fa-edit"></i>' : '<i class="fa-solid fa-lock"></i>'}${!!constructionLocked ? 'Change Locked Chunk' : 'Lock Mahogany Homes'}</span></div>`);
             } else if (combatStyle === 'Quests') {
                 $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<div class='noscroll qps'>Quest Points: ${questPointTotal}<i class="noscroll fa-solid fa-filter" title="Filter" onclick="openQuestFilterContextMenu()"></i></div>`);
-                $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<div class="quest-question-outer"><span class="quest-question">What do the colors indicate? <i class="fa-solid fa-question-circle"></i><span class="tooltiptext"><div>Quests in <span style="color:green">green</span> indicate a quest that you can complete within your chunks.</div><hr /><div>Quests in <span style="color:yellow">yellow</span> indicate a quest that can be started, but not completed within your chunks.</div><hr /><div>Quests in <span style="color:grey">grey</span> indicate a quest that cannot be started yet.</div></span></span></div>`);
+                let tooltipBase = `<span class="quest-question">What do the colors indicate? <i class="fa-solid fa-question-circle question-help"></i></span>`;
+                $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<div class="quest-question-outer">${tooltip.generate('questsColorTooltip', tooltipBase, 'questsColorTooltip', onMobile ? 'bottom' : 'right')}</div>`);
                 Object.keys(chunkInfo['quests']).filter(quest => { return quest === 'break' || quest === 'break2' || questFilterType === 'all' || (questFilterType === 'complete' && questProgress.hasOwnProperty(quest) && (questProgress[quest] === 'Complete the quest')) || (questFilterType === 'incomplete' && questProgress.hasOwnProperty(quest) && Array.isArray(questProgress[quest])) || (questFilterType === 'unstarted' && !questProgress.hasOwnProperty(quest)) }).forEach((quest) => {
                     if (quest === 'break' || quest === 'break2') {
                         $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<hr class='noscroll' />`);
@@ -8572,7 +8585,8 @@ let openHighest2 = function(notScrollTop) {
                 }
             } else if (combatStyle === 'Diaries') {
                 rules['Combat Diary Tasks'] && $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<div class='noscroll cps'>Combat Achievement Points: ${combatPointTotal}</div>`);
-                $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<div class="diary-question-outer"><span class="diary-question">What do the colors indicate? <i class="fa-solid fa-question-circle"></i><span class="tooltiptext"><div>Diary tiers in <span style="color:green">green</span> indicate a diary that you can complete within your chunks.</div><hr /><div>Diary tiers in <span style="color:yellow">yellow</span> indicate a diary that can be started, but not completed within your chunks.</div><hr /><div>Diary tiers in <span style="color:grey">grey</span> indicate a diary that cannot be started yet.</div></span></span></div>`);
+                let tooltipBase = `<span class="diary-question">What do the colors indicate? <i class="fa-solid fa-question-circle question-help"></i></span>`;
+                $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<div class="diary-question-outer">${tooltip.generate('diariesColorTooltip', tooltipBase, 'diariesColorTooltip', onMobile ? 'bottom' : 'right')}</div>`);
                 Object.keys(chunkInfo['diaries']).forEach((diary) => {
                     if (diary === 'Fossil Island Diary' && rules['Fossil Island Tasks']) {
                         $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<hr class='noscroll' />`);
@@ -8863,6 +8877,8 @@ let openSlayerMasterInfo = function(master) {
     slayerMasterInfoModalOpen = true;
     $('.slayermasterinfo-data').empty();
     $('.slayermasterinfo-title').text(master);
+    let tooltipBase = `<span class="slayermasterinfo-question">What do the colors indicate? <i class="fa-solid fa-question-circle question-help"></i></span>`;
+    $('.slayermasterinfo-subtitle').html(`${tooltip.generate('slayerColorTooltip', tooltipBase, 'slayerColorTooltip', onMobile ? 'bottom' : 'right')}`);
     Object.keys(assignableSlayerTasks[master]).forEach((monster) => {
         if (monster.includes(' - ')) {
             $('.slayermasterinfo-data').append(`<div class="noscroll results ${assignableSlayerTasks[master][monster]}"><a class='noscroll link' href='https://oldschool.runescape.wiki/w/Slayer_task/${monster.split(' - ')[0]}' target='_blank'>${monster.split(' - ')[0]}</a> - <a class='noscroll link' href="https://oldschool.runescape.wiki/w/${encodeForUrl(monster.split(' - ')[1])}" target='_blank'>${monster.split(' - ')[1]}</a></div>`);
@@ -9283,7 +9299,7 @@ let viewPrimaryMethodsOrTasks = function(skill, showTasks) {
         $('.methods-topbar').html(`<i class="manual-close pic fa-solid fa-times noscrollhard" onclick="closeMethods()"></i>`);
         let methods = checkPrimaryMethod(skill, globalValids, baseChunkData, true);
         Object.keys(methods).sort(function(a, b) { return methods[a] - methods[b] }).forEach((method) => {
-            $('.methods-data').append(`<div class='noscroll skill-method'><span>[${methods[method]}]: ${method.includes('~') ? `${method.replaceAll('*', '').split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((method.replaceAll('*', '').split('|')[1]))}" target="_blank">${method.replaceAll('*', '').split('~')[1].split('|').join('')}</a>${method.replaceAll('*', '').split('~')[2]}` : `${method.replaceAll('~', '').replaceAll('|', '').replaceAll('*', '')}`} ${chunkInfo['challenges'][skill].hasOwnProperty(method) ? `<span class='noscroll details-info' onclick="showDetails('${encodeRFC5987ValueChars(method)}', '${skill}', '')"><i class="challenge-icon fa-solid fa-info-circle noscroll"></i></span></span>` : ''}</div>`);
+            $('.methods-data').append(`<div class='noscroll skill-method'><span>[${methods[method]}]: ${method.includes('~') ? `${method.replaceAll('*', '').split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((method.replaceAll('*', '').split('|')[1]))}" target="_blank">${method.replaceAll('*', '').split('~')[1].split('|').join('')}</a>${method.replaceAll('*', '').split('~')[2]}` : `${method.replaceAll('~', '').replaceAll('|', '').replaceAll('*', '')}`} ${chunkInfo['challenges'][skill].hasOwnProperty(method) ? `<span class='noscroll details-info' onclick="showDetails('${encodeRFC5987ValueChars(method)}', '${skill}', '')"><i class="challenge-icon fa-solid fa-info-circle noscroll"></i></span><span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openTrainingMethodsContextMenu('${encodeRFC5987ValueChars(method)}', '${skill}')"><i class="fa-solid fa-sliders-h noscroll"></i></span></span>` : ''}</div>`);
         });
     }
     $('#myModal13').show();
@@ -9408,6 +9424,13 @@ let closeHighest = function() {
     $('#myModal12').hide();
 }
 
+// Closes the bis upgrades modal
+let closeBisUpgrades = function() {
+    bisUpgradesModalOpen = false;
+    modalOutsideTime = Date.now();
+    $('#myModal50').hide();
+}
+
 // Closes the highest modal
 let closeHighest2 = function() {
     $(".primarymethods-context-menu").hide(100);
@@ -9418,6 +9441,7 @@ let closeHighest2 = function() {
 
 // Closes the methods modal
 let closeMethods = function() {
+    $(".trainingmethods-context-menu").hide(100);
     methodsModalOpen = false;
     modalOutsideTime = Date.now();
     $('#myModal13').hide();
@@ -9784,7 +9808,7 @@ let openQuestFilterContextMenu = function() {
     });
 }
 
-// Opens the context menu for filtering quests
+// Opens the context menu for manual primary
 let openManualPrimaryContextMenu = function(skill) {
     manualPrimarySkill = skill;
     let dims = getBrowserDim();
@@ -9795,6 +9819,21 @@ let openManualPrimaryContextMenu = function(skill) {
         top: y + "px",
         left: x + "px"
     });
+}
+
+// Opens the context menu for training methods
+let openTrainingMethodsContextMenu = function(challenge, skill) {
+    if (trainingMethodsContextMenuChallengeOld !== challenge) {
+        trainingMethodsContextMenuChallenge = challenge;
+        trainingMethodsContextMenuSkill = skill;
+        let dims = getBrowserDim();
+        let x = event.pageX + $(".trainingmethods-context-menu").width() + 5 > dims['w'] ? dims['w'] - $(".trainingmethods-context-menu").width() - 5 : event.pageX - 5;
+        let y = event.pageY + $(".trainingmethods-context-menu").height() + 5 > dims['h'] ? dims['h'] - $(".trainingmethods-context-menu").height() - 5 : event.pageY - 5;
+        $(".trainingmethods-context-menu").finish().toggle(100).css({
+            top: y + "px",
+            left: x + "px"
+        });
+    }
 }
 
 // Goes back to previous details window
@@ -10153,6 +10192,7 @@ let selectOverlayClues = function(clueTier) {
         selectedOverlay = 'None';
     }
     showOverlays(true);
+    drawCanvas();
 }
 
 // Clears all overlay clues
@@ -10161,6 +10201,7 @@ let clearOverlayClues = function() {
         selectedOverlayClues[clueTier] = false;
     });
     showOverlays(true);
+    drawCanvas();
 }
 
 // Toggle overlay within chunks only
@@ -10575,6 +10616,10 @@ let showRules = function(isPage2) {
         document.getElementById('rules-data').scrollTop = 0;
         $('.rules-names').scrollTop(0);
         $('.rules-content .panel').scrollTop(0);
+        ruleTooltips.forEach((tooltipTargetSelector) => {
+            let tooltipTarget = onMobile ? $(`.rules-data > div:not(.rules-content) .${tooltipTargetSelector}`) : $(`.rules-data > .rules-content .${tooltipTargetSelector}`);
+            tooltipTarget.html(tooltip.generate(tooltipTargetSelector, '<i class="fa-solid fa-question-circle question-help"></i>', tooltipTargetSelector, onMobile ? 'bottom' : 'right'));
+        });
         $('#myModal4').show();
         modalOutsideTime = Date.now();
     }
@@ -10597,7 +10642,7 @@ let showSettings = function(keepSettingsClosed) {
             } else if (setting === 'startingChunk') {
                 $('.' + category.replaceAll(/ /g, '_') + '-category').append(`<div class="setting ${setting.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-setting'} noscroll"><span class='noscroll'>` + settingNames[setting] + `: ${settings[setting]}<i class="fa-solid fa-edit noscroll change-starting-chunk" title="Change Starting Chunk" onclick="openMapIntroModal(${true})"></i></span></div>`);
             } else if (setting === 'theme') {
-                $('.' + category.replaceAll(/ /g, '_') + '-category').append(`<div class="setting ${setting.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-setting'} noscroll"><div class='noscroll theme-header'>Theme:</div><button class='theme-button light' onclick="toggleTheme('light')">Light</button><button class='theme-button dark' onclick="toggleTheme('dark')">Dark</button><button class='theme-button terminal' onclick="toggleTheme('terminal')">Terminal</button><button class='theme-button neon' onclick="toggleTheme('neon')">Neon</button><button class='theme-button pumpkin' onclick="toggleTheme('pumpkin')">Pumpkin</button><button class='theme-button mono' onclick="toggleTheme('mono')">Mono</button><button class='theme-button winter' onclick="toggleTheme('winter')">Winter</button><button class='theme-button autumn' onclick="toggleTheme('autumn')">Autumn</button></div>`);
+                $('.' + category.replaceAll(/ /g, '_') + '-category').append(`<div class="setting ${setting.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-setting'} noscroll"><div class='noscroll theme-header'>Theme:</div><span class='theme-button-container'><button class='theme-button light' onclick="toggleTheme('light')">Light</button><button class='theme-button dark' onclick="toggleTheme('dark')">Dark</button><button class='theme-button terminal' onclick="toggleTheme('terminal')">Terminal</button><button class='theme-button neon' onclick="toggleTheme('neon')">Neon</button><button class='theme-button pumpkin' onclick="toggleTheme('pumpkin')">Pumpkin</button><button class='theme-button mono' onclick="toggleTheme('mono')">Mono</button><button class='theme-button winter' onclick="toggleTheme('winter')">Winter</button><button class='theme-button autumn' onclick="toggleTheme('autumn')">Autumn</button></span></div>`);
             } else if (setting === 'rollingChunksOptions') {
                 const outputHtml = `
                     <div class="setting">
@@ -10612,6 +10657,26 @@ let showSettings = function(keepSettingsClosed) {
                     </div>
                 `;
                 $('.' + category.replaceAll(/ /g, '_') + '-category').append(outputHtml);
+            } else if (setting === 'chunkNeighboursOptions') {
+                let tooltipBase = `<span class="neighbors-question"><i class="fa-solid fa-question-circle question-help"></i></span>`;
+                const outputHtml = `
+                    <div class="setting">
+                        <p class='noscroll rolling-chunk-options-p'>The options below are specifically for what behavior occurs when a new chunk is rolled. If none of the options below are selected, no aditional actions will occur after rolling a chunk.</p>
+                        <div class='noscroll theme-header'>After rolling a chunk:</div>
+                        <div class="neighbors-outer">
+                            <div class="setting neighbors-inner neighbors-inner-1">
+                                <div class="${setting.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-neighbors-setting subsetting'} noscroll"><label class="checkbox noscroll ${(viewOnly || inEntry || locked) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${settings[setting]['neighbors'] ? "checked" : ''} class='noscroll' onclick="checkOffNeighbourOption('neighbors')" ${(viewOnly || inEntry || locked) ? "disabled" : ''} /><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">...mark chunks neighbouring/adjacent to the rolled chunk as rollable</span></label></div>
+                                <div class="setting ${setting.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-walkableRollable-setting subsetting'} noscroll"><label class="checkbox noscroll ${(viewOnly || inEntry || locked) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${settings[setting]['walkableRollable'] ? "checked" : ''} class='noscroll' onclick="checkOffNeighbourOption('walkableRollable')" ${(viewOnly || inEntry || locked) ? "disabled" : ''} /><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">Only include chunks that have some walkable area</span></label></div>
+                                <div class="setting ${setting.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-autoWalkableRollable-setting subsetting'} noscroll"><label class="checkbox noscroll ${(viewOnly || inEntry || locked) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${settings[setting]['autoWalkableRollable'] ? "checked" : ''} class='noscroll' onclick="checkOffNeighbourOption('autoWalkableRollable')" ${(viewOnly || inEntry || locked) ? "disabled" : ''} /><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">Across the whole map, mark any actually accessible chunks neighbouring any of my unlocked chunks as rollable${tooltip.generate('neighborsTooltip', tooltipBase, 'neighborsTooltip', onMobile ? 'bottom' : 'right')}</span></label></div>
+                            </div>
+                            <div class="setting neighbors-inner neighbors-inner-2">
+                                <div class="${setting.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-remove-setting subsetting'} noscroll"><label class="checkbox noscroll ${(viewOnly || inEntry || locked) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${settings[setting]['remove'] ? "checked" : ''} class='noscroll' onclick="checkOffNeighbourOption('remove')" ${(viewOnly || inEntry || locked) ? "disabled" : ''} /><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">...remove all rollable chunk markings from my map</span></label></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                $('.' + category.replaceAll(/ /g, '_') + '-category').append(outputHtml);
+                handleNeighboursDisabling();
             } else {
                 $('.' + category.replaceAll(/ /g, '_') + '-category').append(`<div class="setting ${setting.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-setting'} noscroll"><label class="checkbox noscroll ${(viewOnly || inEntry || locked || settingStructure[category][setting] === false) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${settings[setting] ? "checked" : ''} class='noscroll' onclick="checkOffSettings()" ${(viewOnly || inEntry || locked || settingStructure[category][setting] === false) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${settingNames[setting]}</span></label></div>`);
             }
@@ -10634,6 +10699,45 @@ let showSettings = function(keepSettingsClosed) {
 // Checks off rolling option by name
 let checkOffRollingOption = function(inputName) {
     settings['rollingChunksOptions'][inputName] = $(`.rollingchunksoptions-${inputName}-setting input`).prop('checked');
+    setData();
+}
+
+// Checks off neighbour option by name
+let checkOffNeighbourOption = function(inputName) {
+    settings['chunkNeighboursOptions'][inputName] = $(`.chunkneighboursoptions-${inputName}-setting input`).prop('checked');
+    if (inputName === 'neighbors' && !settings['chunkNeighboursOptions'][inputName]) {
+        $(`.neighbors-inner-1 .setting input`).prop('checked', false);
+        settings['chunkNeighboursOptions']['walkableRollable'] = false;
+        settings['chunkNeighboursOptions']['autoWalkableRollable'] = false;
+    }
+    handleNeighboursDisabling();
+    setData();
+}
+
+// Helper function to handle disabling parts of the neighbours settings
+let handleNeighboursDisabling = function() {
+    if (settings['chunkNeighboursOptions']['remove'] && !settings['chunkNeighboursOptions']['neighbors']) {
+        $(`.neighbors-inner-1`).addClass('disabled-neighbors');
+        $(`.neighbors-inner-1 input`).prop('disabled', true);
+    } else {
+        $(`.neighbors-inner-1`).removeClass('disabled-neighbors');
+        $(`.neighbors-inner-1 input`).prop('disabled', false);
+    }
+    if (settings['chunkNeighboursOptions']['neighbors']) {
+        $(`.neighbors-inner-2`).addClass('disabled-neighbors');
+        $(`.neighbors-inner-2 input`).prop('disabled', true);
+        $(`.neighbors-inner-1 .setting`).removeClass('disabled-neighbors');
+        $(`.neighbors-inner-1 .setting input`).prop('disabled', false);
+    } else {
+        $(`.neighbors-inner-2`).removeClass('disabled-neighbors');
+        $(`.neighbors-inner-2 input`).prop('disabled', false);
+        $(`.neighbors-inner-1 .setting input`).prop('disabled', true);
+        if (!settings['chunkNeighboursOptions']['remove']) {
+            $(`.neighbors-inner-1 .setting`).addClass('disabled-neighbors');
+        } else {
+            $(`.neighbors-inner-1 .setting`).removeClass('disabled-neighbors');
+        }
+    }
 }
 
 // Changes the active challenges color
@@ -10831,6 +10935,15 @@ let switchManualPrimaryContext = function(opt) {
         calcCurrentChallengesCanvas(true);
     }
     $(".primarymethods-context-menu").hide(100);
+}
+
+// Selects correct manual primary context menu item
+let switchTrainingMethodsContext = function(opt) {
+    if (opt !== 'cancel') {
+        backlogChallenge(trainingMethodsContextMenuChallenge, trainingMethodsContextMenuSkill, '');
+        viewPrimaryMethodsOrTasks(trainingMethodsContextMenuSkill, false);
+    }
+    $(".trainingmethods-context-menu").hide(100);
 }
 
 // Sends a challenge to the backlog
@@ -11190,8 +11303,6 @@ let checkOffSettings = function(didRedo, startup) {
     toggleIds(settings['ids']);
     toggleVisibility(settings['highvis']);
     toggleTheme(settings['theme']);
-    toggleNeighbors(settings['neighbors'], startup);
-    toggleRemove(settings['remove'], startup);
     toggleRoll2(settings['roll2'], startup);
     toggleUnpick(settings['unpick'], startup);
     toggleRecent(settings['recent'], startup);
@@ -11694,14 +11805,30 @@ let loadData = async function(startup) {
             settingsTemp['info'] = true;
         }
 
+        if (!settingsTemp.hasOwnProperty('chunkNeighboursOptions')) {
+            if (settingsTemp.hasOwnProperty('autoWalkableRollable')) {
+                settingsTemp['chunkNeighboursOptions'] = {
+                    "neighbors": settingsTemp['neighbors'],
+                    "walkableRollable": settingsTemp['walkableRollable'],
+                    "autoWalkableRollable": settingsTemp['autoWalkableRollable'],
+                    "remove": settingsTemp['remove']
+                };
+            } else {
+                settingsTemp['chunkNeighboursOptions'] = {
+                    "neighbors": true,
+                    "walkableRollable": true,
+                    "autoWalkableRollable": false,
+                    "remove": false
+                };
+            }
+        }
+
         Object.keys(settingsTemp).forEach((setting) => {
             settings[setting] = settingsTemp[setting];
         });
         toggleIds(settings['ids']);
         toggleVisibility(settings['highvis']);
         toggleTheme(settings['theme']);
-        toggleNeighbors(settings['neighbors'], 'startup');
-        toggleRemove(settings['remove'], 'startup');
         toggleRoll2(settings['roll2'], 'startup');
         toggleUnpick(settings['unpick'], 'startup');
         toggleRecent(settings['recent'], 'startup');
@@ -12194,7 +12321,7 @@ let setData = function() {
                     recentFancyRollTime,
                     userTasks: encodeObject(userTasks, true),
                     manualPrimary: encodeObject(manualPrimary, true),
-                    settings: { 'neighbors': autoSelectNeighbors, 'walkableRollable': settings['walkableRollable'], 'autoWalkableRollable': settings['autoWalkableRollable'], 'remove': autoRemoveSelected, 'roll2': roll2On, 'unpick': unpickOn, 'randomStartAlways': settings['randomStartAlways'], 'recent': recentOn, 'cinematicRoll': settings['cinematicRoll'], 'highscoreEnabled': highscoreEnabled, 'chunkTasks': chunkTasksOn, 'topButtons': topButtonsOn, 'completedTaskColor': settings['completedTaskColor'], 'defaultStickerColor': settings['defaultStickerColor'], 'unlockedBorderColor': settings['unlockedBorderColor'], 'completedTaskStrikethrough': settings['completedTaskStrikethrough'], 'taskSidebar': settings['taskSidebar'], 'allTasks': settings['allTasks'], 'startingChunk': settings['startingChunk'], 'numTasksPercent': settings['numTasksPercent'], 'help': !(!helpMenuOpen && !helpMenuOpenSoon), 'patchNotes': (!patchNotesOpen && !patchNotesOpenSoon) ? patchNotesVersion : settings['patchNotes'], 'mapIntro': !mapIntroOpen && !mapIntroOpenSoon, 'theme': theme, 'newTasks': settings['newTasks'], 'hideChecked': settings['hideChecked'], 'shiftUnlock': settings['shiftUnlock'], rollWarning: settings['rollWarning'], optOutSections: settings['optOutSections'], info: chunkInfoOn, 'rollingChunksOptions': settings['rollingChunksOptions'], 'defaultChunkinfo': settings['defaultChunkinfo'], 'taskSearchbar': settings['taskSearchbar'] },
+                    settings: { 'chunkNeighboursOptions': settings['chunkNeighboursOptions'], 'roll2': roll2On, 'unpick': unpickOn, 'randomStartAlways': settings['randomStartAlways'], 'recent': recentOn, 'cinematicRoll': settings['cinematicRoll'], 'highscoreEnabled': highscoreEnabled, 'chunkTasks': chunkTasksOn, 'topButtons': topButtonsOn, 'completedTaskColor': settings['completedTaskColor'], 'defaultStickerColor': settings['defaultStickerColor'], 'unlockedBorderColor': settings['unlockedBorderColor'], 'completedTaskStrikethrough': settings['completedTaskStrikethrough'], 'taskSidebar': settings['taskSidebar'], 'allTasks': settings['allTasks'], 'startingChunk': settings['startingChunk'], 'numTasksPercent': settings['numTasksPercent'], 'help': !(!helpMenuOpen && !helpMenuOpenSoon), 'patchNotes': (!patchNotesOpen && !patchNotesOpenSoon) ? patchNotesVersion : settings['patchNotes'], 'mapIntro': !mapIntroOpen && !mapIntroOpenSoon, 'theme': theme, 'newTasks': settings['newTasks'], 'hideChecked': settings['hideChecked'], 'shiftUnlock': settings['shiftUnlock'], rollWarning: settings['rollWarning'], optOutSections: settings['optOutSections'], info: chunkInfoOn, 'rollingChunksOptions': settings['rollingChunksOptions'], 'defaultChunkinfo': settings['defaultChunkinfo'], 'taskSearchbar': settings['taskSearchbar'] },
                     chunkinfo: { checkedChallenges: encodeObject(checkedChallenges, true), completedChallenges: encodeObject(completedChallenges, true), backlog: encodeObject(backlog, true), possibleAreas: encodeObject(possibleAreas, true), manualTasks: encodeObject(manualTasks, true), manualEquipment: encodeObject(manualEquipment, true), backloggedSources: encodeObject(backloggedSources, true), altChallenges: encodeObject(altChallenges, true), manualMonsters: encodeObject(manualMonsters, true), slayerLocked: encodeObject(slayerLocked, true), constructionLocked: encodeObject(constructionLocked, true), passiveSkill: encodeObject(passiveSkill, true), maxSkill: encodeObject(maxSkill, true), oldSavedChallengeArr: encodeObject(decodeObject(oldSavedChallengeArr), true), assignedXpRewards: encodeObject(assignedXpRewards, true), manualAreas: encodeObject(manualAreas, true), manualSections: encodeObject(manualSections, true), prevValueLevelInput: encodeObject(prevValueLevelInput, true), checkedAllTasks: encodeObject(checkedAllTasks, true) },
                     chunks: { unlocked: unlockedJson, selected: selectedJson, potential: potentialJson, blacklisted: blacklistedJson, stickered, stickeredNotes: encodeObject(stickeredNotes, true), stickeredColors },
                 };
@@ -12252,7 +12379,7 @@ let setData = function() {
                 recentFancyRollTime,
                 userTasks: encodeObject(userTasks, true),
                 manualPrimary: encodeObject(manualPrimary, true),
-                settings: { 'neighbors': autoSelectNeighbors, 'walkableRollable': settings['walkableRollable'], 'autoWalkableRollable': settings['autoWalkableRollable'], 'remove': autoRemoveSelected, 'roll2': roll2On, 'unpick': unpickOn, 'randomStartAlways': settings['randomStartAlways'], 'recent': recentOn, 'cinematicRoll': settings['cinematicRoll'], 'highscoreEnabled': highscoreEnabled, 'chunkTasks': chunkTasksOn, 'topButtons': topButtonsOn, 'completedTaskColor': settings['completedTaskColor'], 'defaultStickerColor': settings['defaultStickerColor'], 'unlockedBorderColor': settings['unlockedBorderColor'], 'completedTaskStrikethrough': settings['completedTaskStrikethrough'], 'taskSidebar': settings['taskSidebar'], 'allTasks': settings['allTasks'], 'startingChunk': settings['startingChunk'], 'numTasksPercent': settings['numTasksPercent'], 'help': !(!helpMenuOpen && !helpMenuOpenSoon), 'patchNotes': (!patchNotesOpen && !patchNotesOpenSoon) ? patchNotesVersion : settings['patchNotes'], 'mapIntro': !mapIntroOpen && !mapIntroOpenSoon, 'theme': theme, 'newTasks': settings['newTasks'], 'hideChecked': settings['hideChecked'], 'shiftUnlock': settings['shiftUnlock'], rollWarning: settings['rollWarning'], optOutSections: settings['optOutSections'], info: chunkInfoOn, 'rollingChunksOptions': settings['rollingChunksOptions'], 'defaultChunkinfo': settings['defaultChunkinfo'], 'taskSearchbar': settings['taskSearchbar'] },
+                settings: { 'chunkNeighboursOptions': settings['chunkNeighboursOptions'], 'roll2': roll2On, 'unpick': unpickOn, 'randomStartAlways': settings['randomStartAlways'], 'recent': recentOn, 'cinematicRoll': settings['cinematicRoll'], 'highscoreEnabled': highscoreEnabled, 'chunkTasks': chunkTasksOn, 'topButtons': topButtonsOn, 'completedTaskColor': settings['completedTaskColor'], 'defaultStickerColor': settings['defaultStickerColor'], 'unlockedBorderColor': settings['unlockedBorderColor'], 'completedTaskStrikethrough': settings['completedTaskStrikethrough'], 'taskSidebar': settings['taskSidebar'], 'allTasks': settings['allTasks'], 'startingChunk': settings['startingChunk'], 'numTasksPercent': settings['numTasksPercent'], 'help': !(!helpMenuOpen && !helpMenuOpenSoon), 'patchNotes': (!patchNotesOpen && !patchNotesOpenSoon) ? patchNotesVersion : settings['patchNotes'], 'mapIntro': !mapIntroOpen && !mapIntroOpenSoon, 'theme': theme, 'newTasks': settings['newTasks'], 'hideChecked': settings['hideChecked'], 'shiftUnlock': settings['shiftUnlock'], rollWarning: settings['rollWarning'], optOutSections: settings['optOutSections'], info: chunkInfoOn, 'rollingChunksOptions': settings['rollingChunksOptions'], 'defaultChunkinfo': settings['defaultChunkinfo'], 'taskSearchbar': settings['taskSearchbar'] },
                 chunkinfo: { checkedChallenges: encodeObject(checkedChallenges, true), completedChallenges: encodeObject(completedChallenges, true), backlog: encodeObject(backlog, true), possibleAreas: encodeObject(possibleAreas, true), manualTasks: encodeObject(manualTasks, true), manualEquipment: encodeObject(manualEquipment, true), backloggedSources: encodeObject(backloggedSources, true), altChallenges: encodeObject(altChallenges, true), manualMonsters: encodeObject(manualMonsters, true), slayerLocked: encodeObject(slayerLocked, true), constructionLocked: encodeObject(constructionLocked, true), passiveSkill: encodeObject(passiveSkill, true), maxSkill: encodeObject(maxSkill, true), oldSavedChallengeArr: encodeObject(decodeObject(oldSavedChallengeArr), true), assignedXpRewards: encodeObject(assignedXpRewards, true), manualAreas: encodeObject(manualAreas, true), manualSections: encodeObject(manualSections, true), prevValueLevelInput: encodeObject(prevValueLevelInput, true), checkedAllTasks: encodeObject(checkedAllTasks, true) },
                 chunks: { unlocked: unlockedJson, selected: selectedJson, potential: potentialJson, blacklisted: blacklistedJson, stickered, stickeredNotes: encodeObject(stickeredNotes, true), stickeredColors },
             };
