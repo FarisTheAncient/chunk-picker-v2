@@ -3017,7 +3017,7 @@
 				"NPCs": ["Chaeldar"],
 				"Primary": true,
 				"Priority": 6,
-				"Slayer": {
+				"Skills": {
 					"Slayer": 1
 				},
 				"Not F2P": true
@@ -9050,7 +9050,7 @@
 				"Items": ["Pie shell*", "Compost*"],
 				"Level": 29,
 				"Output": "Part mud pie (compost)",
-				"Primary": true,
+				"Primary": false,
 				"Priority": 1001,
 				"Not F2P": true
 			},
@@ -9059,7 +9059,7 @@
 				"Items": ["Part mud pie (compost)*", "MudPieWater[+]*"],
 				"Level": 29,
 				"Output": "Part mud pie (water)",
-				"Primary": true,
+				"Primary": false,
 				"Priority": 1002,
 				"Not F2P": true
 			},
@@ -9068,7 +9068,7 @@
 				"Items": ["Part mud pie (water)*", "Clay*"],
 				"Level": 29,
 				"Output": "Raw mud pie",
-				"Primary": true,
+				"Primary": false,
 				"Priority": 1003,
 				"Not F2P": true
 			},
@@ -9077,7 +9077,7 @@
 				"Items": ["Pie shell*", "Tomato*"],
 				"Level": 34,
 				"Output": "Part garden pie (tomato)",
-				"Primary": true,
+				"Primary": false,
 				"Priority": 1001,
 				"Not F2P": true
 			},
@@ -9086,7 +9086,7 @@
 				"Items": ["Part garden pie (tomato)*", "Onion*"],
 				"Level": 34,
 				"Output": "Part garden pie (onion)",
-				"Primary": true,
+				"Primary": false,
 				"Priority": 1002,
 				"Not F2P": true
 			},
@@ -9095,7 +9095,7 @@
 				"Items": ["Part garden pie (onion)*", "Cabbage*"],
 				"Level": 34,
 				"Output": "Raw garden pie",
-				"Primary": true,
+				"Primary": false,
 				"Priority": 1003,
 				"Not F2P": true
 			},
@@ -9104,7 +9104,7 @@
 				"Items": ["Pie shell*", "Trout*"],
 				"Level": 47,
 				"Output": "Part fish pie (trout)",
-				"Primary": true,
+				"Primary": false,
 				"Priority": 1001,
 				"Not F2P": true
 			},
@@ -9113,7 +9113,7 @@
 				"Items": ["Part fish pie (trout)*", "Cod*"],
 				"Level": 47,
 				"Output": "Part fish pie (cod)",
-				"Primary": true,
+				"Primary": false,
 				"Priority": 1002,
 				"Not F2P": true
 			},
@@ -9122,7 +9122,7 @@
 				"Items": ["Part fish pie (cod)*", "Potato*"],
 				"Level": 47,
 				"Output": "Raw fish pie",
-				"Primary": true,
+				"Primary": false,
 				"Priority": 1003,
 				"Not F2P": true
 			},
@@ -9131,7 +9131,7 @@
 				"Items": ["Pie shell*", "Salmon*"],
 				"Level": 70,
 				"Output": "Part admiral pie (salmon)",
-				"Primary": true,
+				"Primary": false,
 				"Priority": 1001,
 				"Not F2P": true
 			},
@@ -9140,7 +9140,7 @@
 				"Items": ["Part admiral pie (salmon)*", "Tuna*"],
 				"Level": 70,
 				"Output": "Part admiral pie (tuna)",
-				"Primary": true,
+				"Primary": false,
 				"Priority": 1002,
 				"Not F2P": true
 			},
@@ -9149,7 +9149,7 @@
 				"Items": ["Part admiral pie (tuna)*", "Potato*"],
 				"Level": 70,
 				"Output": "Raw admiral pie",
-				"Primary": true,
+				"Primary": false,
 				"Priority": 1003,
 				"Not F2P": true
 			},
@@ -9158,7 +9158,7 @@
 				"Items": ["Pie shell*", "Raw bear meat*"],
 				"Level": 85,
 				"Output": "Part wild pie (raw bear meat)",
-				"Primary": true,
+				"Primary": false,
 				"Priority": 1001,
 				"Not F2P": true
 			},
@@ -9167,7 +9167,7 @@
 				"Items": ["Part wild pie (raw bear meat)*", "Raw chompy*"],
 				"Level": 85,
 				"Output": "Part wild pie (raw chompy)",
-				"Primary": true,
+				"Primary": false,
 				"Priority": 1002,
 				"Not F2P": true
 			},
@@ -9176,7 +9176,7 @@
 				"Items": ["Part wild pie (raw chompy)*", "Raw rabbit*"],
 				"Level": 85,
 				"Output": "Raw wild pie",
-				"Primary": true,
+				"Primary": false,
 				"Priority": 1003,
 				"Not F2P": true
 			},
@@ -9185,7 +9185,7 @@
 				"Items": ["Pie shell*", "Strawberry*"],
 				"Level": 95,
 				"Output": "Part summer pie (strawberry)",
-				"Primary": true,
+				"Primary": false,
 				"Priority": 1001,
 				"Not F2P": true
 			},
@@ -9194,7 +9194,7 @@
 				"Items": ["Part summer pie (strawberry)*", "Watermelon*"],
 				"Level": 95,
 				"Output": "Part summer pie (watermelon)",
-				"Primary": true,
+				"Primary": false,
 				"Priority": 1002,
 				"Not F2P": true
 			},
@@ -9203,7 +9203,7 @@
 				"Items": ["Part summer pie (watermelon)*", "Cooking apple*"],
 				"Level": 95,
 				"Output": "Raw summer pie",
-				"Primary": true,
+				"Primary": false,
 				"Priority": 1003,
 				"Not F2P": true
 			},
@@ -19176,7 +19176,7 @@
 				"Items": ["Butterfly net[+]", "Butterfly jar"],
 				"Level": 45,
 				"NPCs": ["Black warlock"],
-				"Output": "Black warlock (item)",
+				"Output": "Black warlock",
 				"Primary": true,
 				"Priority": 51
 			},
@@ -19568,7 +19568,7 @@
 				"Items": ["Butterfly net[+]", "Butterfly jar"],
 				"Level": 15,
 				"NPCs": ["Ruby harvest"],
-				"Output": "Ruby harvest (item)",
+				"Output": "Ruby harvest",
 				"Primary": true,
 				"Priority": 52
 			},
@@ -19607,7 +19607,7 @@
 				"Items": ["Butterfly net[+]", "Butterfly jar"],
 				"Level": 25,
 				"NPCs": ["Sapphire glacialis"],
-				"Output": "Sapphire glacialis (item)",
+				"Output": "Sapphire glacialis",
 				"Priority": 51,
 				"Primary": true
 			},
@@ -19629,7 +19629,7 @@
 				"Items": ["Butterfly net[+]", "Butterfly jar"],
 				"Level": 35,
 				"NPCs": ["Snowy knight"],
-				"Output": "Snowy knight (item)",
+				"Output": "Snowy knight",
 				"Primary": true,
 				"Priority": 51
 			},
@@ -26098,6 +26098,78 @@
 				"Output": "Secateurs",
 				"Not F2P": true
 			},
+			"Player-owned house to Brimhaven": {
+				"Sections":["11057","Player-owned house"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Move your house to ~|Brimhaven|~": "Construction"
+				},
+				"Not F2P": true
+			},
+			"Player-owned house to Hosidius": {
+				"Sections":["6966","Player-owned house"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Move your house to ~|Hosidius|~": "Construction"
+				},
+				"Not F2P": true
+			},
+			"Player-owned house to Pollnivneach": {
+				"Sections":["13358-1","Player-owned house"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Move your house to ~|Pollnivneach|~": "Construction"
+				},
+				"Not F2P": true
+			},
+			"Player-owned house to Prifddinas": {
+				"Sections":["Prifddinas","Player-owned house"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Move your house to ~|Prifddinas|~": "Construction"
+				},
+				"Not F2P": true
+			},
+			"Player-owned house to Rellekka": {
+				"Sections":["10552-1","Player-owned house"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Move your house to ~|Rellekka|~": "Construction"
+				},
+				"Not F2P": true
+			},
+			"Player-owned house to Rimmington": {
+				"Sections":["11826","Player-owned house"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Move your house to ~|Rimmington|~": "Construction"
+				},
+				"Not F2P": true
+			},
+			"Player-owned house to Taverley": {
+				"Sections":["11574-1","Player-owned house"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Move your house to ~|Taverley|~": "Construction"
+				},
+				"Not F2P": true
+			},
+			"Player-owned house to Yanille": {
+				"Sections":["10032-1","Player-owned house"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Move your house to ~|Yanille|~": "Construction"
+				},
+				"Not F2P": true
+			},
+			"Player-owned house to Aldarin": {
+				"Sections":["5678-1","Player-owned house"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Move your house to ~|Aldarin|~": "Construction"
+				},
+				"Not F2P": true
+			},
 			"13874-3 to 13874-1": {
 				"Sections": ["13874-1", "13874-3"],
 				"Tasks": {
@@ -29134,12 +29206,16 @@
 				"Not F2P": true
 			},
 			"Access Zanaris Marketplace": {
-				"Items": ["Diamond"]
+				"Items": ["Diamond"],
+				"Chunks": ["Zanaris"],
+				"Not F2P": true
 			},
 			"Access Bounty Hunter Store": {
 				"Category": ["Minigame", "PvP Minigame"],
 				"Chunks": ["13631"],
-				"CombatLevelNeeded": 32,
+				"Skills":{
+					"Combat":32
+				},
 				"Not F2P": true
 			},
 			"Access Alry the Angler's shop": {
@@ -41486,13 +41562,6 @@
 			"Phoenix Gang Hideout": {
 				"UnlocksArea": true
 			},
-			"Player-owned house": {
-				"UnlocksArea": true,
-				"Tasks": {
-					"Move your house[+]": "Construction"
-				},
-				"Not F2P": true
-			},
 			"Poison Waste Dungeon": {
 				"UnlocksArea": true,
 				"Tasks": {
@@ -41614,7 +41683,7 @@
 				"Not F2P": true
 			},
 			"Rune essence mine": {
-				"Sections":["Rune essence mine","EnterTheAbyss3[+]"],
+				"Sections":["Rune essence mine","Wizards' Tower#Basement"],
 				"ConnectsSections": true,
 				"Tasks": {
 					"~|Rune Mysteries|~ Complete the quest": "Quest"
@@ -50642,7 +50711,7 @@
 				"Level": 90,
 				"Chunks": ["Mor Ul Rek#Inner Area"],
 				"Monsters": ["TzHaar-Hur"],
-				"Output": "Tzhaar-Hur",
+				"Output": "TzHaar-Hur",
 				"Primary": true
 			},
 			"Pickpocket a ~|bandit (Bandit Camp)|~": {
@@ -50764,6 +50833,12 @@
 				"Level": 38,
 				"NPCs": ["Master Farmer"],
 				"Output": "Master Farmer",
+				"Primary": true
+			},
+			"Pickpocket ~|Martin the Master Gardener|~": {
+				"Level": 38,
+				"NPCs": ["Martin the Master Gardener"],
+				"Output": "Martin the Master Gardener",
 				"Primary": true
 			},
 			"Pickpocket a ~|paladin|~": {
@@ -50921,7 +50996,7 @@
 			"Steal from a ~|Shop Counter (ore)|~": {
 				"Objects": ["Shop Counter (ore)"],
 				"Level": 82,
-				"Output": "Ore stall",
+				"Output": "Shop Counter (ore)",
 				"Primary": true,
 				"Priority": 2
 			},
@@ -50991,28 +51066,28 @@
 			"Steal from a ~|magic stall|~": {
 				"Level": 65,
 				"Objects": ["Magic Stall"],
-				"Output": "Magic stall",
+				"Output": "Magic Stall",
 				"Primary": true,
 				"Priority": 3
 			},
 			"Steal from a ~|monkey food stall|~": {
 				"Level": 5,
 				"Objects": ["Food Stall"],
-				"Output": "Food stall",
+				"Output": "Food Stall",
 				"Primary": true,
 				"Priority": 3
 			},
 			"Steal from a ~|monkey general stall|~": {
 				"Level": 5,
 				"Objects": ["General Stall"],
-				"Output": "General stall",
+				"Output": "General Stall",
 				"Primary": true,
 				"Priority": 4
 			},
 			"Steal from a ~|scimitar stall|~": {
 				"Level": 65,
 				"Objects": ["Scimitar Stall"],
-				"Output": "Scimitar stall",
+				"Output": "Scimitar Stall",
 				"Primary": true,
 				"Priority": 4
 			},
@@ -51039,7 +51114,7 @@
 			"Steal from a ~|silver stall#Keldagrim|~": {
 				"Level": 50,
 				"Objects": ["Silver stall#Keldagrim"],
-				"Output": "Keldagrim silver stall",
+				"Output": "Silver stall#Keldagrim",
 				"Primary": true,
 				"Priority": 5
 			},
@@ -143164,6 +143239,7 @@
 				"9551": true,
 				"10063": true,
 				"11413": true,
+				"Crandor and Karamja Dungeon#South":true,
 				"Fight Caves":true
 			},
 			"Diary": {
@@ -143738,14 +143814,7 @@
 			}
 		},
 		"Player-owned house": {
-			"Connect": {
-				"6968": true,
-				"10547": true,
-				"10806": true,
-				"11828": true,
-				"12854": true,
-				"12894": true
-			}
+
 		},
 		"Poison Waste Dungeon": {
 			"Connect": {
@@ -147553,6 +147622,7 @@
 			"Waterskin[+]": ["Waterskin(4)", "Waterskin(3)", "Waterskin(2)", "Waterskin(1)", "Waterskin(0)"],
 			"Water item[+]": ["Bucket of water", "Jug of water", "Bowl of water"],
 			"Water rune[+]": ["Water rune", "Mist rune", "Mud rune", "Steam rune"],
+			"Watering cans[+]": ["Watering can", "Watering can(1)", "Watering can(2)", "Watering can(3)", "Watering can(4)", "Watering can(5)", "Watering can(6)", "Watering can(7)", "Watering can(8)"],
 			"Watering can[+]": ["Watering can", "Watering can(1)", "Watering can(2)", "Watering can(3)", "Watering can(4)", "Watering can(5)", "Watering can(6)", "Watering can(7)", "Watering can(8)", "Gricoller's can"],
 			"Web slasher[+]": ["Knife", "Wilderness sword 1", "Wilderness sword 2", "Wilderness sword 3", "Wilderness sword 4", "3rd age longsword", "Adamant 2h sword", "Ancient godsword", "Armadyl godsword", "Bandos godsword", "Black 2h sword", "Bronze 2h sword", "Colossal blade", "Dragon 2h sword", "Gilded 2h sword", "Iron 2h sword", "Mithril 2h sword", "Rune 2h sword", "Saradomin godsword", "Saradomin sword", "Saradomin's blessed sword", "Shadow sword", "Spatula", "Steel 2h sword", "White 2h sword", "Zamorak godsword", "3rd age axe", "Adamant axe", "Adamant battleaxe", "Black axe", "Black battleaxe", "Blessed axe", "Bronze axe", "Bronze battleaxe", "Crystal axe", "Dharok's greataxe", "Dragon axe", "Dragon battleaxe", "Gilded axe", "Infernal axe", "Iron axe", "Iron battleaxe", "Leaf-bladed battleaxe", "Mithril axe", "Mithril battleaxe", "Rune axe", "Rune battleaxe", "Steel axe", "Steel battleaxe", "White battleaxe", "Banner (Arrav)", "Banner (Asgarnia)", "Banner (Dorgeshuun)", "Banner (Dragon)", "Banner (Fairy)", "Banner (Guthix)", "Banner (HAM)", "Banner (Horse)", "Banner (Jogre)", "Banner (Kandarin)", "Banner (Misthalin)", "Banner (Money)", "Banner (Saradomin)", "Banner (Skull)", "Banner (Varrock)", "Banner (Zamorak)", "Bronze fist flag", "Clan vexillum", "Cutthroat flag", "Gilded smile flag", "Green banner", "Lucky shot flag", "Phasmatys flag", "Protest banner", "Saradomon banner", "Shattered banner", "Trailblazer banner", "Treasure flag", "Twisted banner", "Zamorak banner", "Adamant claws", "Beach boxing gloves (pink)", "Beach boxing gloves (yellow)", "Black claws", "Bronze claws", "Dragon claws", "Iron claws", "Mithril claws", "Rune claws", "Steel claws", "White claws", "Adamant halberd", "Black halberd", "Bronze halberd", "Crystal halberd", "Dragon halberd", "Iron halberd", "Mithril halberd", "Rune halberd", "Steel halberd", "White halberd", "Holy scythe of vitur", "Sanguine scythe of vitur", "Scythe", "Scythe of vitur", "Scythe of vitur (uncharged)", "Adamant longsword", "Adamant scimitar", "Amy's saw", "Arclight", "Black longsword", "Black scimitar", "Blade of saeldor", "Blade of saeldor (c)", "Blisterwood sickle", "Blurite sword", "Brine sabre", "Bronze longsword", "Bronze scimitar", "Cleaver", "Darklight", "Decorative sword (gold)", "Decorative sword (red)", "Decorative sword (white)", "Dragon longsword", "Dragon scimitar", "Dragon scimitar (or)", "Emerald sickle (b)", "Enchanted emerald sickle (b)", "Enchanted ruby sickle (b)", "Excalibur", "Fremennik blade", "Gilded scimitar", "Granite longsword", "Harry's cutlass", "Iron longsword", "Iron scimitar", "Iron sickle", "Jade machete", "Katana", "Lucky cutlass", "Machete", "Mithril longsword", "Mithril scimitar", "Opal machete", "Red topaz machete", "Ruby sickle (b)", "Rune longsword", "Rune scimitar", "Rune scimitar (guthix)", "Rune scimitar (saradomin)", "Rune scimitar (zamorak)", "Silver sickle", "Silver sickle (b)", "Silverlight", "Skewer", "Steel longsword", "Steel scimitar", "Toktz-xil-ek", "Vesta's blighted longsword", "Vesta's longsword", "White longsword", "White scimitar", "Wooden spoon", "Adamant hasta", "Adamant hasta(p)", "Adamant hasta(p+)", "Adamant hasta(p++)", "Adamant hasta(kp)", "Adamant spear", "Adamant spear(p)", "Adamant spear(p+)", "Adamant spear(p++)", "Adamant spear(kp)", "Black spear", "Black spear(p)", "Black spear(p+)", "Black spear(p++)", "Black spear(kp)", "Bone spear", "Bronze hasta", "Bronze hasta(p)", "Bronze hasta(p+)", "Bronze hasta(p++)", "Bronze hasta(kp)", "Bronze spear", "Bronze spear(p)", "Bronze spear(p+)", "Bronze spear(p++)", "Bronze spear(kp)", "Butterfly net", "Dragon hasta", "Dragon hasta(p)", "Dragon hasta(p+)", "Dragon hasta(p++)", "Dragon hasta(kp)", "Dragon hunter lance", "Dragon spear", "Dragon spear(p)", "Dragon spear(p+)", "Dragon spear(p++)", "Dragon spear(kp)", "Gilded hasta", "Gilded spear", "Guthan's warspear", "Iron hasta", "Iron hasta(p)", "Iron hasta(p+)", "Iron hasta(p++)", "Iron hasta(kp)", "Iron spear", "Iron spear(p)", "Iron spear(p+)", "Iron spear(p++)", "Iron spear(kp)", "Leaf-bladed spear", "Magic butterfly net", "Merfolk trident", "Mithril hasta", "Mithril hasta(p)", "Mithril hasta(p+)", "Mithril hasta(p++)", "Mithril hasta(kp)", "Mithril spear", "Mithril spear(p)", "Mithril spear(p+)", "Mithril spear(p++)", "Mithril spear(kp)", "Noose wand", "Rune hasta", "Rune hasta(p)", "Rune hasta(p+)", "Rune hasta(p++)", "Rune hasta(kp)", "Rune spear", "Rune spear(p)", "Rune spear(p+)", "Rune spear(p++)", "Rune spear(kp)", "Steel hasta", "Steel hasta(p)", "Steel hasta(p+)", "Steel hasta(p++)", "Steel hasta(kp)", "Steel spear", "Steel spear(p)", "Steel spear(p+)", "Steel spear(p++)", "Steel spear(kp)", "Zamorakian hasta", "Zamorakian spear", "Abyssal dagger", "Abyssal dagger(p)", "Abyssal dagger(p+)", "Abyssal dagger(p++)", "Adamant dagger", "Adamant dagger(p)", "Adamant dagger(p+)", "Adamant dagger(p++)", "Adamant sword", "Barb-tail harpoon", "Black dagger", "Black dagger(p)", "Black dagger(p+)", "Black dagger(p++)", "Black sword", "Bone dagger", "Bone dagger(p)", "Bone dagger(p+)", "Bone dagger(p++)", "Bronze dagger", "Bronze dagger(p)", "Bronze dagger(p+)", "Bronze dagger(p++)", "Bronze sword", "Cattleprod", "Crystal harpoon", "Dark dagger", "Dragon dagger", "Dragon dagger(p)", "Dragon dagger(p+)", "Dragon dagger(p++)", "Dragon harpoon", "Dragon sword", "Dual sai", "Egg whisk", "Ghrazi rapier", "Glowing dagger", "Holy ghrazi rapier", "Infernal harpoon", "Iron dagger", "Iron dagger(p)", "Iron dagger(p+)", "Iron dagger(p++)", "Iron sword", "Keris", "Keris(p)", "Keris(p+)", "Keris(p++)", "Kitchen knife", "Leaf-bladed sword", "Magic secateurs", "Mithril dagger", "Mithril dagger(p)", "Mithril dagger(p+)", "Mithril dagger(p++)", "Mithril sword", "Osmumten's fang", "Rapier", "Rune dagger", "Rune dagger(p)", "Rune dagger(p+)", "Rune dagger(p++)", "Rune sword", "Spork", "Steel dagger", "Steel dagger(p)", "Steel dagger(p+)", "Steel dagger(p++)", "Steel sword", "Swift blade", "Toktz-xil-ak", "Training sword", "White dagger", "White dagger(p)", "White dagger(p+)", "White dagger(p++)", "Wolfbane", "Wooden sword", "Abyssal tentacle", "Abyssal whip", "Staff of balance", "Staff of light", "Staff of the dead", "Toxic staff of the dead"],
 			"White armour[+]": ["White gloves", "White boots", "White med helm", "White full helm", "White sq shield", "White plateskirt", "White kiteshield", "White platelegs", "White chainbody", "White platebody"],
@@ -148074,7 +148144,7 @@
 		"mixPlus": {
 			"Citizen[+]": ["Man", "Drunken man", "Hengel", "Cuffs", "Narf", "Jeff", "Rusty", "Woman", "Anja", "Woman (East Ardougne)", "Citizen (Varlamore)", "Tourist", "Salvager"],
 			"Farmer[+]": ["Farmer", "Farmer (Varlamore)"],
-			"Fremennik citizen[+]": ["Agnar", "Freygerd", "Inga", "Pontak", "Sassilik", "Borrokar", "Freidir", "Jennella", "Lanzig", "Lensa"]
+			"Fremennik citizen[+]": ["Agnar", "Inga", "Pontak", "Sassilik", "Borrokar", "Freidir", "Jennella", "Lanzig", "Lensa"]
 		},
 		"mixPlusNames": {
 			"Citizen[+]": "Any pickpocketable citizen",
@@ -148093,7 +148163,7 @@
 			"Basilisk[+]": ["Basilisk", "Basilisk Knight"],
 			"Lizardman[+]": ["Lizardman#Level 53", "Lizardman#Level 62", "Lizardman brute", "Lizardman shaman", "Lizardman shaman (Chambers of Xeric)"],
 			"Gnome[+]": ["Gnome", "Gnome child", "Gnome woman"],
-			"Fremennik citizen[+]": ["Agnar", "Freygerd", "Inga", "Pontak", "Sassilik", "Borrokar", "Freidir", "Jennella", "Lanzig", "Lensa"],
+			"Fremennik citizen[+]": ["Agnar", "Inga", "Pontak", "Sassilik", "Borrokar", "Freidir", "Jennella", "Lanzig", "Lensa"],
 			"Black dragon[+]": ["Black dragon", "King Black Dragon"],
 			"SandCrab[+]": ["Sand Crab", "King Sand Crab"],
 			"Callisto[+]": ["Callisto", "Artio"],
@@ -148157,7 +148227,7 @@
 			"Vyre[+]": ["Caninelle Draynar", "Carnivus Belamorta", "Diphylla Bechstein", "Draconis Sanguine", "Lasenna Rasputin", "Mort Nightshade", "Mortina Daubenton", "Pipistrelle Draynar", "Remus Kaninus", "Valentin Rasputin", "Vallessia Dracyula", "Vallessia von Pitt", "Vampyressa van Von", "Vampyrus Diaemus", "Violetta Sanguine", "Vlad Bechstein", "Vlad Diaemus", "Vonnetta Varnis", "Crimsonette van Marr", "Grigor Rasputin", "Vormar Vakan", "Alek Constantine", "Episcula Helsing", "Haemas Lamescus", "Misdrievus Shadum", "Nakasa Jovkai", "Natalidae Shadum", "Noctillion Lugosi", "Valentina Diae"],
 			"Banker[+]": ["Banker", "Arnold Lydspor", "Cornelius", "Emerald Benedict", "Eniola", "Fadli", "Financial Wizard", "Financial Seer", "Ghost banker", "Gnome banker", "Gundai", "Jade (Warriors' Guild)", "Jumaane", "Magnus Gram", "Nardah Banker", "Odovacar", "Sirsal Banker", "Squire (Void Knights banker)", "TzHaar-Ket-Yil", "TzHaar-Ket-Zuh", "Yusuf"],
 			"Tanner[+]": ["Ellis", "Tanner", "Leatherworker", "Sbott", "Eodan"],
-			"Fremennik citizen[+]": ["Agnar", "Freygerd", "Inga", "Pontak", "Sassilik", "Borrokar", "Freidir", "Jennella", "Lanzig", "Lensa"],
+			"Fremennik citizen[+]": ["Agnar", "Inga", "Pontak", "Sassilik", "Borrokar", "Freidir", "Jennella", "Lanzig", "Lensa"],
 			"H.A.M. Member[+]": ["H.A.M. Member#Female", "H.A.M. Member#Male"],
 			"Estate Agent[+]": ["Estate agent", "Alwyn"],
 			"Dye Trader[+]": ["Aggie", "Ali the dyer"],
@@ -214448,11 +214518,6 @@
 				}
 			},
 			"Fremennik citizen[+]": {
-				"Coins": {
-					"40": "Always"
-				}
-			},
-			"Freygerd": {
 				"Coins": {
 					"40": "Always"
 				}
