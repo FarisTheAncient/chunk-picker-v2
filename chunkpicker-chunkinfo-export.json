@@ -41684,7 +41684,7 @@
 			},
 			"Polar eagle lair": {
 				"UnlocksArea": true,
-				"SkillsNeeded": {
+				"Skills": {
 					"Agility": 35
 				},
 				"Tasks": {
@@ -63719,10 +63719,10 @@
 				"Label": "Untracked Uniques",
 				"Items": ["Contract of bloodied blows"]
 			},
-			"Obtain a ~|contract of catalytic acquisition|~": {
+			"Obtain a ~|Contract of catalyst acquisition|~": {
 				"Category": ["Untracked Uniques"],
 				"Label": "Untracked Uniques",
-				"Items": ["Contract of catalytic acquisition"]
+				"Items": ["Contract of catalyst acquisition"]
 			},
 			"Obtain a ~|contract of divine severance|~": {
 				"Category": ["Untracked Uniques"],
@@ -184345,7 +184345,7 @@
 				"1": "8/128"
 			},
 			"Nothing": {
-				"1": "355-2048"
+				"1": "355/2048"
 			}
 		},
 		"TzHaar-Ket#Level 149": {
