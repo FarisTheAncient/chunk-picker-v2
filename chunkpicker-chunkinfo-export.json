@@ -920,7 +920,7 @@
 				"Chunks": ["11310-1"],
 				"Level": 32,
 				"Priority": 2,
-				"Primary": false,
+				"Primary": true,
 				"Tasks": {
 					"~|Shilo Village|~ Complete the quest": "Quest"
 				},
@@ -10530,7 +10530,7 @@
 				"Not F2P": true
 			},
 			"Craft a ~|colossal pouch|~": {
-				"Items": ["Abyssal needle*", "Small pouch*", "Medium pouch*", "Large pouch*", "Giant pouch*"],
+				"Items": ["Abyssal needle", "Small pouch", "Medium pouch", "Large pouch", "Giant pouch"],
 				"Level": 56,
 				"Primary": false,
 				"Not F2P": true,
@@ -18570,7 +18570,7 @@
 				"Primary": true
 			},
 			"Mix an ~|irit tar|~": {
-				"Items": ["Pestle and mortar", "Irit*", "Swamp tar*"],
+				"Items": ["Pestle and mortar", "Irit leaf*", "Swamp tar*"],
 				"Level": 55,
 				"Output": "Irit tar",
 				"Primary": true
@@ -19384,7 +19384,7 @@
 				"Category": ["Puro-Puro"],
 				"Chunks": ["Puro-Puro"],
 				"Items": ["Impling jar"],
-				"Level": 1,
+				"Level": 17,
 				"Primary": true,
 				"Priority": 1,
 				"NoBoost": true
@@ -23223,7 +23223,7 @@
 				"Not F2P": true
 			},
 			"Infuse dragon boots into ~|primordial boots|~": {
-				"Items": ["Dragon boots*", "Primordial crystal*"],
+				"Items": ["Dragon boots", "Primordial crystal"],
 				"Level": 60,
 				"Output": "Primordial boots",
 				"Primary": false,
@@ -23235,7 +23235,7 @@
 				"NoBoost": true
 			},
 			"Infuse infinity boots into ~|eternal boots|~": {
-				"Items": ["Infinity boots*", "Eternal crystal*"],
+				"Items": ["Infinity boots", "Eternal crystal"],
 				"Level": 60,
 				"Output": "Eternal boots",
 				"Primary": false,
@@ -23247,7 +23247,7 @@
 				"NoBoost": true
 			},
 			"Infuse ranger boots into ~|Pegasian boots|~": {
-				"Items": ["Ranger boots*", "Pegasian crystal*"],
+				"Items": ["Ranger boots", "Pegasian crystal"],
 				"Level": 60,
 				"Output": "Pegasian boots",
 				"Primary": false,
@@ -23268,7 +23268,7 @@
                 "Skills": {
                     "Smithing": 66
                 },
-                "Priority": 3,
+				"Priority": 7,
                 "Not F2P": true
             },
 			"Wear a ~|god cape|~": {
@@ -26605,6 +26605,78 @@
 				"ConnectsSections": true,
 				"Not F2P": true
 			},
+			"Player-owned house to Brimhaven": {
+				"Sections":["11057","Player-owned house"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Move your house to ~|Brimhaven|~": "Construction"
+				},
+				"Not F2P": true
+			},
+			"Player-owned house to Hosidius": {
+				"Sections":["6966","Player-owned house"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Move your house to ~|Hosidius|~": "Construction"
+				},
+				"Not F2P": true
+			},
+			"Player-owned house to Pollnivneach": {
+				"Sections":["13358-1","Player-owned house"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Move your house to ~|Pollnivneach|~": "Construction"
+				},
+				"Not F2P": true
+			},
+			"Player-owned house to Prifddinas": {
+				"Sections":["Prifddinas","Player-owned house"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Move your house to ~|Prifddinas|~": "Construction"
+				},
+				"Not F2P": true
+			},
+			"Player-owned house to Rellekka": {
+				"Sections":["10552-1","Player-owned house"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Move your house to ~|Rellekka|~": "Construction"
+				},
+				"Not F2P": true
+			},
+			"Player-owned house to Rimmington": {
+				"Sections":["11826","Player-owned house"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Move your house to ~|Rimmington|~": "Construction"
+				},
+				"Not F2P": true
+			},
+			"Player-owned house to Taverley": {
+				"Sections":["11574-1","Player-owned house"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Move your house to ~|Taverley|~": "Construction"
+				},
+				"Not F2P": true
+			},
+			"Player-owned house to Yanille": {
+				"Sections":["10032-1","Player-owned house"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Move your house to ~|Yanille|~": "Construction"
+				},
+				"Not F2P": true
+			},
+			"Player-owned house to Aldarin": {
+				"Sections":["5678-1","Player-owned house"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Move your house to ~|Aldarin|~": "Construction"
+				},
+				"Not F2P": true
+			},
 			"5176-1 to 5432-1": {
 				"Sections": ["5176-1", "5432-1"],
 				"ConnectsSections": true,
@@ -26632,6 +26704,110 @@
 				"Sections": ["4917-1", "4917-2"],
 				"Tasks": {
 					"~|Children of the Sun|~ Complete the quest": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"11310-1 to 11566-1": {
+				"Sections": ["11310-1", "11566-1"],
+				"Tasks": {
+					"~|Shilo Village|~ Complete the quest": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"11310-1 to 11058": {
+				"Sections": ["11310-1", "11058"],
+				"Tasks": {
+					"~|Shilo Village|~ Complete the quest": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"14646-1 to 15159": {
+				"Sections": ["14646-1", "15159"],
+				"Tasks": {
+					"~|Ghosts Ahoy|~ 8": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"13877-1 to 13877-2": {
+				"Sections": ["13877-1", "13877-2"],
+				"Tasks": {
+					"~|In Aid of the Myreque|~ 4": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"12596-4 to 12852-1": {
+				"Sections": ["12596-4", "12852-1"],
+				"Tasks": {
+					"~|Shield of Arrav|~ 2a1": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"Edgeville Dungeon to Varrock Sewers": {
+				"Sections": ["Edgeville Dungeon", "Varrock Sewers"],
+				"Tasks": {
+					"Access the pipe from Edgeville Dungeon to Varrock Sewers ~|shortcut|~": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"12082-1 to 11314-2": {
+				"Sections": ["12082-1", "11314-2"],
+				"Tasks": {
+					"~|Dragon Slayer I|~ 6": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"10810-1 to 10558": {
+				"Sections": ["10810-1", "10558"],
+				"Tasks": {
+					"~|Cold War|~ 2": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"14652 to 14142": {
+				"Sections": ["14652", "14142"],
+				"Tasks": {
+					"~|Dragon Slayer II|~ 9": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"10553 to 9790": {
+				"Sections": ["10553", "9790"],
+				"Tasks": {
+					"~|The Fremennik Exiles|~ 7": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"14638-1 to 15148": {
+				"Sections": ["14638-1", "15148"],
+				"Tasks": {
+					"~|The Great Brain Robbery|~ 1": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"10810-1 to 11325": {
+				"Sections": ["10810-1", "11325"],
+				"Tasks": {
+					"~|Making Friends with My Arm|~ 3": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"6459-1 to 6303": {
+				"Sections": ["6459-1", "6303"],
+				"Tasks": {
+					"~|Tale of the Righteous|~ 1": "Quest"
 				},
 				"ConnectsSections": true,
 				"Not F2P": true
@@ -31101,7 +31277,7 @@
 				"Output": "Climbing boots",
 				"Not F2P": true
 			},
-			"Buy a candle from the ~|Candle seller|~*": {
+			"Buy a candle from the ~|candle seller|~*": {
 				"NPCs": ["Candle seller"],
 				"Source": "shop",
 				"Output": "Candle",
@@ -31504,7 +31680,7 @@
 				"Output": "Expert potion pack loot",
 				"Not F2P": true
 			},
-			"Open a giant egg sack*": {
+			"Open a giant egg sack": {
 				"Items": ["Giant egg sac(full)*", "Knife"],
 				"Output": "Red spiders' eggs",
 				"Not F2P": true
@@ -39837,7 +40013,7 @@
 				"Not F2P": true
 			},
 			"North of Menaphos gate.": {
-				"Chunks": ["12843"],
+				"Chunks": ["12843-1"],
 				"ClueTier": "master",
 				"ClueType": "Hot/Cold",
 				"Items": ["Spade", "Strange device (master)"],
@@ -41088,10 +41264,17 @@
 				},
 				"Not F2P": true
 			},
-			"9285": {
+			"Abyssal Area": {
 				"UnlocksArea": true,
 				"Tasks": {
 					"~|Fairytale II - Cure a Queen|~ 2": "Quest"
+				},
+				"Not F2P": true
+			},
+			"Abyssal Nexus": {
+				"UnlocksArea": true,
+				"Tasks": {
+					"Access Abyssal Nexus[+]": "Nonskill"
 				},
 				"Not F2P": true
 			},
@@ -41114,9 +41297,8 @@
 				},
 				"Not F2P": true
 			},
-			"10038-1 to Ancient Cavern": {
-				"ConnectsSections": true,
-				"Sections":["10038-1","Ancient Cavern"],
+			"Ancient Cavern": {
+				"UnlocksArea": true,
 				"Items": ["Oak logs", "BarbarianBow[+]"],
 				"Skills": {
 					"Firemaking": 35
@@ -41241,6 +41423,11 @@
 				"UnlocksArea": true,
 				"Not F2P": true
 			},
+			"Catacombs of Kourend": {
+				"UnlocksArea": true,
+				"Chunks": ["6457"],
+				"Not F2P": true
+			},
 			"Cerberus' Lair": {
 				"UnlocksArea": true,
 				"Not F2P": true
@@ -41302,6 +41489,13 @@
 				"UnlocksArea": true,
 				"Tasks": {
 					"Access Cosmic altar[+]": "Nonskill"
+				},
+				"Not F2P": true
+			},
+			"Cosmic entity's plane": {
+				"UnlocksArea": true,
+				"Tasks": {
+					"~|Fairytale II - Cure a Queen|~ 2": "Quest"
 				},
 				"Not F2P": true
 			},
@@ -41463,6 +41657,13 @@
 				},
 				"Not F2P": true
 			},
+			"Enchanted Valley": {
+				"UnlocksArea": true,
+				"Tasks": {
+					"~|Fairytale II - Cure a Queen|~ 2": "Quest"
+				},
+				"Not F2P": true
+			},
 			"Escape Caves": {
 				"UnlocksArea": true,
 				"Not F2P": true
@@ -41578,6 +41779,13 @@
 				"UnlocksArea": true,
 				"Tasks": {
 					"EnterGodWars[+]": "Nonskill"
+				},
+				"Not F2P": true
+			},
+			"Gorak Plane": {
+				"UnlocksArea": true,
+				"Tasks": {
+					"~|Fairytale II - Cure a Queen|~ 2": "Quest"
 				},
 				"Not F2P": true
 			},
@@ -41738,6 +41946,10 @@
 			"Kalphite Queen's Lair": {
 				"UnlocksArea": true,
 				"Items": ["Rope"],
+				"Not F2P": true
+			},
+			"Karuulm Slayer Dungeon#Lobby": {
+				"UnlocksArea": true,
 				"Not F2P": true
 			},
 			"Karuulm Slayer Dungeon": {
@@ -42026,6 +42238,13 @@
 			},
 			"Phoenix Gang Hideout": {
 				"UnlocksArea": true
+			},
+			"Player-owned house": {
+				"UnlocksArea": true,
+				"Tasks": {
+					"Move your house[+]": "Construction"
+				},
+				"Not F2P": true
 			},
 			"Poison Waste Dungeon": {
 				"UnlocksArea": true,
@@ -43896,7 +44115,7 @@
 			},
 			"Wear ~|Void Knight equipment|~": {
 				"Category": ["Minigame"],
-				"Chunks": ["10537", "10536"],
+				"Chunks": ["10537", "10536"], "comment":"todo",
 				"Items": ["Void Knight equipment[+]"],
 				"Level": 42,
 				"Primary": false,
@@ -50690,7 +50909,7 @@
 				"NoBoost": true
 			},
 			"Catch a ~|leaping salmon|~": {
-				"Items": ["Barbarian rod[+]", "Barbarian bait[+]*"],
+				"Items": ["Barbarian rod[+]", "Barbarian bait[+]"],
 				"Level": 30,
 				"Objects": ["Fishing spot (barbarian)"],
 				"Output": "Leaping salmon",
@@ -50704,7 +50923,7 @@
 				"Not F2P": true
 			},
 			"Catch a ~|leaping sturgeon|~": {
-				"Items": ["Barbarian rod[+]", "Barbarian bait[+]*"],
+				"Items": ["Barbarian rod[+]", "Barbarian bait[+]"],
 				"Level": 45,
 				"Objects": ["Fishing spot (barbarian)"],
 				"Output": "Leaping sturgeon",
@@ -50718,7 +50937,7 @@
 				"Not F2P": true
 			},
 			"Catch a ~|leaping trout|~": {
-				"Items": ["Barbarian rod[+]", "Barbarian bait[+]*"],
+				"Items": ["Barbarian rod[+]", "Barbarian bait[+]"],
 				"Level": 15,
 				"Objects": ["Fishing spot (barbarian)"],
 				"Output": "Leaping trout",
@@ -106900,6 +107119,9 @@
 					"~|Barbarian Training|~ 2c5a3": "Quest",
 					"AnySpearHasta[+]": "Nonskill"
 				},
+				"Skills": {
+					"Smithing": 5
+				},
 				"Not F2P": true
 			},
 			"~|Barbarian Training|~ 2c5b1": {
@@ -108238,6 +108460,9 @@
 				"Tree": 1
 			}
 		},
+		"4759": {
+			"Name": "Underground Pass"
+		},
 		"4763": {
 			"Connect": {
 				"4663": true
@@ -108481,8 +108706,8 @@
 					}
 				},
 				"3": {
-					"Object": {
-						"Stone chest (The Stranglewood)": 1
+			"Object": {
+				"Stone chest (The Stranglewood)": 1
 					}
 				}
 			},
@@ -108738,6 +108963,29 @@
 			"Object": {
 				"Cave": 1,
 				"Hespori patch": 1
+			}
+		},
+		"5022": {
+			"Monster": {
+				"Wyrm": 7
+			},
+			"NPC": {
+				"Garbek quo Maten": 1
+			},
+			"Name": "Karuulm Slayer Dungeon",
+			"Object": {
+				"Lava gap": 1
+			}
+		},
+		"5023": {
+			"Monster": {
+				"Fire giant": 7,
+				"Greater demon": 6,
+				"Wyrm": 8
+			},
+			"Name": "Karuulm Slayer Dungeon",
+			"Object": {
+				"Stone chest": 1
 			}
 		},
 		"5139": {
@@ -109127,6 +109375,9 @@
 			}
 		},
 		"5178": {
+			"Connect": {
+				"9541": true
+			},
 			"Diary": {
 				"Kourend & Kebos": "MD1"
 			},
@@ -109311,6 +109562,55 @@
 			"Object": {
 				"Stone chest": 4,
 				"Strange hole": 1
+			}
+		},
+		"5278": {
+			"Monster": {
+				"Sulphur Lizard": 2
+			}
+		},
+		"5279": {
+			"Connect": {
+				"5179": true,
+				"5535": true
+			},
+			"Monster": {
+				"Drake": 4,
+				"Fire giant": 6,
+				"Greater demon": 3,
+				"Hellhound": 7,
+				"Hydra": 4,
+				"Sulphur Lizard": 10,
+				"Wyrm": 1
+			},
+			"NPC": {
+				"Kaal-Ket-Jor": 1,
+				"Kaal-Mej-San": 1,
+				"Kaal-Xil-Dar": 1
+			},
+			"Name": "Karuulm Slayer Dungeon",
+			"Object": {
+				"Cave exit": 1,
+				"Mysterious pipe": 1,
+				"Rocks": 3,
+				"Steps": 4,
+				"Stone chest": 3,
+				"Tunnel": 1
+			}
+		},
+		"5280": {
+			"Monster": {
+				"Drake": 5,
+				"Hydra": 13
+			},
+			"NPC": {
+				"Kormar quo Maten": 1,
+				"Tarfol quo Maten": 1
+			},
+			"Name": "Karuulm Slayer Dungeon#Lobby",
+			"Object": {
+				"Lava gap": 1,
+				"Stone chest": 1
 			}
 		},
 		"5395": {
@@ -110070,6 +110370,38 @@
 				"Fire rune": 1
 			}
 		},
+		"5535": {
+			"Connect": {
+				"5279": true,
+				"5435": true
+			},
+			"Monster": {
+				"Drake": 3,
+				"Hellhound": 5,
+				"Sulphur Lizard": 1
+			},
+			"Name": "Karuulm Slayer Dungeon",
+			"Object": {
+				"Crate": 3,
+				"Crates": 3,
+				"Mysterious pipe": 1
+			}
+		},
+		"5536": {
+			"Monster": {
+				"Alchemical Hydra": 1,
+				"Drake": 1
+			},
+			"NPC": {
+				"Orrvor quo Maten": 1
+			},
+			"Name": "Karuulm Slayer Dungeon",
+			"Object": {
+				"Broken machinery": 1,
+				"Rocks": 1,
+				"Stone chest": 2
+			}
+		},
 		"5676": {
 			"Sections": {
 				"1": {
@@ -110382,7 +110714,7 @@
 				"3": {
 					"Monster": {
 						"Rabbit": 3
-					},
+			},
 					"NPC": {
 						"Diana": 1,
 						"Dominicus, Teoki of Ranul": 1,
@@ -112961,6 +113293,9 @@
 		"6460": {
 			"Sections": {
 				"1": {
+					"Connect": {
+						"9541": true
+					},
 					"Monster": {
 						"Bat": 4,
 						"Giant bat": 4
@@ -115147,6 +115482,9 @@
 			}
 		},
 		"7223": {
+			"Connect": {
+				"9541": true
+			},
 			"Monster": {
 				"Mugger": 1
 			},
@@ -116910,6 +117248,9 @@
 			}
 		},
 		"8267": {
+			"Connect": {
+				"9541": true
+			},
 			"NPC": {
 				"Cosmic Being": 1
 			},
@@ -117078,6 +117419,9 @@
 			"Sections": {
 				"1": {},
 				"2": {
+					"Connect": {
+						"9541": true
+					},
 					"Object": {
 						"Fairy ring": 1
 					}
@@ -117602,6 +117946,9 @@
 					}
 				},
 				"2": {
+					"Connect": {
+						"9541": true
+					},
 					"NPC": {
 						"Badger": 3,
 						"Broken Handz": 1
@@ -118056,6 +118403,9 @@
 			"Nickname": "Red Base"
 		},
 		"9006": {
+			"Connect": {
+				"9541": true
+			},
 			"Monster": {
 				"Bird": 1,
 				"Pyrefiend": 10,
@@ -118807,6 +119157,9 @@
 		"9272": {
 			"Sections": {
 				"1": {
+					"Connect": {
+						"9541": true
+					},
 					"Diary": {
 						"Western Provinces": "EA1, EA3"
 					},
@@ -119309,6 +119662,7 @@
 		},
 		"9519": {
 			"Connect": {
+				"9541": true,
 				"9619": true
 			},
 			"NPC": {
@@ -121028,6 +121382,7 @@
 		},
 		"9808": {
 			"Connect": {
+				"9541": true,
 				"9551": true,
 				"11413": true
 			},
@@ -121486,7 +121841,8 @@
 			"Sections": {
 				"1": {
 					"Connect": {
-						"7257": true
+						"7257": true,
+						"9541": true
 					},
 					"Diary": {
 						"Ardougne": "MD2, MD6, HD10"
@@ -122032,6 +122388,7 @@
 		},
 		"10040": {
 			"Connect": {
+				"9541": true,
 				"10140": true
 			},
 			"NPC": {
@@ -122115,6 +122472,7 @@
 			"Sections": {
 				"1": {
 					"Connect": {
+						"9541": true,
 						"10144": true,
 						"10307": true
 					},
@@ -122747,6 +123105,9 @@
 			}
 		},
 		"10286": {
+			"Connect": {
+				"9541": true
+			},
 			"Monster": {
 				"Ogre": 8,
 				"Ogre chieftain": 1,
@@ -123119,6 +123480,7 @@
 				"Mourner": 3,
 				"Parrots": 2,
 				"Parroty Pete": 1,
+				"Penguin (monster)": 1,
 				"Philipe Carnillean": 1,
 				"Priest": 1,
 				"Probita": 1,
@@ -124057,6 +124419,9 @@
 			"Nickname": "North Rantz Penninsula"
 		},
 		"10544": {
+			"Connect": {
+				"9541": true
+			},
 			"Monster": {
 				"Jungle spider": 21,
 				"Spider": 2
@@ -124142,6 +124507,7 @@
 			"Sections": {
 				"1": {
 					"Connect": {
+						"9541": true,
 						"12100": true
 					},
 					"Monster": {
@@ -124294,6 +124660,9 @@
 					}
 				},
 				"2": {
+					"Connect": {
+						"9541": true
+					},
 					"Monster": {
 						"Grizzly bear": 2
 					},
@@ -124478,6 +124847,7 @@
 		},
 		"10550": {
 			"Connect": {
+				"9541": true,
 				"10650": true
 			},
 			"Diary": {
@@ -124803,8 +125173,9 @@
 			}
 		},
 		"10569": {
-			"ConnecT":{
-				"10802-1":true
+			"Connect":{
+				"10802-1":true,
+				"9541": true
 			},
 			"Monster": {
 				"Duck": 22,
@@ -124982,7 +125353,7 @@
 			"NPC": {
 				"Hieve": 1
 			},
-			"Name": "Brimhaven Dungeon",
+			"Name": "Brimhaven Dungeon Entrance",
 			"Object": {
 				"Crevice": 1
 			},
@@ -125185,6 +125556,9 @@
 					}
 				},
 				"3": {
+					"Connect": {
+						"9541": true
+					},
 					"Object": {
 						"Fairy ring": 1,
 						"Monkeybars": 1,
@@ -125314,6 +125688,9 @@
 					}
 				},
 				"3": {
+					"Connect": {
+						"9541": true
+					},
 					"Diary": {
 						"Ardougne": "MD12"
 					},
@@ -125374,6 +125751,7 @@
 		},
 		"10804": {
 			"Connect": {
+				"9541": true,
 				"10904": true
 			},
 			"Diary": {
@@ -125573,6 +125951,9 @@
 		"10807": {
 			"Sections": {
 				"1": {
+					"Connect": {
+						"9541": true
+					},
 					"Monster": {
 						"Chicken": 3,
 						"Cow": 1,
@@ -125751,6 +126132,7 @@
 			"Sections": {
 				"1": {
 					"Connect": {
+						"9541": true,
 						"10910": true,
 						"11166": true
 					},
@@ -125920,6 +126302,7 @@
 		},
 		"10833": {
 			"Connect": {
+				"9541": true,
 				"13972": true
 			},
 			"Monster": {
@@ -126506,6 +126889,9 @@
 		"11054": {
 			"Sections": {
 				"1": {
+					"Connect": {
+						"9541": true
+					},
 					"Diary": {
 						"Karamja": "MD7"
 					},
@@ -127081,6 +127467,7 @@
 			"Sections": {
 				"1": {
 					"Connect": {
+						"9541": true,
 						"11164": true
 					},
 					"NPC": {
@@ -127343,6 +127730,7 @@
 		},
 		"11089": {
 			"Connect": {
+				"9541": true,
 				"10833": true
 			},
 			"Name": "Yu'biusk",
@@ -128399,7 +128787,8 @@
 		},
 		"11325": {
 			"Connect":{
-				"10842":true
+				"10842":true,
+				"11425": true
 			},
 			"Monster": {
 				"Ice wolf": 5
@@ -129144,6 +129533,7 @@
 				},
 				"2": {
 					"Connect": {
+						"9541": true,
 						"11668": true
 					},
 					"Diary": {
@@ -130408,6 +130798,9 @@
 			}
 		},
 		"11824": {
+			"Connect": {
+				"9541": true
+			},
 			"Diary": {
 				"Falador": "MD5"
 			},
@@ -132065,6 +132458,9 @@
 			}
 		},
 		"12102": {
+			"Connect": {
+				"9541": true
+			},
 			"Monster": {
 				"Rabbit": 4,
 				"Stag": 2
@@ -132097,6 +132493,9 @@
 			}
 		},
 		"12106": {
+			"Connect": {
+				"9541": true
+			},
 			"Name": "Abyssal Nexus",
 			"Object": {
 				"Appendage": 1,
@@ -132147,6 +132546,9 @@
 			}
 		},
 		"12108": {
+			"Connect": {
+				"9541": true
+			},
 			"Monster": {
 				"Abyssal demon": 13,
 				"Abyssal guardian": 6,
@@ -132219,6 +132621,9 @@
 			}
 		},
 		"12115": {
+			"Connect": {
+				"9541": true
+			},
 			"Monster": {
 				"Gorak": 11
 			},
@@ -132537,6 +132942,7 @@
 		},
 		"12337": {
 			"Connect": {
+				"9541": true,
 				"11595": true,
 				"12437": true
 			},
@@ -132590,6 +132996,7 @@
 			"Sections": {
 				"1": {
 					"Connect": {
+						"9541": true,
 						"12438": true
 					},
 					"Diary": {
@@ -132918,6 +133325,7 @@
 			"Sections": {
 				"1": {
 					"Connect": {
+						"9541": true,
 						"12186": true,
 						"12442": true,
 						"12633": true
@@ -133753,6 +134161,7 @@
 					"Object": {
 						"Barrel (beer)": 1,
 						"Dead tree": 9,
+						"Fire": 1,
 						"Impling spawn#all-tier": 1,
 						"Oak tree": 8,
 						"Swamp bubbles": 2,
@@ -134811,6 +135220,7 @@
 		},
 		"12848": {
 			"Connect": {
+				"9541": true,
 				"13972": true
 			},
 			"Diary": {
@@ -136246,6 +136656,9 @@
 					}
 				},
 				"2": {
+					"Connect": {
+						"9541": true
+					},
 					"Object": {
 						"Fairy ring": 1,
 						"Stepping stone": 2
@@ -138772,6 +139185,9 @@
 			"Nickname": "Nardah Desert"
 		},
 		"13615": {
+			"Connect": {
+				"9541": true
+			},
 			"Monster": {
 				"Desert Lizard": 5,
 				"Desert snake": 3,
@@ -138908,6 +139324,9 @@
 					}
 				},
 				"2": {
+					"Connect": {
+						"9541": true
+					},
 					"Object": {
 						"Fairy ring": 1,
 						"Stepping stone": 1
@@ -139047,6 +139466,7 @@
 				},
 				"2": {
 					"Connect": {
+						"9541": true,
 						"13722":true
 					},
 					"Diary": {
@@ -139690,6 +140110,9 @@
 		"13877": {
 			"Sections": {
 				"1": {
+					"Connect": {
+						"9541": true
+					},
 					"Monster": {
 						"Bark Blamish Snail": 2,
 						"Blood Blamish Snail#Pointed": 1,
@@ -140738,6 +141161,9 @@
 		"14390": {
 			"Sections": {
 				"1": {
+					"Connect": {
+						"9541": true
+					},
 					"Monster": {
 						"Bat": 10,
 						"Feral Vampyre": 17,
@@ -141974,7 +142400,7 @@
 		},
 		"15000": {
 			"Connect": {
-				"14900": true
+				"14900-1": true
 			},
 			"Monster": {
 				"Bat": 2,
@@ -142544,6 +142970,9 @@
 			}
 		},
 		"Abyssal Area": {
+			"Connect": {
+				"9541": true
+			},
 			"Monster": {
 				"Abyssal demon": 13,
 				"Abyssal guardian": 6,
@@ -142555,6 +142984,9 @@
 			}
 		},
 		"Abyssal Nexus": {
+			"Connect": {
+				"9541": true
+			},
 			"Monster": {
 				"Abyssal Sire": 4
 			},
@@ -143308,6 +143740,7 @@
 				"6203": true,
 				"6457": true,
 				"6716": true,
+				"6810": true,
 				"7323": true
 			},
 			"Monster": {
@@ -143674,6 +144107,9 @@
 			}
 		},
 		"Cosmic entity's plane": {
+			"Connect": {
+				"9541": true
+			},
 			"NPC": {
 				"Cosmic Being": 1
 			},
@@ -144100,6 +144536,7 @@
 		},
 		"Dorgesh-Kaan South Dungeon": {
 			"Connect": {
+				"9541": true,
 				"10834": true,
 				"11089": true,
 				"13972": true
@@ -144433,6 +144870,9 @@
 			}
 		},
 		"Enchanted Valley": {
+			"Connect": {
+				"9541": true
+			},
 			"Monster": {
 				"Rabbit": 4,
 				"River troll": 1,
@@ -144563,7 +145003,8 @@
 			}
 		},
 		"Fisher Realm": {
-			"Connect":{
+			"Connect": {
+				"9541": true,
 				"10802-1":true
 			},
 			"Monster": {
@@ -144992,6 +145433,9 @@
 			}
 		},
 		"Gorak Plane": {
+			"Connect": {
+				"9541": true
+			},
 			"Monster": {
 				"Gorak#Gorak Plane": 11
 			},
@@ -145504,6 +145948,10 @@
 			}
 		},
 		"Karuulm Slayer Dungeon#Lobby": {
+			"Connect": {
+				"5179": true,
+				"5279": true
+			},
 			"NPC": {
 				"Kaal-Ket-Jor": 1,
 				"Kaal-Mej-San": 1,
@@ -145519,7 +145967,8 @@
 			}
 		},
 		"Karuulm Slayer Dungeon": {
-			"Connect":{
+			"Connect": {
+				"5280": true,
 				"Karuulm Slayer Dungeon#Lobby":true
 			},
 			"Diary": {
@@ -146327,6 +146776,7 @@
 		},
 		"Mor Ul Rek#Outer Area": {
 			"Connect": {
+				"9541": true,
 				"9551": true,
 				"10063": true,
 				"11413": true,
@@ -147826,6 +148276,8 @@
 		},
 		"Skotizo's Lair": {
 			"Connect": {
+				"6812": true,
+				"6813": true,
 				"Catacombs of Kourend": true
 			},
 			"Diary": {
@@ -150006,7 +150458,7 @@
 			"CharterShips[+]": [ "11061","11058","10545","10284-1","11825-2","12081-2"],
 			"FremmyHard3[+]": ["10296", "10297-1", "10297-2", "10552-1", "10553", "10554", "10808-1", "10809-1", "10809-2", "10809-3", "10809-4", "10809-5", "11064-1"],
 			"KandarinDiaryArea[+]": ["10806-1", "10806-2", "10806-3", "11061", "11062-1", "11062-4", "11317-1", "11318-1"],
-			"KaramjaChunks[+]": ["10801", "10802-1", "10802-2", "11053", "11054-1", "11054-2", "11055-1", "11055-2", "11056", "11057", "11058", "11309", "11310-1", "11310-2", "11310-3", "11310-4", "11310-5", "11310-6", "11311", "11312", "11313", "11565", "11566-1", "11566-2", "11566-3", "11567-1", "11567-2", "11568-1", "11568-2", "11569-1", "11821", "11822-1", "11822-2", "11823"],
+			"KaramjaChunks[+]": ["10801", "10802-1", "10802-2", "11053", "11054-1", "11054-2", "11055-1", "11055-2", "11056", "11057", "11058", "11309", "11310-1", "11310-2", "11310-3", "11310-4", "11310-5", "11310-6", "11311", "11312", "11312", "11313", "11565", "11566-1", "11566-2", "11566-3", "11567-1", "11567-2", "11568-1", "11568-2", "11569-1", "11821", "11822-1", "11822-2", "11823"],
 			"KaramjaMedium18[+]": ["8496-1", "8500", "10284-1", "10545", "11058", "11061", "11825-2", "12081-2", "14637", "14646-1"],
 			"KaramjaMedium19[+]": ["11056", "11310-1"],
 			"KKEasy1[+]": ["4923-2", "5179"],
@@ -151331,7 +151783,7 @@
 		"mixPlus": {
 			"Citizen[+]": ["Man", "Drunken man", "Hengel", "Cuffs", "Narf", "Jeff", "Rusty", "Woman", "Anja", "Woman (East Ardougne)", "Citizen (Tal Teklan)", "Citizen (Auburnvale)", "Citizen (Aldarin)", "Citizen (Kastori)", "Citizen (Civitas illa Fortis)", "Tourist", "Salvager"],
 			"Farmer[+]": ["Farmer", "Farmer (Varlamore)"],
-			"Fremennik citizen[+]": ["Agnar", "Inga", "Pontak", "Sassilik", "Borrokar", "Freidir", "Jennella", "Lanzig", "Lensa"]
+			"Fremennik citizen[+]": ["Agnar", "Freygerd", "Inga", "Pontak", "Sassilik", "Borrokar", "Freidir", "Jennella", "Lanzig", "Lensa"]
 		},
 		"mixPlusNames": {
 			"Citizen[+]": "Any pickpocketable citizen",
@@ -151350,7 +151802,7 @@
 			"Basilisk[+]": ["Basilisk", "Basilisk Knight"],
 			"Lizardman[+]": ["Lizardman#Level 53", "Lizardman#Level 62", "Lizardman brute", "Lizardman shaman", "Lizardman shaman (Chambers of Xeric)"],
 			"Gnome[+]": ["Gnome", "Gnome child", "Gnome woman"],
-			"Fremennik citizen[+]": ["Agnar", "Inga", "Pontak", "Sassilik", "Borrokar", "Freidir", "Jennella", "Lanzig", "Lensa"],
+			"Fremennik citizen[+]": ["Agnar", "Freygerd", "Inga", "Pontak", "Sassilik", "Borrokar", "Freidir", "Jennella", "Lanzig", "Lensa"],
 			"Black dragon[+]": ["Black dragon", "King Black Dragon"],
 			"SandCrab[+]": ["Sand Crab", "King Sand Crab"],
 			"Callisto[+]": ["Callisto", "Artio"],
@@ -154673,7 +155125,7 @@
 			"Cockatrices": ["5680", "11064"],
 			"Commander Zilyana": ["11578"],
 			"Cows": ["4921", "5178", "6968", "8491", "8757", "10288", "10548", "10807", "11571", "12083", "12595", "12596", "12849", "12850", "12851", "14391"],
-			"Crabs": ["4663", "5167", "6189", "6445", "6453", "6457", "6706", "6710", "6959", "6965", "6966", "7215", "7222", "7479", "9003", "10042", "10554", "10810", "14389", "14645", "14652", "14900", "14908", "15162"],
+			"Crabs": ["4663", "5167", "6189", "6445", "6453", "6457", "6706", "6710", "6959", "6965", "6966", "7215", "7222", "7479", "9003", "10042", "10554", "10810", "14389", "14645", "14652", "14900-1", "14908", "15162"],
 			"Crawling Hands": ["13623", "14387"],
 			"Crazy archaeologist": ["11833"],
 			"Crocodiles": ["12588", "12844", "13100", "13101", "13357", "13611"],
@@ -154766,7 +155218,7 @@
 			"Thermonuclear smoke devil": ["9519"],
 			"Trolls": ["4918", "4919", "9275", "9276", "9531", "9532", "10810", "11320", "11321", "11322", "11576", "11577", "12849"],
 			"Turoths": ["11064"],
-			"Vampyres": ["11578", "12090", "13874", "14130", "14385", "14386", "14387", "14388", "14389", "14390", "14642", "14644", "14900"],
+			"Vampyres": ["11578", "12090", "13874", "14130", "14385", "14386", "14387", "14388", "14389", "14390", "14642", "14644", "14900-1"],
 			"Venenatis": ["12602", "13115"],
 			"Vet'ion": ["12601", "12859"],
 			"Vorkath": ["9023"],
@@ -162468,7 +162920,7 @@
 				"1": "2/128"
 			}
 		},
-		"Cyclops (Ardougne Zoo)": {
+		"Cyclops#Ardougne Zoo": {
 			"Big bones": {
 				"1": "Always"
 			},
@@ -192807,7 +193259,7 @@
 			"14638": true,
 			"14646": true,
 			"14895": true,
-			"14900": true,
+			"14900-1": true,
 			"15151": true,
 			"15159": true,
 			"Penguin Base": true,
@@ -200116,6 +200568,41 @@
 					"1": "Always"
 				}
 			},
+			"Fish shoal": {
+				"Clue bottle (medium)": {
+					"1": "Rare"
+				},
+				"Oyster": {
+					"1": "Varies"
+				},
+				"Pufferfish": {
+					"1": "Varies"
+				},
+				"Raw anchovies": {
+					"1": "Varies"
+				},
+				"Raw lobster": {
+					"1": "Varies"
+				},
+				"Raw manta ray": {
+					"1": "Varies"
+				},
+				"Raw sardine": {
+					"1": "Varies"
+				},
+				"Raw sea turtle": {
+					"1": "Varies"
+				},
+				"Raw shark": {
+					"1": "Varies"
+				},
+				"Raw swordfish": {
+					"1": "Varies"
+				},
+				"Raw tuna": {
+					"1": "Varies"
+				}
+			},
 			"Golden warbler": {
 				"Bones": {
 					"1": "Always"
@@ -200975,6 +201462,50 @@
 				},
 				"Yew longbow": {
 					"1": "1/100"
+				}
+			},
+			"Bluegill loot": {
+				"Bluegill": {
+					"1": "Always"
+				},
+				"Golden tench": {
+					"1": "1/20000"
+				},
+				"Molch pearl": {
+					"1": "Varies"
+				}
+			},
+			"Common tench loot": {
+				"Common tench": {
+					"1": "Always"
+				},
+				"Golden tench": {
+					"1": "1/20000"
+				},
+				"Molch pearl": {
+					"1": "Varies"
+				}
+			},
+			"Mottled eel loot": {
+				"Mottled eel": {
+					"1": "Always"
+				},
+				"Golden tench": {
+					"1": "1/20000"
+				},
+				"Molch pearl": {
+					"1": "Varies"
+				}
+			},
+			"Greater siren loot": {
+				"Greater siren": {
+					"1": "Always"
+				},
+				"Golden tench": {
+					"1": "1/20000"
+				},
+				"Molch pearl": {
+					"1": "Varies"
 				}
 			},
 			"Pyre fox": {
@@ -219313,6 +219844,11 @@
 					"40": "Always"
 				}
 			},
+			"Freygerd": {
+				"Coins": {
+					"40": "Always"
+				}
+			},
 			"Fruit Stall": {
 				"Banana": {
 					"1": "20/100"
@@ -235561,7 +236097,9 @@
 		},
 		"12587": {
 			"1": [
-				"12588-1"
+				"12588-1",
+				"12843-1",
+				"12843-2"
 			],
 			"2": [
 				"12588-1"
@@ -235760,21 +236298,26 @@
 			]
 		},
 		"12843": {
-			"0": [
+			"1": [
+				"12587-1",
 				"12844",
 				"13099-2"
+			],
+			"2": [
+				"12587-1"
 			]
 		},
 		"12844": {
 			"0": [
 				"12588-1",
-				"12843",
+				"12843-1",
 				"13100-2"
 			]
 		},
 		"12845": {
 			"1": [
 				"12589",
+				"12843-1",
 				"12846-1",
 				"13101"
 			],
@@ -236018,7 +236561,7 @@
 				"13355"
 			],
 			"2": [
-				"12843",
+				"12843-1",
 				"13100-2"
 			]
 		},
@@ -236867,6 +237410,7 @@
 		},
 		"14388": {
 			"1": [
+				"14132-1",
 				"14387-2",
 				"14389-2",
 				"14644-2"
@@ -237187,7 +237731,7 @@
 			]
 		}
 	},
-	"walkableChunks": ["4403", "4404", "4405", "4656", "4659", "4660", "4661", "4662", "4663", "4664", "4665", "4666", "4667", "4910", "4911", "4912", "4913", "4915", "4916", "4917", "4918", "4919", "4920", "4921", "4922", "4923", "5165", "5166", "5167", "5168", "5169", "5171", "5172", "5173", "5174", "5175", "5176", "5177", "5178", "5179", "5180", "5420", "5421", "5422", "5423", "5424", "5425", "5426", "5427", "5428", "5429", "5430", "5431", "5432", "5433", "5434", "5435", "5676", "5677", "5678", "5679", "5680", "5681", "5682", "5683", "5684", "5686", "5687", "5688", "5689", "5690", "5691", "5692", "5933", "5934", "5935", "5936", "5937", "5938", "5939", "5940", "5941", "5942", "5943", "5944", "5945", "5946", "5947", "5948", "5949", "6189", "6190", "6191", "6192", "6193", "6194", "6195", "6196", "6197", "6198", "6199", "6200", "6201", "6202", "6203", "6204", "6205", "6445", "6446", "6447", "6448", "6449", "6450", "6451", "6453", "6454", "6455", "6456", "6457", "6458", "6459", "6460", "6461", "6462", "6701", "6702", "6703", "6704", "6705", "6706", "6707", "6710", "6711", "6712", "6713", "6714", "6715", "6716", "6717", "6957", "6958", "6959", "6960", "6961", "6965", "6966", "6967", "6968", "6969", "6970", "6971", "6972", "6973", "7215", "7216", "7217", "7221", "7222", "7223", "7224", "7225", "7226", "7227", "7228", "7472", "7478", "7479", "8236", "8237", "8238", "8252", "8253", "8491", "8492", "8493", "8494", "8495", "8496", "8497", "8498", "8499", "8500", "8501", "8508", "8509", "8747", "8748", "8749", "8750", "8751", "8752", "8753", "8754", "8755", "8756", "8757", "8763", "9003", "9004", "9005", "9006", "9007", "9008", "9009", "9010", "9011", "9012", "9013", "9014", "9015", "9016", "9023", "9260", "9261", "9262", "9263", "9264", "9265", "9266", "9267", "9268", "9269", "9270", "9271", "9272", "9273", "9275", "9276", "9519", "9520", "9521", "9523", "9524", "9525", "9526", "9527", "9528", "9531", "9532", "9772", "9773", "9774", "9775", "9776", "9777", "9778", "9779", "9780", "9781", "9782", "9783", "9790", "10028", "10029", "10030", "10031", "10032", "10033", "10034", "10035", "10036", "10037", "10038", "10039", "10040", "10042", "10043", "10044", "10284", "10285", "10286", "10287", "10288", "10289", "10290", "10291", "10292", "10293", "10294", "10296", "10297", "10300", "10536", "10537", "10542", "10543", "10544", "10545", "10546", "10547", "10548", "10549", "10550", "10551", "10552", "10553", "10554", "10556", "10558", "10559", "10794", "10795", "10801", "10802", "10803", "10804", "10805", "10806", "10807", "10808", "10809", "10810", "10811", "11050", "11051", "11053", "11054", "11055", "11056", "11057", "11058", "11059", "11060", "11061", "11062", "11063", "11064", "11065", "11066", "11067", "11068", "11309", "11310", "11311", "11312", "11313", "11314", "11315", "11316", "11317", "11318", "11319", "11320", "11321", "11322", "11323", "11325", "11326", "11562", "11565", "11566", "11567", "11568", "11569", "11570", "11571", "11572", "11573", "11574", "11575", "11576", "11577", "11578", "11579", "11581", "11821", "11822", "11823", "11824", "11825", "11826", "11827", "11828", "11829", "11830", "11831", "11832", "11833", "11834", "11835", "11836", "11837", "12078", "12081", "12082", "12083", "12084", "12085", "12086", "12087", "12088", "12089", "12090", "12091", "12092", "12093", "12332", "12337", "12338", "12339", "12340", "12341", "12342", "12343", "12344", "12345", "12346", "12347", "12348", "12349", "12587", "12588", "12589", "12590", "12591", "12593", "12594", "12595", "12596", "12597", "12598", "12599", "12600", "12601", "12602", "12603", "12604", "12605", "12843", "12844", "12845", "12846", "12847", "12848", "12849", "12850", "12851", "12852", "12853", "12854", "12855", "12856", "12857", "12858", "12859", "12860", "12861", "13098", "13099", "13100", "13101", "13102", "13103", "13104", "13105", "13106", "13107", "13108", "13109", "13110", "13111", "13112", "13113", "13114", "13115", "13116", "13117", "13354", "13355", "13356", "13357", "13358", "13359", "13360", "13361", "13362", "13363", "13364", "13365", "13366", "13367", "13368", "13369", "13370", "13371", "13372", "13373", "13374", "13375", "13376", "13611", "13612", "13613", "13614", "13615", "13616", "13617", "13618", "13619", "13620", "13621", "13622", "13623", "13630", "13631", "13632", "13869", "13870", "13871", "13872", "13873", "13874", "13875", "13876", "13877", "13878", "13879", "13886", "13887", "13888", "14129", "14130", "14131", "14132", "14133", "14134", "14135", "14142", "14385", "14386", "14387", "14388", "14389", "14390", "14391", "14398", "14637", "14638", "14639", "14641", "14642", "14643", "14644", "14645", "14646", "14647", "14649", "14650", "14651", "14652", "14894", "14895", "14898", "14899", "14900", "14901", "14902", "14906", "14907", "14908", "15148", "15150", "15151", "15159", "15162", "15163", "15164", "15406", "15407", "11324"],
+	"walkableChunks": ["4403", "4404", "4405", "4656", "4659", "4660", "4661", "4662", "4663", "4664", "4665", "4666", "4667", "4910", "4911", "4912", "4913", "4915", "4916", "4917", "4918", "4919", "4920", "4921", "4922", "4923", "5165", "5166", "5167", "5168", "5169", "5171", "5172", "5173", "5174", "5175", "5176", "5177", "5178", "5179", "5180", "5420", "5421", "5422", "5423", "5424", "5425", "5426", "5427", "5428", "5429", "5430", "5431", "5432", "5433", "5434", "5435", "5676", "5677", "5678", "5679", "5680", "5681", "5682", "5683", "5684", "5686", "5687", "5688", "5689", "5690", "5691", "5692", "5933", "5934", "5935", "5936", "5937", "5938", "5939", "5940", "5941", "5942", "5943", "5944", "5945", "5946", "5947", "5948", "5949", "6189", "6190", "6191", "6192", "6193", "6194", "6195", "6196", "6197", "6198", "6199", "6200", "6201", "6202", "6203", "6204", "6205", "6445", "6446", "6447", "6448", "6449", "6450", "6451", "6453", "6454", "6455", "6456", "6457", "6458", "6459", "6460", "6461", "6462", "6701", "6702", "6703", "6704", "6705", "6706", "6707", "6710", "6711", "6712", "6713", "6714", "6715", "6716", "6717", "6957", "6958", "6959", "6960", "6961", "6965", "6966", "6967", "6968", "6969", "6970", "6971", "6972", "6973", "7215", "7216", "7217", "7221", "7222", "7223", "7224", "7225", "7226", "7227", "7228", "7472", "7478", "7479", "8236", "8237", "8238", "8252", "8253", "8491", "8492", "8493", "8494", "8495", "8496", "8497", "8498", "8499", "8500", "8501", "8508", "8509", "8747", "8748", "8749", "8750", "8751", "8752", "8753", "8754", "8755", "8756", "8757", "8763", "9003", "9004", "9005", "9006", "9007", "9008", "9009", "9010", "9011", "9012", "9013", "9014", "9015", "9016", "9023", "9260", "9261", "9262", "9263", "9264", "9265", "9266", "9267", "9268", "9269", "9270", "9271", "9272", "9273", "9275", "9276", "9519", "9520", "9521", "9523", "9524", "9525", "9526", "9527", "9528", "9531", "9532", "9772", "9773", "9774", "9775", "9776", "9777", "9778", "9779", "9780", "9781", "9782", "9783", "9790", "10028", "10029", "10030", "10031", "10032", "10033", "10034", "10035", "10036", "10037", "10038", "10039", "10040", "10042", "10043", "10044", "10284", "10285", "10286", "10287", "10288", "10289", "10290", "10291", "10292", "10293", "10294", "10296", "10297", "10300", "10536", "10537", "10542", "10543", "10544", "10545", "10546", "10547", "10548", "10549", "10550", "10551", "10552", "10553", "10554", "10556", "10558", "10559", "10794", "10795", "10801", "10802", "10803", "10804", "10805", "10806", "10807", "10808", "10809", "10810", "10811", "11050", "11051", "11053", "11054", "11055", "11056", "11057", "11058", "11059", "11060", "11061", "11062", "11063", "11064", "11065", "11066", "11067", "11068", "11309", "11310", "11311", "11312", "11313", "11314", "11315", "11316", "11317", "11318", "11319", "11320", "11321", "11322", "11323", "11325", "11326", "11562", "11565", "11566", "11567", "11568", "11569", "11570", "11571", "11572", "11573", "11574", "11575", "11576", "11577", "11578", "11579", "11581", "11821", "11822", "11823", "11824", "11825", "11826", "11827", "11828", "11829", "11830", "11831", "11832", "11833", "11834", "11835", "11836", "11837", "12078", "12081", "12082", "12083", "12084", "12085", "12086", "12087", "12088", "12089", "12090", "12091", "12092", "12093", "12332", "12337", "12338", "12339", "12340", "12341", "12342", "12343", "12344", "12345", "12346", "12347", "12348", "12349", "12587", "12588", "12589", "12590", "12591", "12593", "12594", "12595", "12596", "12597", "12598", "12599", "12600", "12601", "12602", "12603", "12604", "12605", "12843", "12844", "12845", "12846", "12847", "12848", "12849", "12850", "12851", "12852", "12853", "12854", "12855", "12856", "12857", "12858", "12859", "12860", "12861", "13098", "13099", "13100", "13101", "13102", "13103", "13104", "13105", "13106", "13107", "13108", "13109", "13110", "13111", "13112", "13113", "13114", "13115", "13116", "13117", "13354", "13355", "13356", "13357", "13358", "13359", "13360", "13361", "13362", "13363", "13364", "13365", "13366", "13367", "13368", "13369", "13370", "13371", "13372", "13373", "13374", "13375", "13376", "13611", "13612", "13613", "13614", "13615", "13616", "13617", "13618", "13619", "13620", "13621", "13622", "13623", "13630", "13631", "13632", "13869", "13870", "13871", "13872", "13873", "13874", "13875", "13876", "13877", "13878", "13879", "13886", "13887", "13888", "14129", "14130", "14131", "14132", "14133", "14134", "14135", "14142", "14385", "14386", "14387", "14388", "14389", "14390", "14391", "14398", "14637", "14638", "14639", "14641", "14642", "14643", "14644", "14645", "14646", "14647", "14649", "14650", "14651", "14652", "14894", "14895", "14898", "14899", "14900-1", "14901", "14902", "14906", "14907", "14908", "15148", "15150", "15151", "15159", "15162", "15163", "15164", "15406", "15407", "11324"],
 	"walkableChunksF2P": ["9520", "9772", "9773", "9776", "10028", "10284", "11313", "11314", "11315", "11569", "11570", "11571", "11572", "11573", "11574", "11824", "11825", "11826", "11827", "11828", "11829", "11830", "11831", "11832", "11833", "11834", "11835", "11836", "12081", "12082", "12083", "12084", "12085", "12086", "12087", "12088", "12089", "12090", "12091", "12092", "12337", "12338", "12339", "12340", "12341", "12342", "12343", "12344", "12345", "12346", "12347", "12348", "12593", "12594", "12595", "12596", "12597", "12598", "12599", "12600", "12601", "12602", "12603", "12604", "12849", "12850", "12851", "12852", "12853", "12854", "12855", "12856", "12857", "12858", "12859", "12860", "13104", "13105", "13106", "13107", "13108", "13109", "13110", "13111", "13112", "13113", "13114", "13115", "13116", "13361", "13362", "13363", "13367", "13368", "13369", "13370", "13371", "13372", "13617", "13618", "13619", "Crandor and Karamja Dungeon#South", "Crandor and Karamja Dungeon#North", "Melzar's Maze#Basement", "Air altar", "White Knights' Castle#Crypt", "Death's Office", "Mind altar", "Ruins of Camdozaal", "Scrubfoot's cave", "Asgarnian Ice Dungeon", "Dwarven Mine", "Old School Museum", "Mining Guild", "Body altar", "Rune essence mine", "Wizards' Tower#Basement", "Draynor Sewers", "Edgeville Dungeon", "Stronghold of Security", "Varrock Sewers", "Water altar", "H.A.M. Hideout", "Varrock West Bank#Basement", "Clan Hall", "Misthalin Manor", "Lumbridge Castle#Cellar", "Phoenix Gang Hideout", "Fire altar", "Earth altar"],
 	"unnotingChunks": ["4912", "4919", "4922", "5179", "5420", "5421", "5427", "5684", "5691", "5692", "5938", "5939", "5941", "5944", "5946", "5948", "6191", "6198", "6448", "6457", "6461", "6710", "6960", "6968", "7223", "7227", "8253", "8748", "9265", "9273", "9275", "9531", "9772", "9776", "9781", "9782", "10039", "10284", "10288", "10292", "10293", "10300", "10537", "10545", "10547", "10804", "10806", "11051", "11056", "11061", "11310", "11319", "11571", "11826", "11828", "11835", "12084", "12338", "12342", "12344", "12588", "12590", "12597", "12598", "12605", "12850", "12853", "13104", "13105", "13358", "13631", "13363", "13613", "13874", "13878", "14388", "14638", "14642", "14646", "14907", "14908", "15151", "15163", "Ruins of Camdozaal", "Prifddinas", "Keldagrim", "Blast Furnace", "Mor Ul Rek#Outer Area", "Mor Ul Rek#Inner Area", "Rogues' Den", "Mining Guild", "Motherlode Mine", "Mage Arena bank", "Sophanem Dungeon", "Tarn's Lair", "Hallowed Sepulchre", "Shilo Village mine#Underground", "Giants' Foundry", "Tombs of Amascut Lobby", "Ourania Cave", "Chambers of Xeric", "Cam Torum", "Fortis Colosseum Underground", "Alchemical Society"],
 	"rollingChunks": {
@@ -237199,7 +237743,7 @@
 		"fremennik_province": ["8252", "8253", "8508", "8509", "8763", "9023", "9275", "9276", "9531", "9532", "9790", "10040", "10042", "10043", "10044", "10296", "10297", "10300", "10552", "10553", "10554", "10556", "10558", "10559", "10808", "10809", "10810", "10811", "11063", "11064", "11065", "11066", "11067", "11068", "11320", "11321", "11322", "11323", "11325", "11326", "11578", "11579", "11581", "14142", "14398", "11324"],
 		"kandarin": ["9014", "9015", "9016", "9263", "9264", "9268", "9269", "9270", "9271", "9272", "9273", "9519", "9520", "9521", "9524", "9525", "9526", "9527", "9528", "9772", "9773", "9774", "9775", "9776", "9777", "9778", "9779", "9780", "9781", "9782", "9783", "10028", "10029", "10030", "10031", "10032", "10033", "10034", "10035", "10036", "10037", "10038", "10039", "10040", "10284", "10285", "10286", "10287", "10288", "10289", "10290", "10291", "10292", "10293", "10294", "10542", "10543", "10544", "10545", "10546", "10547", "10548", "10549", "10550", "10551", "10552", "10803", "10804", "10805", "10806", "10807", "10808", "11059", "11060", "11061", "11062", "11063", "11064", "11317", "11318", "10794", "10795", "11050", "11051", "11562"],
 		"kharidian_desert": ["12078", "12332", "12587", "12588", "12589", "12590", "12591", "12843", "12844", "12845", "12846", "12847", "12848", "12849", "13098", "13099", "13100", "13101", "13102", "13103", "13104", "13105", "13106", "13107", "13108", "13354", "13355", "13356", "13357", "13358", "13359", "13360", "13361", "13362", "13363", "13611", "13612", "13613", "13614", "13615", "13616", "13617", "13618", "13619", "13869", "13870", "13871", "13872", "13873"],
-		"morytania": ["13618", "13619", "13620", "13621", "13622", "13623", "13873", "13874", "13875", "13876", "13877", "13878", "13879", "14129", "14130", "14131", "14132", "14133", "14134", "14135", "14385", "14386", "14387", "14388", "14389", "14390", "14391", "14637", "14638", "14639", "14641", "14642", "14643", "14644", "14645", "14646", "14647", "14894", "14895", "14898", "14899", "14900", "14901", "14902", "15148", "15150", "15151", "15159", "15406", "15407"],
+		"morytania": ["13618", "13619", "13620", "13621", "13622", "13623", "13873", "13874", "13875", "13876", "13877", "13878", "13879", "14129", "14130", "14131", "14132", "14133", "14134", "14135", "14385", "14386", "14387", "14388", "14389", "14390", "14391", "14637", "14638", "14639", "14641", "14642", "14643", "14644", "14645", "14646", "14647", "14894", "14895", "14898", "14899", "14900-1", "14901", "14902", "15148", "15150", "15151", "15159", "15406", "15407"],
 		"tirannwn": ["8495", "8496", "8497", "8498", "8499", "8500", "8501", "8751", "8752", "8753", "8754", "8755", "8756", "8757", "9007", "9008", "9009", "9010", "9011", "9012", "9013", "9265", "9266", "9267", "9268", "9523", "9524"],
 		"wilderness": ["11831", "11832", "11833", "11834", "11835", "11836", "11837", "12087", "12088", "12089", "12090", "12091", "12092", "12093", "12343", "12344", "12345", "12346", "12347", "12348", "12349", "12599", "12600", "12601", "12602", "12603", "12604", "12605", "12855", "12856", "12857", "12858", "12859", "12860", "12861", "13111", "13112", "13113", "13114", "13115", "13116", "13117", "13367", "13368", "13369", "13370", "13371", "13372", "13373", "13374", "13375", "13376", "13630", "13631", "13632", "13886", "13887", "13888"],
 		"kourend": ["4403", "4404", "4405", "4659", "4660", "4661", "4662", "4663", "4664", "4665", "4666", "4667", "4916", "4917", "4918", "4919", "4920", "4921", "4922", "4923", "5174", "5175", "5176", "5177", "5178", "5179", "5180", "5430", "5431", "5432", "5433", "5434", "5435", "5686", "5687", "5688", "5689", "5690", "5691", "5692", "5941", "5942", "5943", "5944", "5945", "5946", "5947", "5948", "5949", "6197", "6198", "6199", "6200", "6201", "6202", "6203", "6204", "6205", "6453", "6454", "6455", "6456", "6457", "6458", "6459", "6460", "6461", "6462", "6710", "6711", "6712", "6713", "6714", "6715", "6716", "6717", "6965", "6966", "6967", "6968", "6969", "6970", "6971", "6972", "6973", "7221", "7222", "7223", "7224", "7225", "7226", "7227", "7228", "7478", "7479"],
