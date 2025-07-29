@@ -8,7 +8,7 @@
     gtag('js', new Date());
     gtag('config', 'G-N76CGCCD4N');
   </script>
-  <link rel="stylesheet" href="./index.css?v=6.7.3" />
+  <link rel="stylesheet" href="./index.css?v=6.8.5" />
   <meta charset="UTF-8">
   <meta name="description" content="The Chunk Picker V2 is an all-in-one companion tool to the Oldschool Runescape unofficial gamemode: OneChunkMan. The site allows you to randomly roll chunks, get chunk tasks, and track and share your progress with others.">
   <meta name="author" content="Source Chunk">
@@ -55,13 +55,13 @@
 <span style="font-family: Roboto Condensed; visibility: hidden">Roboto Condensed</span>
 
 <img class='background-img' draggable='false' src='./Background-chunk.PNG' />
-<img id='mapImg' style="display:none" src='./osrs_world_map.png?v=6.7.3' />
+<img id='mapImg' style="display:none" src='./osrs_world_map.png?v=6.8.5' />
 
 <div class='loading'><div class='loading-inner'></div><div class='loading-hint-1'>Chunk Picker V2</div><div class='loading-hint-2'></div></div>
 
 <div class='body' data-role="page" ondragstart="() => {return false;}" ondrop="() => {return false;}">
-  <script src="./tooltip.js?v=6.7.3"></script>
-  <script src="./index.js?v=6.7.3"></script>
+  <script src="./tooltip.js?v=6.8.5"></script>
+  <script src="./index.js?v=6.8.5"></script>
   <ul class='active-context-menu'>
     <li onclick="switchActiveContext(event, 'backlog')">Backlog</li>
     <li onclick="switchActiveContext(event, 'backlog note')">Backlog Options</li>
@@ -490,6 +490,8 @@
       <div id="patch-notes-title" class="patch-notes-title noscroll">Patch Notes</div>
       <div id="patch-notes-subtitle" class="patch-notes-subtitle noscroll">August 28, 2024 (6.4.0)</div>
       <div id="patch-notes-data" class="patch-notes-data noscroll">
+        <div><i>Note that not every update to the Chunk Picker has a corresponding Patch Notes entry. Check out the <a class='noscroll link' href='https://github.com/source-chunk/chunk-picker-v2/commits/gh-pages/' target='_blank'>Github Repository</a> to see when the Chunk Picker was last updated.</i></div>
+        <br />
         <h2 class='noscroll'>Major Changes & New Features</h2>
         <ul class='noscroll'>
           <li class='noscroll'><b>Custom User-Inputted Tasks</b> - Added a way to add your own custom Skill and Other tasks to the Chunk Picker. Perfect for people who require specific levels that aren't related to any specific task before moving on from a chunk. Add a custom task by clicking the 'Manually Add To My Chunks' button below your active tasks, then selecting 'Custom User-Inputted Tasks'.</li>
@@ -704,6 +706,8 @@
       <i class="manual-close pic fa-solid fa-times noscrollhard" onclick="closeClipboard()"></i>
       <div id="clipboard-title" class="clipboard-title noscroll">Copy to clipboard:</div>
       <div id="clipboard-data" class="clipboard-data noscroll"><button id='chunks-clipboard-button' class='modal-button' onclick='exportFunc("chunks")'>Chunks</button><button id='tasks-clipboard-button' class='modal-button' onclick='exportFunc("tasks")'>Tasks</button><button id='rules-clipboard-button' class='modal-button' onclick='exportFunc("rules")'>Rules</button></div>
+      <div id="clipboard-data-4" class="clipboard-data-4 noscroll"><button id='equipment-clipboard-button' class='modal-button' onclick='exportFunc("equipment")'>Equipment (Bank Memory format)</button></div>
+      <div id="clipboard-subtitle" class="clipboard-subtitle noscroll">For use in <a href="https://gearscape.net/calculators/best" target="_blank" >GearScape's Best Setup calculator</a></div>
       <div id="clipboard-title2" class="clipboard-title noscroll">Other Actions:</div>
       <div id="clipboard-data-2" class="clipboard-data-2 noscroll"><button id='plugin-clipboard-button' class='modal-button' onclick='exportFunc("plugin")'>Refresh Tasks</button><a href="https://github.com/nathanreidok/chunk-tasks" target="_blank" ><i class="fa-solid fa-info-circle" title="Visit the plugin on Github"></i></a></div>
       <div id="clipboard-data-3" class="clipboard-data-3 noscroll"><button id='assign-clipboard-button' class='modal-button' onclick='exportFunc("assign")'>Assign Numbers to Neighboring Chunks</button></div>
@@ -1999,7 +2003,7 @@
         <hr />
         <h4>You may be interested in these pages:</h4>
         <div class='a404-sub-body'>
-          <div><b><a class='noscroll link' href='/'>/ (home)</a></b> - The homepage</div>
+          <div><b><a class='noscroll link' href='./'>/ (home)</a></b> - The homepage</div>
           <div><b><a class='noscroll link' href='?about'>/?about</a></b> - A page about the developer of the website</div>
           <div><b><a class='noscroll link' href='?patch-notes'>/?patch-notes</a></b> - An archive of past patch notes for the website</div>
           <div><b><a class='noscroll link' href='?maps-list'>/?maps-list</a></b> - A searchable list of mapcodes and their associated player names</div>
