@@ -8,7 +8,7 @@
     gtag('js', new Date());
     gtag('config', 'G-N76CGCCD4N');
   </script>
-  <link rel="stylesheet" href="./index.css?v=6.8.5" />
+  <link rel="stylesheet" href="./index.css?v=6.8.20" />
   <meta charset="UTF-8">
   <meta name="description" content="The Chunk Picker V2 is an all-in-one companion tool to the Oldschool Runescape unofficial gamemode: OneChunkMan. The site allows you to randomly roll chunks, get chunk tasks, and track and share your progress with others.">
   <meta name="author" content="Source Chunk">
@@ -28,6 +28,7 @@
   <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-functions.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.3/purify.min.js"></script>
   <script>
@@ -55,13 +56,13 @@
 <span style="font-family: Roboto Condensed; visibility: hidden">Roboto Condensed</span>
 
 <img class='background-img' draggable='false' src='./Background-chunk.PNG' />
-<img id='mapImg' style="display:none" src='./osrs_world_map.png?v=6.8.5' />
+<img id='mapImg' style="display:none" src='./osrs_world_map.png?v=6.8.20' />
 
 <div class='loading'><div class='loading-inner'></div><div class='loading-hint-1'>Chunk Picker V2</div><div class='loading-hint-2'></div></div>
 
 <div class='body' data-role="page" ondragstart="() => {return false;}" ondrop="() => {return false;}">
-  <script src="./tooltip.js?v=6.8.5"></script>
-  <script src="./index.js?v=6.8.5"></script>
+  <script src="./tooltip.js?v=6.8.20"></script>
+  <script src="./index.js?v=6.8.20"></script>
   <ul class='active-context-menu'>
     <li onclick="switchActiveContext(event, 'backlog')">Backlog</li>
     <li onclick="switchActiveContext(event, 'backlog note')">Backlog Options</li>
@@ -455,15 +456,6 @@
           <span><input type="checkbox" onclick="changeMonstersFilterBy()" />Show checked only</span>
       </div>
       <div id="monsters-data" class="monsters-data noscroll"></div>
-    </div>
-  </div>
-  <div id="myModal22" class="modal">
-    <div class="modal-content noscroll">
-      <div id="slayer-locked-title" class="slayer-locked-title noscroll">Select Slayer Task</div>
-      <div id="slayer-locked-subtitle" class="slayer-locked-subtitle noscroll">Select the Slayer task that locks your Slayer progress and enter your current Slayer level. You won't be shown Slayer tasks higher than your current Slayer level until you're able to train Slayer again.</div>
-      <div id="slayer-locked-dropdown-container" class="slayer-locked-dropdown-container noscroll" onchange="slayerLockedChange()"><select id="slayer-locked-dropdown"></select></div>
-      <div id="slayer-locked-input-container" class="slayer-locked-input-container noscroll">Current Slayer Level: <input id="slayer-locked-input" type="number" min="1" max="99" oninput="slayerLockedChange()"/></div>
-      <div id="slayer-locked-data" class="slayer-locked-data noscroll"></div>
     </div>
   </div>
   <div id="myModal23" class="modal">
@@ -1056,6 +1048,7 @@
       <div class='mobile-item noscroll open-checkoff-container' onclick="submitCheckoffTasks()">Check-off All Active Tasks</div>
       <div class='mobile-item noscroll' onclick="openChunkNotesModal()">Notes</div>
       <div class='mobile-item noscroll patchnotes-mobile' onclick="openPatchNotesModal(true)">Patch Notes</div>
+      <a href='?change-password'><div class='mobile-item noscroll'>Change Password</div></a>
       <a href='https://github.com/source-chunk/chunk-picker-v2/wiki/Help' target='_blank'><div class='mobile-item noscroll'>Help<i class="external-link-icon fa-solid fa-external-link-alt"></i></div></a>
       <a href='https://www.patreon.com/bePatron?u=56906793' target='_blank'><div class='mobile-item noscroll'>Support me on Patreon<i class="external-link-icon fa-solid fa-external-link-alt"></i></div></a>
       <a href='https://discord.gg/kXRgpxnBxu' target='_blank'><div class='mobile-item noscroll'>Join the Discord<i class="external-link-icon fa-solid fa-external-link-alt"></i></div></a>
