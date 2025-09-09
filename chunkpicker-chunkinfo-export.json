@@ -9,6 +9,13 @@
 				"Priority": 2,
 				"NoPet": true
 			},
+			"Read an ~|agility tome|~ from Temple Trekking": {
+				"Items": ["Agility tome*"],
+				"Level": 1,
+				"Primary": true,
+				"Priority": 111,
+				"NoPet": true
+			},
 			"Participate in ~|Underwater Agility and Thieving|~ for Agility xp": {
 				"Chunks": ["Underwater Fossil Island"],
 				"Level": 1,
@@ -46,7 +53,7 @@
 			"Access the Castle Drakan wall rock climb ~|shortcut|~": {
 				"Category": ["Shortcut"],
 				"Objects": ["Rocks (Castle Drakan wall)"],
-				"Level": 69,
+				"Level": 86,
 				"Tasks": {
 					"Access the Darkmeyer north-eastern wall ~|shortcut|~": "Agility"
 				},
@@ -15229,6 +15236,13 @@
 				"Not F2P": true,
 				"NoBoost": true
 			},
+			"Read a ~|firemaking tome|~ from Temple Trekking": {
+				"Items": ["Firemaking tome*"],
+				"Level": 1,
+				"Primary": true,
+				"Priority": 111,
+				"NoPet": true
+			},
 			"Participate in ~|Trouble Brewing|~ for Firemaking xp": {
 				"Category": ["Minigame"],
 				"Chunks": ["15150", "15151-1"],
@@ -16274,6 +16288,13 @@
 				"Priority": 2,
 				"Not F2P": true,
 				"NoBoost": true
+			},
+			"Read a ~|fishing tome|~ from Temple Trekking": {
+				"Items": ["Fishing tome*"],
+				"Level": 1,
+				"Primary": true,
+				"Priority": 111,
+				"NoPet": true
 			},
 			"Unlock the best rewards bracket from ~|Tempoross|~": {
 				"Category": ["Boss"],
@@ -24654,6 +24675,13 @@
 				"NoPet": true,
 				"NoBoost": true
 			},
+			"Read a ~|mining tome|~ from Temple Trekking": {
+				"Items": ["Mining tome*"],
+				"Level": 1,
+				"Primary": true,
+				"Priority": 111,
+				"NoPet": true
+			},
 			"Obtain ~|mithril ore|~ from a supply crate": {
 				"Items": ["Supply crate*"],
 				"Level": 14,
@@ -29032,6 +29060,12 @@
 			"Stronghold drops": {
 				"Chunks": ["Stronghold of Security"]
 			},
+			"Ruins of Tapoyauik drops": {
+				"Chunks": ["Ruins of Tapoyauik"]
+			},
+			"Varlamore icefiend drops": {
+				"Chunks": ["VarlamoreIcefiend[+]"]
+			},
 			"Forthos drops": {
 				"Chunks": ["Forthos Dungeon"]
 			},
@@ -29236,28 +29270,27 @@
 			},
 			"Abyssal demon wilderness task": {
 				"Tasks": {
-					"Receive a Slayer assignment from ~|Krystilia|~ in Edgeville": "Slayer",
+					"KrystiliaVannakaBetterMasters[+]x1": "Slayer",
 					"~|Priest in Peril|~ Complete the quest": "Quest"
 				},
 				"Not F2P": true
 			},
 			"Dust devil wilderness task": {
 				"Tasks": {
-					"Receive a Slayer assignment from ~|Krystilia|~ in Edgeville": "Slayer",
+					"KrystiliaVannakaBetterMasters[+]x1": "Slayer",
 					"~|Desert Treasure I|~ Complete the quest": "Quest"
 				},
 				"Not F2P": true
 			},
 			"Jelly wilderness task": {
 				"Tasks": {
-					"Receive a Slayer assignment from ~|Krystilia|~ in Edgeville": "Slayer"
+					"JellyMasters[+]x1": "Slayer"
 				},
 				"Not F2P": true
 			},
 			"Nechryael wilderness task": {
 				"Tasks": {
-					"Receive a Slayer assignment from ~|Krystilia|~ in Edgeville": "Slayer",
-					"~|Priest in Peril|~ Complete the quest": "Quest"
+					"KrystiliaVannakaBetterMasters[+]x1": "Slayer"
 				},
 				"Not F2P": true
 			},
@@ -31238,7 +31271,34 @@
 			"Be eligible to buy a ~|herb pack|~": {
 				"Chunks": ["10537"],
 				"Skills": {
-					"Herblore": 30
+					"Herblore": 25
+				},
+				"Not F2P": true
+			},
+			"Be eligible to buy a ~|mineral pack|~": {
+				"Chunks": ["10537"],
+				"Skills": {
+					"Mining": 25
+				},
+				"Not F2P": true
+			},
+			"Be eligible to buy a ~|seed pack (Pest Control)|~": {
+				"Chunks": ["10537"],
+				"Skills": {
+					"Farming": 25
+				},
+				"Not F2P": true
+			},
+			"Be eligible to buy ~|Void Knight equipment|~": {
+				"Chunks": ["10537"],
+				"Skills": {
+					"Attack": 42,
+					"Defence": 42,
+					"Hitpoints": 42,
+					"Magic": 42,
+					"Prayer": 22,
+					"Ranged": 42,
+					"Strength": 42
 				},
 				"Not F2P": true
 			},
@@ -31978,6 +32038,11 @@
 			"Claim the raw lobster reward from Temple Trekking*": {
 				"Chunks": ["Temple Trekking Routes"],
 				"Output": "Raw lobster",
+				"Not F2P": true
+			},
+			"Claim the xp tome reward from Temple Trekking*": {
+				"Chunks": ["Temple Trekking Routes"],
+				"Output": "Temple Trekking xp tome loot",
 				"Not F2P": true
 			},
 			"Add a candle to an empty candle lantern": {
@@ -46883,6 +46948,13 @@
 				"Priority": 1,
 				"NoBoost": true
 			},
+			"Read a ~|slayer tome|~ from Temple Trekking": {
+				"Items": ["Slayer tome*"],
+				"Level": 1,
+				"Primary": true,
+				"Priority": 111,
+				"NoPet": true
+			},
 			"Receive a Slayer assignment from ~|Chaeldar|~ in Zanaris": {
 				"Level": 1,
 				"NPCs": ["Chaeldar"],
@@ -51976,6 +52048,13 @@
 				"Primary": true,
 				"NoBoost": true
 			},
+			"Read a ~|thieving tome|~ from Temple Trekking": {
+				"Items": ["Thieving tome*"],
+				"Level": 1,
+				"Primary": true,
+				"Priority": 111,
+				"NoPet": true
+			},
 			"Participate in ~|Underwater Agility and Thieving|~ for Thieving xp": {
 				"Chunks": ["Underwater Fossil Island"],
 				"Level": 1,
@@ -53141,6 +53220,13 @@
 				"Primary": false,
 				"Priority": 2,
 				"Not F2P": true,
+				"NoPet": true
+			},
+			"Read a ~|woodcutting tome|~ from Temple Trekking": {
+				"Items": ["Woodcutting tome*"],
+				"Level": 1,
+				"Primary": true,
+				"Priority": 111,
 				"NoPet": true
 			},
 			"Chop demon tears from ~|infected root|~": {
@@ -64997,6 +65083,12 @@
 				"Items": ["Broken zombie helmet"],
 				"Not F2P": true
 			},
+			"(Miscellaneous) Obtain a ~|helmet of the moon|~": {
+				"Category": ["Collection Log", "Collection Log Other"],
+				"Label": "Collection Log",
+				"Items": ["Helmet of the moon"],
+				"Not F2P": true
+			},
 			"Obtain a ~|Golden Gnome|~": {
 				"Category": ["Collection Log", "Collection Log Other"],
 				"Label": "Collection Log",
@@ -66165,7 +66257,7 @@
 			"Help unite ~|Fabia|~ with Xilo": {
 				"Category": ["Money Unlockables"],
 				"Label": "Permanent Unlockables",
-				"Chunks": ["5168"],
+				"Chunks": ["5167-1", "5168"],
 				"NPCs": ["Fabia", "Xilo"],
 				"Not F2P": true
 			},
@@ -83971,6 +84063,30 @@
 				"Monsters": ["Demonic gorilla"],
 				"Items": ["Demonbane[+]"]
 			},
+			"~|Combat Achievements#Elite|~ Doom Adept": {
+				"Category": ["Combat Diary Tasks"],
+				"Description": "Defeat the Doom of Mokhaiotl at level 3.",
+				"BaseQuest": "Combat Achievements",
+				"Not F2P": true,
+				"CombatPoints": 4,
+				"Monsters": ["Doom of Mokhaiotl"]
+			},
+			"~|Combat Achievements#Elite|~ Doom Crawler": {
+				"Category": ["Combat Diary Tasks"],
+				"Description": "Complete the Doom of Mokhaiotl level 1 in less than 30 seconds.",
+				"BaseQuest": "Combat Achievements",
+				"Not F2P": true,
+				"CombatPoints": 4,
+				"Monsters": ["Doom of Mokhaiotl"]
+			},
+			"~|Combat Achievements#Elite|~ Exposed Doom": {
+				"Category": ["Combat Diary Tasks"],
+				"Description": "Defeat the Doom of Mokhaiotl during its Melee Charge phase on any level.",
+				"BaseQuest": "Combat Achievements",
+				"Not F2P": true,
+				"CombatPoints": 4,
+				"Monsters": ["Doom of Mokhaiotl"]
+			},
 			"~|Combat Achievements#Elite|~ Facing Jad Head-on": {
 				"Category": ["Combat Diary Tasks"],
 				"Description": "Complete the Fight Caves with only melee.",
@@ -84942,7 +85058,7 @@
 					"Any": 25000
 				},
 				"ManualShow": true,
-				"CombatPointsNeeded": 1026,
+				"CombatPointsNeeded": 1038,
 				"Chunks": ["11319-1"],
 				"NPCs": ["Ghommal"]
 			},
@@ -85453,6 +85569,47 @@
 				"Not F2P": true,
 				"CombatPoints": 5,
 				"Chunks": ["Gauntlet Lobby"]
+			},
+			"~|Combat Achievements#Master|~ Doom Chaser": {
+				"Category": ["Combat Diary Tasks"],
+				"Description": "Complete the Doom of Mokhaiotl levels 1-8 in less than 10:00.",
+				"BaseQuest": "Combat Achievements",
+				"Not F2P": true,
+				"CombatPoints": 5,
+				"Monsters": ["Doom of Mokhaiotl"]
+			},
+			"~|Combat Achievements#Master|~ Mine's Better": {
+				"Category": ["Combat Diary Tasks"],
+				"Description": "Defeat the Doom of Mokhaiotl levels 1-8 whilst always wearing a shield.",
+				"BaseQuest": "Combat Achievements",
+				"Not F2P": true,
+				"CombatPoints": 5,
+				"Items": ["Shield[+]"],
+				"Monsters": ["Doom of Mokhaiotl"]
+			},
+			"~|Combat Achievements#Master|~ Mokhaiotl Drift": {
+				"Category": ["Combat Diary Tasks"],
+				"Description": "Defeat the Doom of Mokhaiotl at level 8 before he finishes his first burrow phase.",
+				"BaseQuest": "Combat Achievements",
+				"Not F2P": true,
+				"CombatPoints": 5,
+				"Monsters": ["Doom of Mokhaiotl"]
+			},
+			"~|Combat Achievements#Master|~ Doom Veteran": {
+				"Category": ["Combat Diary Tasks"],
+				"Description": "Defeat the Doom of Mokhaiotl at level 8.",
+				"BaseQuest": "Combat Achievements",
+				"Not F2P": true,
+				"CombatPoints": 5,
+				"Monsters": ["Doom of Mokhaiotl"]
+			},
+			"~|Combat Achievements#Master|~ Grub Patrol": {
+				"Category": ["Combat Diary Tasks"],
+				"Description": "Defeat the Doom of Mokhaiotl levels 1-8 whilst never letting a grub be absorbed by the boss.",
+				"BaseQuest": "Combat Achievements",
+				"Not F2P": true,
+				"CombatPoints": 5,
+				"Monsters": ["Doom of Mokhaiotl"]
 			},
 			"~|Combat Achievements#Master|~ Perfect Duke Sucellus": {
 				"Category": ["Combat Diary Tasks"],
@@ -86326,7 +86483,7 @@
 					"Any": 35000
 				},
 				"ManualShow": true,
-				"CombatPointsNeeded": 1841,
+				"CombatPointsNeeded": 1878,
 				"Chunks": ["11319-1"],
 				"NPCs": ["Ghommal"]
 			},
@@ -86537,6 +86694,62 @@
 				"Not F2P": true,
 				"CombatPoints": 6,
 				"Chunks": ["Gauntlet Lobby"]
+			},
+			"~|Combat Achievements#Grandmaster|~ Duel of Mokhaiotl": {
+				"Category": ["Combat Diary Tasks"],
+				"Description": "Defeat the Doom of Mokhaiotl levels 1-8 whilst only damaging the boss with one-handed melee attacks.",
+				"BaseQuest": "Combat Achievements",
+				"Not F2P": true,
+				"CombatPoints": 6,
+				"Monsters": ["Doom of Mokhaiotl"]
+			},
+			"~|Combat Achievements#Grandmaster|~ Darkness Is Your Ally?": {
+				"Category": ["Combat Diary Tasks"],
+				"Description": "Defeat the Doom of Mokhaiotl levels 1-8 without equipping a demonbane weapon.",
+				"BaseQuest": "Combat Achievements",
+				"Not F2P": true,
+				"CombatPoints": 6,
+				"Monsters": ["Doom of Mokhaiotl"]
+			},
+			"~|Combat Achievements#Grandmaster|~ Perfect Doom": {
+				"Category": ["Combat Diary Tasks"],
+				"Description": "Defeat the Doom of Mokhaiotl levels 1-8 without taking any damage from the boss, letting any grubs be absorbed, or stepping in acid blood.",
+				"BaseQuest": "Combat Achievements",
+				"Not F2P": true,
+				"CombatPoints": 6,
+				"Monsters": ["Doom of Mokhaiotl"]
+			},
+			"~|Combat Achievements#Grandmaster|~ The Praying Mantis": {
+				"Category": ["Combat Diary Tasks"],
+				"Description": "Defeat the Doom of Mokhaiotl levels 1-8 without restoring your prayer points through any method.",
+				"BaseQuest": "Combat Achievements",
+				"Not F2P": true,
+				"CombatPoints": 6,
+				"Monsters": ["Doom of Mokhaiotl"]
+			},
+			"~|Combat Achievements#Grandmaster|~ Doom Racer": {
+				"Category": ["Combat Diary Tasks"],
+				"Description": "Defeat the Doom of Mokhaiotl levels 1-8 in less than 7:15.",
+				"BaseQuest": "Combat Achievements",
+				"Not F2P": true,
+				"CombatPoints": 6,
+				"Monsters": ["Doom of Mokhaiotl"]
+			},
+			"~|Combat Achievements#Grandmaster|~ It's Dark Down Here": {
+				"Category": ["Combat Diary Tasks"],
+				"Description": "Defeat the Doom of Mokhaiotl at delve level 16.",
+				"BaseQuest": "Combat Achievements",
+				"Not F2P": true,
+				"CombatPoints": 6,
+				"Monsters": ["Doom of Mokhaiotl"]
+			},
+			"~|Combat Achievements#Grandmaster|~ Mopping up": {
+				"Category": ["Combat Diary Tasks"],
+				"Description": "Clear at least 8 acid splats in a single Volatile Earth special attack.",
+				"BaseQuest": "Combat Achievements",
+				"Not F2P": true,
+				"CombatPoints": 6,
+				"Monsters": ["Doom of Mokhaiotl"]
 			},
 			"~|Combat Achievements#Grandmaster|~ Duke Sucellus Sleeper": {
 				"Category": ["Combat Diary Tasks"],
@@ -87272,7 +87485,7 @@
 					"Any": 50000
 				},
 				"ManualShow": true,
-				"CombatPointsNeeded": 2525,
+				"CombatPointsNeeded": 2604,
 				"Chunks": ["11319-1"],
 				"NPCs": ["Ghommal"]
 			}
@@ -110266,6 +110479,7 @@
 						"Hopper controls": 1,
 						"Hops Patch": 1,
 						"Lab notes": 1,
+						"Landing Site": 1,
 						"Maple tree": 2,
 						"Mill": 1,
 						"Nest (nice)": 1,
@@ -111923,6 +112137,7 @@
 						"Cabbage": 20,
 						"Dead tree": 3,
 						"Flax": 7,
+						"Landing Site": 1,
 						"Oven": 2,
 						"Poll booth": 1,
 						"Spinning wheel": 1,
@@ -114360,6 +114575,7 @@
 						"Jungle tree": 3,
 						"Kualti Dagger": 2,
 						"Kualti Daggers": 3,
+						"Landing Site": 1,
 						"Old One Statue": 1,
 						"Royal Accord of Twill": 1,
 						"Statue of Atlazora": 1,
@@ -144400,7 +144616,6 @@
 				"Muttadile#Small": 1,
 				"Tekton": 1,
 				"Scavenger beast": 1,
-				"Scavenger runt": 1,
 				"Skeletal Mystic": 3,
 				"Vanguard#Magic": 1,
 				"Vanguard#Melee": 1,
@@ -151099,7 +151314,7 @@
 			"SandCrabChunks[+]": ["6710", "6965", "6966", "7222", "7479-1", "Crabclaw Caves", "Catacombs of Kourend"],
 			"AnkousWildernessTask[+]": ["11834", "Wilderness Slayer Cave"],
 			"BanditsWildernessTask[+]": ["12089", "Wilderness Slayer Cave"],
-			"BearsWildernessTask[+]": ["11833", "12344", "12345, 13116"],
+			"BearsWildernessTask[+]": ["11833", "12344", "12345", "13116"],
 			"BlackdemonsWildernessTask[+]": ["Edgeville Dungeon#Wilderness", "Wilderness Slayer Cave"],
 			"BlackdragonsWildernessTask[+]": ["Lava Maze Dungeon", "Wilderness Slayer Cave"],
 			"BlackKnightsWildernessTask[+]": ["12092", "13114"],
@@ -151132,6 +151347,7 @@
 			"CurseOfTheEmptyLord5[+]": ["13117", "13623", "Edgeville Dungeon#Wilderness"],
 			"MournerChunks[+]": ["9267-1", "9523", "9524-2"],
 			"CatacombsOrGiantsDen[+]": ["Catacombs of Kourend", "Giants' Den"],
+			"VarlamoreIcefiend[+]": ["5682-1", "5682-3", "5683-2", "Ruins of Tapoyauik"],
 			"DragonSlayer7[+]": ["11314-3", "Crandor and Karamja Dungeon#South"],
 			"BankChunks[+]": ["4919", "4922", "5179", "5691-2", "5692-1", "5941", "5946-1", "5948-1", "6198-1", "6457", "6461", "6710", "6968-1", "7223", "7227", "8253-1", "8748-1", "9265", "9273", "9275", "9531-1", "9772", "9776", "9781-1", "9782", "10039", "10284-1", "10288-1", "10292", "10293", "10300", "10537", "10545", "10547-1", "10804", "10806-1", "11051", "11056", "11061", "11310-1", "11319-1", "11571-1", "11826", "11828-1", "11835", "12084-1", "12338-1", "12342-1", "12344", "12588-1", "12590-1", "12597-1", "12598", "12605", "12850-1", "12853-1", "13104", "13105-1", "13358-1", "13363", "13613", "13874-1", "13878-1", "14388-1", "14638-1", "14646-1", "14907-1", "14908-1", "15151-1", "15163-1", "Prifddinas", "Keldagrim", "Blast Furnace", "Mor Ul Rek#Outer Area", "Mor Ul Rek#Inner Area", "Rogues' Den", "Mining Guild", "Motherlode Mine", "Mage Arena bank", "Sophanem Dungeon", "Tarn's Lair", "Hallowed Sepulchre", "Shilo Village mine#Underground", "Giants' Foundry", "Tombs of Amascut Lobby", "Ourania Cave", "Chambers of Xeric"],
 			"BarbarianKeyChunk[+]": ["10039", "12341", "12853-1"],
@@ -151548,10 +151764,10 @@
 				"Wildblood seed": "83/1048@1"
 			},
 			"UsefulHerbDropTable+": {
-				"Grimy avantoe": "1/3.2@1 (noted)",
-				"Grimy ranarr weed": "1/4@1 (noted)",
-				"Grimy snapdragon": "1/4@1 (noted)",
-				"Grimy torstol": "1/5.333@1 (noted)"
+				"Grimy avantoe": "1/3.2@1",
+				"Grimy ranarr weed": "1/4@1",
+				"Grimy snapdragon": "1/4@1",
+				"Grimy torstol": "1/5.333@1"
 			}
 		},
 		"elementalRunes": ["Air rune", "Water rune", "Earth rune", "Fire rune"],
@@ -151965,7 +152181,8 @@
 			"AdamantMats[+]": ["Adamantite bar", "Adamant scimitar", "Adamant longsword", "Adamant full helm", "Adamant sq shield", "Adamant claws", "Adamant warhammer", "Adamant battleaxe", "Adamant chainbody", "Adamant kiteshield", "Adamant 2h sword", "Adamant platelegs", "Adamant plateskirt", "Adamant platebody"],
 			"RuneMats[+]": ["Runite bar", "Rune scimitar", "Rune longsword", "Rune full helm", "Rune sq shield", "Rune claws", "Rune warhammer", "Rune battleaxe", "Rune chainbody", "Rune kiteshield", "Rune 2h sword", "Rune platelegs", "Rune plateskirt", "Rune platebody"],
 			"GusTreat[+]": ["Bones", "Wolf bones", "Bleached bones", "Bat bones", "Big bones", "Burnt bones", "Burnt jogre bones", "Babydragon bones", "Dragon bones", "Monkey bones", "Small ninja monkey bones", "Medium ninja monkey bones", "Gorilla bones", "Bearded gorilla bones", "Skeletal gorilla bones", "Small zombie monkey bones", "Large zombie monkey bones", "Jogre bones", "Zogre bones", "Fayrg bones", "Raurg bones", "Ourg bones", "Shaikahan bones", "Dagannoth bones", "Wyvern bones", "Lava dragon bones", "Superior dragon bones", "Wyrm bones", "Wyrmling bones", "Drake bones", "Hydra bones", "Raw bear meat", "Raw beast meat", "Raw beef", "Raw bird meat", "Raw boar meat", "Raw chicken", "Raw rabbit", "Raw rat meat", "Raw yak meat", "Cooked meat"],
-			"AvernicTreads[+]": ["Avernic treads", "Avernic treads (et)", "Avernic treads (pe)", "Avernic treads (pr)", "Avernic treads (pe)(et)", "Avernic treads (pr)(et)", "Avernic treads (pr)(pe)", "Avernic treads (max)"]
+			"AvernicTreads[+]": ["Avernic treads", "Avernic treads (et)", "Avernic treads (pe)", "Avernic treads (pr)", "Avernic treads (pe)(et)", "Avernic treads (pr)(et)", "Avernic treads (pr)(pe)", "Avernic treads (max)"],
+			"Shield[+]": ["Broodoo shield (combat)", "Broodoo shield (poison)", "Broodoo shield (disease)", "Elemental shield", "Mind shield", "Mirror shield", "Neitiznot shield", "Toktz-ket-xil", "Wooden shield", "Adamant sq shield", "Anti-dragon shield", "Black sq shield", "Bronze sq shield", "Dragon sq shield", "Dragonfire shield", "Iron sq shield", "Mithril sq shield", "Rune sq shield", "Steel sq shield", "White sq shield", "Adamant kiteshield", "Black kiteshield", "Bronze kiteshield", "Corrupted kiteshield", "Dragon kiteshield", "Iron kiteshield", "Mithril kiteshield", "Rune kiteshield", "Runefest shield", "Steel kiteshield", "Training shield", "White kiteshield"]
 		},
 		"itemsPlusNames": {
 			"Adamant armour[+]": "Any adamant armour piece",
@@ -152346,7 +152563,8 @@
 			"AdamantMats[+]": "Any adamant preform materials",
 			"RuneMats[+]": "Any rune preform materials",
 			"GusTreat[+]": "Any bone or meat to calm Gus",
-			"AvernicTreads[+]": "Any avernic treads variant"
+			"AvernicTreads[+]": "Any avernic treads variant",
+			"Shield[+]": "Any shield"
 		},
 		"mixPlus": {
 			"Citizen[+]": ["Man", "Drunken man", "Hengel", "Cuffs", "Narf", "Jeff", "Rusty", "Woman", "Anja", "Woman (East Ardougne)", "Citizen (Tal Teklan)", "Citizen (Auburnvale)", "Citizen (Aldarin)", "Citizen (Kastori)", "Citizen (Civitas illa Fortis)", "Tourist", "Salvager"],
@@ -152644,6 +152862,8 @@
 			"FairyRings[+]": ["~|Fairytale II - Cure a Queen|~ 2", "~|Fairytale II - Cure a Queen|~ 3", "~|Fairytale II - Cure a Queen|~ 4", "~|Fairytale II - Cure a Queen|~ 5", "~|Fairytale II - Cure a Queen|~ 6", "~|Fairytale II - Cure a Queen|~ 7", "~|Fairytale II - Cure a Queen|~ 8", "~|Fairytale II - Cure a Queen|~ 9", "~|Fairytale II - Cure a Queen|~ 10", "~|Fairytale II - Cure a Queen|~ 11", "~|Fairytale II - Cure a Queen|~ Complete the quest"],
 			"AllNormalMasters[+]": ["Receive a Slayer assignment from ~|Turael|~ in Burthorpe", "Receive a Slayer assignment from ~|Spria|~ in Draynor Village", "Receive a Slayer assignment from ~|Mazchna|~ in Canifis", "Receive a Slayer assignment from ~|Vannaka|~ in Edgeville Dungeon", "Receive a Slayer assignment from ~|Chaeldar|~ in Zanaris", "Receive a Slayer assignment from ~|Konar quo Maten|~ in Mount Karuulm", "Receive a Slayer assignment from ~|Nieve|~ in Tree Gnome Stronghold", "Receive a Slayer assignment from ~|Duradel|~ in Shilo Village"],
 			"VannakaBetterMasters[+]": ["Receive a Slayer assignment from ~|Vannaka|~ in Edgeville Dungeon", "Receive a Slayer assignment from ~|Chaeldar|~ in Zanaris", "Receive a Slayer assignment from ~|Konar quo Maten|~ in Mount Karuulm", "Receive a Slayer assignment from ~|Nieve|~ in Tree Gnome Stronghold", "Receive a Slayer assignment from ~|Duradel|~ in Shilo Village"],
+			"KrystiliaVannakaBetterMasters[+]": ["Receive a Slayer assignment from ~|Krystilia|~ in Edgeville", "Receive a Slayer assignment from ~|Vannaka|~ in Edgeville Dungeon", "Receive a Slayer assignment from ~|Chaeldar|~ in Zanaris", "Receive a Slayer assignment from ~|Konar quo Maten|~ in Mount Karuulm", "Receive a Slayer assignment from ~|Nieve|~ in Tree Gnome Stronghold", "Receive a Slayer assignment from ~|Duradel|~ in Shilo Village"],
+			"JellyMasters[+]": ["Receive a Slayer assignment from ~|Krystilia|~ in Edgeville", "Receive a Slayer assignment from ~|Vannaka|~ in Edgeville Dungeon", "Receive a Slayer assignment from ~|Chaeldar|~ in Zanaris", "Receive a Slayer assignment from ~|Konar quo Maten|~ in Mount Karuulm"],
 			"AnkouMasters[+]": ["Receive a Slayer assignment from ~|Vannaka|~ in Edgeville Dungeon", "Receive a Slayer assignment from ~|Konar quo Maten|~ in Mount Karuulm", "Receive a Slayer assignment from ~|Nieve|~ in Tree Gnome Stronghold", "Receive a Slayer assignment from ~|Duradel|~ in Shilo Village"],
 			"ChaeldarBetterMasters[+]": ["Receive a Slayer assignment from ~|Chaeldar|~ in Zanaris", "Receive a Slayer assignment from ~|Konar quo Maten|~ in Mount Karuulm", "Receive a Slayer assignment from ~|Nieve|~ in Tree Gnome Stronghold", "Receive a Slayer assignment from ~|Duradel|~ in Shilo Village"],
 			"VannakaChaeldarMasters[+]": ["Receive a Slayer assignment from ~|Vannaka|~ in Edgeville Dungeon", "Receive a Slayer assignment from ~|Chaeldar|~ in Zanaris"],
@@ -154875,9 +155095,6 @@
 			"Abyssal Sire": {
 				"Abyssal Sire": true
 			},
-			"Adamant dragons": {
-				"Adamant dragon": true
-			},
 			"Alchemical Hydra": {
 				"Alchemical Hydra": true
 			},
@@ -154976,9 +155193,6 @@
 			},
 			"Brine rats": {
 				"Brine rat": true
-			},
-			"Bronze dragons": {
-				"Bronze dragon": true
 			},
 			"Callisto": {
 				"Callisto": true,
@@ -155239,9 +155453,6 @@
 			"Infernal Mages": {
 				"Infernal Mage": true
 			},
-			"Iron dragons": {
-				"Iron dragon": true
-			},
 			"Jellies": {
 				"Jelly": true,
 				"Jelly#Wilderness Slayer Cave": true,
@@ -155313,8 +155524,13 @@
 			"Mammoths": {
 				"Mammoth": true
 			},
-			"Mithril dragons": {
-				"Mithril dragon": true
+			"Metal dragons": {
+				"Adamant dragon": true,
+				"Bronze dragon": true,
+				"Iron dragon": true,
+				"Mithril dragon": true,
+				"Rune dragon": true,
+				"Steel dragon": true
 			},
 			"Minions of Scabaras": {
 				"Scarab swarm": true,
@@ -155413,9 +155629,6 @@
 			"Rogues": {
 				"Rogue#Level 15": true,
 				"Rogue#Level 135": true
-			},
-			"Rune dragons": {
-				"Rune dragon": true
 			},
 			"Sarachnis": {
 				"Sarachnis": true
@@ -155531,9 +155744,6 @@
 				"Spiritual mage#Ancient Prison": true,
 				"Spiritual warrior#Ancient Prison": true,
 				"Spiritual ranger#Ancient Prison": true
-			},
-			"Steel dragons": {
-				"Steel dragon": true
 			},
 			"Suqahs": {
 				"Suqah": true
@@ -155661,7 +155871,6 @@
 			"Aberrant spectres": ["6457", "9525", "13623"],
 			"Abyssal demons": ["6457", "12849", "12857", "13114", "13623"],
 			"Abyssal Sire": ["12849"],
-			"Adamant dragons": ["14142"],
 			"Alchemical Hydra": ["5179"],
 			"Ankous": ["6457", "9525", "11834", "12341", "12857", "13114"],
 			"Aviansie": ["11578", "12090"],
@@ -155679,7 +155888,6 @@
 			"Bloodvelds": ["6457", "8755", "9525", "11578", "12090", "13623", "14387"],
 			"Blue dragons": ["5169", "6457", "6706", "9023", "9261", "9772", "10031", "11573", "11574"],
 			"Brine rats": ["10810"],
-			"Bronze dragons": ["6457", "10801"],
 			"Callisto": ["12345", "13116"],
 			"Catablepon": ["12341"],
 			"Cave bugs": ["12593", "12850"],
@@ -155732,7 +155940,6 @@
 			"Ice giants": ["6204", "6706", "11062", "11318", "11836", "11837", "12081", "12857", "13114"],
 			"Ice warriors": ["6706", "10558", "11318", "11836", "11837", "12081"],
 			"Infernal Mages": ["13623"],
-			"Iron dragons": ["6457", "9261", "10801"],
 			"Jellies": ["6457", "6706", "11064", "12857", "13114"],
 			"Jungle horrors": ["14639", "14894", "14895", "15151"],
 			"Kalphites": ["12848", "13104"],
@@ -155750,7 +155957,7 @@
 			"Lizards": ["5167", "5179", "5680", "13355", "13359", "13615", "13871"],
 			"Magic axes": ["12605"],
 			"Mammoths": ["12600"],
-			"Mithril dragons": ["10038"],
+			"Metal dragons": ["6457", "9261", "10038", "10801", "14142"],
 			"Minions of Scabaras": ["13099", "13871"],
 			"Minotaurs": ["12341"],
 			"Mogres": ["11824"],
@@ -155768,7 +155975,6 @@
 			"Revenants": ["12345", "12347"],
 			"Rockslugs": ["5167", "11064", "12593", "12850"],
 			"Rogues": ["12349", "13117"],
-			"Rune dragons": ["14142"],
 			"Sarachnis": ["6711"],
 			"Scorpia": ["12861"],
 			"Scorpions": ["5691", "5936", "6701", "6702", "9778", "10031", "10291", "10549", "10795", "10802", "10804", "11050", "11051", "11054", "11313", "11315", "11562", "11573", "12084", "12085", "12087", "12091", "12341", "12348", "12588", "12854", "12861", "13105", "13107", "14908"],
@@ -155781,7 +155987,6 @@
 			"Sourhogs": ["12596"],
 			"Spiders": ["4911", "5167", "5687", "5168", "5169", "5426", "5690", "5692", "5937", "5946", "5947", "5948", "6193", "6201", "6202", "6203", "6204", "6706", "6710", "6711", "6712", "6967", "6968", "6969", "7225", "7226", "8494", "9023", "9267", "9524", "9779", "10030", "10031", "10033", "10038", "10288", "10290", "10544", "10549", "10794", "10795", "11050", "11051", "11054", "11055", "11056", "11058", "11311", "11312", "11313", "11318", "11566", "11567", "11568", "11570", "11573", "11833", "11837", "12092", "12093", "12340", "12341", "12342", "12594", "12602", "12604", "12850", "12853", "12859", "13105", "13114", "13115", "13877", "14131", "14645", "14647", "14899", "14907"],
 			"Spiritual creatures": ["11578", "12090"],
-			"Steel dragons": ["6457", "10801"],
 			"Suqahs": ["8252", "8253", "8508", "8509"],
 			"Terror dogs": ["13618"],
 			"Thermonuclear smoke devil": ["9519"],
@@ -157846,6 +158051,9 @@
 			},
 			"Scaly blue dragonhide": {
 				"1": "1/100"
+			},
+			"Tooth half of key (moon key)": {
+				"1": "1/2290"
 			}
 		},
 		"Baby green dragon": {
@@ -160048,6 +160256,9 @@
 			},
 			"Scaly blue dragonhide": {
 				"1": "1/50"
+			},
+			"Tooth half of key (moon key)": {
+				"1": "1/1216"
 			}
 		},
 		"Boar": {
@@ -160792,6 +161003,9 @@
 			},
 			"Scaly blue dragonhide": {
 				"1": "1/33"
+			},
+			"Tooth half of key (moon key)": {
+				"1": "1/250"
 			}
 		},
 		"Brutal green dragon": {
@@ -167507,6 +167721,9 @@
 			"Clue scroll (easy)": {
 				"1": "1/128"
 			},
+			"Tooth half of key (moon key)": {
+				"1": "1/3011"
+			},
 			"GemDropTable+": {
 				"1": "1/128"
 			}
@@ -167644,16 +167861,16 @@
 				"30-60": "20/256"
 			},
 			"Grimy cadantine": {
-				"1 (noted)": "25/1024"
+				"1": "25/1024"
 			},
 			"Grimy dwarf weed": {
-				"1 (noted)": "25/1024"
+				"1": "25/1024"
 			},
 			"Grimy kwuarm": {
-				"1 (noted)": "31.25/1024"
+				"1": "31.25/1024"
 			},
 			"Grimy lantadyme": {
-				"1 (noted)": "18.75/1024"
+				"1": "18.75/1024"
 			},
 			"Gold bar": {
 				"8-16 (noted)": "15/256"
@@ -167703,16 +167920,16 @@
 				"30-60": "20/256"
 			},
 			"Grimy cadantine": {
-				"1 (noted)": "25/1024"
+				"1": "25/1024"
 			},
 			"Grimy dwarf weed": {
-				"1 (noted)": "25/1024"
+				"1": "25/1024"
 			},
 			"Grimy kwuarm": {
-				"1 (noted)": "31.25/1024"
+				"1": "31.25/1024"
 			},
 			"Grimy lantadyme": {
-				"1 (noted)": "18.75/1024"
+				"1": "18.75/1024"
 			},
 			"Gold bar": {
 				"8-16 (noted)": "15/256"
@@ -171758,6 +171975,9 @@
 			"Curved bone": {
 				"1": "1/5012.5"
 			},
+			"Tooth half of key (moon key)": {
+				"1": "1/2190"
+			},
 			"UncommonSeedDropTable+": {
 				"1": "8/128"
 			},
@@ -171933,6 +172153,12 @@
 		"Ice spider": {
 			"Looting bag": {
 				"1": "1/3"
+			},
+			"Frozen tear": {
+				"1": "Unknown"
+			},
+			"Tooth half of key (moon key)": {
+				"1": "1/2036"
 			},
 			"Clue scroll (beginner)": {
 				"1": "1/128"
@@ -172569,6 +172795,9 @@
 			},
 			"Slayer's enchantment": {
 				"1": "1/273"
+			},
+			"Tooth half of key (moon key)": {
+				"1": "1/2112"
 			}
 		},
 		"Ice wolf": {
@@ -172601,6 +172830,9 @@
 			},
 			"Ecumenical key": {
 				"1": "1/60"
+			},
+			"Tooth half of key (moon key)": {
+				"1": "1/3058"
 			}
 		},
 		"Icelord": {
@@ -175441,16 +175673,16 @@
 				"3-5 (noted)": "4/250"
 			},
 			"Grimy kwuarm": {
-				"2-3 (noted)": "1/35.56"
+				"2-3": "1/35.56"
 			},
 			"Grimy cadantine": {
-				"2-3 (noted)": "1/44.44"
+				"2-3": "1/44.44"
 			},
 			"Grimy dwarf weed": {
-				"2-3 (noted)": "1/44.44"
+				"2-3": "1/44.44"
 			},
 			"Grimy lantadyme": {
-				"2-3 (noted)": "1/59.26"
+				"2-3": "1/59.26"
 			},
 			"Coins": {
 				"100-6000": "35/250"
@@ -175531,16 +175763,16 @@
 				"10": "6/118"
 			},
 			"Grimy kwuarm": {
-				"1 (noted)": "15/944"
+				"1": "15/944"
 			},
 			"Grimy cadantine": {
-				"1 (noted)": "3/236"
+				"1": "3/236"
 			},
 			"Grimy lantadyme": {
-				"1 (noted)": "9/944"
+				"1": "9/944"
 			},
 			"Grimy dwarf weed": {
-				"1 (noted)": "3/326"
+				"1": "3/326"
 			},
 			"Seaweed spore": {
 				"5": "6/118"
@@ -177805,7 +178037,22 @@
 				"1": "7/135"
 			},
 			"GeneralSeedDropTable+": {
-				"1": "18/135"
+				"1": "8730/143100"
+			},
+			"GeneralSeedDropTable2+": {
+				"1": "4374/143100"
+			},
+			"GeneralSeedDropTable3+": {
+				"1": "2196/143100"
+			},
+			"GeneralSeedDropTable4+": {
+				"1": "1746/143100"
+			},
+			"GeneralSeedDropTable5+": {
+				"1": "864/143100"
+			},
+			"GeneralSeedDropTable6+": {
+				"1": "1170/143100"
 			},
 			"GemDropTable+": {
 				"1": "3/135"
@@ -186441,7 +186688,7 @@
 				"1": "1/72"
 			},
 			"Tooth half of key (moon key)": {
-				"1": "1/150"
+				"1": "1/75"
 			},
 			"Torstol seed": {
 				"1-20": "2/68"
@@ -193015,7 +193262,7 @@
 		"Bone Voyage": "6454, 12082, 12597, 12853, 13110, 13365, 13366, 14907",
 		"Cabin Fever": "14638, 14646, 14902",
 		"Children of the Sun": "12853, 12854",
-		"Client of Kourend": "6200, 6202, 6714, 6716, 6968, 7225, 7226",
+		"Client of Kourend": "5944, 6202, 6714, 6716, 6968, 7225, 7226",
 		"Clock Tower": "10290, Clock Tower Dungeon",
 		"Cold War": "10291, 10558, 10559, 10810, 12850, 12595, Penguin Base",
 		"Contact!": "13099, 13105, Sophanem Dungeon",
@@ -202060,7 +202307,7 @@
 					"1": "1/100"
 				},
 				"Steel nails": {
-					"1": "1/10"
+					"5": "1/10"
 				},
 				"Studded chaps": {
 					"1": "1/100"
@@ -202125,7 +202372,7 @@
 					"1": "1/100"
 				},
 				"Steel nails": {
-					"1": "1/10"
+					"5": "1/10"
 				},
 				"Studded chaps": {
 					"1": "1/100"
@@ -206427,6 +206674,9 @@
 				"Bones to Peaches spell": {
 					"1": "Always"
 				},
+				"Rune pouch": {
+					"1": "Always"
+				},
 				"Mist rune": {
 					"1": "1/2"
 				},
@@ -208678,6 +208928,29 @@
 				},
 				"Iron ore": {
 					"1": "Always"
+				}
+			},
+			"Temple Trekking xp tome loot": {
+				"Agility tome": {
+					"1": "1/7"
+				},
+				"Firemaking tome": {
+					"1": "1/7"
+				},
+				"Fishing tome": {
+					"1": "1/7"
+				},
+				"Mining tome": {
+					"1": "1/7"
+				},
+				"Slayer tome": {
+					"1": "1/7"
+				},
+				"Thieving tome": {
+					"1": "1/7"
+				},
+				"Woodcutting tome": {
+					"1": "1/7"
 				}
 			},
 			"Theatre of Blood": {
@@ -210946,7 +211219,7 @@
 					"30-45": "4/56"
 				},
 				"Tooth half of key (moon key)": {
-					"1": "1/500"
+					"1": "1/150"
 				},
 				"Water orb": {
 					"10-20 (noted)": "2/56"
@@ -211014,16 +211287,16 @@
 					"30-60": "1/132"
 				},
 				"Grimy kwuarm": {
-					"3 (noted)": "5/264"
+					"3": "5/264"
 				},
 				"Grimy cadantine": {
-					"3 (noted)": "2/132"
+					"3": "2/132"
 				},
 				"Grimy lantadyme": {
-					"3 (noted)": "3/264"
+					"3": "3/264"
 				},
 				"Grimy dwarf weed": {
-					"3 (noted)": "2/132"
+					"3": "2/132"
 				},
 				"Grimy torstol": {
 					"1": "4/132"
@@ -211953,6 +212226,12 @@
 				},
 				"Nothing": {
 					"1": "29/128"
+				},
+				"Frozen tear": {
+					"1": "Unknown"
+				},
+				"Tooth half of key (moon key)": {
+					"1": "1/2260"
 				},
 				"GemDropTable+": {
 					"1": "1/128"
@@ -213068,28 +213347,28 @@
 					"35-65": "10/85"
 				},
 				"Grimy avantoe": {
-					"1-3 (noted)": "1/90.7"
+					"1-3": "1/90.7"
 				},
 				"Grimy kwuarm": {
-					"1-3 (noted)": "1/90.7"
+					"1-3": "1/90.7"
 				},
 				"Grimy ranarr weed": {
-					"1-3 (noted)": "1/113.3"
+					"1-3": "1/113.3"
 				},
 				"Grimy snapdragon": {
-					"1-3 (noted)": "1/113.3"
+					"1-3": "1/113.3"
 				},
 				"Grimy cadantine": {
-					"1-3 (noted)": "1/113.3"
+					"1-3": "1/113.3"
 				},
 				"Grimy dwarf weed": {
-					"1-3 (noted)": "1/113.3"
+					"1-3": "1/113.3"
 				},
 				"Grimy lantadyme": {
-					"1-3 (noted)": "1/151.1"
+					"1-3": "1/151.1"
 				},
 				"Grimy torstol": {
-					"1-3 (noted)": "1/151.1"
+					"1-3": "1/151.1"
 				},
 				"Coins": {
 					"1000-2000": "4/85",
@@ -214930,7 +215209,7 @@
 					"1": "Rare"
 				},
 				"Tooth half of key (moon key)": {
-					"1": "1/5700"
+					"1": "1/961"
 				}
 			},
 			"Killerwatt": {
@@ -215385,16 +215664,16 @@
 					"12-30": "1/123"
 				},
 				"Grimy kwuarm": {
-					"2 (noted)": "1/43.7"
+					"2": "1/43.7"
 				},
 				"Grimy cadantine": {
-					"2 (noted)": "1/54.7"
+					"2": "1/54.7"
 				},
 				"Grimy dwarf weed": {
-					"2 (noted)": "1/54.7"
+					"2": "1/54.7"
 				},
 				"Grimy lantadyme": {
-					"2 (noted)": "1/72.9"
+					"2": "1/72.9"
 				},
 				"Grimy ranarr weed": {
 					"1": "2/123"
@@ -217933,16 +218212,16 @@
 					"12-30": "1/123"
 				},
 				"Grimy kwuarm": {
-					"2 (noted)": "1/43.7"
+					"2": "1/43.7"
 				},
 				"Grimy cadantine": {
-					"2 (noted)": "1/54.7"
+					"2": "1/54.7"
 				},
 				"Grimy dwarf weed": {
-					"2 (noted)": "1/54.7"
+					"2": "1/54.7"
 				},
 				"Grimy lantadyme": {
-					"2 (noted)": "1/72.9"
+					"2": "1/72.9"
 				},
 				"Grimy ranarr weed": {
 					"1": "2/123"
@@ -218336,7 +218615,7 @@
 					"1": "1/34"
 				},
 				"Tooth half of key (moon key)": {
-					"1": "1/7000"
+					"1": "1/1052"
 				},
 				"Soft clay": {
 					"10-20 (noted)": "3/34"
@@ -218619,16 +218898,16 @@
 					"12-30": "1/123"
 				},
 				"Grimy kwuarm": {
-					"2 (noted)": "1/43.7"
+					"2": "1/43.7"
 				},
 				"Grimy cadantine": {
-					"2 (noted)": "1/54.7"
+					"2": "1/54.7"
 				},
 				"Grimy dwarf weed": {
-					"2 (noted)": "1/54.7"
+					"2": "1/54.7"
 				},
 				"Grimy lantadyme": {
-					"2 (noted)": "1/72.9"
+					"2": "1/72.9"
 				},
 				"Grimy ranarr weed": {
 					"1": "2/123"
@@ -222193,6 +222472,9 @@
 			"Limpwurt seed^": [{
 				"F2P Only": "Nonskill"
 			}],
+			"Guam seed^": [{
+				"F2P Only": "Nonskill"
+			}],
 			"Marrentill seed^": [{
 				"F2P Only": "Nonskill"
 			}],
@@ -222256,6 +222538,45 @@
 			"Torstol seed^": [{
 				"F2P Only": "Nonskill"
 			}],
+			"Asgarnian seed^": [{
+				"F2P Only": "Nonskill"
+			}],
+			"Barley seed^": [{
+				"F2P Only": "Nonskill"
+			}],
+			"Cadavaberry seed^": [{
+				"F2P Only": "Nonskill"
+			}],
+			"Dwellberry seed^": [{
+				"F2P Only": "Nonskill"
+			}],
+			"Hammerstone seed^": [{
+				"F2P Only": "Nonskill"
+			}],
+			"Jute seed^": [{
+				"F2P Only": "Nonskill"
+			}],
+			"Krandorian seed^": [{
+				"F2P Only": "Nonskill"
+			}],
+			"Marigold seed^": [{
+				"F2P Only": "Nonskill"
+			}],
+			"Nasturtium seed^": [{
+				"F2P Only": "Nonskill"
+			}],
+			"Redberry seed^": [{
+				"F2P Only": "Nonskill"
+			}],
+			"Rosemary seed^": [{
+				"F2P Only": "Nonskill"
+			}],
+			"Woad seed^": [{
+				"F2P Only": "Nonskill"
+			}],
+			"Yanillian seed^": [{
+				"F2P Only": "Nonskill"
+			}],
 			"Clue scroll (easy)^": [{
 				"F2P Only": "Nonskill"
 			}],
@@ -222290,6 +222611,33 @@
 			}],
 			"Herb pack^": [{
 				"Be eligible to buy a ~|herb pack|~": "Nonskill"
+			}],
+			"Mineral pack^": [{
+				"Be eligible to buy a ~|mineral pack|~": "Nonskill"
+			}],
+			"Seed pack (Pest Control)^": [{
+				"Be eligible to buy a ~|seed pack (Pest Control)|~": "Nonskill"
+			}],
+			"Void knight mace^": [{
+				"Be eligible to buy ~|Void Knight equipment|~": "Nonskill"
+			}],
+			"Void knight top^": [{
+				"Be eligible to buy ~|Void Knight equipment|~": "Nonskill"
+			}],
+			"Void knight robe^": [{
+				"Be eligible to buy ~|Void Knight equipment|~": "Nonskill"
+			}],
+			"Void knight gloves^": [{
+				"Be eligible to buy ~|Void Knight equipment|~": "Nonskill"
+			}],
+			"Void mage helm^": [{
+				"Be eligible to buy ~|Void Knight equipment|~": "Nonskill"
+			}],
+			"Void ranger helm^": [{
+				"Be eligible to buy ~|Void Knight equipment|~": "Nonskill"
+			}],
+			"Void melee helm^": [{
+				"Be eligible to buy ~|Void Knight equipment|~": "Nonskill"
 			}],
 			"Giant rat bone^": [{
 				"~|Rag and Bone Man I|~ 1": "Quest"
@@ -223002,6 +223350,36 @@
 			}],
 			"Silver bar^Flesh Crawler": [{
 				"F2P Only": "Nonskill"
+			}],
+			"Tooth half of key (moon key)^Ice giant": [{
+				"Ruins of Tapoyauik drops": "Nonskill"
+			}],
+			"Tooth half of key (moon key)^Ice spider": [{
+				"Ruins of Tapoyauik drops": "Nonskill"
+			}],
+			"Tooth half of key (moon key)^Ice warrior": [{
+				"Ruins of Tapoyauik drops": "Nonskill"
+			}],
+			"Tooth half of key (moon key)^Icefiend": [{
+				"Varlamore icefiend drops": "Nonskill"
+			}],
+			"Tooth half of key (moon key)^Brutal blue dragon": [{
+				"Ruins of Tapoyauik drops": "Nonskill"
+			}],
+			"Tooth half of key (moon key)^Blue dragon": [{
+				"Ruins of Tapoyauik drops": "Nonskill"
+			}],
+			"Tooth half of key (moon key)^Baby blue dragon": [{
+				"Ruins of Tapoyauik drops": "Nonskill"
+			}],
+			"Tooth half of key (moon key)^Cave crawler": [{
+				"Ruins of Tapoyauik drops": "Nonskill"
+			}],
+			"Frozen tear^Ice spider": [{
+				"Ruins of Tapoyauik drops": "Nonskill"
+			}],
+			"Frozen tear^Cave crawler": [{
+				"Ruins of Tapoyauik drops": "Nonskill"
 			}],
 			"Looting bag^Ancient Wizard": [{
 				"Wilderness ancient wizard": "Nonskill"
@@ -225029,6 +225407,11 @@
 					"F2P Only": "Nonskill"
 				}]
 			},
+			"Big Wolf": {
+				"9773-2": [{
+					"F2P Only": "Nonskill"
+				}]
+			},
 			"Billy Goat": {
 				"13617-2": [{
 					"F2P Only": "Nonskill"
@@ -225993,6 +226376,11 @@
 			"Wizard": {
 				"10288-1": [{
 					"Access the ~|Wizards' Guild|~": "Magic"
+				}]
+			},
+			"Wolf": {
+				"9773-2": [{
+					"F2P Only": "Nonskill"
 				}]
 			},
 			"Woman (West Ardougne)": {
@@ -227531,6 +227919,11 @@
 					"~|Sheep Herder|~ 1": "Quest"
 				}]
 			},
+			"Cheese": {
+				"6448": [{
+					"~|The Final Dawn|~ 6": "Quest"
+				}]
+			},
 			"Chisel": {
 				"10035-1": [{
 					"~|Plague City|~ 5": "Quest"
@@ -227925,12 +228318,12 @@
 				"CombatLevel": 5,
 				"Weight": 7
 			},
-			"Birds": {
-				"Weight": 6
-			},
 			"Bears": {
 				"CombatLevel": 13,
 				"Weight": 7
+			},
+			"Birds": {
+				"Weight": 6
 			},
 			"Cave bugs": {
 				"Level": 7,
@@ -228027,12 +228420,12 @@
 				"CombatLevel": 5,
 				"Weight": 7
 			},
-			"Birds": {
-				"Weight": 6
-			},
 			"Bears": {
 				"CombatLevel": 13,
 				"Weight": 7
+			},
+			"Birds": {
+				"Weight": 6
 			},
 			"Cave bugs": {
 				"Level": 7,
@@ -228358,10 +228751,6 @@
 				},
 				"Weight": 8
 			},
-			"Lizards": {
-				"Level": 22,
-				"Weight": 8
-			},
 			"Dogs": {
 				"CombatLevel": 15,
 				"Weight": 7
@@ -228404,6 +228793,10 @@
 					"~|Ernest the Chicken|~ Complete the quest": "Quest"
 				},
 				"Weight": 6
+			},
+			"Lizards": {
+				"Level": 22,
+				"Weight": 8
 			},
 			"Mogres": {
 				"Level": 32,
@@ -228466,7 +228859,7 @@
 				"Tasks": {
 					"~|Priest in Peril|~ Complete the quest": "Quest"
 				},
-				"Weight": 7
+				"Weight": 8
 			},
 			"Abyssal demons": {
 				"Level": 85,
@@ -228474,11 +228867,11 @@
 				"Tasks": {
 					"~|Priest in Peril|~ Complete the quest": "Quest"
 				},
-				"Weight": 7
+				"Weight": 5
 			},
 			"Ankous": {
 				"CombatLevel": 40,
-				"Weight": 7
+				"Weight": 8
 			},
 			"Basilisks": {
 				"Level": 15,
@@ -228486,7 +228879,7 @@
 				"Skills": {
 					"Defence": 20
 				},
-				"Weight": 7
+				"Weight": 8
 			},
 			"Bloodvelds": {
 				"Level": 50,
@@ -228494,7 +228887,7 @@
 				"Tasks": {
 					"~|Priest in Peril|~ Complete the quest": "Quest"
 				},
-				"Weight": 7
+				"Weight": 8
 			},
 			"Blue dragons": {
 				"CombatLevel": 65,
@@ -228517,7 +228910,7 @@
 				"Skills": {
 					"Defence": 20
 				},
-				"Weight": 7
+				"Weight": 8
 			},
 			"Crabs": {
 				"CombatLevel": 1,
@@ -228525,7 +228918,7 @@
 			},
 			"Crocodiles": {
 				"CombatLevel": 50,
-				"Weight": 7
+				"Weight": 6
 			},
 			"Dagannoths": {
 				"CombatLevel": 75,
@@ -228540,12 +228933,12 @@
 				"Tasks": {
 					"~|Desert Treasure I|~ 7c1": "Quest"
 				},
-				"Weight": 7
+				"Weight": 8
 			},
 			"Elves": {
 				"CombatLevel": 70,
 				"Tasks": {
-					"~|Regicide|~ 3": "Quest"
+					"~|Regicide|~ Complete the quest": "Quest"
 				},
 				"Weight": 7
 			},
@@ -228567,7 +228960,7 @@
 				"Tasks": {
 					"~|Priest in Peril|~ Complete the quest": "Quest"
 				},
-				"Weight": 7
+				"Weight": 5
 			},
 			"Ghouls": {
 				"CombatLevel": 25,
@@ -228582,7 +228975,7 @@
 				"Skills": {
 					"Firemaking": 33
 				},
-				"Weight": 7
+				"Weight": 8
 			},
 			"Hellhounds": {
 				"CombatLevel": 75,
@@ -228610,19 +229003,19 @@
 				"Tasks": {
 					"~|Priest in Peril|~ Complete the quest": "Quest"
 				},
-				"Weight": 7
+				"Weight": 8
 			},
 			"Jellies": {
 				"Level": 52,
 				"CombatLevel": 57,
-				"Weight": 7
+				"Weight": 8
 			},
 			"Jungle horrors": {
 				"CombatLevel": 65,
 				"Tasks": {
 					"~|Cabin Fever|~ Complete the quest": "Quest"
 				},
-				"Weight": 7
+				"Weight": 8
 			},
 			"Kalphites": {
 				"CombatLevel": 15,
@@ -228663,7 +229056,7 @@
 				"Tasks": {
 					"~|Priest in Peril|~ Complete the quest": "Quest"
 				},
-				"Weight": 7
+				"Weight": 5
 			},
 			"Ogres": {
 				"CombatLevel": 40,
@@ -228674,16 +229067,12 @@
 				"Tasks": {
 					"~|Lost City|~ Complete the quest": "Quest"
 				},
-				"Weight": 7
+				"Weight": 8
 			},
 			"Pyrefiends": {
 				"Level": 30,
 				"CombatLevel": 25,
-				"Weight": 7
-			},
-			"Shades": {
-				"CombatLevel": 30,
-				"Weight": 7
+				"Weight": 8
 			},
 			"Sea snakes": {
 				"Level": 40,
@@ -228691,14 +229080,18 @@
 				"Tasks": {
 					"~|Royal Trouble|~ Complete the quest": "Quest"
 				},
-				"Weight": 7
+				"Weight": 6
+			},
+			"Shades": {
+				"CombatLevel": 30,
+				"Weight": 8
 			},
 			"Shadow warriors": {
 				"CombatLevel": 60,
 				"Tasks": {
 					"~|Legends' Quest|~ Complete the quest": "Quest"
 				},
-				"Weight": 7
+				"Weight": 8
 			},
 			"Spiritual creatures": {
 				"Level": 63,
@@ -228706,7 +229099,7 @@
 				"Tasks": {
 					"~|Death Plateau|~ Complete the quest": "Quest"
 				},
-				"Weight": 7
+				"Weight": 8
 			},
 			"Terror dogs": {
 				"Level": 40,
@@ -228714,7 +229107,7 @@
 				"Tasks": {
 					"~|Haunted Mine|~ Complete the quest": "Quest"
 				},
-				"Weight": 7
+				"Weight": 6
 			},
 			"Trolls": {
 				"CombatLevel": 60,
@@ -228723,7 +229116,7 @@
 			"Turoths": {
 				"Level": 55,
 				"CombatLevel": 60,
-				"Weight": 7
+				"Weight": 8
 			},
 			"Vampyres": {
 				"CombatLevel": 35,
@@ -228837,7 +229230,7 @@
 			"Elves": {
 				"CombatLevel": 70,
 				"Tasks": {
-					"~|Regicide|~ 3": "Quest"
+					"~|Regicide|~ Complete the quest": "Quest"
 				},
 				"Weight": 8
 			},
@@ -229008,13 +229401,6 @@
 					"~|Priest in Peril|~ Complete the quest": "Quest"
 				},
 				"Weight": 3
-			},
-			"Adamant dragons - Lithkren Vault": {
-				"Chunks": ["Lithkren Vault"],
-				"Tasks": {
-					"~|Dragon Slayer II|~ Complete the quest": "Quest"
-				},
-				"Weight": 5
 			},
 			"Ankous - Stronghold of Security": {
 				"Chunks": ["Stronghold of Security"],
@@ -229197,22 +229583,6 @@
 				},
 				"Weight": 2
 			},
-			"Bronze dragons - Catacombs of Kourend": {
-				"Chunks": ["Catacombs of Kourend"],
-				"CombatLevel": 75,
-				"Tasks": {
-					"~|Dragon Slayer I|~ 1": "Quest"
-				},
-				"Weight": 2.5
-			},
-			"Bronze dragons - Brimhaven Dungeon": {
-				"Chunks": ["Brimhaven Dungeon"],
-				"CombatLevel": 75,
-				"Tasks": {
-					"~|Dragon Slayer I|~ 1": "Quest"
-				},
-				"Weight": 2.5
-			},
 			"Cave krakens - Kraken Cove": {
 				"Chunks": ["Kraken Cove"],
 				"Level": 87,
@@ -229348,7 +229718,7 @@
 				"Tasks": {
 					"~|Priest in Peril|~ Complete the quest": "Quest"
 				},
-				"Weight": 8
+				"Weight": 6
 			},
 			"Greater demons - Catacombs of Kourend": {
 				"Chunks": ["Catacombs of Kourend"],
@@ -229405,30 +229775,6 @@
 				"Level": 95,
 				"Weight": 10
 			},
-			"Iron dragons - Brimhaven Dungeon": {
-				"Chunks": ["Brimhaven Dungeon"],
-				"CombatLevel": 80,
-				"Tasks": {
-					"~|Dragon Slayer I|~ 1": "Quest"
-				},
-				"Weight": 1.67
-			},
-			"Iron dragons - Catacombs of Kourend": {
-				"Chunks": ["Catacombs of Kourend"],
-				"CombatLevel": 80,
-				"Tasks": {
-					"~|Dragon Slayer I|~ 1": "Quest"
-				},
-				"Weight": 1.67
-			},
-			"Iron dragons - Isle of Souls Dungeon": {
-				"Chunks": ["Isle of Souls Dungeon"],
-				"CombatLevel": 80,
-				"Tasks": {
-					"~|Dragon Slayer I|~ 1": "Quest"
-				},
-				"Weight": 1.67
-			},
 			"Jellies - Rellekka Slayer Cave": {
 				"Chunks": ["Rellekka Slayer Cave"],
 				"Level": 52,
@@ -229481,7 +229827,7 @@
 				"Tasks": {
 					"~|Perilous Moons|~ Complete the quest": "Quest"
 				},
-				"Weight": 1
+				"Weight": 0.67
 			},
 			"Lesser Nagua - Ruins of Tapoyauik": {
 				"Chunks": ["Ruins of Tapoyauik"],
@@ -229490,15 +229836,54 @@
 					"~|Perilous Moons|~ Complete the quest": "Quest",
 					"~|The Heart of Darkness|~ Complete the quest": "Quest"
 				},
-				"Weight": 1
+				"Weight": 0.67
 			},
 			"Lesser Nagua - Tonali Cavern": {
 				"Chunks": ["Tonali Cavern"],
 				"Level": 48,
 				"Tasks": {
-					"~|Perilous Moons|~ Complete the quest": "Quest"
+					"~|The Final Dawn|~ Complete the quest": "Quest"
 				},
-				"Weight": 1
+				"Weight": 0.67
+			},
+			"Metal dragons - Ancient Cavern": {
+				"Chunks": ["Ancient Cavern"],
+				"CombatLevel": 80,
+				"Tasks": {
+					"Ancient Cavern": "Nonskill"
+				},
+				"Weight": 3
+			},
+			"Metal dragons - Brimhaven Dungeon": {
+				"Chunks": ["Brimhaven Dungeon"],
+				"CombatLevel": 75,
+				"Tasks": {
+					"~|Dragon Slayer I|~ 1": "Quest"
+				},
+				"Weight": 3
+			},
+			"Metal dragons - Catacombs of Kourend": {
+				"Chunks": ["Catacombs of Kourend"],
+				"CombatLevel": 75,
+				"Tasks": {
+					"~|Dragon Slayer I|~ 1": "Quest"
+				},
+				"Weight": 3
+			},
+			"Metal dragons - Lithkren Vault": {
+				"Chunks": ["Lithkren Vault"],
+				"Tasks": {
+					"~|Dragon Slayer II|~ Complete the quest": "Quest"
+				},
+				"Weight": 3
+			},
+			"Metal dragons - Isle of Souls Dungeon": {
+				"Chunks": ["Isle of Souls Dungeon"],
+				"CombatLevel": 80,
+				"Tasks": {
+					"~|Dragon Slayer I|~ 1": "Quest"
+				},
+				"Weight": 3
 			},
 			"Zygomites - Fossil Island": {
 				"Chunks": ["Fossil Island Task[+]"],
@@ -229546,13 +229931,6 @@
 				},
 				"Weight": 2.33
 			},
-			"Rune dragons - Lithkren Vault": {
-				"Chunks": ["Lithkren Vault"],
-				"Tasks": {
-					"~|Dragon Slayer II|~ Complete the quest": "Quest"
-				},
-				"Weight": 5
-			},
 			"Skeletal Wyverns - Asgarnian Ice Dungeon": {
 				"Chunks": ["Asgarnian Ice Dungeon"],
 				"Level": 72,
@@ -229567,22 +229945,6 @@
 				"Level": 93,
 				"CombatLevel": 85,
 				"Weight": 7
-			},
-			"Steel dragons - Catacombs of Kourend": {
-				"Chunks": ["Catacombs of Kourend"],
-				"CombatLevel": 85,
-				"Tasks": {
-					"~|Dragon Slayer I|~ 1": "Quest"
-				},
-				"Weight": 2.5
-			},
-			"Steel dragons - Brimhaven Dungeon": {
-				"Chunks": ["Brimhaven Dungeon"],
-				"CombatLevel": 85,
-				"Tasks": {
-					"~|Dragon Slayer I|~ 1": "Quest"
-				},
-				"Weight": 2.5
 			},
 			"Trolls - Troll Stronghold": {
 				"Chunks": ["Troll Stronghold"],
@@ -229666,12 +230028,6 @@
 				},
 				"Weight": 9
 			},
-			"Adamant dragons": {
-				"Tasks": {
-					"~|Dragon Slayer II|~ Complete the quest": "Quest"
-				},
-				"Weight": 2
-			},
 			"Ankous": {
 				"CombatLevel": 40,
 				"Weight": 5
@@ -229700,7 +230056,7 @@
 				"Tasks": {
 					"~|Priest in Peril|~ Complete the quest": "Quest"
 				},
-				"Weight": 8
+				"Weight": 9
 			},
 			"Blue dragons": {
 				"CombatLevel": 65,
@@ -229770,7 +230126,7 @@
 			"Elves": {
 				"CombatLevel": 70,
 				"Tasks": {
-					"~|Regicide|~ 3": "Quest"
+					"~|Regicide|~ Complete the quest": "Quest"
 				},
 				"Weight": 4
 			},
@@ -229803,13 +230159,6 @@
 				"CombatLevel": 75,
 				"Weight": 8
 			},
-			"Iron dragons": {
-				"CombatLevel": 80,
-				"Tasks": {
-					"~|Dragon Slayer I|~ 1": "Quest"
-				},
-				"Weight": 5
-			},
 			"Kalphites": {
 				"CombatLevel": 15,
 				"Weight": 9
@@ -229818,6 +230167,13 @@
 				"Level": 70,
 				"CombatLevel": 65,
 				"Weight": 3
+			},
+			"Metal dragons": {
+				"CombatLevel": 80,
+				"Tasks": {
+					"~|Dragon Slayer I|~ 1": "Quest"
+				},
+				"Weight": 12
 			},
 			"Minions of Scabaras": {
 				"CombatLevel": 85,
@@ -229842,12 +230198,6 @@
 				},
 				"Weight": 7
 			},
-			"Rune dragons": {
-				"Tasks": {
-					"~|Dragon Slayer II|~ Complete the quest": "Quest"
-				},
-				"Weight": 2
-			},
 			"Skeletal Wyverns": {
 				"Level": 72,
 				"CombatLevel": 70,
@@ -229868,13 +230218,6 @@
 					"~|Death Plateau|~ Complete the quest": "Quest"
 				},
 				"Weight": 6
-			},
-			"Steel dragons": {
-				"CombatLevel": 85,
-				"Tasks": {
-					"~|Dragon Slayer I|~ 1": "Quest"
-				},
-				"Weight": 5
 			},
 			"Suqahs": {
 				"CombatLevel": 60,
@@ -229913,12 +230256,6 @@
 					"~|Priest in Peril|~ Complete the quest": "Quest"
 				},
 				"Weight": 12
-			},
-			"Adamant dragons": {
-				"Tasks": {
-					"~|Dragon Slayer II|~ Complete the quest": "Quest"
-				},
-				"Weight": 2
 			},
 			"Ankous": {
 				"CombatLevel": 40,
@@ -230003,7 +230340,7 @@
 			"Elves": {
 				"CombatLevel": 70,
 				"Tasks": {
-					"~|Regicide|~ 3": "Quest"
+					"~|Regicide|~ Complete the quest": "Quest"
 				},
 				"Weight": 4
 			},
@@ -230018,7 +230355,7 @@
 					"~|Bone Voyage|~ Complete the quest": "Quest",
 					"~|Elemental Workshop I|~ Complete the quest": "Quest"
 				},
-				"Weight": 5
+				"Weight": 7
 			},
 			"Gargoyles": {
 				"Level": 75,
@@ -230036,21 +230373,12 @@
 				"CombatLevel": 75,
 				"Weight": 10
 			},
-			"Iron dragons": {
+			"Metal dragons": {
 				"CombatLevel": 80,
 				"Tasks": {
 					"~|Dragon Slayer I|~ 1": "Quest"
 				},
-				"Weight": 5
-			},
-			"Kalphites": {
-				"CombatLevel": 15,
-				"Weight": 9
-			},
-			"Kurasks": {
-				"Level": 70,
-				"CombatLevel": 65,
-				"Weight": 4
+				"Weight": 14
 			},
 			"Zygomites": {
 				"Level": 57,
@@ -230067,12 +230395,6 @@
 					"~|Priest in Peril|~ Complete the quest": "Quest"
 				},
 				"Weight": 9
-			},
-			"Rune dragons": {
-				"Tasks": {
-					"~|Dragon Slayer II|~ Complete the quest": "Quest"
-				},
-				"Weight": 2
 			},
 			"Skeletal Wyverns": {
 				"Level": 72,
@@ -230092,13 +230414,6 @@
 				"CombatLevel": 60,
 				"Tasks": {
 					"~|Death Plateau|~ Complete the quest": "Quest"
-				},
-				"Weight": 7
-			},
-			"Steel dragons": {
-				"CombatLevel": 85,
-				"Tasks": {
-					"~|Dragon Slayer I|~ 1": "Quest"
 				},
 				"Weight": 7
 			},
@@ -238417,6 +238732,149 @@
 				"~|Cabin Fever|~ 1": "Quest"
 			}
 		}
+	},
+	"questSections": {
+		"4656": ["~|Children of the Sun|~ Complete the quest"],
+		"4910": ["~|Children of the Sun|~ Complete the quest"],
+		"4911": ["~|Children of the Sun|~ Complete the quest"],
+		"4912": ["~|Children of the Sun|~ Complete the quest"],
+		"4913": ["~|Children of the Sun|~ Complete the quest"],
+		"4915": ["~|Children of the Sun|~ Complete the quest"],
+		"4916-3": ["~|Children of the Sun|~ Complete the quest"],
+		"4916-4": ["~|Children of the Sun|~ Complete the quest"],
+		"4917-1": ["~|Children of the Sun|~ Complete the quest"],
+		"5165": ["~|Children of the Sun|~ Complete the quest"],
+		"5166": ["~|Children of the Sun|~ Complete the quest"],
+		"5167": ["~|Children of the Sun|~ Complete the quest"],
+		"5168": ["~|Children of the Sun|~ Complete the quest"],
+		"5169": ["~|Children of the Sun|~ Complete the quest"],
+		"5171": ["~|Children of the Sun|~ Complete the quest"],
+		"5172": ["~|Children of the Sun|~ Complete the quest"],
+		"5173": ["~|Children of the Sun|~ Complete the quest"],
+		"5420": ["~|Children of the Sun|~ Complete the quest"],
+		"5421": ["~|Children of the Sun|~ Complete the quest"],
+		"5422": ["~|Children of the Sun|~ Complete the quest"],
+		"5423": ["~|Children of the Sun|~ Complete the quest"],
+		"5424": ["~|Children of the Sun|~ Complete the quest"],
+		"5425": ["~|Children of the Sun|~ Complete the quest"],
+		"5426": ["~|Children of the Sun|~ Complete the quest"],
+		"5427": ["~|Children of the Sun|~ Complete the quest"],
+		"5428": ["~|Children of the Sun|~ Complete the quest"],
+		"5429": ["~|Children of the Sun|~ Complete the quest"],
+		"5676": ["~|Children of the Sun|~ Complete the quest"],
+		"5677": ["~|Children of the Sun|~ Complete the quest"],
+		"5678": ["~|Children of the Sun|~ Complete the quest"],
+		"5679": ["~|Children of the Sun|~ Complete the quest"],
+		"5680": ["~|Children of the Sun|~ Complete the quest"],
+		"5681": ["~|Children of the Sun|~ Complete the quest"],
+		"5682": ["~|Children of the Sun|~ Complete the quest"],
+		"5683": ["~|Children of the Sun|~ Complete the quest"],
+		"5684": ["~|Children of the Sun|~ Complete the quest"],
+		"5933": ["~|Children of the Sun|~ Complete the quest"],
+		"5934": ["~|Children of the Sun|~ Complete the quest"],
+		"5935": ["~|Children of the Sun|~ Complete the quest"],
+		"5936": ["~|Children of the Sun|~ Complete the quest"],
+		"5937": ["~|Children of the Sun|~ Complete the quest"],
+		"5938": ["~|Children of the Sun|~ Complete the quest"],
+		"5939": ["~|Children of the Sun|~ Complete the quest"],
+		"5940": ["~|Children of the Sun|~ Complete the quest"],
+		"6189": ["~|Children of the Sun|~ Complete the quest"],
+		"6190": ["~|Children of the Sun|~ Complete the quest"],
+		"6191": ["~|Children of the Sun|~ Complete the quest"],
+		"6192": ["~|Children of the Sun|~ Complete the quest"],
+		"6193": ["~|Children of the Sun|~ Complete the quest"],
+		"6194": ["~|Children of the Sun|~ Complete the quest"],
+		"6195": ["~|Children of the Sun|~ Complete the quest"],
+		"6196": ["~|Children of the Sun|~ Complete the quest"],
+		"6445": ["~|Children of the Sun|~ Complete the quest"],
+		"6446": ["~|Children of the Sun|~ Complete the quest"],
+		"6447": ["~|Children of the Sun|~ Complete the quest"],
+		"6448": ["~|Children of the Sun|~ Complete the quest"],
+		"6449": ["~|Children of the Sun|~ Complete the quest"],
+		"6450": ["~|Children of the Sun|~ Complete the quest"],
+		"6451": ["~|Children of the Sun|~ Complete the quest"],
+		"6701": ["~|Children of the Sun|~ Complete the quest"],
+		"6702": ["~|Children of the Sun|~ Complete the quest"],
+		"6703": ["~|Children of the Sun|~ Complete the quest"],
+		"6704": ["~|Children of the Sun|~ Complete the quest"],
+		"6705": ["~|Children of the Sun|~ Complete the quest"],
+		"6706": ["~|Children of the Sun|~ Complete the quest"],
+		"6707": ["~|Children of the Sun|~ Complete the quest"],
+		"6957": ["~|Children of the Sun|~ Complete the quest"],
+		"6958": ["~|Children of the Sun|~ Complete the quest"],
+		"6959": ["~|Children of the Sun|~ Complete the quest"],
+		"6960": ["~|Children of the Sun|~ Complete the quest"],
+		"6961": ["~|Children of the Sun|~ Complete the quest"],
+		"7215": ["~|Children of the Sun|~ Complete the quest"],
+		"7216": ["~|Children of the Sun|~ Complete the quest"],
+		"7217": ["~|Children of the Sun|~ Complete the quest"],
+		"7472": ["~|Children of the Sun|~ Complete the quest"],
+		"13618-2": ["~|Priest in Peril|~ Complete the quest"],
+		"13619-1": ["~|Priest in Peril|~ Complete the quest"],
+		"13619-2": ["~|Priest in Peril|~ Complete the quest"],
+		"13620-1": ["~|Priest in Peril|~ Complete the quest"],
+		"13620-2": ["~|Priest in Peril|~ Complete the quest"],
+		"13620-4": ["~|Priest in Peril|~ Complete the quest"],
+		"13621-1": ["~|Priest in Peril|~ Complete the quest"],
+		"13622-2": ["~|Priest in Peril|~ Complete the quest"],
+		"13622-3": ["~|Priest in Peril|~ Complete the quest"],
+		"13622-4": ["~|Priest in Peril|~ Complete the quest"],
+		"13622-5": ["~|Priest in Peril|~ Complete the quest"],
+		"13623": ["~|Priest in Peril|~ Complete the quest"],
+		"13873-1": ["~|Priest in Peril|~ Complete the quest"],
+		"13874": ["~|Priest in Peril|~ Complete the quest"],
+		"13875": ["~|Priest in Peril|~ Complete the quest"],
+		"13876": ["~|Priest in Peril|~ Complete the quest"],
+		"13877": ["~|Priest in Peril|~ Complete the quest"],
+		"13878": ["~|Priest in Peril|~ Complete the quest"],
+		"13879": ["~|Priest in Peril|~ Complete the quest"],
+		"14129": ["~|Priest in Peril|~ Complete the quest"],
+		"14130": ["~|Priest in Peril|~ Complete the quest"],
+		"14131": ["~|Priest in Peril|~ Complete the quest"],
+		"14132": ["~|Priest in Peril|~ Complete the quest"],
+		"14133": ["~|Priest in Peril|~ Complete the quest"],
+		"14134": ["~|Priest in Peril|~ Complete the quest"],
+		"14135": ["~|Priest in Peril|~ Complete the quest"],
+		"14385": ["~|Priest in Peril|~ Complete the quest"],
+		"14386": ["~|Priest in Peril|~ Complete the quest"],
+		"14387": ["~|Priest in Peril|~ Complete the quest"],
+		"14388": ["~|Priest in Peril|~ Complete the quest"],
+		"14389": ["~|Priest in Peril|~ Complete the quest"],
+		"14390": ["~|Priest in Peril|~ Complete the quest"],
+		"14391": ["~|Priest in Peril|~ Complete the quest"],
+		"14637": ["~|Cabin Fever|~ Complete the quest"],
+		"14638": ["~|Cabin Fever|~ Complete the quest"],
+		"14639": ["~|Cabin Fever|~ Complete the quest"],
+		"14641": ["~|Priest in Peril|~ Complete the quest"],
+		"14642": ["~|Priest in Peril|~ Complete the quest"],
+		"14643": ["~|Priest in Peril|~ Complete the quest"],
+		"14644": ["~|Priest in Peril|~ Complete the quest"],
+		"14645": ["~|Priest in Peril|~ Complete the quest"],
+		"14646": ["~|Priest in Peril|~ Complete the quest"],
+		"14647": ["~|Priest in Peril|~ Complete the quest"],
+		"14649": ["~|Bone Voyage|~ Complete the quest"],
+		"14650": ["~|Bone Voyage|~ Complete the quest"],
+		"14651": ["~|Bone Voyage|~ Complete the quest"],
+		"14652": ["~|Bone Voyage|~ Complete the quest"],
+		"14894": ["~|Cabin Fever|~ Complete the quest"],
+		"14895": ["~|Cabin Fever|~ Complete the quest"],
+		"14898": ["~|Priest in Peril|~ Complete the quest"],
+		"14899": ["~|Priest in Peril|~ Complete the quest"],
+		"14900": ["~|Priest in Peril|~ Complete the quest"],
+		"14901": ["~|Priest in Peril|~ Complete the quest"],
+		"14902": ["~|Priest in Peril|~ Complete the quest"],
+		"14906": ["~|Bone Voyage|~ Complete the quest"],
+		"14907": ["~|Bone Voyage|~ Complete the quest"],
+		"14908": ["~|Bone Voyage|~ Complete the quest"],
+		"15148": ["~|Cabin Fever|~ Complete the quest"],
+		"15150": ["~|Cabin Fever|~ Complete the quest"],
+		"15151": ["~|Cabin Fever|~ Complete the quest"],
+		"15159": ["~|Priest in Peril|~ Complete the quest"],
+		"15162": ["~|Bone Voyage|~ Complete the quest"],
+		"15163": ["~|Bone Voyage|~ Complete the quest"],
+		"15164": ["~|Bone Voyage|~ Complete the quest"],
+		"15406": ["~|Cabin Fever|~ Complete the quest"],
+		"15407": ["~|Cabin Fever|~ Complete the quest"]
 	},
 	"walkableChunks": ["4403", "4404", "4405", "4656", "4659", "4660", "4661", "4662", "4663", "4664", "4665", "4666", "4667", "4910", "4911", "4912", "4913", "4915", "4916", "4917", "4918", "4919", "4920", "4921", "4922", "4923", "5165", "5166", "5167", "5168", "5169", "5171", "5172", "5173", "5174", "5175", "5176", "5177", "5178", "5179", "5180", "5420", "5421", "5422", "5423", "5424", "5425", "5426", "5427", "5428", "5429", "5430", "5431", "5432", "5433", "5434", "5435", "5676", "5677", "5678", "5679", "5680", "5681", "5682", "5683", "5684", "5686", "5687", "5688", "5689", "5690", "5691", "5692", "5933", "5934", "5935", "5936", "5937", "5938", "5939", "5940", "5941", "5942", "5943", "5944", "5945", "5946", "5947", "5948", "5949", "6189", "6190", "6191", "6192", "6193", "6194", "6195", "6196", "6197", "6198", "6199", "6200", "6201", "6202", "6203", "6204", "6205", "6445", "6446", "6447", "6448", "6449", "6450", "6451", "6453", "6454", "6455", "6456", "6457", "6458", "6459", "6460", "6461", "6462", "6701", "6702", "6703", "6704", "6705", "6706", "6707", "6710", "6711", "6712", "6713", "6714", "6715", "6716", "6717", "6957", "6958", "6959", "6960", "6961", "6965", "6966", "6967", "6968", "6969", "6970", "6971", "6972", "6973", "7215", "7216", "7217", "7221", "7222", "7223", "7224", "7225", "7226", "7227", "7228", "7472", "7478", "7479", "8236", "8237", "8238", "8252", "8253", "8491", "8492", "8493", "8494", "8495", "8496", "8497", "8498", "8499", "8500", "8501", "8508", "8509", "8747", "8748", "8749", "8750", "8751", "8752", "8753", "8754", "8755", "8756", "8757", "8763", "9003", "9004", "9005", "9006", "9007", "9008", "9009", "9010", "9011", "9012", "9013", "9014", "9015", "9016", "9023", "9260", "9261", "9262", "9263", "9264", "9265", "9266", "9267", "9268", "9269", "9270", "9271", "9272", "9273", "9275", "9276", "9519", "9520", "9521", "9523", "9524", "9525", "9526", "9527", "9528", "9531", "9532", "9772", "9773", "9774", "9775", "9776", "9777", "9778", "9779", "9780", "9781", "9782", "9783", "9790", "10028", "10029", "10030", "10031", "10032", "10033", "10034", "10035", "10036", "10037", "10038", "10039", "10040", "10042", "10043", "10044", "10284", "10285", "10286", "10287", "10288", "10289", "10290", "10291", "10292", "10293", "10294", "10296", "10297", "10300", "10536", "10537", "10542", "10543", "10544", "10545", "10546", "10547", "10548", "10549", "10550", "10551", "10552", "10553", "10554", "10556", "10558", "10559", "10794", "10795", "10801", "10802", "10803", "10804", "10805", "10806", "10807", "10808", "10809", "10810", "10811", "11050", "11051", "11053", "11054", "11055", "11056", "11057", "11058", "11059", "11060", "11061", "11062", "11063", "11064", "11065", "11066", "11067", "11068", "11309", "11310", "11311", "11312", "11313", "11314", "11315", "11316", "11317", "11318", "11319", "11320", "11321", "11322", "11323", "11325", "11326", "11562", "11565", "11566", "11567", "11568", "11569", "11570", "11571", "11572", "11573", "11574", "11575", "11576", "11577", "11578", "11579", "11581", "11821", "11822", "11823", "11824", "11825", "11826", "11827", "11828", "11829", "11830", "11831", "11832", "11833", "11834", "11835", "11836", "11837", "12078", "12081", "12082", "12083", "12084", "12085", "12086", "12087", "12088", "12089", "12090", "12091", "12092", "12093", "12332", "12337", "12338", "12339", "12340", "12341", "12342", "12343", "12344", "12345", "12346", "12347", "12348", "12349", "12587", "12588", "12589", "12590", "12591", "12593", "12594", "12595", "12596", "12597", "12598", "12599", "12600", "12601", "12602", "12603", "12604", "12605", "12843", "12844", "12845", "12846", "12847", "12848", "12849", "12850", "12851", "12852", "12853", "12854", "12855", "12856", "12857", "12858", "12859", "12860", "12861", "13098", "13099", "13100", "13101", "13102", "13103", "13104", "13105", "13106", "13107", "13108", "13109", "13110", "13111", "13112", "13113", "13114", "13115", "13116", "13117", "13354", "13355", "13356", "13357", "13358", "13359", "13360", "13361", "13362", "13363", "13364", "13365", "13366", "13367", "13368", "13369", "13370", "13371", "13372", "13373", "13374", "13375", "13376", "13611", "13612", "13613", "13614", "13615", "13616", "13617", "13618", "13619", "13620", "13621", "13622", "13623", "13630", "13631", "13632", "13869", "13870", "13871", "13872", "13873", "13874", "13875", "13876", "13877", "13878", "13879", "13886", "13887", "13888", "14129", "14130", "14131", "14132", "14133", "14134", "14135", "14142", "14385", "14386", "14387", "14388", "14389", "14390", "14391", "14398", "14637", "14638", "14639", "14641", "14642", "14643", "14644", "14645", "14646", "14647", "14649", "14650", "14651", "14652", "14894", "14895", "14898", "14899", "14900", "14901", "14902", "14906", "14907", "14908", "15148", "15150", "15151", "15159", "15162", "15163", "15164", "15406", "15407", "11324"],
 	"walkableChunksF2P": ["9520", "9772", "9773", "9776", "10028", "10284", "11313", "11314", "11315", "11569", "11570", "11571", "11572", "11573", "11574", "11824", "11825", "11826", "11827", "11828", "11829", "11830", "11831", "11832", "11833", "11834", "11835", "11836", "12081", "12082", "12083", "12084", "12085", "12086", "12087", "12088", "12089", "12090", "12091", "12092", "12337", "12338", "12339", "12340", "12341", "12342", "12343", "12344", "12345", "12346", "12347", "12348", "12593", "12594", "12595", "12596", "12597", "12598", "12599", "12600", "12601", "12602", "12603", "12604", "12849", "12850", "12851", "12852", "12853", "12854", "12855", "12856", "12857", "12858", "12859", "12860", "13104", "13105", "13106", "13107", "13108", "13109", "13110", "13111", "13112", "13113", "13114", "13115", "13116", "13361", "13362", "13363", "13367", "13368", "13369", "13370", "13371", "13372", "13617", "13618", "13619", "Crandor and Karamja Dungeon#South", "Crandor and Karamja Dungeon#North", "Melzar's Maze#Basement", "Air altar", "White Knights' Castle#Crypt", "Death's Office", "Mind altar", "Ruins of Camdozaal", "Scrubfoot's cave", "Asgarnian Ice Dungeon", "Dwarven Mine", "Old School Museum", "Mining Guild", "Body altar", "Rune essence mine", "Wizards' Tower#Basement", "Draynor Sewers", "Edgeville Dungeon", "Stronghold of Security", "Varrock Sewers", "Water altar", "H.A.M. Hideout", "Varrock West Bank#Basement", "Clan Hall", "Misthalin Manor", "Lumbridge Castle#Cellar", "Phoenix Gang Hideout", "Fire altar", "Earth altar"],
