@@ -109844,7 +109844,8 @@
 			"Sections": {
 				"1": {
 					"Connect": {
-						"5267": true
+						"5267": true,
+						"Tonali Cavern": true
 					},
 					"Monster": {
 						"Black jaguar": 2,
@@ -109879,7 +109880,8 @@
 			"Sections": {
 				"1": {
 					"Connect": {
-						"5267": true
+						"5267": true,
+						"Tonali Cavern": true
 					},
 					"Monster": {
 						"Bird": 2,
@@ -135903,7 +135905,6 @@
 						"Monkey": 1,
 						"Rug Merchant": 1
 					},
-					"Nickname": "Menaphos",
 					"Object": {
 						"Crate": 1
 					},
@@ -135911,7 +135912,8 @@
 						"master": 1
 					}
 				}
-			}
+			},
+			"Nickname": "Menaphos"
 		},
 		"12844": {
 			"Monster": {
