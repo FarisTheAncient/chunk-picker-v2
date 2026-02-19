@@ -29,8 +29,8 @@ let zoom = 350;                                                                 
 let fontZoom = 16;                                                              // Font size zoom
 let labelZoom = 96;                                                             // Selected label font size zoom
 let scale = 30;                                                                 // Amount zoomed every 'zoom' action
-let fullSize = 1196;                                                            // Amount of chunks present
-let rowSize = 46;                                                               // Amount of chunks per row
+let fullSize = 1632;                                                            // Amount of chunks present
+let rowSize = 48;                                                               // Amount of chunks per row
 let scrollLeft = 0;                                                             // Amount the board is scrolled left offscreen
 let prevScrollLeft = 0;                                                         // Amount the board was previously scrolled left offscreen
 let scrollTop = 0;                                                              // Amount the board is scrolled up offscreen
@@ -41,13 +41,13 @@ let chunkInfo = {};                                                             
 let infoLockedId = -1;                                                          // Id of chunk locked for info
 let userName = '';                                                              // Runescape Username of user
 
-let ratio = 4992 / 8832;                                                        // Image ratio
+let ratio = 6528 / 9216;                                                        // Image ratio
 let movedNum = 0;                                                               // Amount of times mouse is moved while dragging
 let selectedNum = 1;                                                            // Current index of selected chunks
 let unlockedChunks = 0;                                                         // Number of unlocked chunks
 let selectedChunks = 0;                                                         // Number of selected chunks
-let startingIndex = 4160;                                                       // Index to start chunk numbering at (based on ChunkLite numbers)
-let skip = 210;                                                                 // Number of indices to skip between columns for chunk numbering
+let startingIndex = 3905;                                                       // Index to start chunk numbering at (based on ChunkLite numbers)
+let skip = 208;                                                                 // Number of indices to skip between columns for chunk numbering
 
 let prevValueMid = '';                                                          // Previous value of map id at login
 let prevValuePinNew = '';                                                       // Previous value of pin at signup
@@ -156,6 +156,7 @@ let rulesPanelVis = {
     mining: false,
     prayer: false,
     runecraft: false,
+    sailing: false,
     slayer: false,
     smithing: false,
     itemsources: false,
@@ -198,6 +199,7 @@ const skillNames = [
     "Fishing",
     "Mining",
     "Runecraft",
+    "Sailing",
     "Smithing",
     "Crafting",
     "Agility",
@@ -236,6 +238,7 @@ const skillNamesXp = [
     'Ranged',
     'Magic',
     'Defence',
+    'Sailing',
     'Hitpoints',
     'Prayer',
     'Agility',
@@ -435,6 +438,9 @@ let rules = {
     "Partial Products": false,
     "POH Rooms": false,
     "KeyItem Bosses": false,
+    "Sail Trimming": false,
+    "Crewmates": false,
+    "Sea Charting": false,
 };                                                                              // List of rules and their on/off state
 
 let ruleNames = {
@@ -483,7 +489,7 @@ let ruleNames = {
     "Multi Step Processing": `Allow higher level processing of resources to enable other processing tasks <span class='rule-asterisk noscroll'>*</span><span class='multiStepProcessingRuleTooltip'></span>`,
     "Shooting Star": "Getting the level to mine all tiers of shooting stars count as Mining skill tasks <span class='rule-asterisk noscroll'>*</span>",
     "Forestry": "Forestry events and rewards count as part of your chunks once you have access to the forestry kit",
-    "ForestryXp": "Forestry events count as a primary way to gain xp in Woodcutting/Farming/Construction/Fletching/Hunter/Thieving",
+    "ForestryXp": "Forestry events count as a primary way to gain xp in Woodcutting/Farming/Construction/Fletching/Hunter/Thieving <span class='rule-asterisk noscroll'>*</span>",
     "Puro-Puro": "Allow implings from Puro-Puro & their drops to count towards chunk tasks",
     "Extra implings": "Include implings that have non-guaranteed spawns in Puro-Puro as chunk tasks",
     "Collection Log Bosses": "<b class='noscroll'>[Collection log]</b> Obtain items in the 'Bosses' tab",
@@ -532,7 +538,10 @@ let ruleNames = {
     "Superheat Furnace": "Allow the Superheat Item spell to act as a furnace for training Smithing <span class='rule-asterisk noscroll'>*</span>",
     "Partial Products": "Require making of partial products as a skill task (partially assembling pies - requires a skill level to make, but gives no xp) <span class='rule-asterisk noscroll'>*</span>",
     "POH Rooms": "Allow building rooms to count as Construction skill tasks",
-    "KeyItem Bosses": "For bosses that require keys to kill (Skotizo), factor in the droprate of the key as part of the droprate of each drop"
+    "KeyItem Bosses": "For bosses that require keys to kill (Skotizo), factor in the droprate of the key as part of the droprate of each drop",
+    "Sail Trimming": "Allow trimming the sails on your boat to count as a primary training method for training Sailing <span class='rule-asterisk noscroll'>*</span>",
+    "Crewmates": "Getting the Sailing level to recruit crewmates to your ship can be a skill task",
+    "Sea Charting": "Require Sea Charting tasks be completed"
 };                                                                              // List of rule definitions
 
 let rulePresets = {
@@ -560,6 +569,7 @@ let rulePresets = {
         "Secondary Primary Amount": "1",
         "Cleaning Herbs": true,
         "Forestry": true,
+        "Crewmates": true,
     },
     "Xtreme Chunker": {
         "Skillcape": true,
@@ -583,6 +593,7 @@ let rulePresets = {
         "Show Diary Tasks": true,
         "Show Diary Tasks Any": true,
         "Fossil Island Tasks": true,
+        "Sea Charting": true,
         "Show Best in Slot Tasks": true,
         "Show Best in Slot Prayer Tasks": true,
         "Highest Level": true,
@@ -623,6 +634,8 @@ let rulePresets = {
         "Partial Products": true,
         "Money Unlockables": true,
         "POH Rooms": true,
+        "Crewmates": true,
+        "Sail Trimming": true,
     },
     "Supreme Chunker": {
         "Skillcape": true,
@@ -646,6 +659,7 @@ let rulePresets = {
         "Show Diary Tasks": true,
         "Show Diary Tasks Any": true,
         "Fossil Island Tasks": true,
+        "Sea Charting": true,
         "Show Best in Slot Tasks": true,
         "Show Best in Slot Prayer Tasks": true,
         "Highest Level": true,
@@ -691,7 +705,10 @@ let rulePresets = {
         "Superheat Furnace": true,
         "Forestry": true,
         "ForestryXp": true,
+        "Partial Products": true,
         "POH Rooms": true,
+        "Crewmates": true,
+        "Sail Trimming": true,
     },
 };                                                                              // List of rules that are part of each preset
 
@@ -705,7 +722,7 @@ let ruleStructure = {
     "Visible Tasks": {
         "Show Skill Tasks": true,
         "Show Quest Tasks": ["Show Quest Tasks Complete"],
-        "Show Diary Tasks": ["Show Diary Tasks Complete", "Show Diary Tasks Any", "Fossil Island Tasks", "Combat Diary Tasks"],
+        "Show Diary Tasks": ["Show Diary Tasks Complete", "Show Diary Tasks Any", "Fossil Island Tasks", "Combat Diary Tasks", "Sea Charting"],
         "Show Best in Slot Tasks": ["Show Best in Slot Prayer Tasks", "Show Best in Slot Defensive Tasks", "Show Best in Slot Flinching Tasks", "Show Best in Slot Weight Tasks", "Show Best in Slot Melee Style Tasks", "Show Best in Slot 1H and 2H", "Consumable Primary BiS"]
     },
     "Overall Skill": {
@@ -763,6 +780,10 @@ let ruleStructure = {
     },
     "Runecraft": {
         "Pouch": true
+    },
+    "Sailing": {
+        "Sail Trimming": true,
+        "Crewmates": true
     },
     "Slayer": {
         "Slayer Equipment": true,
@@ -844,6 +865,7 @@ let taskGeneratingRules = {
     "Stuffables": true,
     "Every Drop": true,
     "Fossil Island Tasks": true,
+    "Sea Charting": true,
     "Combat Diary Tasks": true,
     "Skilling Pets": true,
     "Money Unlockables": true,
@@ -883,8 +905,9 @@ let settings = {
     "shiftUnlock": false,
     "rollWarning": false,
     "optOutSections": false,
+    "optOutSectionsWater": false,
     "unlockedBorderColor": '#FF0000',
-    "rollingChunksOptions": { "karamja": true, "fremennik_province": true, "kharidian_desert": true, "tirannwn": true, "kourend": true, "varlamore": true, "wilderness": true, "morytania": true, "kandarin": true, "asgarnia": true, "misthalin":true, "noquest": false, "bank": false },
+    "rollingChunksOptions": { "karamja": true, "fremennik_province": true, "kharidian_desert": true, "tirannwn": true, "kourend": true, "varlamore": true, "wilderness": true, "morytania": true, "kandarin": true, "asgarnia": true, "misthalin": true, "ocean": true, "noquest": false, "bank": false },
     "chunkNeighboursOptions": { "neighbors": true, "walkableRollable": true, "autoWalkableRollable": false, "remove": false },
     "defaultChunkinfo": 'monsters',
     "taskSearchbar": false,
@@ -893,7 +916,7 @@ let settings = {
 let settingNames = {
     "highvis": "Display the chunk map with higher visibility, allowing you to see better into locked chunks, with thinner chunk borders, more see-through chunk coloring, and more",
     "roll2": "Enable the roll 2 button, allowing you to roll two chunks and pick between the two",
-    "unpick": "Enable the unpick chunk button, allowing you to unpick, and therefore re-lock, a randomly selected unlocked chunk (useful for forfeits)",
+    "unpick": "Enable the unpick chunk button, allowing you to unpick, and therefore re-lock, a randomly selected unlocked chunk (useful for forfeits). <b>NOTE: This button does not undo a chunk roll</b>",
     "recent": "<b class='noscroll'>[Recent Chunks]</b> The recent chunks panel shows you the 5 most recently rolled chunks on your map, the dates you rolled them, how long it's been (in days) since your last roll, and more",
     "info": "<b class='noscroll'>[Chunk Info]</b> The chunk info panel shows you an array of information on every chunk in the game (monsters, npcs, item spawns, shops, and more). Hint: Right-click a chunk to bring up info on that chunk",
     "chunkTasks": "<b class='noscroll'>[Chunk Tasks]</b> The chunk tasks panel shows you an automatically made list of active tasks you need to do to finish your chunk. This is essential for any Chunker to keep track of what needs to get done",
@@ -914,6 +937,7 @@ let settingNames = {
     "shiftUnlock": "Prevent click-to-unlock chunks unless holding down the Shift-key (or long-pressing on mobile)",
     "rollWarning": "Show a confirmation window after clicking the Pick Chunk or Roll 2 button",
     "optOutSections": "Always assume all chunks are entirely accessible (opt out of chunk sections)",
+    "optOutSectionsWater": "Include water sections, typically only accessible through Sailing",
     "unlockedBorderColor": "Change the color of the border surrounding your unlocked chunks",
     "defaultChunkinfo": "Select the default tab when first opening the Chunk Info Panel",
     "taskSearchbar": "Show a searchbar at the top of your Active Tasks to allow filtering. Useful for maps with large task lists that have trouble finding specific tasks"
@@ -946,7 +970,7 @@ let settingStructure = {
         "startingChunk": true,
         "ids": true,
         "cinematicRoll": true,
-        "optOutSections": true,
+        "optOutSections": ["optOutSectionsWater"],
         "newTasks": true,
         "highvis": true,
         "numTasksPercent": true,
@@ -959,7 +983,8 @@ let settingStructure = {
 
 let subSettingDefault = {
     "neighbors": true,
-    "chunkTasks": false
+    "chunkTasks": false,
+    "optOutSections": false
 };                                                                              // Default value of sub-setting when parent is checked
 
 let settingsStructureConflict = {
@@ -975,7 +1000,7 @@ let maybePrimary = [
     "InsidePOH Primary"
 ];                                                                              // Methods that are only primary if their respective rule is checked
 
-const regionNames = ['Misthalin', 'Karamja', 'Asgarnia', 'Fremennik Province', 'Kandarin', 'Kharidian Desert', 'Morytania', 'Tirannwn', 'Wilderness', 'Kourend', 'Varlamore'];
+const regionNames = ['Misthalin', 'Karamja', 'Asgarnia', 'Fremennik Province', 'Kandarin', 'Kharidian Desert', 'Morytania', 'Tirannwn', 'Wilderness', 'Kourend', 'Varlamore', 'Ocean'];
 
 let randomLootChoices = [
     "Acorn",
@@ -1117,6 +1142,7 @@ let universalPrimary = {
     "Ranged": ["Ranged[+]"],
     "Prayer": ["Primary[+]", "Bones[+]"],
     "Runecraft": ["Primary[+]"],
+    "Sailing": ["Primary[+]"],
     "Magic": ["Primary[+]"],
     "Farming": ["Primary[+]"],
     "Herblore": ["Primary[+]"],
@@ -1144,6 +1170,7 @@ let processingSkill = {
     "Ranged": false,
     "Prayer": false,
     "Runecraft": true,
+    "Sailing": false,
     "Magic": true,
     "Farming": false,
     "Herblore": true,
@@ -1176,7 +1203,78 @@ let diaryTierAbr = {
     'Museum Camp': 'MC',
     'Northern Reaches': 'NR',
     'Southern Swamps': 'SS',
-    'Mountainous East': 'ME'
+    'Mountainous East': 'ME',
+    "Anglerfish's Light": 'AL',
+    'Arrow Passage': 'AP',
+    'Aureum Coast': 'AC',
+    'Backwater': 'B',
+    'Barracuda Belt': 'BB',
+    'Bay of Elidinis': 'BoE',
+    'Bay of Sarim': 'BoS',
+    'Bonus charts': 'BC',
+    'Breakbone Strait': 'BS',
+    'Brimhaven Passage': 'BP',
+    'Catherby Bay': 'CaB',
+    'Crabclaw Bay': 'CrB',
+    'Crystal Sea': 'CS',
+    "Dusk's Maw": 'DM',
+    'Everwinter Sea': 'ES',
+    'Feldip Gulf': 'FG',
+    'Fortis Bay': 'FB',
+    'Fremennik Strait': 'FS',
+    'Fremensund': 'F',
+    'Grandroot Bay': 'GB',
+    'Great Sound': 'GS',
+    "Gu'tanoth Bay": 'GtB',
+    'Gulf of Kourend': 'GoK',
+    'Hosidian Sea': 'HS',
+    'Idestia Strait': 'IS',
+    'Kannski Tides': 'KT',
+    'Kharazi Strait': 'KzS',
+    'Kharidian Sea': 'KrS',
+    'Litus Lucis': 'LL',
+    'Lumbridge Basin': 'LbB',
+    'Lunar Bay': 'LB',
+    'Lunar Sea': 'LS',
+    'Menaphite Sea': 'MeS',
+    'Misty Sea': 'MiS',
+    'Moonshadow': 'M',
+    'Mudskipper Sound': 'MuS',
+    'Mythic Sea': 'MyS',
+    "Oo'glog Channel": 'OC',
+    'Pearl Bank': 'PB',
+    "Pilgrims' Passage": 'PP',
+    'Piscatoris Sea': 'PS',
+    'Porth Gwenith': 'PG',
+    'Porth Neigwl': 'PN',
+    'Rainbow Reef': 'RaR',
+    'Red Reef': 'ReR',
+    'Rimmington Strait': 'RS',
+    'Sapphire Sea': 'SaS',
+    'Sea of Shells': 'SoSh',
+    'Sea of Souls': 'SoSo',
+    'Shiverwake Expanse': 'ShE',
+    'Soul Bay': 'SoB',
+    'Southern Expanse': 'SoE',
+    'Stoneheart Sea': 'StS',
+    'Strait of Khazard': 'SoK',
+    'Sunset Bay': 'SuB',
+    'The Everdeep': 'TE',
+    'The Lonely Sea': 'TLS',
+    'The Simian Sea': 'TSS',
+    'The Skullhorde': 'TS',
+    'The Storm Tempor': 'TST',
+    'Tirannwn Bight': 'TiB',
+    'Tortugan Sea': 'TS',
+    'Turtle Belt': 'TuB',
+    "V's Belt": 'VB',
+    'Vagabonds Rest': 'VR',
+    'Weiss Melt': 'WM',
+    'Weissmere': 'W',
+    'Western Gate': 'WG',
+    "Winter's Edge": 'WE',
+    "Wyrm's Waters": 'WW',
+    'Zul-Egil': 'Z'
 };                                                                                  // Abbreviations for diary tiers
 
 let taskSections = [
@@ -1216,12 +1314,9 @@ let settingsModalOpen = false;
 let chunkHistoryModalOpen = false;
 let challengeAltsModalOpen = false;
 let overlaysModalOpen = false;
-let randomModalOpen = false;
 let userTasksModalOpen = false;
 let userTasksListModalOpen = false;
 let userTaskDeleteConfirmationModalOpen = false;
-let randomListModalOpen = false;
-let statsErrorModalOpen = false;
 let searchModalOpen = false;
 let searchDetailsModalOpen = false;
 let highestModalOpen = false;
@@ -1231,6 +1326,7 @@ let methodsModalOpen = false;
 let completeModalOpen = false;
 let addEquipmentModalOpen = false;
 let stickerModalOpen = false;
+let paintModalOpen = false;
 let backlogSourcesModalOpen = false;
 let manualOuterModalOpen = false;
 let monsterModalOpen = false;
@@ -1273,14 +1369,17 @@ let futurePossibleAreas = {};
 let highestOverall = {};
 let savedBox = null;
 let stickered = {};
+let painted = {};
 let stickeredNotes = {};
 let stickeredColors = {};
 let stickerChoices = ['unset', 'skull', 'skull-crossbones', 'bomb', 'exclamation-circle', 'dice', 'poo', 'frown', 'grin-alt', 'heart', 'star', 'gem', 'award', 'crown', 'flag', 'asterisk', 'clock', 'hourglass', 'link', 'map-marker-alt', 'radiation-alt', 'shoe-prints', 'thumbs-down', 'thumbs-up', 'crow', 'utensil-spoon', 'lock', 'unlock-alt', 'sailboat', 'anchor'];
-let stickerChoicesOsrs = ['attack', 'hitpoints', 'mining', 'strength', 'agility', 'smithing', 'defence', 'herblore', 'fishing', 'ranged', 'thieving', 'cooking', 'prayer', 'fletching', 'firemaking', 'magic', 'crafting', 'woodcutting', 'runecraft', 'slayer', 'farming', 'construction', 'hunter', 'quest', 'diary', 'minigame', 'music', 'skills', 'clue'];
+let stickerChoicesOsrs = ['attack', 'hitpoints', 'mining', 'strength', 'agility', 'smithing', 'defence', 'herblore', 'fishing', 'ranged', 'thieving', 'cooking', 'prayer', 'fletching', 'firemaking', 'magic', 'crafting', 'woodcutting', 'runecraft', 'sailing', 'slayer', 'farming', 'construction', 'hunter', 'quest', 'diary', 'minigame', 'music', 'skills', 'clue'];
 let stickerChoicesNumbers = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
 let stickerChoicesTiers = ['S', 'A', 'B', 'C', 'D', 'F'];
 let savedStickerId;
 let savedStickerSticker;
+let paintChoices = ['red', 'orange', 'yellow', 'green', 'blue', 'pink', 'purple', 'black'];
+let savedPaintedColors = [];
 let altChallenges = {};
 let numClueTasks = {
     'beginner': 0,
@@ -1411,8 +1510,8 @@ let topbarElements = {
     'Sandbox Mode': `<div><span class='noscroll' onclick="enableTestMode()"><i class="gosandbox fa-solid fa-flask" title='Sandbox Mode'></i></span></div>`,
 };
 
-let currentVersion = '6.8.24';
-let patchNotesVersion = '6.4.0';
+let currentVersion = '6.9.33';
+let patchNotesVersion = '6.9.12';
 let updateLevel = 'difference';
 
 // Patreon Test Server Data
@@ -1490,6 +1589,7 @@ let controlChunk = 0;
 let stickerChunk = 0;
 let isHoveringBlacklist = false;
 let isHoveringSticker = false;
+let isHoveringPaint = false;
 let hoveredOverlayIds = [];
 let selectedOverlayIds = [];
 let selectedOverlayId = -1;
@@ -1543,7 +1643,7 @@ let lastUpdated = 0;
 let hintTexts = [
     "Join the ClanChat: 'OneChunkClan'!",
     "Join the Chunk Chat Discord!",
-    "Celebrating over 5 years of Chunk Picking!",
+    "Celebrating over 6 years of Chunk Picking!",
     "Check out our RS3 Sister-site!",
     "Now with Custom Themes!"
 ];
@@ -1579,7 +1679,7 @@ mapImg.addEventListener("load", e => {
         centerCanvas('quick');
     }
 });
-mapImg.src = "osrs_world_map.png?v=6.8.24";
+mapImg.src = "osrs_world_map.png?v=6.9.33";
 
 // Rounded rectangle
 CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
@@ -1622,14 +1722,14 @@ let convertToXY = function(chunkId) {
 }
 
 // Converts canvas text into lines
-let getLines = function(ctx, text, maxWidth) {
+let getLines = function(ctxIn, text, maxWidth) {
     var words = text.split(' ');
     var lines = [];
     var currentLine = words[0];
 
     for (var i = 1; i < words.length; i++) {
         var word = words[i];
-        var width = ctx.measureText(currentLine + ' ' + word).width;
+        var width = ctxIn.measureText(currentLine + ' ' + word).width;
         if (width < maxWidth) {
             currentLine += ' ' + word;
         } else {
@@ -1641,8 +1741,36 @@ let getLines = function(ctx, text, maxWidth) {
     return lines;
 }
 
+// Creates and downloads canvas screenshot
+let createScreenshot = function() {
+    const exportCanvas = document.createElement('canvas');
+    exportCanvas.width = mapImg.naturalWidth;
+    exportCanvas.height = mapImg.naturalHeight;
+    const exportCtx = exportCanvas.getContext('2d');
+    const savedDragTotalX = dragTotalX;
+    const savedDragTotalY = dragTotalY;
+    const savedTotalZoom = totalZoom;
+    dragTotalX = 0;
+    dragTotalY = 0;
+    totalZoom = 1;
+    drawCanvas(exportCtx);
+    dragTotalX = savedDragTotalX;
+    dragTotalY = savedDragTotalY;
+    totalZoom = savedTotalZoom;
+    drawCanvas();
+    exportCanvas.toBlob(blob => {
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `${mid}-fullmap-export.webp`;
+        a.click();
+        URL.revokeObjectURL(a.href);
+        $('#fullmap-clipboard-button').html('Download a .webp image of your full map');
+        closeClipboard();
+    }, 'image/webp');
+}
+
 // Canvas animation
-let drawCanvas = function() {
+let drawCanvas = function(ctxIn = ctx) {
     if (imgH === undefined) {
         console.warn('Backup image loaded');
         imgW = mapImg.width;
@@ -1650,7 +1778,7 @@ let drawCanvas = function() {
         dragTotalX = 0;
         dragTotalY = 0;
         setUpSelected();
-        drawCanvas();
+        drawCanvas(ctxIn);
         return;
     }
     if (!readyToDrawImage) {
@@ -1659,361 +1787,477 @@ let drawCanvas = function() {
     updateFutureMove();
     selectedNum = tempSelectedChunks.length;
 
-    ctx.clearRect(0, 0, cw, ch);
-    ctx.drawImage(mapImg, dragTotalX, dragTotalY, totalZoom * imgW, totalZoom * imgH);
+    ctxIn.clearRect(0, 0, cw, ch);
+    ctxIn.drawImage(mapImg, dragTotalX, dragTotalY, totalZoom * imgW, totalZoom * imgH);
+
+    // Painted chunks
+    ctxIn.save();
+    !!tempChunks['painted'] && Object.keys(tempChunks['painted']).forEach(function(chunkId) {
+        let {x, y} = convertToXY(chunkId);
+        ctxIn.globalAlpha = highVisibilityMode ? .35 : .45;
+        if (tempChunks['painted'][chunkId].length === 1) {
+            ctxIn.fillStyle = tempChunks['painted'][chunkId][0];
+            ctxIn.fillRect(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
+        } else if (tempChunks['painted'][chunkId].length === 2) {
+            ctxIn.fillStyle = tempChunks['painted'][chunkId][0];
+            ctxIn.beginPath();
+            ctxIn.moveTo(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)) + (totalZoom * (imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)) + (totalZoom * (imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))) + (totalZoom * (imgH / (fullSize / rowSize))));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))));
+            ctxIn.fill();
+
+            ctxIn.fillStyle = tempChunks['painted'][chunkId][1];
+            ctxIn.beginPath();
+            ctxIn.moveTo(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))) + (totalZoom * (imgH / (fullSize / rowSize))));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)) + (totalZoom * (imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))) + (totalZoom * (imgH / (fullSize / rowSize))));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))));
+            ctxIn.fill();
+        } else if (tempChunks['painted'][chunkId].length === 3) {
+            ctxIn.fillStyle = tempChunks['painted'][chunkId][0];
+            ctxIn.beginPath();
+            ctxIn.moveTo(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)) + (2 * (totalZoom * (imgW / rowSize)) / 3), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)) + ((totalZoom * (imgW / rowSize)) / 2), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))) + ((totalZoom * (imgH / (fullSize / rowSize))) / 2));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))) + (2 * (totalZoom * (imgH / (fullSize / rowSize))) / 3));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))));
+            ctxIn.fill();
+
+            ctxIn.fillStyle = tempChunks['painted'][chunkId][1];
+            ctxIn.beginPath();
+            ctxIn.moveTo(dragTotalX + (totalZoom * (x * imgW / rowSize)) + (2 * (totalZoom * (imgW / rowSize)) / 3), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)) + (totalZoom * (imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)) + (totalZoom * (imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))) + (totalZoom * (imgH / (fullSize / rowSize))));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)) + ((totalZoom * (imgW / rowSize)) / 2), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))) + ((totalZoom * (imgH / (fullSize / rowSize))) / 2));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)) + (2 * (totalZoom * (imgW / rowSize)) / 3), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))));
+            ctxIn.fill();
+
+            ctxIn.fillStyle = tempChunks['painted'][chunkId][2];
+            ctxIn.beginPath();
+            ctxIn.moveTo(dragTotalX + (totalZoom * (x * imgW / rowSize)) + (totalZoom * (imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))) + (totalZoom * (imgH / (fullSize / rowSize))));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))) + (totalZoom * (imgH / (fullSize / rowSize))));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))) + (2 * (totalZoom * (imgH / (fullSize / rowSize))) / 3));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)) + ((totalZoom * (imgW / rowSize)) / 2), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))) + ((totalZoom * (imgH / (fullSize / rowSize))) / 2));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)) + (totalZoom * (imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))) + (totalZoom * (imgH / (fullSize / rowSize))));
+            ctxIn.fill();
+        } else if (tempChunks['painted'][chunkId].length === 4) {
+            ctxIn.fillStyle = tempChunks['painted'][chunkId][0];
+            ctxIn.beginPath();
+            ctxIn.moveTo(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)) + (totalZoom * (imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)) + ((totalZoom * (imgW / rowSize)) / 2), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))) + ((totalZoom * (imgH / (fullSize / rowSize))) / 2));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))));
+            ctxIn.fill();
+
+            ctxIn.fillStyle = tempChunks['painted'][chunkId][1];
+            ctxIn.beginPath();
+            ctxIn.moveTo(dragTotalX + (totalZoom * (x * imgW / rowSize)) + (totalZoom * (imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)) + (totalZoom * (imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))) + (totalZoom * (imgH / (fullSize / rowSize))));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)) + ((totalZoom * (imgW / rowSize)) / 2), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))) + ((totalZoom * (imgH / (fullSize / rowSize))) / 2));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)) + (totalZoom * (imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))));
+            ctxIn.fill();
+
+            ctxIn.fillStyle = tempChunks['painted'][chunkId][2];
+            ctxIn.beginPath();
+            ctxIn.moveTo(dragTotalX + (totalZoom * (x * imgW / rowSize)) + (totalZoom * (imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))) + (totalZoom * (imgH / (fullSize / rowSize))));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))) + (totalZoom * (imgH / (fullSize / rowSize))));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)) + ((totalZoom * (imgW / rowSize)) / 2), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))) + ((totalZoom * (imgH / (fullSize / rowSize))) / 2));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)) + (totalZoom * (imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))) + (totalZoom * (imgH / (fullSize / rowSize))));
+            ctxIn.fill();
+
+            ctxIn.fillStyle = tempChunks['painted'][chunkId][3];
+            ctxIn.beginPath();
+            ctxIn.moveTo(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize)) + (totalZoom * (imgH / (fullSize / rowSize)))));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)) + ((totalZoom * (imgW / rowSize)) / 2), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))) + ((totalZoom * (imgH / (fullSize / rowSize))) / 2));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))));
+            ctxIn.fill();
+        }
+    });
+    ctxIn.restore();
 
     // Chunks
-    ctx.beginPath();
-    ctx.strokeStyle = 'gray';
-    ctx.lineWidth = highVisibilityMode ? 1 : 2;
-    ctx.shadowColor = 'transparent';
-    ctx.shadowBlur = 0;
+    ctxIn.beginPath();
+    ctxIn.strokeStyle = 'gray';
+    ctxIn.lineWidth = highVisibilityMode ? 1 : 2;
+    ctxIn.shadowColor = 'transparent';
+    ctxIn.shadowBlur = 0;
     for (let i = 0; i < rowSize; i++) {
         for (let j = 0; j < (fullSize / rowSize); j++) {
             let chunkId = convertToChunkNum(i, j).toString();
+            let isPainted = !!tempChunks['painted'] && tempChunks['painted'].hasOwnProperty(chunkId);
             if (!!tempChunks['unlocked'] && tempChunks['unlocked'][chunkId]) {
                 if (hoveredChunk === chunkId) {
-                    ctx.fillStyle = 'rgba(200, 200, 200, 0.25)';
-                    ctx.fillRect(dragTotalX + (totalZoom * (i * imgW / rowSize)), dragTotalY + (totalZoom * (j * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
+                    ctxIn.fillStyle = 'rgba(200, 200, 200, 0.25)';
+                    ctxIn.fillRect(dragTotalX + (totalZoom * (i * imgW / rowSize)), dragTotalY + (totalZoom * (j * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
                 }
-                ctx.strokeStyle = 'gray';
-                (!highVisibilityMode || totalZoom > 0.3) && ctx.strokeRect(dragTotalX + (totalZoom * (i * imgW / rowSize)), dragTotalY + (totalZoom * (j * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
+                ctxIn.strokeStyle = 'gray';
+                (!highVisibilityMode || totalZoom > 0.3) && ctxIn.strokeRect(dragTotalX + (totalZoom * (i * imgW / rowSize)), dragTotalY + (totalZoom * (j * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
             } else if (!!tempChunks['selected'] && tempChunks['selected'][chunkId]) {
                 if (highVisibilityMode) {
-                    ctx.fillStyle = 'rgba(100, 255, 100, 0.25)';
+                    ctxIn.fillStyle = 'rgba(100, 255, 100, 0.25)';
                 } else if (hoveredChunk === chunkId) {
-                    ctx.fillStyle = 'rgba(100, 255, 100, 0.33)';
+                    ctxIn.fillStyle = 'rgba(100, 255, 100, 0.33)';
                 } else {
-                    ctx.fillStyle = 'rgba(100, 255, 100, 0.5)';
+                    ctxIn.fillStyle = 'rgba(100, 255, 100, 0.5)';
                 }
-                ctx.strokeStyle = highVisibilityMode ? 'rgba(0, 0, 0, 0.5)' : 'black';
-                (!highVisibilityMode || totalZoom > 0.3) && ctx.strokeRect(dragTotalX + (totalZoom * (i * imgW / rowSize)), dragTotalY + (totalZoom * (j * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
-                ctx.fillRect(dragTotalX + (totalZoom * (i * imgW / rowSize)), dragTotalY + (totalZoom * (j * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
+                ctxIn.strokeStyle = highVisibilityMode ? 'rgba(0, 0, 0, 0.5)' : 'black';
+                (!highVisibilityMode || totalZoom > 0.3) && ctxIn.strokeRect(dragTotalX + (totalZoom * (i * imgW / rowSize)), dragTotalY + (totalZoom * (j * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
+                !isPainted && ctxIn.fillRect(dragTotalX + (totalZoom * (i * imgW / rowSize)), dragTotalY + (totalZoom * (j * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
                 let heightOff;
                 if (tempSelectedChunks.indexOf(chunkId) + 1 > 999) {
-                    ctx.font = (totalZoom * (imgW / rowSize) * (1 / 2)) + 'px Calibri, Roboto Condensed, sans-serif';
+                    ctxIn.font = (totalZoom * (imgW / rowSize) * (1 / 2)) + 'px Calibri, Roboto Condensed, sans-serif';
                     heightOff = 0.65;
                 } else if (tempSelectedChunks.indexOf(chunkId) + 1 > 99) {
-                    ctx.font = (totalZoom * (imgW / rowSize) * (2 / 3)) + 'px Calibri, Roboto Condensed, sans-serif';
+                    ctxIn.font = (totalZoom * (imgW / rowSize) * (2 / 3)) + 'px Calibri, Roboto Condensed, sans-serif';
                     heightOff = 0.7;
                 } else {
-                    ctx.font = (totalZoom * (imgW / rowSize)) + 'px Calibri, Roboto Condensed, sans-serif';
+                    ctxIn.font = (totalZoom * (imgW / rowSize)) + 'px Calibri, Roboto Condensed, sans-serif';
                     heightOff = 0.825;
                 }
-                ctx.fillStyle = 'white';
-                ctx.textAlign = 'center';
-                ctx.fillText(tempSelectedChunks.indexOf(chunkId) + 1, dragTotalX + (totalZoom * ((i + 0.5) * imgW / rowSize)), dragTotalY + (totalZoom * ((j + heightOff) * imgH / (fullSize / rowSize))));
+                ctxIn.fillStyle = 'white';
+                ctxIn.textAlign = 'center';
+                ctxIn.fillText(tempSelectedChunks.indexOf(chunkId) + 1, dragTotalX + (totalZoom * ((i + 0.5) * imgW / rowSize)), dragTotalY + (totalZoom * ((j + heightOff) * imgH / (fullSize / rowSize))));
             } else if (!!tempChunks['potential'] && tempChunks['potential'][chunkId]) {
                 if (highVisibilityMode) {
-                    ctx.fillStyle = 'rgba(255, 255, 100, 0.25)';
+                    ctxIn.fillStyle = 'rgba(255, 255, 100, 0.25)';
                 } else if (hoveredChunk === chunkId) {
-                    ctx.fillStyle = 'rgba(255, 255, 100, 0.33)';
+                    ctxIn.fillStyle = 'rgba(255, 255, 100, 0.33)';
                 } else {
-                    ctx.fillStyle = 'rgba(255, 255, 100, 0.5)';
+                    ctxIn.fillStyle = 'rgba(255, 255, 100, 0.5)';
                 }
-                ctx.strokeStyle = highVisibilityMode ? 'rgba(0, 0, 0, 0.5)' : 'black';
-                (!highVisibilityMode || totalZoom > 0.3) && ctx.strokeRect(dragTotalX + (totalZoom * (i * imgW / rowSize)), dragTotalY + (totalZoom * (j * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
-                ctx.fillRect(dragTotalX + (totalZoom * (i * imgW / rowSize)), dragTotalY + (totalZoom * (j * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
+                ctxIn.strokeStyle = highVisibilityMode ? 'rgba(0, 0, 0, 0.5)' : 'black';
+                (!highVisibilityMode || totalZoom > 0.3) && ctxIn.strokeRect(dragTotalX + (totalZoom * (i * imgW / rowSize)), dragTotalY + (totalZoom * (j * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
+                ctxIn.fillRect(dragTotalX + (totalZoom * (i * imgW / rowSize)), dragTotalY + (totalZoom * (j * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
                 let heightOff;
                 if (selectedNum + 1 > 999) {
-                    ctx.font = (totalZoom * (imgW / rowSize) * (1 / 2)) + 'px Calibri, Roboto Condensed, sans-serif';
+                    ctxIn.font = (totalZoom * (imgW / rowSize) * (1 / 2)) + 'px Calibri, Roboto Condensed, sans-serif';
                     heightOff = 0.65;
                 } else if (selectedNum + 1 > 99) {
-                    ctx.font = (totalZoom * (imgW / rowSize) * (2 / 3)) + 'px Calibri, Roboto Condensed, sans-serif';
+                    ctxIn.font = (totalZoom * (imgW / rowSize) * (2 / 3)) + 'px Calibri, Roboto Condensed, sans-serif';
                     heightOff = 0.7;
                 } else {
-                    ctx.font = (totalZoom * (imgW / rowSize)) + 'px Calibri, Roboto Condensed, sans-serif';
+                    ctxIn.font = (totalZoom * (imgW / rowSize)) + 'px Calibri, Roboto Condensed, sans-serif';
                     heightOff = 0.825;
                 }
-                ctx.fillStyle = 'black';
-                ctx.textAlign = 'center';
-                ctx.fillText(++selectedNum, dragTotalX + (totalZoom * ((i + 0.5) * imgW / rowSize)), dragTotalY + (totalZoom * ((j + heightOff) * imgH / (fullSize / rowSize))));
+                ctxIn.fillStyle = 'black';
+                ctxIn.textAlign = 'center';
+                ctxIn.fillText(++selectedNum, dragTotalX + (totalZoom * ((i + 0.5) * imgW / rowSize)), dragTotalY + (totalZoom * ((j + heightOff) * imgH / (fullSize / rowSize))));
             } else if (!!tempChunks['blacklisted'] && tempChunks['blacklisted'][chunkId]) {
                 if (highVisibilityMode) {
-                    ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
+                    ctxIn.fillStyle = 'rgba(0, 0, 0, 0.5)';
                 } else if (hoveredChunk === chunkId) {
-                    ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
+                    ctxIn.fillStyle = 'rgba(0, 0, 0, 0.5)';
                 } else {
-                    ctx.fillStyle = 'rgba(0, 0, 0, 0.6)';
+                    ctxIn.fillStyle = 'rgba(0, 0, 0, 0.7)';
                 }
-                ctx.strokeStyle = highVisibilityMode ? 'rgba(0, 0, 0, 0.5)' : 'black';
-                (!highVisibilityMode || totalZoom > 0.3) && ctx.strokeRect(dragTotalX + (totalZoom * (i * imgW / rowSize)), dragTotalY + (totalZoom * (j * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
-                ctx.fillRect(dragTotalX + (totalZoom * (i * imgW / rowSize)), dragTotalY + (totalZoom * (j * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
+                ctxIn.strokeStyle = highVisibilityMode ? 'rgba(0, 0, 0, 0.5)' : 'black';
+                (!highVisibilityMode || totalZoom > 0.3) && ctxIn.strokeRect(dragTotalX + (totalZoom * (i * imgW / rowSize)), dragTotalY + (totalZoom * (j * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
+                ctxIn.fillRect(dragTotalX + (totalZoom * (i * imgW / rowSize)), dragTotalY + (totalZoom * (j * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
             } else {
                 if (highVisibilityMode) {
-                    ctx.fillStyle = colorBoxLight;
+                    ctxIn.fillStyle = colorBoxLight;
                 } else if (hoveredChunk === chunkId) {
-                    ctx.fillStyle = colorBoxLight;
+                    ctxIn.fillStyle = colorBoxLight;
                 } else {
-                    ctx.fillStyle = colorBox;
+                    ctxIn.fillStyle = colorBox;
                 }
-                ctx.strokeStyle = highVisibilityMode ? 'rgba(0, 0, 0, 0.5)' : 'black';
-                (!highVisibilityMode || totalZoom > 0.3) && ctx.strokeRect(dragTotalX + (totalZoom * (i * imgW / rowSize)), dragTotalY + (totalZoom * (j * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
-                ctx.fillRect(dragTotalX + (totalZoom * (i * imgW / rowSize)), dragTotalY + (totalZoom * (j * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
+                if (isPainted) {
+                    ctxIn.globalAlpha = .25;
+                }
+                ctxIn.strokeStyle = highVisibilityMode ? 'rgba(0, 0, 0, 0.5)' : 'black';
+                (!highVisibilityMode || totalZoom > 0.3) && ctxIn.strokeRect(dragTotalX + (totalZoom * (i * imgW / rowSize)), dragTotalY + (totalZoom * (j * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
+                ctxIn.fillRect(dragTotalX + (totalZoom * (i * imgW / rowSize)), dragTotalY + (totalZoom * (j * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
+                ctxIn.globalAlpha = 1;
             }
             if (showChunkIds && !onMobile) {
-                ctx.fillStyle = 'white';
-                ctx.font = (totalZoom * (imgW / rowSize) * (1 / 5)) + 'px Calibri, Roboto Condensed, sans-serif';
-                ctx.textAlign = 'left';
-                ctx.fillText(chunkId, dragTotalX + (totalZoom * ((i) * imgW / rowSize)), dragTotalY + (totalZoom * ((j + 0.15) * imgH / (fullSize / rowSize))));
+                ctxIn.fillStyle = 'white';
+                ctxIn.font = (totalZoom * (imgW / rowSize) * (1 / 5)) + 'px Calibri, Roboto Condensed, sans-serif';
+                ctxIn.textAlign = 'left';
+                ctxIn.fillText(chunkId, dragTotalX + (totalZoom * ((i) * imgW / rowSize)), dragTotalY + (totalZoom * ((j + 0.15) * imgH / (fullSize / rowSize))));
             }
         }
     }
 
     // Slayer overlay
-    ctx.save();
+    ctxIn.save();
     !!chunkInfo['mapOverlays'] && selectedOverlay === 'Locked Slayer Task|Slayer task' && !!chunkInfo['mapOverlays'][selectedOverlay] && !!slayerLocked && slayerLocked.hasOwnProperty('monster') && !!chunkInfo['codeItems']['slayerTaskChunks'][slayerLocked.monster] && chunkInfo['codeItems']['slayerTaskChunks'][slayerLocked.monster].forEach((chunkId) => {
         let {x, y} = convertToXY(chunkId);
         if (highVisibilityMode) {
-            ctx.fillStyle = 'rgba(255, 0, 0, 0.25)';
+            ctxIn.fillStyle = 'rgba(255, 0, 0, 0.25)';
         } else if (hoveredChunk === chunkId) {
-            ctx.fillStyle = 'rgba(255, 0, 0, 0.25)';
+            ctxIn.fillStyle = 'rgba(255, 0, 0, 0.25)';
         } else {
-            ctx.fillStyle = 'rgba(255, 0, 0, 0.33)';
+            ctxIn.fillStyle = 'rgba(255, 0, 0, 0.33)';
         }
-        ctx.strokeStyle = 'rgba(170, 0, 0, 1)';
-        ctx.fillRect(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
-        ctx.strokeRect(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
-        ctx.drawImage(osrsStickers['slayer'], (dragTotalX + (totalZoom * ((x + 0.2) * imgW / rowSize))), dragTotalY + (totalZoom * ((y + 0.2) * imgH / (fullSize / rowSize))), (totalZoom * (imgW / rowSize)) * (0.6), (totalZoom * (imgW / rowSize)) * (0.6));
+        ctxIn.strokeStyle = 'rgba(170, 0, 0, 1)';
+        ctxIn.fillRect(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
+        ctxIn.strokeRect(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
+        ctxIn.drawImage(osrsStickers['slayer'], (dragTotalX + (totalZoom * ((x + 0.2) * imgW / rowSize))), dragTotalY + (totalZoom * ((y + 0.2) * imgH / (fullSize / rowSize))), (totalZoom * (imgW / rowSize)) * (0.6), (totalZoom * (imgW / rowSize)) * (0.6));
     });
-    ctx.restore();
+    ctxIn.restore();
 
     // Locked chunk
     if (infoLockedId !== -1) {
         let {x, y} = convertToXY(infoLockedId);
         if (highVisibilityMode) {
-            ctx.fillStyle = 'rgba(0, 255, 255, 0.25)';
+            ctxIn.fillStyle = 'rgba(0, 255, 255, 0.25)';
         } else if (hoveredChunk === infoLockedId) {
-            ctx.fillStyle = 'rgba(0, 255, 255, 0.25)';
+            ctxIn.fillStyle = 'rgba(0, 255, 255, 0.25)';
         } else {
-            ctx.fillStyle = 'rgba(0, 255, 255, 0.33)';
+            ctxIn.fillStyle = 'rgba(0, 255, 255, 0.33)';
         }
-        ctx.strokeStyle = 'rgb(0, 170, 170)';
-        ctx.fillRect(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
-        ctx.strokeRect(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
-        ctx.font = '900 ' + (totalZoom * (imgW / rowSize)) * (0.9) + 'px "Font Awesome 6 Free"';
-        ctx.fillStyle = 'rgba(0, 255, 255, 0.75)';
-        ctx.strokeStyle = 'rgba(0, 0, 0, 0.75)';
-        ctx.textAlign = 'center';
-        ctx.fillText('\uf129', dragTotalX + (totalZoom * ((x + 0.5) * imgW / rowSize)), dragTotalY + (totalZoom * ((y + 0.825) * imgH / (fullSize / rowSize))));
-        ctx.strokeText('\uf129', dragTotalX + (totalZoom * ((x + 0.5) * imgW / rowSize)), dragTotalY + (totalZoom * ((y + 0.825) * imgH / (fullSize / rowSize))));
+        ctxIn.strokeStyle = 'rgb(0, 170, 170)';
+        ctxIn.fillRect(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
+        ctxIn.strokeRect(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
+        ctxIn.font = '900 ' + (totalZoom * (imgW / rowSize)) * (0.9) + 'px "Font Awesome 6 Free"';
+        ctxIn.fillStyle = 'rgba(0, 255, 255, 0.75)';
+        ctxIn.strokeStyle = 'rgba(0, 0, 0, 0.75)';
+        ctxIn.textAlign = 'center';
+        ctxIn.fillText('\uf129', dragTotalX + (totalZoom * ((x + 0.5) * imgW / rowSize)), dragTotalY + (totalZoom * ((y + 0.825) * imgH / (fullSize / rowSize))));
+        ctxIn.strokeText('\uf129', dragTotalX + (totalZoom * ((x + 0.5) * imgW / rowSize)), dragTotalY + (totalZoom * ((y + 0.825) * imgH / (fullSize / rowSize))));
     }
 
     // Recent chunks
-    ctx.save();
+    ctxIn.save();
     !!recentChunks && !onMobile && Object.keys(recentChunks).forEach((chunkId) => {
         let {x, y} = convertToXY(chunkId);
-        ctx.shadowColor = 'white';
+        ctxIn.shadowColor = 'white';
         if ((!!tempChunks['unlocked'] && tempChunks['unlocked'][chunkId]) || (!!tempChunks['potential'] && tempChunks['potential'][chunkId])) {
-            ctx.fillStyle = 'rgba(255, 255, 0, 0.5)';
+            ctxIn.fillStyle = 'rgba(255, 255, 0, 0.5)';
         } else if (!!tempChunks['selected'] && tempChunks['selected'][chunkId]) {
-            ctx.fillStyle = 'rgba(255, 0, 0, 0.5)';
+            ctxIn.fillStyle = 'rgba(255, 0, 0, 0.5)';
         } else if (!!tempChunks['blacklisted'] && tempChunks['blacklisted'][chunkId]) {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.85)';
+            ctxIn.fillStyle = 'rgba(0, 0, 0, 0.85)';
         } else {
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+            ctxIn.fillStyle = 'rgba(255, 255, 255, 0.5)';
         }
-        ctx.shadowBlur = 29;
-        ctx.fillRect(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
+        ctxIn.shadowBlur = 29;
+        ctxIn.fillRect(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
     });
-    ctx.restore();
+    ctxIn.restore();
 
     // Control chunk
-    ctx.save();
+    ctxIn.save();
     if (controlChunk !== 0 && (!locked || testMode) && !onMobile) {
         let {x, y} = convertToXY(controlChunk);
         let heightOff = 0.55;
         let blacklistText = (!!tempChunks['blacklisted'] && tempChunks['blacklisted'].hasOwnProperty(controlChunk)) ? 'Un-Blacklist' : 'Blacklist';
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.75)';
-        ctx.roundRect(dragTotalX + (totalZoom * ((x + 0.05) * imgW / rowSize)), dragTotalY + (totalZoom * ((y + 0.375) * imgH / (fullSize / rowSize))), totalZoom * ((0.9) * imgW / rowSize), totalZoom * ((0.25) * imgH / (fullSize / rowSize)), totalZoom * ((0.9) * imgW / rowSize)).fill();
-        ctx.font = (totalZoom * (imgW / rowSize) * (1 / 6)) + 'px Calibri, Roboto Condensed, sans-serif';
-        ctx.fillStyle = 'white';
-        ctx.textAlign = 'center';
-        ctx.fillText(blacklistText, dragTotalX + (totalZoom * ((x + 0.5) * imgW / rowSize)), dragTotalY + (totalZoom * ((y + heightOff) * imgH / (fullSize / rowSize))));
+        ctxIn.fillStyle = 'rgba(0, 0, 0, 0.75)';
+        ctxIn.roundRect(dragTotalX + (totalZoom * ((x + 0.05) * imgW / rowSize)), dragTotalY + (totalZoom * ((y + 0.375) * imgH / (fullSize / rowSize))), totalZoom * ((0.9) * imgW / rowSize), totalZoom * ((0.25) * imgH / (fullSize / rowSize)), totalZoom * ((0.9) * imgW / rowSize)).fill();
+        ctxIn.font = (totalZoom * (imgW / rowSize) * (1 / 6)) + 'px Calibri, Roboto Condensed, sans-serif';
+        ctxIn.fillStyle = 'white';
+        ctxIn.textAlign = 'center';
+        ctxIn.fillText(blacklistText, dragTotalX + (totalZoom * ((x + 0.5) * imgW / rowSize)), dragTotalY + (totalZoom * ((y + heightOff) * imgH / (fullSize / rowSize))));
     }
-    ctx.restore();
+    ctxIn.restore();
 
     // Stickered chunks
-    ctx.save();
-    ctx.strokeStyle = 'black';
-    ctx.textAlign = 'center';
-    ctx.lineWidth = (totalZoom * (imgW / rowSize)) * (0.01);
+    ctxIn.save();
+    ctxIn.strokeStyle = 'black';
+    ctxIn.textAlign = 'center';
+    ctxIn.lineWidth = (totalZoom * (imgW / rowSize)) * (0.01);
     !!tempChunks['stickered'] && Object.keys(tempChunks['stickered']).forEach(function(chunkId) {
         let {x, y} = convertToXY(chunkId);
         if (stickerChoices.includes(tempChunks['stickered'][chunkId])) {
-            ctx.scale(-1, 1);
-            ctx.font = '900 ' + (totalZoom * (imgW / rowSize)) * (0.25) + 'px "Font Awesome 6 Free"';
-            ctx.fillStyle = tempChunks['stickeredColors'][chunkId];
-            ctx.fillText(stickerChoicesContent[tempChunks['stickered'][chunkId]], -(dragTotalX + (totalZoom * ((x + 0.85) * imgW / rowSize))), dragTotalY + (totalZoom * ((y + 0.25) * imgH / (fullSize / rowSize))));
-            if (ctx.fillStyle !== '#000000') {
-                ctx.strokeText(stickerChoicesContent[tempChunks['stickered'][chunkId]], -(dragTotalX + (totalZoom * ((x + 0.85) * imgW / rowSize))), dragTotalY + (totalZoom * ((y + 0.25) * imgH / (fullSize / rowSize))));
+            ctxIn.scale(-1, 1);
+            ctxIn.font = '900 ' + (totalZoom * (imgW / rowSize)) * (0.25) + 'px "Font Awesome 6 Free"';
+            ctxIn.fillStyle = tempChunks['stickeredColors'][chunkId];
+            ctxIn.fillText(stickerChoicesContent[tempChunks['stickered'][chunkId]], -(dragTotalX + (totalZoom * ((x + 0.85) * imgW / rowSize))), dragTotalY + (totalZoom * ((y + 0.25) * imgH / (fullSize / rowSize))));
+            if (ctxIn.fillStyle !== '#000000') {
+                ctxIn.strokeText(stickerChoicesContent[tempChunks['stickered'][chunkId]], -(dragTotalX + (totalZoom * ((x + 0.85) * imgW / rowSize))), dragTotalY + (totalZoom * ((y + 0.25) * imgH / (fullSize / rowSize))));
             }
-            ctx.scale(-1, 1);
+            ctxIn.scale(-1, 1);
         } else if (stickerChoicesOsrs.includes(tempChunks['stickered'][chunkId])) {
-            ctx.drawImage(osrsStickers[tempChunks['stickered'][chunkId]], (dragTotalX + (totalZoom * ((x + 0.725) * imgW / rowSize))), dragTotalY + (totalZoom * ((y + 0.025) * imgH / (fullSize / rowSize))), (totalZoom * (imgW / rowSize)) * (0.25), (totalZoom * (imgW / rowSize)) * (0.25));
+            ctxIn.drawImage(osrsStickers[tempChunks['stickered'][chunkId]], (dragTotalX + (totalZoom * ((x + 0.725) * imgW / rowSize))), dragTotalY + (totalZoom * ((y + 0.025) * imgH / (fullSize / rowSize))), (totalZoom * (imgW / rowSize)) * (0.25), (totalZoom * (imgW / rowSize)) * (0.25));
         } else if (stickerChoicesNumbers.includes(tempChunks['stickered'][chunkId])) {
-            ctx.font = '900 ' + (totalZoom * (imgW / rowSize) * (1 / 2.75)) + 'px Calibri, Roboto Condensed, sans-serif';
-            ctx.fillStyle = tempChunks['stickeredColors'][chunkId];
-            ctx.fillText(numberStickers[tempChunks['stickered'][chunkId]], (dragTotalX + (totalZoom * ((x + 0.875) * imgW / rowSize))), dragTotalY + (totalZoom * ((y + 0.25) * imgH / (fullSize / rowSize))));
-            if (ctx.fillStyle !== '#000000') {
-                ctx.strokeText(numberStickers[tempChunks['stickered'][chunkId]], (dragTotalX + (totalZoom * ((x + 0.875) * imgW / rowSize))), dragTotalY + (totalZoom * ((y + 0.25) * imgH / (fullSize / rowSize))));
+            ctxIn.font = '900 ' + (totalZoom * (imgW / rowSize) * (1 / 2.75)) + 'px Calibri, Roboto Condensed, sans-serif';
+            ctxIn.fillStyle = tempChunks['stickeredColors'][chunkId];
+            ctxIn.fillText(numberStickers[tempChunks['stickered'][chunkId]], (dragTotalX + (totalZoom * ((x + 0.875) * imgW / rowSize))), dragTotalY + (totalZoom * ((y + 0.25) * imgH / (fullSize / rowSize))));
+            if (ctxIn.fillStyle !== '#000000') {
+                ctxIn.strokeText(numberStickers[tempChunks['stickered'][chunkId]], (dragTotalX + (totalZoom * ((x + 0.875) * imgW / rowSize))), dragTotalY + (totalZoom * ((y + 0.25) * imgH / (fullSize / rowSize))));
             }
         } else if (stickerChoicesTiers.includes(tempChunks['stickered'][chunkId])) {
-            ctx.font = '900 ' + (totalZoom * (imgW / rowSize) * (1 / 2.75)) + 'px Calibri, Roboto Condensed, sans-serif';
-            ctx.fillStyle = tempChunks['stickeredColors'][chunkId];
-            ctx.fillText(tempChunks['stickered'][chunkId], (dragTotalX + (totalZoom * ((x + 0.875) * imgW / rowSize))), dragTotalY + (totalZoom * ((y + 0.25) * imgH / (fullSize / rowSize))));
-            if (ctx.fillStyle !== '#000000') {
-                ctx.strokeText(tempChunks['stickered'][chunkId], (dragTotalX + (totalZoom * ((x + 0.875) * imgW / rowSize))), dragTotalY + (totalZoom * ((y + 0.25) * imgH / (fullSize / rowSize))));
+            ctxIn.font = '900 ' + (totalZoom * (imgW / rowSize) * (1 / 2.75)) + 'px Calibri, Roboto Condensed, sans-serif';
+            ctxIn.fillStyle = tempChunks['stickeredColors'][chunkId];
+            ctxIn.fillText(tempChunks['stickered'][chunkId], (dragTotalX + (totalZoom * ((x + 0.875) * imgW / rowSize))), dragTotalY + (totalZoom * ((y + 0.25) * imgH / (fullSize / rowSize))));
+            if (ctxIn.fillStyle !== '#000000') {
+                ctxIn.strokeText(tempChunks['stickered'][chunkId], (dragTotalX + (totalZoom * ((x + 0.875) * imgW / rowSize))), dragTotalY + (totalZoom * ((y + 0.25) * imgH / (fullSize / rowSize))));
             }
         }
     });
-    ctx.restore();
+    ctxIn.restore();
 
-    chunkBordersCanvas();
+    chunkBordersCanvas(ctxIn);
 
     // Recent chunks outline
-    ctx.save();
+    ctxIn.save();
     !!recentChunks && !onMobile && Object.keys(recentChunks).forEach((chunkId) => {
         let {x, y} = convertToXY(chunkId);
         if ((!!tempChunks['unlocked'] && tempChunks['unlocked'][chunkId]) || (!!tempChunks['potential'] && tempChunks['potential'][chunkId])) {
-            ctx.strokeStyle = 'rgba(255, 255, 0, 1)';
+            ctxIn.strokeStyle = 'rgba(255, 255, 0, 1)';
         } else if (!!tempChunks['selected'] && tempChunks['selected'][chunkId]) {
-            ctx.strokeStyle = 'rgba(255, 0, 0, 1)';
+            ctxIn.strokeStyle = 'rgba(255, 0, 0, 1)';
         } else if (!!tempChunks['blacklisted'] && tempChunks['blacklisted'][chunkId]) {
-            ctx.strokeStyle = 'rgba(0, 0, 0, 1)';
+            ctxIn.strokeStyle = 'rgba(0, 0, 0, 1)';
         } else {
-            ctx.strokeStyle = 'rgba(255, 255, 255, 1)';
+            ctxIn.strokeStyle = 'rgba(255, 255, 255, 1)';
         }
-        ctx.setLineDash([10, 5]);
-        ctx.lineWidth = 1.5;
-        ctx.strokeRect(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
+        ctxIn.setLineDash([10, 5]);
+        ctxIn.lineWidth = 1.5;
+        ctxIn.strokeRect(dragTotalX + (totalZoom * (x * imgW / rowSize)), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))), totalZoom * (imgW / rowSize), totalZoom * (imgH / (fullSize / rowSize)));
     });
-    ctx.restore();
+    ctxIn.restore();
+
+    // Blacklisted chunks outline
+    ctxIn.save();
+    !!tempChunks['blacklisted'] && !onMobile && Object.keys(tempChunks['blacklisted']).forEach((chunkId) => {
+        let {x, y} = convertToXY(chunkId);
+        let lineThickness = totalZoom * 3;
+        ctxIn.strokeStyle = 'rgba(0, 0, 0, 1)';
+        ctxIn.lineWidth = lineThickness;
+        ctxIn.setLineDash([lineThickness*6, lineThickness*6]);
+        ctxIn.strokeRect(dragTotalX + (totalZoom * (x * imgW / rowSize)) + (lineThickness / 2), dragTotalY + (totalZoom * (y * imgH / (fullSize / rowSize))) + (lineThickness / 2), totalZoom * (imgW / rowSize) - lineThickness, totalZoom * (imgH / (fullSize / rowSize)) - lineThickness);
+    });
+    ctxIn.restore();
 
     // Control sticker chunk
-    ctx.save();
+    ctxIn.save();
     if (stickerChunk !== 0) {
+        if (!locked || testMode) {
+            let {x, y} = convertToXY(stickerChunk);
+            ctxIn.strokeStyle = 'black';
+            ctxIn.textAlign = 'center';
+            ctxIn.lineWidth = (totalZoom * (imgW / rowSize)) * (0.01);
+            ctxIn.font = '900 ' + (totalZoom * (imgW / rowSize)) * (0.25) + 'px "Font Awesome 6 Free"';
+            ctxIn.fillStyle = 'rgb(201, 209, 217)';
+            ctxIn.scale(-1, -1);
+            ctxIn.fillText('\uf53f', -(dragTotalX + (totalZoom * ((x + 0.85) * imgW / rowSize))), -(dragTotalY + (totalZoom * ((y + 0.75) * imgH / (fullSize / rowSize)))));
+            ctxIn.strokeText('\uf53f', -(dragTotalX + (totalZoom * ((x + 0.85) * imgW / rowSize))), -(dragTotalY + (totalZoom * ((y + 0.75) * imgH / (fullSize / rowSize)))));
+            ctxIn.scale(-1, -1);
+        }
         if ((!tempChunks['stickered'] || !tempChunks['stickered'].hasOwnProperty(stickerChunk)) && (!locked || testMode)) {
             let {x, y} = convertToXY(stickerChunk);
-            ctx.strokeStyle = 'black';
-            ctx.textAlign = 'center';
-            ctx.lineWidth = (totalZoom * (imgW / rowSize)) * (0.01);
-            ctx.font = '900 ' + (totalZoom * (imgW / rowSize)) * (0.25) + 'px "Font Awesome 6 Free"';
-            ctx.fillStyle = 'rgb(201, 209, 217)';
-            ctx.scale(-1, 1);
-            ctx.fillText(stickerChoicesContent['tag'], -(dragTotalX + (totalZoom * ((x + 0.85) * imgW / rowSize))), dragTotalY + (totalZoom * ((y + 0.25) * imgH / (fullSize / rowSize))));
-            ctx.strokeText(stickerChoicesContent['tag'], -(dragTotalX + (totalZoom * ((x + 0.85) * imgW / rowSize))), dragTotalY + (totalZoom * ((y + 0.25) * imgH / (fullSize / rowSize))));
+            ctxIn.strokeStyle = 'black';
+            ctxIn.textAlign = 'center';
+            ctxIn.lineWidth = (totalZoom * (imgW / rowSize)) * (0.01);
+            ctxIn.font = '900 ' + (totalZoom * (imgW / rowSize)) * (0.25) + 'px "Font Awesome 6 Free"';
+            ctxIn.fillStyle = 'rgb(201, 209, 217)';
+            ctxIn.scale(-1, 1);
+            ctxIn.fillText(stickerChoicesContent['tag'], -(dragTotalX + (totalZoom * ((x + 0.85) * imgW / rowSize))), dragTotalY + (totalZoom * ((y + 0.25) * imgH / (fullSize / rowSize))));
+            ctxIn.strokeText(stickerChoicesContent['tag'], -(dragTotalX + (totalZoom * ((x + 0.85) * imgW / rowSize))), dragTotalY + (totalZoom * ((y + 0.25) * imgH / (fullSize / rowSize))));
         }
         if (isHoveringSticker && !!tempChunks['stickeredNotes'] && tempChunks['stickeredNotes'].hasOwnProperty(stickerChunk) && tempChunks['stickeredNotes'][stickerChunk] !== '') {
             let {x, y} = convertToXY(stickerChunk);
-            ctx.font = (totalZoom * (imgW / rowSize) * (1 / 6)) + 'px Calibri, Roboto Condensed, sans-serif';
-            ctx.fillStyle = 'rgb(201, 209, 217)';
-            ctx.strokeStyle = 'black';
-            ctx.lineWidth = 1;
-            ctx.fillRect((dragTotalX + (totalZoom * ((x + 1.1) * imgW / rowSize))) - 5, dragTotalY + (totalZoom * ((y + 0.025) * imgH / (fullSize / rowSize))), ctx.measureText(tempChunks['stickeredNotes'][stickerChunk]).width + 10, (totalZoom * (0.25 * imgH / (fullSize / rowSize))));
-            ctx.strokeRect((dragTotalX + (totalZoom * ((x + 1.1) * imgW / rowSize))) - 5, dragTotalY + (totalZoom * ((y + 0.025) * imgH / (fullSize / rowSize))), ctx.measureText(tempChunks['stickeredNotes'][stickerChunk]).width + 10, (totalZoom * (0.25 * imgH / (fullSize / rowSize))));
-            ctx.fillStyle = 'black';
-            ctx.textAlign = 'left';
-            ctx.fillText(tempChunks['stickeredNotes'][stickerChunk], (dragTotalX + (totalZoom * ((x + 1.1) * imgW / rowSize))), dragTotalY + (totalZoom * ((y + 0.2) * imgH / (fullSize / rowSize))));
+            ctxIn.font = (totalZoom * (imgW / rowSize) * (1 / 6)) + 'px Calibri, Roboto Condensed, sans-serif';
+            ctxIn.fillStyle = 'rgb(201, 209, 217)';
+            ctxIn.strokeStyle = 'black';
+            ctxIn.lineWidth = 1;
+            ctxIn.fillRect((dragTotalX + (totalZoom * ((x + 1.1) * imgW / rowSize))) - 5, dragTotalY + (totalZoom * ((y + 0.025) * imgH / (fullSize / rowSize))), ctxIn.measureText(tempChunks['stickeredNotes'][stickerChunk]).width + 10, (totalZoom * (0.25 * imgH / (fullSize / rowSize))));
+            ctxIn.strokeRect((dragTotalX + (totalZoom * ((x + 1.1) * imgW / rowSize))) - 5, dragTotalY + (totalZoom * ((y + 0.025) * imgH / (fullSize / rowSize))), ctxIn.measureText(tempChunks['stickeredNotes'][stickerChunk]).width + 10, (totalZoom * (0.25 * imgH / (fullSize / rowSize))));
+            ctxIn.fillStyle = 'black';
+            ctxIn.textAlign = 'left';
+            ctxIn.fillText(tempChunks['stickeredNotes'][stickerChunk], (dragTotalX + (totalZoom * ((x + 1.1) * imgW / rowSize))), dragTotalY + (totalZoom * ((y + 0.2) * imgH / (fullSize / rowSize))));
         }
     }
-    ctx.restore();
+    ctxIn.restore();
 
     // Overlays
-    ctx.save();
+    ctxIn.save();
     !!chunkInfo['mapOverlays'] && selectedOverlay !== 'None' && selectedOverlay !== 'Locked Slayer Task|Slayer task' && !!chunkInfo['mapOverlays'][selectedOverlay] && chunkInfo['mapOverlays'][selectedOverlay].forEach((overlayEl, i) => {
-        if ((selectedOverlay !== 'Clues' || selectedOverlayClues[overlayEl.type]) && (selectedOverlayIds.length === 0 || i !== selectedOverlayId) && overlayEl.x >= 1024 && overlayEl.x <= 3967 && overlayEl.y >= 2496 && overlayEl.y <= 4159 && (!unlockedOverlayOnly || (!!tempChunks['unlocked'] && tempChunks['unlocked'].hasOwnProperty(convertToChunkNum(Math.floor((overlayEl.x - 1024)/64), (fullSize / rowSize) - Math.floor((overlayEl.y - 2496)/64) - 1))))) {
-            ctx.textAlign = 'center';
-            ctx.font = '900 ' + 36 + 'px "Font Awesome 6 Free"';
-            ctx.fillStyle = 'white';
-            ctx.fillText(stickerChoicesContent['map-marker-alt'], (dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))), dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 4);
-            ctx.font = '900 ' + 32 + 'px "Font Awesome 6 Free"';
-            ctx.fillStyle = hoveredOverlayIds.includes(i) && !isHoveringOverlayMenu ? 'black' : overlayEl.color;
-            ctx.fillText(stickerChoicesContent['map-marker-alt'], (dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))), dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 6);
+        if ((selectedOverlay !== 'Clues' || selectedOverlayClues[overlayEl.type]) && (selectedOverlayIds.length === 0 || i !== selectedOverlayId) && overlayEl.x >= 960 && overlayEl.x <= 4031 && overlayEl.y >= 2048 && overlayEl.y <= 4223 && (!unlockedOverlayOnly || (!!tempChunks['unlocked'] && tempChunks['unlocked'].hasOwnProperty(convertToChunkNum(Math.floor((overlayEl.x - 960)/64), (fullSize / rowSize) - Math.floor((overlayEl.y - 2048)/64) - 1))))) {
+            ctxIn.textAlign = 'center';
+            ctxIn.font = '900 ' + 36 + 'px "Font Awesome 6 Free"';
+            ctxIn.fillStyle = 'white';
+            ctxIn.fillText(stickerChoicesContent['map-marker-alt'], (dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))), dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 4);
+            ctxIn.font = '900 ' + 32 + 'px "Font Awesome 6 Free"';
+            ctxIn.fillStyle = hoveredOverlayIds.includes(i) && !isHoveringOverlayMenu ? 'black' : overlayEl.color;
+            ctxIn.fillText(stickerChoicesContent['map-marker-alt'], (dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))), dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 6);
             if (selectedOverlayIds.length !== 0 && selectedOverlayIds.includes(i)) {
-                ctx.fillStyle = 'rgba(30, 30, 30, 0.5)';
-                ctx.fillText(stickerChoicesContent['map-marker-alt'], (dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))), dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 6);
+                ctxIn.fillStyle = 'rgba(30, 30, 30, 0.5)';
+                ctxIn.fillText(stickerChoicesContent['map-marker-alt'], (dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))), dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 6);
             }
-            ctx.beginPath();
-            ctx.arc((dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))), dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 22, 5, 0, 2 * Math.PI, false);
-            ctx.fillStyle = 'white';
-            ctx.fill();
+            ctxIn.beginPath();
+            ctxIn.arc((dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))), dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 22, 5, 0, 2 * Math.PI, false);
+            ctxIn.fillStyle = 'white';
+            ctxIn.fill();
         }
     });
-    ctx.restore();
+    ctxIn.restore();
 
-    ctx.save();
+    ctxIn.save();
     if (!!chunkInfo['mapOverlays'] && selectedOverlay !== 'None' && selectedOverlay !== 'Locked Slayer Task|Slayer task' && !!chunkInfo['mapOverlays'][selectedOverlay] && selectedOverlayIds.length !== 0) {
         let overlayEl = chunkInfo['mapOverlays'][selectedOverlay][selectedOverlayId];
-        ctx.textAlign = 'center';
-        ctx.font = '900 ' + 36 + 'px "Font Awesome 6 Free"';
-        ctx.fillStyle = 'white';
-        ctx.fillText(stickerChoicesContent['map-marker-alt'], (dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))), dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 4);
-        ctx.font = '900 ' + 32 + 'px "Font Awesome 6 Free"';
-        ctx.fillStyle = hoveredOverlayIds.includes(selectedOverlayId) && !isHoveringOverlayMenu ? 'black' : overlayEl.color;
-        ctx.fillText(stickerChoicesContent['map-marker-alt'], (dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))), dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 6);
-        ctx.fillStyle = 'rgba(200, 200, 200, 0.25)';
-        ctx.fillText(stickerChoicesContent['map-marker-alt'], (dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))), dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 6);
-        ctx.beginPath();
-        ctx.arc((dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))), dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 22, 5, 0, 2 * Math.PI, false);
-        ctx.fillStyle = 'white';
-        ctx.fill();
-        ctx.fillStyle = getComputedStyle(ctx.canvas).getPropertyValue('--color1');
-        ctx.strokeStyle = 'black';
-        ctx.lineWidth = 1;
+        ctxIn.textAlign = 'center';
+        ctxIn.font = '900 ' + 36 + 'px "Font Awesome 6 Free"';
+        ctxIn.fillStyle = 'white';
+        ctxIn.fillText(stickerChoicesContent['map-marker-alt'], (dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))), dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 4);
+        ctxIn.font = '900 ' + 32 + 'px "Font Awesome 6 Free"';
+        ctxIn.fillStyle = hoveredOverlayIds.includes(selectedOverlayId) && !isHoveringOverlayMenu ? 'black' : overlayEl.color;
+        ctxIn.fillText(stickerChoicesContent['map-marker-alt'], (dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))), dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 6);
+        ctxIn.fillStyle = 'rgba(200, 200, 200, 0.25)';
+        ctxIn.fillText(stickerChoicesContent['map-marker-alt'], (dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))), dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 6);
+        ctxIn.beginPath();
+        ctxIn.arc((dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))), dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 22, 5, 0, 2 * Math.PI, false);
+        ctxIn.fillStyle = 'white';
+        ctxIn.fill();
+        ctxIn.fillStyle = getComputedStyle(ctxIn.canvas).getPropertyValue('--color1');
+        ctxIn.strokeStyle = 'black';
+        ctxIn.lineWidth = 1;
         let topText = `${overlayEl.type} Step`;
         if (overlayEl.hasOwnProperty('img')) {
-            ctx.font = 'bold 24px Calibri, Roboto Condensed, sans-serif';
-            ctx.fillRect((dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 20, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 199, 200, 24);
-            ctx.strokeRect((dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 20, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 199, 200, 24);
-            ctx.fillStyle = getComputedStyle(ctx.canvas).getPropertyValue('--colorText');
-            ctx.textAlign = 'left';
-            ctx.fillText(topText, (dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 22, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180);
-            ctx.font = '900 ' + 18 + 'px "Font Awesome 6 Free"';
-            selectedOverlayIndex > 0 && selectedOverlayIds.length > 1 && ctx.fillText('\uf053', (dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 165, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180);
-            selectedOverlayIndex < (selectedOverlayIds.length - 1) && ctx.fillText('\uf054', (dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 180, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180);
-            ctx.font = '900 ' + 24 + 'px "Font Awesome 6 Free"';
-            ctx.fillText('\uf00d', (dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 200, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180);
-            ctx.fillStyle = getComputedStyle(ctx.canvas).getPropertyValue('--color1');
-            ctx.strokeStyle = 'black';
+            ctxIn.font = 'bold 24px Calibri, Roboto Condensed, sans-serif';
+            ctxIn.fillRect((dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 20, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 199, 200, 24);
+            ctxIn.strokeRect((dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 20, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 199, 200, 24);
+            ctxIn.fillStyle = getComputedStyle(ctxIn.canvas).getPropertyValue('--colorText');
+            ctxIn.textAlign = 'left';
+            ctxIn.fillText(topText, (dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 22, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180);
+            ctxIn.font = '900 ' + 18 + 'px "Font Awesome 6 Free"';
+            selectedOverlayIndex > 0 && selectedOverlayIds.length > 1 && ctxIn.fillText('\uf053', (dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 165, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180);
+            selectedOverlayIndex < (selectedOverlayIds.length - 1) && ctxIn.fillText('\uf054', (dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 180, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180);
+            ctxIn.font = '900 ' + 24 + 'px "Font Awesome 6 Free"';
+            ctxIn.fillText('\uf00d', (dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 200, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180);
+            ctxIn.fillStyle = getComputedStyle(ctxIn.canvas).getPropertyValue('--color1');
+            ctxIn.strokeStyle = 'black';
             let overlayImg = new Image();
             overlayImg.src = overlayEl.img;
-            ctx.fillRect((dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 20, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 175, 200, 200);
-            ctx.strokeRect((dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 20, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 175, 200, 200);
-            ctx.drawImage(overlayImg, (dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 25, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 170, 190, 190);
-            overlayCloseLocation = [(dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 200, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180];
-            overlayLeftLocation = (selectedOverlayIndex > 0 && selectedOverlayIds.length > 1 ? [(dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 165, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180] : -1);
-            overlayRightLocation = (selectedOverlayIndex < (selectedOverlayIds.length - 1) ? [(dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 180, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180] : -1);
-            overlayMenuLocation = [(dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 20, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 199, (dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 20 + 200, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 175 + 200];
+            ctxIn.fillRect((dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 20, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 175, 200, 200);
+            ctxIn.strokeRect((dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 20, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 175, 200, 200);
+            ctxIn.drawImage(overlayImg, (dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 25, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 170, 190, 190);
+            overlayCloseLocation = [(dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 200, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180];
+            overlayLeftLocation = (selectedOverlayIndex > 0 && selectedOverlayIds.length > 1 ? [(dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 165, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180] : -1);
+            overlayRightLocation = (selectedOverlayIndex < (selectedOverlayIds.length - 1) ? [(dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 180, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180] : -1);
+            overlayMenuLocation = [(dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 20, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 199, (dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 20 + 200, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 175 + 200];
         } else {
-            ctx.font = '18px Calibri, Roboto Condensed, sans-serif';
+            ctxIn.font = '18px Calibri, Roboto Condensed, sans-serif';
             let hoverText = `${overlayEl.text}`;
-            let hoverTextLines = getLines(ctx, hoverText, 190);
-            ctx.font = 'bold 24px Calibri, Roboto Condensed, sans-serif';
-            ctx.fillRect((dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 20, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 199 + (200 - (hoverTextLines.length * 19 + 10)), 200, 24);
-            ctx.strokeRect((dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 20, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 199 + (200 - (hoverTextLines.length * 19 + 10)), 200, 24);
-            ctx.fillStyle = getComputedStyle(ctx.canvas).getPropertyValue('--colorText');
-            ctx.textAlign = 'left';
-            ctx.fillText(topText, (dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 22, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180 + (200 - (hoverTextLines.length * 19 + 10)));
-            ctx.font = '900 ' + 18 + 'px "Font Awesome 6 Free"';
-            selectedOverlayIndex > 0 && selectedOverlayIds.length > 1 && ctx.fillText('\uf053', (dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 165, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180 + (200 - (hoverTextLines.length * 19 + 10)));
-            selectedOverlayIndex < (selectedOverlayIds.length - 1) && ctx.fillText('\uf054', (dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 180, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180 + (200 - (hoverTextLines.length * 19 + 10)));
-            ctx.font = '900 ' + 24 + 'px "Font Awesome 6 Free"';
-            ctx.fillText('\uf00d', (dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 200, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180 + (200 - (hoverTextLines.length * 19 + 10)));
-            ctx.fillStyle = getComputedStyle(ctx.canvas).getPropertyValue('--color1');
-            ctx.strokeStyle = 'black';
-            ctx.font = '18px Calibri, Roboto Condensed, sans-serif';
-            ctx.fillRect((dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 20, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 175 + (200 - (hoverTextLines.length * 19 + 10)), 200, (hoverTextLines.length * 19 + 10));
-            ctx.strokeRect((dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 20, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 175 + (200 - (hoverTextLines.length * 19 + 10)), 200, (hoverTextLines.length * 19 + 10));
-            ctx.fillStyle = getComputedStyle(ctx.canvas).getPropertyValue('--colorText');
-            ctx.textAlign = 'left';
+            let hoverTextLines = getLines(ctxIn, hoverText, 190);
+            ctxIn.font = 'bold 24px Calibri, Roboto Condensed, sans-serif';
+            ctxIn.fillRect((dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 20, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 199 + (200 - (hoverTextLines.length * 19 + 10)), 200, 24);
+            ctxIn.strokeRect((dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 20, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 199 + (200 - (hoverTextLines.length * 19 + 10)), 200, 24);
+            ctxIn.fillStyle = getComputedStyle(ctxIn.canvas).getPropertyValue('--colorText');
+            ctxIn.textAlign = 'left';
+            ctxIn.fillText(topText, (dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 22, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180 + (200 - (hoverTextLines.length * 19 + 10)));
+            ctxIn.font = '900 ' + 18 + 'px "Font Awesome 6 Free"';
+            selectedOverlayIndex > 0 && selectedOverlayIds.length > 1 && ctxIn.fillText('\uf053', (dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 165, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180 + (200 - (hoverTextLines.length * 19 + 10)));
+            selectedOverlayIndex < (selectedOverlayIds.length - 1) && ctxIn.fillText('\uf054', (dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 180, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180 + (200 - (hoverTextLines.length * 19 + 10)));
+            ctxIn.font = '900 ' + 24 + 'px "Font Awesome 6 Free"';
+            ctxIn.fillText('\uf00d', (dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 200, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180 + (200 - (hoverTextLines.length * 19 + 10)));
+            ctxIn.fillStyle = getComputedStyle(ctxIn.canvas).getPropertyValue('--color1');
+            ctxIn.strokeStyle = 'black';
+            ctxIn.font = '18px Calibri, Roboto Condensed, sans-serif';
+            ctxIn.fillRect((dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 20, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 175 + (200 - (hoverTextLines.length * 19 + 10)), 200, (hoverTextLines.length * 19 + 10));
+            ctxIn.strokeRect((dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 20, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 175 + (200 - (hoverTextLines.length * 19 + 10)), 200, (hoverTextLines.length * 19 + 10));
+            ctxIn.fillStyle = getComputedStyle(ctxIn.canvas).getPropertyValue('--colorText');
+            ctxIn.textAlign = 'left';
             hoverTextLines.forEach((hoverTextLine, i) => {
-                ctx.fillText(hoverTextLine, (dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 25, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 155 + (19 * i) + (200 - (hoverTextLines.length * 19 + 10)));
+                ctxIn.fillText(hoverTextLine, (dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 25, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 155 + (19 * i) + (200 - (hoverTextLines.length * 19 + 10)));
             });
-            overlayCloseLocation = [(dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 200, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180 + (200 - (hoverTextLines.length * 19 + 10))];
-            overlayLeftLocation = (selectedOverlayIndex > 0 && selectedOverlayIds.length > 1 ? [(dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 165, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180 + (200 - (hoverTextLines.length * 19 + 10))] : -1);
-            overlayRightLocation = (selectedOverlayIndex < (selectedOverlayIds.length - 1) ? [(dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 180, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180 + (200 - (hoverTextLines.length * 19 + 10))] : -1);
-            overlayMenuLocation = [(dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 20, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 199 + (200 - (hoverTextLines.length * 19 + 10)), (dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) + 20 + 200, dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 175 + (200 - (hoverTextLines.length * 19 + 10)) + (hoverTextLines.length * 19 + 10)];
+            overlayCloseLocation = [(dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 200, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180 + (200 - (hoverTextLines.length * 19 + 10))];
+            overlayLeftLocation = (selectedOverlayIndex > 0 && selectedOverlayIds.length > 1 ? [(dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 165, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180 + (200 - (hoverTextLines.length * 19 + 10))] : -1);
+            overlayRightLocation = (selectedOverlayIndex < (selectedOverlayIds.length - 1) ? [(dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 180, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180 + (200 - (hoverTextLines.length * 19 + 10))] : -1);
+            overlayMenuLocation = [(dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 20, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 199 + (200 - (hoverTextLines.length * 19 + 10)), (dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 20 + 200, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 175 + (200 - (hoverTextLines.length * 19 + 10)) + (hoverTextLines.length * 19 + 10)];
         }
     } else {
         overlayCloseLocation = -1;
@@ -2021,10 +2265,10 @@ let drawCanvas = function() {
         overlayRightLocation = -1;
         overlayMenuLocation = -1;
     }
-    ctx.restore();
+    ctxIn.restore();
 
     if (selectedOverlay !== 'None' && selectedOverlay !== 'Locked Slayer Task|Slayer task') {
-        $('#canvas').css('cursor', (hoveredOverlayIds.length !== 0 && !isHoveringOverlayMenu) || isHoveringClose || isHoveringLeft || isHoveringRight ? 'pointer' : 'auto');
+        $('#canvas').css('cursor', (hoveredOverlayIds.length !== 0 && !isHoveringOverlayMenu) || isHoveringClose || isHoveringLeft || isHoveringRight || ((isHoveringBlacklist || isHoveringSticker || isHoveringPaint) && (!locked || testMode)) ? 'pointer' : 'auto');
     }
 
     if (manualMouseMoveCheck) {
@@ -2038,106 +2282,103 @@ document.body.addEventListener('mousedown', function (event) {
     let rect;
     let hasSet = false;
     if (searchDetailsModalOpen) {
-        rect = $('#myModal11 .modal-content')[0].getBoundingClientRect();
+        rect = $('#searchDetailsModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (detailsModalOpen) {
-        rect = $('#myModal2 .modal-content')[0].getBoundingClientRect();
+        rect = $('#challengeDetailsModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (manualModalOpen) {
-        rect = $('#myModal .modal-content')[0].getBoundingClientRect();
+        rect = $('#manualTasksModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (rulesModalOpen) {
-        rect = $('#myModal4 .modal-content')[0].getBoundingClientRect();
+        rect = $('#rulesModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (settingsModalOpen) {
-        rect = $('#myModal7 .modal-content')[0].getBoundingClientRect();
-        hasSet = true;
-    } else if (randomListModalOpen) {
-        rect = $('#myModal8 .modal-content')[0].getBoundingClientRect();
-        hasSet = true;
-    } else if (statsErrorModalOpen) {
-        rect = $('#myModal9 .modal-content')[0].getBoundingClientRect();
+        rect = $('#settingsModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (searchModalOpen) {
-        rect = $('#myModal10 .modal-content')[0].getBoundingClientRect();
+        rect = $('#searchModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (addEquipmentModalOpen) {
-        rect = $('#myModal15 .modal-content')[0].getBoundingClientRect();
+        rect = $('#addEquipmentModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (bisUpgradesModalOpen) {
-        rect = $('#myModal50 .modal-content')[0].getBoundingClientRect();
+        rect = $('#slotUpgradeModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (highestModalOpen) {
-        rect = $('#myModal12 .modal-content')[0].getBoundingClientRect();
+        rect = $('#highestModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (questStepsModalOpen) {
-        rect = $('#myModal25 .modal-content')[0].getBoundingClientRect();
+        rect = $('#questStepsModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (methodsModalOpen) {
-        rect = $('#myModal13 .modal-content')[0].getBoundingClientRect();
+        rect = $('#methodsModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (slayerMasterInfoModalOpen) {
-        rect = $('#myModal32 .modal-content')[0].getBoundingClientRect();
+        rect = $('#slayerMasterInfoModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (doableClueStepsModalOpen) {
-        rect = $('#myModal33 .modal-content')[0].getBoundingClientRect();
+        rect = $('#doableClueStepsModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (clueChunksModalOpen) {
-        rect = $('#myModal34 .modal-content')[0].getBoundingClientRect();
+        rect = $('#clueChunksModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (notesOpen) {
-        rect = $('#myModal35 .modal-content')[0].getBoundingClientRect();
+        rect = $('#chunkNotesModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (highest2ModalOpen) {
-        rect = $('#myModal12_2 .modal-content')[0].getBoundingClientRect();
+        rect = $('#highest2Modal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (completeModalOpen) {
-        rect = $('#myModal14 .modal-content')[0].getBoundingClientRect();
+        rect = $('#manualCompleteModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (stickerModalOpen) {
-        rect = $('#myModal16 .modal-content')[0].getBoundingClientRect();
+        rect = $('#stickerModal .modal-content')[0].getBoundingClientRect();
+        hasSet = true;
+    } else if (paintModalOpen) {
+        rect = $('#paintModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (backlogSourcesModalOpen) {
-        rect = $('#myModal17 .modal-content')[0].getBoundingClientRect();
+        rect = $('#backlogSourcesModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (chunkHistoryModalOpen) {
-        rect = $('#myModal18 .modal-content')[0].getBoundingClientRect();
+        rect = $('#chunkHistoryModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (challengeAltsModalOpen) {
-        rect = $('#myModal19 .modal-content')[0].getBoundingClientRect();
+        rect = $('#altChallengesModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (manualOuterModalOpen) {
-        rect = $('#myModal20 .modal-content')[0].getBoundingClientRect();
+        rect = $('#manuallyAddOuterModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (monsterModalOpen) {
-        rect = $('#myModal21 .modal-content')[0].getBoundingClientRect();
+        rect = $('#manuallyAddStuffModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (patchNotesOpen) {
-        rect = $('#myModal24 .modal-content')[0].getBoundingClientRect();
+        rect = $('#patchNotesModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (friendsListModalOpen) {
-        rect = $('#myModal26 .modal-content')[0].getBoundingClientRect();
+        rect = $('#friendsListModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (manualAreasModalOpen) {
-        rect = $('#myModal31 .modal-content')[0].getBoundingClientRect();
+        rect = $('#manualAreasModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (chunkSectionsModalOpen) {
-        rect = $('#myModal42 .modal-content')[0].getBoundingClientRect();
+        rect = $('#chunkSectionsModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (chunkSectionPickerModalOpen) {
-        rect = $('#myModal43 .modal-content')[0].getBoundingClientRect();
+        rect = $('#chunkSectionPickerModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (clipboardModalOpen) {
-        rect = $('#myModal38 .modal-content')[0].getBoundingClientRect();
+        rect = $('#miscellaneousActionsModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (overlaysModalOpen) {
-        rect = $('#myModal39 .modal-content')[0].getBoundingClientRect();
+        rect = $('#mapOverlaysModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (customizeTopbarModalOpen) {
-        rect = $('#myModal46 .modal-content')[0].getBoundingClientRect();
+        rect = $('#customizeTopbarModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (userTasksListModalOpen) {
-        rect = $('#myModal48 .modal-content')[0].getBoundingClientRect();
+        rect = $('#userTasksListModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     }
     // ------
@@ -2154,106 +2395,103 @@ document.body.addEventListener('mouseup', function (event) {
     let rect;
     let hasSet = false;
     if (searchDetailsModalOpen) {
-        rect = $('#myModal11 .modal-content')[0].getBoundingClientRect();
+        rect = $('#searchDetailsModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (detailsModalOpen) {
-        rect = $('#myModal2 .modal-content')[0].getBoundingClientRect();
+        rect = $('#challengeDetailsModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (manualModalOpen) {
-        rect = $('#myModal .modal-content')[0].getBoundingClientRect();
+        rect = $('#manualTasksModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (rulesModalOpen) {
-        rect = $('#myModal4 .modal-content')[0].getBoundingClientRect();
+        rect = $('#rulesModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (settingsModalOpen) {
-        rect = $('#myModal7 .modal-content')[0].getBoundingClientRect();
-        hasSet = true;
-    } else if (randomListModalOpen) {
-        rect = $('#myModal8 .modal-content')[0].getBoundingClientRect();
-        hasSet = true;
-    } else if (statsErrorModalOpen) {
-        rect = $('#myModal9 .modal-content')[0].getBoundingClientRect();
+        rect = $('#settingsModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (searchModalOpen) {
-        rect = $('#myModal10 .modal-content')[0].getBoundingClientRect();
+        rect = $('#searchModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (addEquipmentModalOpen) {
-        rect = $('#myModal15 .modal-content')[0].getBoundingClientRect();
+        rect = $('#addEquipmentModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (bisUpgradesModalOpen) {
-        rect = $('#myModal50 .modal-content')[0].getBoundingClientRect();
+        rect = $('#slotUpgradeModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (highestModalOpen) {
-        rect = $('#myModal12 .modal-content')[0].getBoundingClientRect();
+        rect = $('#highestModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (questStepsModalOpen) {
-        rect = $('#myModal25 .modal-content')[0].getBoundingClientRect();
+        rect = $('#questStepsModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (methodsModalOpen) {
-        rect = $('#myModal13 .modal-content')[0].getBoundingClientRect();
+        rect = $('#methodsModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (slayerMasterInfoModalOpen) {
-        rect = $('#myModal32 .modal-content')[0].getBoundingClientRect();
+        rect = $('#slayerMasterInfoModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (doableClueStepsModalOpen) {
-        rect = $('#myModal33 .modal-content')[0].getBoundingClientRect();
+        rect = $('#doableClueStepsModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (clueChunksModalOpen) {
-        rect = $('#myModal34 .modal-content')[0].getBoundingClientRect();
+        rect = $('#clueChunksModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (notesOpen) {
-        rect = $('#myModal35 .modal-content')[0].getBoundingClientRect();
+        rect = $('#chunkNotesModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (highest2ModalOpen) {
-        rect = $('#myModal12_2 .modal-content')[0].getBoundingClientRect();
+        rect = $('#highest2Modal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (completeModalOpen) {
-        rect = $('#myModal14 .modal-content')[0].getBoundingClientRect();
+        rect = $('#manualCompleteModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (stickerModalOpen) {
-        rect = $('#myModal16 .modal-content')[0].getBoundingClientRect();
+        rect = $('#stickerModal .modal-content')[0].getBoundingClientRect();
+        hasSet = true;
+    } else if (paintModalOpen) {
+        rect = $('#paintModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (backlogSourcesModalOpen) {
-        rect = $('#myModal17 .modal-content')[0].getBoundingClientRect();
+        rect = $('#backlogSourcesModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (chunkHistoryModalOpen) {
-        rect = $('#myModal18 .modal-content')[0].getBoundingClientRect();
+        rect = $('#chunkHistoryModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (challengeAltsModalOpen) {
-        rect = $('#myModal19 .modal-content')[0].getBoundingClientRect();
+        rect = $('#altChallengesModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (manualOuterModalOpen) {
-        rect = $('#myModal20 .modal-content')[0].getBoundingClientRect();
+        rect = $('#manuallyAddOuterModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (monsterModalOpen) {
-        rect = $('#myModal21 .modal-content')[0].getBoundingClientRect();
+        rect = $('#manuallyAddStuffModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (patchNotesOpen) {
-        rect = $('#myModal24 .modal-content')[0].getBoundingClientRect();
+        rect = $('#patchNotesModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (friendsListModalOpen) {
-        rect = $('#myModal26 .modal-content')[0].getBoundingClientRect();
+        rect = $('#friendsListModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (manualAreasModalOpen) {
-        rect = $('#myModal31 .modal-content')[0].getBoundingClientRect();
+        rect = $('#manualAreasModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (chunkSectionsModalOpen) {
-        rect = $('#myModal42 .modal-content')[0].getBoundingClientRect();
+        rect = $('#chunkSectionsModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (chunkSectionPickerModalOpen) {
-        rect = $('#myModal43 .modal-content')[0].getBoundingClientRect();
+        rect = $('#chunkSectionPickerModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (clipboardModalOpen) {
-        rect = $('#myModal38 .modal-content')[0].getBoundingClientRect();
+        rect = $('#miscellaneousActionsModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (overlaysModalOpen) {
-        rect = $('#myModal39 .modal-content')[0].getBoundingClientRect();
+        rect = $('#mapOverlaysModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (customizeTopbarModalOpen) {
-        rect = $('#myModal46 .modal-content')[0].getBoundingClientRect();
+        rect = $('#customizeTopbarModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     } else if (userTasksListModalOpen) {
-        rect = $('#myModal48 .modal-content')[0].getBoundingClientRect();
+        rect = $('#userTasksListModal .modal-content')[0].getBoundingClientRect();
         hasSet = true;
     }
     // ------
@@ -2268,12 +2506,11 @@ document.body.addEventListener('mouseup', function (event) {
         detailsModalOpen && !searchDetailsModalOpen && closeChallengeDetails();
         rulesModalOpen && !presetWarningModalOpen && closeRules();
         settingsModalOpen && !mapIntroOpen && closeSettings();
-        randomListModalOpen && closeRandomList();
-        statsErrorModalOpen && closeStatsError();
         searchDetailsModalOpen && closeSearchDetails();
         completeModalOpen && closeComplete();
         addEquipmentModalOpen && closeAddEquipment();
         stickerModalOpen && closeSticker();
+        paintModalOpen && closePaint();
         backlogSourcesModalOpen && closeBacklogSources();
         chunkHistoryModalOpen && closeChunkHistory();
         challengeAltsModalOpen && closeChallengeAlts();
@@ -2288,7 +2525,7 @@ document.body.addEventListener('mouseup', function (event) {
         clueChunksModalOpen && closeClueChunks();
         clipboardModalOpen && closeClipboard();
         overlaysModalOpen && closeOverlays();
-        userTasksListModalOpen && closeUserTasksList();
+        userTasksListModalOpen && !userTaskDeleteConfirmationModalOpen && closeUserTasksList();
         notesOpen && !notesEditing && closeChunkNotes();
         customizeTopbarModalOpen && closeCustomizeTopbar();
         rect = null;
@@ -2307,7 +2544,7 @@ let handleMouseDown = function(e) {
         removeCanvasDarkness = true;
         return;
     }
-    if ((e.button !== 0 && !e.touches) || atHome || inEntry || importMenuOpen || highscoreMenuOpen || helpMenuOpen || patchNotesOpen || manualModalOpen || detailsModalOpen || notesModalOpen || rulesModalOpen || settingsModalOpen || randomModalOpen || userTasksModalOpen || randomListModalOpen || statsErrorModalOpen || searchModalOpen || searchDetailsModalOpen || highestModalOpen || highest2ModalOpen || methodsModalOpen || completeModalOpen || addEquipmentModalOpen || stickerModalOpen || backlogSourcesModalOpen || chunkHistoryModalOpen || challengeAltsModalOpen || manualOuterModalOpen || monsterModalOpen || slayerLockedModalOpen || constructionLockedModalOpen || rollChunkModalOpen || questStepsModalOpen || friendsListModalOpen || friendsAddModalOpen || passiveSkillModalOpen || mapIntroOpen || xpRewardOpen || manualAreasModalOpen || chunkSectionsModalOpen || chunkSectionPickerModalOpen || slayerMasterInfoModalOpen || doableClueStepsModalOpen || clueChunksModalOpen || notesOpen || newTasksOpen || clipboardModalOpen || overlaysModalOpen || userTasksListModalOpen || userTaskDeleteConfirmationModalOpen || exitSandboxWarningModalOpen || mobileMenuOpen || mobileTasksOpen || mobileChunkMenuOpen || customizeTopbarModalOpen || questChunksModalOpen || e.target.nodeName.toLowerCase() === 'select' || e.target.nodeName.toLowerCase() === 'option') {
+    if ((e.button !== 0 && !e.touches) || atHome || inEntry || importMenuOpen || highscoreMenuOpen || helpMenuOpen || patchNotesOpen || manualModalOpen || detailsModalOpen || notesModalOpen || rulesModalOpen || settingsModalOpen || userTasksModalOpen || searchModalOpen || searchDetailsModalOpen || highestModalOpen || highest2ModalOpen || methodsModalOpen || completeModalOpen || addEquipmentModalOpen || stickerModalOpen || paintModalOpen || backlogSourcesModalOpen || chunkHistoryModalOpen || challengeAltsModalOpen || manualOuterModalOpen || monsterModalOpen || slayerLockedModalOpen || constructionLockedModalOpen || rollChunkModalOpen || questStepsModalOpen || friendsListModalOpen || friendsAddModalOpen || passiveSkillModalOpen || mapIntroOpen || xpRewardOpen || manualAreasModalOpen || chunkSectionsModalOpen || chunkSectionPickerModalOpen || slayerMasterInfoModalOpen || doableClueStepsModalOpen || clueChunksModalOpen || notesOpen || newTasksOpen || clipboardModalOpen || overlaysModalOpen || userTasksListModalOpen || userTaskDeleteConfirmationModalOpen || exitSandboxWarningModalOpen || mobileMenuOpen || mobileTasksOpen || mobileChunkMenuOpen || customizeTopbarModalOpen || questChunksModalOpen || e.target.nodeName.toLowerCase() === 'select' || e.target.nodeName.toLowerCase() === 'option') {
         drawCanvas();
         return;
     }
@@ -2333,7 +2570,7 @@ let handleMouseDown = function(e) {
 
 // Handles mouse move event
 let handleMouseMove = function(e) {
-    if ((e.button !== 0 && !e.touches) || atHome || inEntry || importMenuOpen || highscoreMenuOpen || helpMenuOpen || patchNotesOpen || manualModalOpen || detailsModalOpen || notesModalOpen || rulesModalOpen || settingsModalOpen || randomModalOpen || userTasksModalOpen || randomListModalOpen || statsErrorModalOpen || searchModalOpen || searchDetailsModalOpen || highestModalOpen || highest2ModalOpen || methodsModalOpen || completeModalOpen || addEquipmentModalOpen || stickerModalOpen || backlogSourcesModalOpen || chunkHistoryModalOpen || challengeAltsModalOpen || manualOuterModalOpen || monsterModalOpen || slayerLockedModalOpen || constructionLockedModalOpen || rollChunkModalOpen || questStepsModalOpen || friendsListModalOpen || friendsAddModalOpen || passiveSkillModalOpen || mapIntroOpen || xpRewardOpen || manualAreasModalOpen || chunkSectionsModalOpen || chunkSectionPickerModalOpen || slayerMasterInfoModalOpen || doableClueStepsModalOpen || clueChunksModalOpen || notesOpen || newTasksOpen || clipboardModalOpen || overlaysModalOpen || userTasksListModalOpen || userTaskDeleteConfirmationModalOpen || exitSandboxWarningModalOpen || mobileMenuOpen || mobileTasksOpen || mobileChunkMenuOpen || customizeTopbarModalOpen || questChunksModalOpen) {
+    if ((e.button !== 0 && !e.touches) || (e.type === 'touchmove' && e.target.id !== 'canvas') || atHome || inEntry || importMenuOpen || highscoreMenuOpen || helpMenuOpen || patchNotesOpen || manualModalOpen || detailsModalOpen || notesModalOpen || rulesModalOpen || settingsModalOpen || userTasksModalOpen || searchModalOpen || searchDetailsModalOpen || highestModalOpen || highest2ModalOpen || methodsModalOpen || completeModalOpen || addEquipmentModalOpen || stickerModalOpen || paintModalOpen || backlogSourcesModalOpen || chunkHistoryModalOpen || challengeAltsModalOpen || manualOuterModalOpen || monsterModalOpen || slayerLockedModalOpen || constructionLockedModalOpen || rollChunkModalOpen || questStepsModalOpen || friendsListModalOpen || friendsAddModalOpen || passiveSkillModalOpen || mapIntroOpen || xpRewardOpen || manualAreasModalOpen || chunkSectionsModalOpen || chunkSectionPickerModalOpen || slayerMasterInfoModalOpen || doableClueStepsModalOpen || clueChunksModalOpen || notesOpen || newTasksOpen || clipboardModalOpen || overlaysModalOpen || userTasksListModalOpen || userTaskDeleteConfirmationModalOpen || exitSandboxWarningModalOpen || pickChunkWarningModalOpen || roll2ChunkWarningModalOpen || mobileMenuOpen || mobileTasksOpen || mobileChunkMenuOpen || customizeTopbarModalOpen || questChunksModalOpen) {
         drawCanvas();
         return;
     }
@@ -2408,8 +2645,8 @@ let handleMouseMove = function(e) {
             hoveredOverlayIds = [];
             let lowestDistance = 100;
             e.target.id === 'canvas' && chunkInfo['mapOverlays'][selectedOverlay].forEach((overlayEl, i) => {
-                if ((overlayEl.text || overlayEl.img) && (selectedOverlay !== 'Clues' || selectedOverlayClues[overlayEl.type]) && overlayEl.x >= 1024 && overlayEl.x <= 3967 && overlayEl.y >= 2496 && overlayEl.y <= 4159 && (!unlockedOverlayOnly || (!!tempChunks['unlocked'] && tempChunks['unlocked'].hasOwnProperty(convertToChunkNum(Math.floor((overlayEl.x - 1024)/64), (fullSize / rowSize) - Math.ceil((overlayEl.y - 2495)/64)))))) {
-                    let distance = Math.sqrt(Math.pow((dragTotalX + (totalZoom * (((overlayEl.x/64) - 16) * imgW / rowSize))) - currentX, 2) + Math.pow((dragTotalY + (totalZoom * ((65 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 6 - 15) - currentY, 2));
+                if ((overlayEl.text || overlayEl.img) && (selectedOverlay !== 'Clues' || selectedOverlayClues[overlayEl.type]) && overlayEl.x >= 960 && overlayEl.x <= 4031 && overlayEl.y >= 2048 && overlayEl.y <= 4223 && (!unlockedOverlayOnly || (!!tempChunks['unlocked'] && tempChunks['unlocked'].hasOwnProperty(convertToChunkNum(Math.floor((overlayEl.x - 960)/64), (fullSize / rowSize) - Math.ceil((overlayEl.y - 2048)/64)))))) {
+                    let distance = Math.sqrt(Math.pow((dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) - currentX, 2) + Math.pow((dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 6 - 15) - currentY, 2));
                     if (distance < 15 && distance < lowestDistance) {
                         hoveredOverlayIds.push(i);
                         distance = distance;
@@ -2436,10 +2673,17 @@ let handleMouseMove = function(e) {
             } else {
                 isHoveringSticker = false;
             }
+            if ((currentX - dragTotalX) / (totalZoom * (imgW / rowSize)) - Math.floor((currentX - dragTotalX) / (totalZoom * (imgW / rowSize))) >= 0.7 && (currentX - dragTotalX) / (totalZoom * (imgW / rowSize)) - Math.floor((currentX - dragTotalX) / (totalZoom * (imgW / rowSize))) <= 0.95 &&
+                ((currentY - dragTotalY) / (totalZoom * (imgH / (fullSize / rowSize)))) - Math.floor((currentY - dragTotalY) / (totalZoom * (imgH / (fullSize / rowSize)))) >= 0.7 && ((currentY - dragTotalY) / (totalZoom * (imgH / (fullSize / rowSize)))) - Math.floor((currentY - dragTotalY) / (totalZoom * (imgH / (fullSize / rowSize)))) <= .95) {
+                isHoveringPaint = true;
+            } else {
+                isHoveringPaint = false;
+            }
         } else {
             isHoveringSticker = false;
+            isHoveringPaint = false;
         }
-        if ((isHoveringBlacklist || isHoveringSticker) && (!locked || testMode)) {
+        if ((isHoveringBlacklist || isHoveringSticker || isHoveringPaint) && (!locked || testMode)) {
             canvas.style.cursor = "pointer";
         } else {
             canvas.style.cursor = "default";
@@ -2486,14 +2730,21 @@ let handleKeyDown = function(e) {
             } else {
                 isHoveringSticker = false;
             }
+            if ((currentX - dragTotalX) / (totalZoom * (imgW / rowSize)) - Math.floor((currentX - dragTotalX) / (totalZoom * (imgW / rowSize))) >= 0.7 && (currentX - dragTotalX) / (totalZoom * (imgW / rowSize)) - Math.floor((currentX - dragTotalX) / (totalZoom * (imgW / rowSize))) <= 0.95 &&
+                ((currentY - dragTotalY) / (totalZoom * (imgH / (fullSize / rowSize)))) - Math.floor((currentY - dragTotalY) / (totalZoom * (imgH / (fullSize / rowSize)))) >= 0.7 && ((currentY - dragTotalY) / (totalZoom * (imgH / (fullSize / rowSize)))) - Math.floor((currentY - dragTotalY) / (totalZoom * (imgH / (fullSize / rowSize)))) <= 0.95) {
+                isHoveringPaint = true;
+            } else {
+                isHoveringPaint = false;
+            }
         } else {
             isHoveringSticker = false;
+            isHoveringPaint = false;
         }
     } else {
         controlChunk = 0;
         stickerChunk = 0;
     }
-    if ((isHoveringBlacklist || isHoveringSticker) && (!locked || testMode)) {
+    if ((isHoveringBlacklist || isHoveringSticker || isHoveringPaint) && (!locked || testMode)) {
         canvas.style.cursor = "pointer";
     } else {
         canvas.style.cursor = "default";
@@ -2509,6 +2760,7 @@ let handleKeyUp = function(e) {
         stickerChunk = 0;
         isHoveringBlacklist = false;
         isHoveringSticker = false;
+        isHoveringPaint = false;
         canvas.style.cursor = "default";
     }
     drawCanvas();
@@ -2516,7 +2768,7 @@ let handleKeyUp = function(e) {
 
 // Handles the mouse up event
 let handleMouseUp = function(e) {
-    if ((e.button !== 0 && e.button !== 2 && e.type !== 'touchend') || (onMobile && e.type !== 'touchend') || atHome || inEntry || importMenuOpen || highscoreMenuOpen || helpMenuOpen || patchNotesOpen || manualModalOpen || detailsModalOpen || notesModalOpen || rulesModalOpen || settingsModalOpen || randomModalOpen || userTasksModalOpen || randomListModalOpen || statsErrorModalOpen || searchModalOpen || searchDetailsModalOpen || highestModalOpen || highest2ModalOpen || methodsModalOpen || completeModalOpen || addEquipmentModalOpen || stickerModalOpen || backlogSourcesModalOpen || chunkHistoryModalOpen || challengeAltsModalOpen || manualOuterModalOpen || monsterModalOpen || slayerLockedModalOpen || constructionLockedModalOpen || rollChunkModalOpen || questStepsModalOpen || friendsListModalOpen || friendsAddModalOpen || passiveSkillModalOpen || mapIntroOpen || xpRewardOpen || manualAreasModalOpen || chunkSectionsModalOpen || chunkSectionPickerModalOpen || slayerMasterInfoModalOpen || doableClueStepsModalOpen || clueChunksModalOpen || notesOpen || newTasksOpen || clipboardModalOpen || overlaysModalOpen || userTasksListModalOpen || userTaskDeleteConfirmationModalOpen || exitSandboxWarningModalOpen || mobileMenuOpen || mobileTasksOpen || mobileChunkMenuOpen || customizeTopbarModalOpen || questChunksModalOpen) {
+    if ((e.button !== 0 && e.button !== 2 && e.type !== 'touchend') || (onMobile && e.type !== 'touchend') || atHome || inEntry || importMenuOpen || highscoreMenuOpen || helpMenuOpen || patchNotesOpen || manualModalOpen || detailsModalOpen || notesModalOpen || rulesModalOpen || settingsModalOpen || userTasksModalOpen || searchModalOpen || searchDetailsModalOpen || highestModalOpen || highest2ModalOpen || methodsModalOpen || completeModalOpen || addEquipmentModalOpen || stickerModalOpen || paintModalOpen || backlogSourcesModalOpen || chunkHistoryModalOpen || challengeAltsModalOpen || manualOuterModalOpen || monsterModalOpen || slayerLockedModalOpen || constructionLockedModalOpen || rollChunkModalOpen || questStepsModalOpen || friendsListModalOpen || friendsAddModalOpen || passiveSkillModalOpen || mapIntroOpen || xpRewardOpen || manualAreasModalOpen || chunkSectionsModalOpen || chunkSectionPickerModalOpen || slayerMasterInfoModalOpen || doableClueStepsModalOpen || clueChunksModalOpen || notesOpen || newTasksOpen || clipboardModalOpen || overlaysModalOpen || userTasksListModalOpen || userTaskDeleteConfirmationModalOpen || exitSandboxWarningModalOpen || mobileTasksOpen || customizeTopbarModalOpen || questChunksModalOpen) {
         drawCanvas();
         return;
     }
@@ -2628,6 +2880,10 @@ let handleMouseUp = function(e) {
                 blacklistCanvas(chunkId);
             } else if (isHoveringSticker) {
                 openStickers(chunkId);
+                drawCanvas();
+                return;
+            } else if (isHoveringPaint) {
+                openPaint(chunkId);
                 drawCanvas();
                 return;
             } else if (settings['shiftUnlock'] && !e.shiftKey && (!testMode || !locked) && (!onMobile || (Date.now() - touchTime) < 500)) {
@@ -2796,13 +3052,15 @@ let sortSelectedChunks = function() {
 
 // Opens the roll chunk modal
 let openRollChunkCanvas = async function(el, rand, sNum, rand2, sNum2, isUnpick) {
+    modal.generate('fancyRollModal', onMobile);
     isPreloading = true;
-    $('#myModal23, .roll-chunk-spinner').show();
-    $('#myModal23 .modal-content').hide();
+    $('#fancyRollModal, .roll-chunk-spinner').show();
+    $('#fancyRollModal .modal-content').hide();
+    $('.canvasDiv').css({'opacity': 1});
     await preloadChunkImages(el);
     isPreloading = false;
     $('.roll-chunk-spinner').hide();
-    $('#myModal23 .modal-content').show();
+    $('#fancyRollModal .modal-content').show();
     let pickText;
     let roll2Text;
     let rolling2 = typeof rand2 !== 'undefined' && typeof sNum2 !== 'undefined';
@@ -2848,22 +3106,22 @@ let openRollChunkCanvas = async function(el, rand, sNum, rand2, sNum2, isUnpick)
     let tempVar = false;
     chosenFromCinematic = el[rand];
     elArr = shuffle(elArr);
-    xCoord = Math.floor(parseInt(elArr[elArr.length - 1]) / 256) - 15;
-    yCoord = 65 - (parseInt(elArr[elArr.length - 1]) % 256);
+    xCoord = Math.floor(parseInt(elArr[elArr.length - 1]) / 256) - 14;
+    yCoord = 66 - (parseInt(elArr[elArr.length - 1]) % 256);
     $('.roll-chunk-outer').append(`<div class='noscroll roll-chunk-inner roll-chunk-${elArr[elArr.length - 1]}'><span class='noscroll roll-chunk-num'><img class='noscroll' src='${'./resources/chunk_images/row-' + yCoord + '-column-' + xCoord + '.png'}'/></span></div>`);
     for (let i = 0; i < Math.ceil(numSlots / elArr.length); i++) {
         for (let j = 0; j < elArr.length; j++) {
             let num = elArr[j];
-            xCoord = Math.floor(parseInt(elArr[j]) / 256) - 15;
-            yCoord = 65 - (parseInt(elArr[j]) % 256);
+            xCoord = Math.floor(parseInt(elArr[j]) / 256) - 14;
+            yCoord = 66 - (parseInt(elArr[j]) % 256);
             $('.roll-chunk-outer').append(`<div class='noscroll roll-chunk-inner roll-chunk-${num}'><span class='noscroll roll-chunk-num'><img class='noscroll' src='${'./resources/chunk_images/row-' + yCoord + '-column-' + xCoord + '.png'}'/></span></div>`);
             if (num === chosenFromCinematic && i + 1 >= Math.ceil(numSlots / elArr.length)) {
                 topNum = (-15.999 * ((i * elArr.length) + j)) + 'vh';
             }
         };
     };
-    xCoord = Math.floor(parseInt(elArr[0]) / 256) - 15;
-    yCoord = 65 - (parseInt(elArr[0]) % 256);
+    xCoord = Math.floor(parseInt(elArr[0]) / 256) - 14;
+    yCoord = 66 - (parseInt(elArr[0]) % 256);
     let randomDuration = (3 + Math.floor(Math.random() * 6)) * 1000;
     $('.roll-chunk-outer').append(`<div class='noscroll roll-chunk-inner roll-chunk-${elArr[0]}'><span class='noscroll roll-chunk-num'><img class='noscroll' src='${'./resources/chunk_images/row-' + yCoord + '-column-' + xCoord + '.png'}'/></span></div>`);
     setTimeout(function() {
@@ -2895,22 +3153,22 @@ let openRollChunkCanvas = async function(el, rand, sNum, rand2, sNum2, isUnpick)
         chosenFromCinematic = el[rand2];
         elArr = shuffle(elArr);
         let topNum2;
-        xCoord = Math.floor(parseInt(elArr[elArr.length - 1]) / 256) - 15;
-        yCoord = 65 - (parseInt(elArr[elArr.length - 1]) % 256);
+        xCoord = Math.floor(parseInt(elArr[elArr.length - 1]) / 256) - 14;
+        yCoord = 66 - (parseInt(elArr[elArr.length - 1]) % 256);
         $('.roll-chunk-outer2').append(`<div class='noscroll roll-chunk-inner roll-chunk-${elArr[elArr.length - 1]}'><span class='noscroll roll-chunk-num'><img class='noscroll' src='${'./resources/chunk_images/row-' + yCoord + '-column-' + xCoord + '.png'}'/></span></div>`);
         for (let i = 0; i < Math.ceil(numSlots / elArr.length); i++) {
             for (let j = 0; j < elArr.length; j++) {
                 let num = elArr[j];
-                xCoord = Math.floor(parseInt(elArr[j]) / 256) - 15;
-                yCoord = 65 - (parseInt(elArr[j]) % 256);
+                xCoord = Math.floor(parseInt(elArr[j]) / 256) - 14;
+                yCoord = 66 - (parseInt(elArr[j]) % 256);
                 $('.roll-chunk-outer2').append(`<div class='noscroll roll-chunk-inner roll-chunk-${num}'><span class='noscroll roll-chunk-num'><img class='noscroll' src='${'./resources/chunk_images/row-' + yCoord + '-column-' + xCoord + '.png'}'/></span></div>`);
                 if (num === chosenFromCinematic && i + 1 >= Math.ceil(numSlots / elArr.length)) {
                     topNum2 = (-15.998 * ((i * elArr.length) + j)) + 'vh';
                 }
             };
         };
-        xCoord = Math.floor(parseInt(elArr[0]) / 256) - 15;
-        yCoord = 65 - (parseInt(elArr[0]) % 256);
+        xCoord = Math.floor(parseInt(elArr[0]) / 256) - 14;
+        yCoord = 66 - (parseInt(elArr[0]) % 256);
         let randomDuration = (3 + Math.floor(Math.random() * 6)) * 1000;
         $('.roll-chunk-outer2').append(`<div class='noscroll roll-chunk-inner roll-chunk-${elArr[0]}'><span class='noscroll roll-chunk-num'><img class='noscroll' src='${'./resources/chunk_images/row-' + yCoord + '-column-' + xCoord + '.png'}'/></span></div>`);
         setTimeout(function() {
@@ -2949,7 +3207,7 @@ let takeMeToChunkCanvas = function() {
     $('.roll-chunk-window-outer2').remove();
     $('.roll-chunk-window-outer').css('left', '');
     $('#submit-roll-chunk-button').hide();
-    $('#myModal23').hide();
+    $('#fancyRollModal').remove();
 }
 
 // Sets the recent roll in data
@@ -2993,7 +3251,7 @@ let setRecentRoll = function(chunkId) {
 
 // Pick button: picks a random chunk from selected/potential
 let pickCanvas = function(both, override) {
-    if (!testMode && (locked || importMenuOpen || highscoreMenuOpen || helpMenuOpen || patchNotesOpen || manualModalOpen || detailsModalOpen || notesModalOpen || rulesModalOpen || settingsModalOpen || randomModalOpen || userTasksModalOpen || randomListModalOpen || statsErrorModalOpen || searchModalOpen || searchDetailsModalOpen || highestModalOpen || highest2ModalOpen || methodsModalOpen || completeModalOpen || addEquipmentModalOpen || stickerModalOpen || backlogSourcesModalOpen || chunkHistoryModalOpen || challengeAltsModalOpen || manualOuterModalOpen || monsterModalOpen || slayerLockedModalOpen || constructionLockedModalOpen || rollChunkModalOpen || questStepsModalOpen || friendsListModalOpen || friendsAddModalOpen || passiveSkillModalOpen || mapIntroOpen || xpRewardOpen || manualAreasModalOpen || chunkSectionsModalOpen || chunkSectionPickerModalOpen || slayerMasterInfoModalOpen || doableClueStepsModalOpen || clueChunksModalOpen || notesOpen || newTasksOpen || clipboardModalOpen || overlaysModalOpen || userTasksListModalOpen || userTaskDeleteConfirmationModalOpen || exitSandboxWarningModalOpen || mobileMenuOpen || mobileTasksOpen || mobileChunkMenuOpen || customizeTopbarModalOpen || questChunksModalOpen || (unlockedChunks !== 0 && selectedChunks === 0 && !settings['randomStartAlways']))) {
+    if (!testMode && (locked || importMenuOpen || highscoreMenuOpen || helpMenuOpen || patchNotesOpen || manualModalOpen || detailsModalOpen || notesModalOpen || rulesModalOpen || settingsModalOpen || userTasksModalOpen || searchModalOpen || searchDetailsModalOpen || highestModalOpen || highest2ModalOpen || methodsModalOpen || completeModalOpen || addEquipmentModalOpen || stickerModalOpen || paintModalOpen || backlogSourcesModalOpen || chunkHistoryModalOpen || challengeAltsModalOpen || manualOuterModalOpen || monsterModalOpen || slayerLockedModalOpen || constructionLockedModalOpen || rollChunkModalOpen || questStepsModalOpen || friendsListModalOpen || friendsAddModalOpen || passiveSkillModalOpen || mapIntroOpen || xpRewardOpen || manualAreasModalOpen || chunkSectionsModalOpen || chunkSectionPickerModalOpen || slayerMasterInfoModalOpen || doableClueStepsModalOpen || clueChunksModalOpen || notesOpen || newTasksOpen || clipboardModalOpen || overlaysModalOpen || userTasksListModalOpen || userTaskDeleteConfirmationModalOpen || exitSandboxWarningModalOpen || mobileMenuOpen || mobileTasksOpen || mobileChunkMenuOpen || customizeTopbarModalOpen || questChunksModalOpen || (unlockedChunks !== 0 && selectedChunks === 0 && !settings['randomStartAlways']))) {
         return;
     }
     if (checkFalseRules() && chunkTasksOn) {
@@ -3077,6 +3335,7 @@ let pickCanvas = function(both, override) {
         rand = Math.floor(Math.random() * el.length);
         if (settings['cinematicRoll'] && !onMobile && mid !== roll5Mid) {
             $('.pick').html(`<div class="noscroll calculating"><i class="noscroll fa-solid fa-spinner fa-spin"></i></div>`).addClass('pick-preloading').removeClass('pick').attr('disabled', true);
+            $('.canvasDiv').css({'opacity': 0});
             openRollChunkCanvas(el, rand, 0);
         }
         didRandomStart = true;
@@ -3101,6 +3360,7 @@ let pickCanvas = function(both, override) {
         sNum = tempSelectedChunks.indexOf(el[rand]) + 1;
         if (settings['cinematicRoll'] && !onMobile && mid !== roll5Mid) {
             $('.pick').html(`<div class="noscroll calculating"><i class="noscroll fa-solid fa-spinner fa-spin"></i></div>`).addClass('pick-preloading').removeClass('pick').attr('disabled', true);
+            $('.canvasDiv').css({'opacity': 0});
             openRollChunkCanvas(el, rand, sNum);
         }
         tempSelectedChunks.splice(sNum - 1, 1);
@@ -3169,7 +3429,7 @@ let pickCanvas = function(both, override) {
 
 // Roll 2 button: rolls 2 chunks from all selected chunks
 let roll2Canvas = function(override) {
-    if (!testMode && (locked || importMenuOpen || highscoreMenuOpen || helpMenuOpen || patchNotesOpen || manualModalOpen || detailsModalOpen || notesModalOpen || rulesModalOpen || settingsModalOpen || randomModalOpen || userTasksModalOpen || randomListModalOpen || statsErrorModalOpen || searchModalOpen || searchDetailsModalOpen || highestModalOpen || highest2ModalOpen || methodsModalOpen || completeModalOpen || addEquipmentModalOpen || stickerModalOpen || backlogSourcesModalOpen || chunkHistoryModalOpen || challengeAltsModalOpen || manualOuterModalOpen || monsterModalOpen || slayerLockedModalOpen || constructionLockedModalOpen || rollChunkModalOpen || questStepsModalOpen || friendsListModalOpen || friendsAddModalOpen || passiveSkillModalOpen || mapIntroOpen || xpRewardOpen || manualAreasModalOpen || chunkSectionsModalOpen || chunkSectionPickerModalOpen || slayerMasterInfoModalOpen || doableClueStepsModalOpen || clueChunksModalOpen || notesOpen || newTasksOpen || clipboardModalOpen || overlaysModalOpen || userTasksListModalOpen || userTaskDeleteConfirmationModalOpen || exitSandboxWarningModalOpen || mobileMenuOpen || mobileTasksOpen || mobileChunkMenuOpen || customizeTopbarModalOpen || questChunksModalOpen || (((!tempChunks['selected'] || Object.keys(tempChunks['selected']).length < 1) && !isPicking) || ((!tempChunks['potential'] || Object.keys(tempChunks['potential']).length < 1) && isPicking)))) {
+    if (!testMode && (locked || importMenuOpen || highscoreMenuOpen || helpMenuOpen || patchNotesOpen || manualModalOpen || detailsModalOpen || notesModalOpen || rulesModalOpen || settingsModalOpen || userTasksModalOpen || searchModalOpen || searchDetailsModalOpen || highestModalOpen || highest2ModalOpen || methodsModalOpen || completeModalOpen || addEquipmentModalOpen || stickerModalOpen || paintModalOpen || backlogSourcesModalOpen || chunkHistoryModalOpen || challengeAltsModalOpen || manualOuterModalOpen || monsterModalOpen || slayerLockedModalOpen || constructionLockedModalOpen || rollChunkModalOpen || questStepsModalOpen || friendsListModalOpen || friendsAddModalOpen || passiveSkillModalOpen || mapIntroOpen || xpRewardOpen || manualAreasModalOpen || chunkSectionsModalOpen || chunkSectionPickerModalOpen || slayerMasterInfoModalOpen || doableClueStepsModalOpen || clueChunksModalOpen || notesOpen || newTasksOpen || clipboardModalOpen || overlaysModalOpen || userTasksListModalOpen || userTaskDeleteConfirmationModalOpen || exitSandboxWarningModalOpen || mobileMenuOpen || mobileTasksOpen || mobileChunkMenuOpen || customizeTopbarModalOpen || questChunksModalOpen || (((!tempChunks['selected'] || Object.keys(tempChunks['selected']).length < 1) && !isPicking) || ((!tempChunks['potential'] || Object.keys(tempChunks['potential']).length < 1) && isPicking)))) {
         return;
     }
     if (checkFalseRules() && chunkTasksOn) {
@@ -3227,6 +3487,7 @@ let roll2Canvas = function(override) {
     }
     if (settings['cinematicRoll'] && !onMobile && mid !== roll5Mid && numToRoll === 2) {
         $('.roll2').html(`<div class="noscroll calculating"><i class="noscroll fa-solid fa-spinner fa-spin"></i></div>`).addClass('roll2-preloading').removeClass('roll2').attr('disabled', true);
+        $('.canvasDiv').css({'opacity': 0});
         openRollChunkCanvas(savedEl, savedEl.indexOf(rands[0]), sNums[0], savedEl.indexOf(rands[1]), sNums[1]);
     }
     setData();
@@ -3235,7 +3496,7 @@ let roll2Canvas = function(override) {
 
 // Unpicks a random unlocked chunk
 let unpickCanvas = function() {
-    if (!testMode && (locked || importMenuOpen || highscoreMenuOpen || helpMenuOpen || patchNotesOpen || manualModalOpen || detailsModalOpen || notesModalOpen || rulesModalOpen || settingsModalOpen || randomModalOpen || userTasksModalOpen || randomListModalOpen || statsErrorModalOpen || searchModalOpen || searchDetailsModalOpen || highestModalOpen || highest2ModalOpen || methodsModalOpen || completeModalOpen || addEquipmentModalOpen || stickerModalOpen || backlogSourcesModalOpen || chunkHistoryModalOpen || challengeAltsModalOpen || manualOuterModalOpen || monsterModalOpen || slayerLockedModalOpen || constructionLockedModalOpen || rollChunkModalOpen || questStepsModalOpen || friendsListModalOpen || friendsAddModalOpen || passiveSkillModalOpen || mapIntroOpen || xpRewardOpen || manualAreasModalOpen || chunkSectionsModalOpen || chunkSectionPickerModalOpen || slayerMasterInfoModalOpen || doableClueStepsModalOpen || clueChunksModalOpen || notesOpen || newTasksOpen || clipboardModalOpen || overlaysModalOpen || userTasksListModalOpen || userTaskDeleteConfirmationModalOpen || exitSandboxWarningModalOpen || mobileMenuOpen || mobileTasksOpen || mobileChunkMenuOpen || customizeTopbarModalOpen || questChunksModalOpen || (!tempChunks['unlocked'] || Object.keys(tempChunks['unlocked']).length < 1))) {
+    if (!testMode && (locked || importMenuOpen || highscoreMenuOpen || helpMenuOpen || patchNotesOpen || manualModalOpen || detailsModalOpen || notesModalOpen || rulesModalOpen || settingsModalOpen || userTasksModalOpen || searchModalOpen || searchDetailsModalOpen || highestModalOpen || highest2ModalOpen || methodsModalOpen || completeModalOpen || addEquipmentModalOpen || stickerModalOpen || paintModalOpen || backlogSourcesModalOpen || chunkHistoryModalOpen || challengeAltsModalOpen || manualOuterModalOpen || monsterModalOpen || slayerLockedModalOpen || constructionLockedModalOpen || rollChunkModalOpen || questStepsModalOpen || friendsListModalOpen || friendsAddModalOpen || passiveSkillModalOpen || mapIntroOpen || xpRewardOpen || manualAreasModalOpen || chunkSectionsModalOpen || chunkSectionPickerModalOpen || slayerMasterInfoModalOpen || doableClueStepsModalOpen || clueChunksModalOpen || notesOpen || newTasksOpen || clipboardModalOpen || overlaysModalOpen || userTasksListModalOpen || userTaskDeleteConfirmationModalOpen || exitSandboxWarningModalOpen || mobileMenuOpen || mobileTasksOpen || mobileChunkMenuOpen || customizeTopbarModalOpen || questChunksModalOpen || (!tempChunks['unlocked'] || Object.keys(tempChunks['unlocked']).length < 1))) {
         return;
     }
     if (checkFalseRules() && chunkTasksOn) {
@@ -3260,6 +3521,7 @@ let unpickCanvas = function() {
     $('#chunkInfo1').text('Unlocked chunks: ' + (!!tempChunks['unlocked'] ? Object.keys(tempChunks['unlocked']).length : 0));
     if (settings['cinematicRoll'] && !onMobile && mid !== roll5Mid) {
         $('.unpick').html(`<div class="noscroll calculating"><i class="noscroll fa-solid fa-spinner fa-spin"></i></div>`).addClass('unpick-preloading').removeClass('unpick').attr('disabled', true);
+        $('.canvasDiv').css({'opacity': 0});
         openRollChunkCanvas(el, rand, null, undefined, undefined, true);
     } else {
         scrollToChunkCanvas(el[rand]);
@@ -3329,9 +3591,9 @@ let calcCurrentChallengesCanvas = function(useOld, proceed, fromLoadData, inputT
         setCalculating('.panel-active', useOld);
         setCurrentChallenges(['No tasks currently backlogged.'], ['No tasks currently completed.'], true, true);
         myWorker.terminate();
-        myWorker = new Worker("./worker.js?v=6.8.24");
+        myWorker = new Worker("./worker.js?v=6.9.33");
         myWorker.onmessage = workerOnMessage;
-        myWorker.postMessage(['current', tempChunks['unlocked'], rules, chunkInfo, skillNames, processingSkill, maybePrimary, combatSkills, monstersPlus, objectsPlus, chunksPlus, itemsPlus, mixPlus, npcsPlus, tasksPlus, tools, elementalRunes, manualTasks, completedChallenges, backlog, "1/" + rules['Rare Drop Amount'], universalPrimary, elementalStaves, rangedItems, boneItems, highestCurrent, dropTables, possibleAreas, randomLoot, magicTools, bossLogs, bossMonsters, minigameShops, manualEquipment, checkedChallenges, backloggedSources, altChallenges, manualMonsters, slayerLocked, passiveSkill, f2pSkills, assignedXpRewards, mid === diary2Tier, manualAreas, "1/" + rules['Secondary Primary Amount'], constructionLocked, mid === manualAreasOnly, tempSections, settings['optOutSections'], maxSkill, userTasks, manualPrimary, updateLevel]);
+        myWorker.postMessage(['current', tempChunks['unlocked'], rules, chunkInfo, skillNames, processingSkill, maybePrimary, combatSkills, monstersPlus, objectsPlus, chunksPlus, itemsPlus, mixPlus, npcsPlus, tasksPlus, tools, elementalRunes, manualTasks, completedChallenges, backlog, "1/" + rules['Rare Drop Amount'], universalPrimary, elementalStaves, rangedItems, boneItems, highestCurrent, dropTables, possibleAreas, randomLoot, magicTools, bossLogs, bossMonsters, minigameShops, manualEquipment, checkedChallenges, backloggedSources, altChallenges, manualMonsters, slayerLocked, passiveSkill, f2pSkills, assignedXpRewards, mid === diary2Tier, manualAreas, "1/" + rules['Secondary Primary Amount'], constructionLocked, mid === manualAreasOnly, tempSections, settings['optOutSections'], settings['optOutSectionsWater'], maxSkill, userTasks, manualPrimary, updateLevel]);
         workersOut['current'] = true;
         workerOut = Object.keys(workersOut).filter((key) => workersOut[key] !== false).length;
     }
@@ -3549,7 +3811,7 @@ let centerCanvas = function(extra) {
 // Re-update chunk info panel
 let redirectPanelCanvas = function(name) {
     let realName = decodeQueryParam(name);
-    ((realName % 256) < 65) && scrollToPosCanvas(convertToXY(parseInt(realName)).x, convertToXY(parseInt(realName)).y, 0, 0);
+    ((realName % 256) < 66) && scrollToPosCanvas(convertToXY(parseInt(realName)).x, convertToXY(parseInt(realName)).y, 0, 0);
     infoLockedId = encodeRFC5987ValueChars(realName.toString());
     updateChunkInfo();
     drawCanvas();
@@ -3566,30 +3828,30 @@ let redirectPanelCanvas = function(name) {
 }
 
 // Highlights outside borders of unlocked areas
-let chunkBordersCanvas = function() {
-    ctx.beginPath();
-    ctx.strokeStyle = settings['unlockedBorderColor'] ? settings['unlockedBorderColor'] : '#FF0000';
-    ctx.lineWidth = 3;
+let chunkBordersCanvas = function(ctxIn) {
+    ctxIn.beginPath();
+    ctxIn.strokeStyle = settings['unlockedBorderColor'] ? settings['unlockedBorderColor'] : '#FF0000';
+    ctxIn.lineWidth = 3;
     !!tempChunks['unlocked'] && Object.keys(tempChunks['unlocked']).forEach((chunkId) => {
         chunkCoords = convertToXY(chunkId);
         if (!tempChunks['unlocked'].hasOwnProperty(parseInt(chunkId) + 1)) {
-            ctx.moveTo(dragTotalX + (totalZoom * (chunkCoords.x * imgW / rowSize)), dragTotalY + (totalZoom * (chunkCoords.y * imgH / (fullSize / rowSize))));
-            ctx.lineTo(dragTotalX + (totalZoom * ((chunkCoords.x + 1) * imgW / rowSize)), dragTotalY + (totalZoom * (chunkCoords.y * imgH / (fullSize / rowSize))));
+            ctxIn.moveTo(dragTotalX + (totalZoom * (chunkCoords.x * imgW / rowSize)), dragTotalY + (totalZoom * (chunkCoords.y * imgH / (fullSize / rowSize))));
+            ctxIn.lineTo(dragTotalX + (totalZoom * ((chunkCoords.x + 1) * imgW / rowSize)), dragTotalY + (totalZoom * (chunkCoords.y * imgH / (fullSize / rowSize))));
         }
         if (!tempChunks['unlocked'].hasOwnProperty(parseInt(chunkId) - 1)) {
-            ctx.moveTo(dragTotalX + (totalZoom * (chunkCoords.x * imgW / rowSize)), dragTotalY + (totalZoom * ((chunkCoords.y + 1) * imgH / (fullSize / rowSize))));
-            ctx.lineTo(dragTotalX + (totalZoom * ((chunkCoords.x + 1) * imgW / rowSize)), dragTotalY + (totalZoom * ((chunkCoords.y + 1) * imgH / (fullSize / rowSize))));
+            ctxIn.moveTo(dragTotalX + (totalZoom * (chunkCoords.x * imgW / rowSize)), dragTotalY + (totalZoom * ((chunkCoords.y + 1) * imgH / (fullSize / rowSize))));
+            ctxIn.lineTo(dragTotalX + (totalZoom * ((chunkCoords.x + 1) * imgW / rowSize)), dragTotalY + (totalZoom * ((chunkCoords.y + 1) * imgH / (fullSize / rowSize))));
         }
         if (!tempChunks['unlocked'].hasOwnProperty(parseInt(chunkId) + skip + rowSize)) {
-            ctx.moveTo(dragTotalX + (totalZoom * ((chunkCoords.x + 1) * imgW / rowSize)), dragTotalY + (totalZoom * (chunkCoords.y * imgH / (fullSize / rowSize))));
-            ctx.lineTo(dragTotalX + (totalZoom * ((chunkCoords.x + 1) * imgW / rowSize)), dragTotalY + (totalZoom * ((chunkCoords.y + 1) * imgH / (fullSize / rowSize))));
+            ctxIn.moveTo(dragTotalX + (totalZoom * ((chunkCoords.x + 1) * imgW / rowSize)), dragTotalY + (totalZoom * (chunkCoords.y * imgH / (fullSize / rowSize))));
+            ctxIn.lineTo(dragTotalX + (totalZoom * ((chunkCoords.x + 1) * imgW / rowSize)), dragTotalY + (totalZoom * ((chunkCoords.y + 1) * imgH / (fullSize / rowSize))));
         }
         if (!tempChunks['unlocked'].hasOwnProperty(parseInt(chunkId) - skip - rowSize)) {
-            ctx.moveTo(dragTotalX + (totalZoom * (chunkCoords.x * imgW / rowSize)), dragTotalY + (totalZoom * (chunkCoords.y * imgH / (fullSize / rowSize))));
-            ctx.lineTo(dragTotalX + (totalZoom * (chunkCoords.x * imgW / rowSize)), dragTotalY + (totalZoom * ((chunkCoords.y + 1) * imgH / (fullSize / rowSize))));
+            ctxIn.moveTo(dragTotalX + (totalZoom * (chunkCoords.x * imgW / rowSize)), dragTotalY + (totalZoom * (chunkCoords.y * imgH / (fullSize / rowSize))));
+            ctxIn.lineTo(dragTotalX + (totalZoom * (chunkCoords.x * imgW / rowSize)), dragTotalY + (totalZoom * ((chunkCoords.y + 1) * imgH / (fullSize / rowSize))));
         }
     });
-    ctx.stroke();
+    ctxIn.stroke();
 }
 
 // Loaded when page is ready
@@ -3633,8 +3895,8 @@ $(document).ready(function() {
 // ------------------------------------------------------------
 
 // Recieve message from worker
-let myWorker = new Worker("./worker.js?v=6.8.24");
-let myWorker2 = new Worker("./worker.js?v=6.8.24");
+let myWorker = new Worker("./worker.js?v=6.9.33");
+let myWorker2 = new Worker("./worker.js?v=6.9.33");
 let workerOnMessage = function(e) {
     if (e.data[0] === 'reload') {
         window.location.reload();
@@ -3680,8 +3942,8 @@ let workerOnMessage = function(e) {
                 Object.keys(e.data[12]).filter(area => { return e.data[12][area] === true }).forEach((area) => {
                     futurePossibleAreas[area] = true;
                 });
-                let challengeStr = calcFutureChallenges2(e.data[1], e.data[2]);
-                expandChallengeStr = challengeStr;
+                let [challengeStr, challengeStrFormatted] = calcFutureChallenges2(e.data[1], e.data[2], e.data[7]);
+                expandChallengeStr = challengeStrFormatted.replaceAll('No new chunk tasks', 'No potential chunk tasks');
                 $('.panel-challenges').html(challengeStr || 'None');
                 $('.expand').show();
             }
@@ -3691,7 +3953,7 @@ let workerOnMessage = function(e) {
             workersOut['current'] = false;
             workerOut = Object.keys(workersOut).filter((key) => workersOut[key] !== false).length;
             if (settings['newTasks'] && chunkJustRolled) {
-                openNewTasksModal(calcFutureChallenges2(e.data[1], e.data[2]).replaceAll(", 'future'", ", ''").replaceAll('</span>,', '</span><br />') || 'None');
+                openNewTasksModal(calcFutureChallenges2(e.data[1], e.data[2], e.data[7])[1].replaceAll(", 'future'", ", ''"));
             }
             globalValids = e.data[1];
             baseChunkData = e.data[2];
@@ -4044,14 +4306,6 @@ $(document).ready(function() {
         }
     });
 
-    $('.username').on('input', function(e) {
-        if (e.target.value.length < 1) {
-            $('#highscoreoptin').prop('disabled', true);
-        } else {
-            $('#highscoreoptin').prop('disabled', false);
-        }
-    });
-
     $('.mid').on('keypress', function(e) {
         let keycode = (e.keyCode ? e.keyCode : e.which);
         if (keycode == '13') {
@@ -4102,13 +4356,6 @@ $(document).ready(function() {
         }
     });
 
-    $('.username').on('keypress', function(e) {
-        let keycode = (e.keyCode ? e.keyCode : e.which);
-        if (keycode == '13' && !$('#highscoreoptin').prop('disabled')) {
-            $('#highscoreoptin').click();
-        }
-    });
-
     $('#searchPlayerMaps').on('keypress', function(e) {
         let keycode = (e.keyCode ? e.keyCode : e.which);
         if (keycode == '13' && !$('#searchPlayerMapsButton').prop('disabled')) {
@@ -4121,38 +4368,11 @@ $(document).ready(function() {
     }, function() {
         $(this).removeClass('fa-unlock-alt').addClass('fa-lock');
     });
-
-    $('.mid-friend').on('input', function(e) {
-        if ((!(/^[a-zA-Z]+$/).test(e.target.value) && e.target.value !== '') || e.target.value.length > 4) {
-            $(this).val(prevValueMidFriend);
-        } else {
-            $(this).val(e.target.value.toUpperCase());
-            prevValueMidFriend = e.target.value;
-            if (e.target.value.length === 3 || e.target.value.length === 4) {
-                midFriendGood = true;
-                checkIfGoodFriend();
-            } else {
-                midFriendGood = false;
-                $('#submit-friend-button').prop('disabled', true);
-            }
-        }
-    });
-
-    $('.name-friend').on('input', function(e) {
-        prevValueMidFriend = e.target.value;
-        if (e.target.value.length > 0) {
-            nameFriendGood = true;
-            checkIfGoodFriend();
-        } else {
-            nameFriendGood = false;
-            $('#submit-friend-button').prop('disabled', true);
-        }
-    });
 });
 
 // [Mobile] Mobile equivalent to 'mousedown', starts drag sequence
 $('body').on('touchstart', function(ev) {
-    if (onMobile && !atHome && !inEntry && !importMenuOpen && !highscoreMenuOpen && !helpMenuOpen && !patchNotesOpen && !manualModalOpen && !detailsModalOpen && !notesModalOpen && !rulesModalOpen && !settingsModalOpen && !randomModalOpen && !userTasksModalOpen && !randomListModalOpen && !statsErrorModalOpen && !searchModalOpen && !searchDetailsModalOpen && !highestModalOpen && !highest2ModalOpen && !methodsModalOpen && !completeModalOpen && !addEquipmentModalOpen && !stickerModalOpen && !backlogSourcesModalOpen && !chunkHistoryModalOpen && !challengeAltsModalOpen && !manualOuterModalOpen && !monsterModalOpen && !slayerLockedModalOpen && !constructionLockedModalOpen && !rollChunkModalOpen && !questStepsModalOpen && !friendsListModalOpen && !friendsAddModalOpen && !passiveSkillModalOpen && !mapIntroOpen && !xpRewardOpen && !manualAreasModalOpen && !chunkSectionsModalOpen && !chunkSectionPickerModalOpen && !slayerMasterInfoModalOpen && !doableClueStepsModalOpen && !clueChunksModalOpen && !notesOpen && !newTasksOpen && !clipboardModalOpen && !overlaysModalOpen && !userTasksListModalOpen && !userTaskDeleteConfirmationModalOpen && !exitSandboxWarningModalOpen && !mobileMenuOpen && !mobileTasksOpen && !mobileChunkMenuOpen && !customizeTopbarModalOpen && !questChunksModalOpen) {
+    if (onMobile && !atHome && !inEntry && !importMenuOpen && !highscoreMenuOpen && !helpMenuOpen && !patchNotesOpen && !manualModalOpen && !detailsModalOpen && !notesModalOpen && !rulesModalOpen && !settingsModalOpen && !userTasksModalOpen && !searchModalOpen && !searchDetailsModalOpen && !highestModalOpen && !highest2ModalOpen && !methodsModalOpen && !completeModalOpen && !addEquipmentModalOpen && !stickerModalOpen && !paintModalOpen && !backlogSourcesModalOpen && !chunkHistoryModalOpen && !challengeAltsModalOpen && !manualOuterModalOpen && !monsterModalOpen && !slayerLockedModalOpen && !constructionLockedModalOpen && !rollChunkModalOpen && !questStepsModalOpen && !friendsListModalOpen && !friendsAddModalOpen && !passiveSkillModalOpen && !mapIntroOpen && !xpRewardOpen && !manualAreasModalOpen && !chunkSectionsModalOpen && !chunkSectionPickerModalOpen && !slayerMasterInfoModalOpen && !doableClueStepsModalOpen && !clueChunksModalOpen && !notesOpen && !newTasksOpen && !clipboardModalOpen && !overlaysModalOpen && !userTasksListModalOpen && !userTaskDeleteConfirmationModalOpen && !exitSandboxWarningModalOpen && !mobileMenuOpen && !mobileTasksOpen && !mobileChunkMenuOpen && !customizeTopbarModalOpen && !questChunksModalOpen) {
         clickX = ev.changedTouches[0].pageX;
         clickY = ev.changedTouches[0].pageY;
     }
@@ -4160,7 +4380,7 @@ $('body').on('touchstart', function(ev) {
 
 // [Mobile] Mobile equivalent to 'mouseup', ends drag sequence
 $('body').on('touchend', function(ev) {
-    if (onMobile && !atHome && !inEntry && !importMenuOpen && !highscoreMenuOpen && !helpMenuOpen && !patchNotesOpen && !manualModalOpen && !detailsModalOpen && !notesModalOpen && !rulesModalOpen && !settingsModalOpen && !randomModalOpen && !userTasksModalOpen && !randomListModalOpen && !statsErrorModalOpen && !searchModalOpen && !searchDetailsModalOpen && !highestModalOpen && !highest2ModalOpen && !methodsModalOpen && !completeModalOpen && !addEquipmentModalOpen && !stickerModalOpen && !backlogSourcesModalOpen && !chunkHistoryModalOpen && !challengeAltsModalOpen && !manualOuterModalOpen && !monsterModalOpen && !slayerLockedModalOpen && !constructionLockedModalOpen && !rollChunkModalOpen && !questStepsModalOpen && !friendsListModalOpen && !friendsAddModalOpen && !passiveSkillModalOpen && !mapIntroOpen && !xpRewardOpen && !manualAreasModalOpen && !chunkSectionsModalOpen && !chunkSectionPickerModalOpen && !slayerMasterInfoModalOpen && !doableClueStepsModalOpen && !clueChunksModalOpen && !notesOpen && !newTasksOpen && !clipboardModalOpen && !overlaysModalOpen && !userTasksListModalOpen && !userTaskDeleteConfirmationModalOpen && !exitSandboxWarningModalOpen && !mobileMenuOpen && !mobileTasksOpen && !mobileChunkMenuOpen && !customizeTopbarModalOpen && !questChunksModalOpen) {
+    if (onMobile && !atHome && !inEntry && !importMenuOpen && !highscoreMenuOpen && !helpMenuOpen && !patchNotesOpen && !manualModalOpen && !detailsModalOpen && !notesModalOpen && !rulesModalOpen && !settingsModalOpen && !userTasksModalOpen && !searchModalOpen && !searchDetailsModalOpen && !highestModalOpen && !highest2ModalOpen && !methodsModalOpen && !completeModalOpen && !addEquipmentModalOpen && !stickerModalOpen && !paintModalOpen && !backlogSourcesModalOpen && !chunkHistoryModalOpen && !challengeAltsModalOpen && !manualOuterModalOpen && !monsterModalOpen && !slayerLockedModalOpen && !constructionLockedModalOpen && !rollChunkModalOpen && !questStepsModalOpen && !friendsListModalOpen && !friendsAddModalOpen && !passiveSkillModalOpen && !mapIntroOpen && !xpRewardOpen && !manualAreasModalOpen && !chunkSectionsModalOpen && !chunkSectionPickerModalOpen && !slayerMasterInfoModalOpen && !doableClueStepsModalOpen && !clueChunksModalOpen && !notesOpen && !newTasksOpen && !clipboardModalOpen && !overlaysModalOpen && !userTasksListModalOpen && !userTaskDeleteConfirmationModalOpen && !exitSandboxWarningModalOpen && !mobileMenuOpen && !mobileTasksOpen && !mobileChunkMenuOpen && !customizeTopbarModalOpen && !questChunksModalOpen) {
         prevScrollLeft = prevScrollLeft + scrollLeft;
         prevScrollTop = prevScrollTop + scrollTop;
     }
@@ -4214,8 +4434,6 @@ $(document).on({
             if (searchModalOpen && !searchDetailsModalOpen && !detailsModalOpen) { closeSearch(); modalJustClosed = true; }
             if (rulesModalOpen && !presetWarningModalOpen) { closeRules(); modalJustClosed = true; }
             if (settingsModalOpen && !mapIntroOpen) { closeSettings(); modalJustClosed = true; }
-            if (randomListModalOpen) { closeRandomList(); modalJustClosed = true; }
-            if (statsErrorModalOpen) { closeStatsError(); modalJustClosed = true; }
             if (highestModalOpen && !addEquipmentModalOpen && !searchDetailsModalOpen && !detailsModalOpen && !bisUpgradesModalOpen) { closeHighest(); modalJustClosed = true; }
             if (detailsModalOpen && !searchDetailsModalOpen) { closeChallengeDetails(); modalJustClosed = true; }
             if (searchDetailsModalOpen) { closeSearchDetails(); modalJustClosed = true; }
@@ -4223,6 +4441,7 @@ $(document).on({
             if (completeModalOpen) { closeComplete(); modalJustClosed = true; }
             if (addEquipmentModalOpen) { closeAddEquipment(); modalJustClosed = true; }
             if (stickerModalOpen) { closeSticker(); modalJustClosed = true; }
+            if (paintModalOpen) { closePaint(); modalJustClosed = true; }
             if (backlogSourcesModalOpen) { closeBacklogSources(); modalJustClosed = true; }
             if (chunkHistoryModalOpen) { closeChunkHistory(); modalJustClosed = true; }
             if (challengeAltsModalOpen) { closeChallengeAlts(); modalJustClosed = true; }
@@ -4241,10 +4460,10 @@ $(document).on({
             if (customizeTopbarModalOpen) { closeCustomizeTopbar(); modalJustClosed = true; }
             if (userTasksListModalOpen) { closeUserTasksList(); modalJustClosed = true; }
 
-            if (testMode && !modalJustClosed && !importMenuOpen && !highscoreMenuOpen && !helpMenuOpen && !patchNotesOpen && !manualModalOpen && !detailsModalOpen && !rulesModalOpen && !settingsModalOpen && !randomModalOpen && !userTasksModalOpen && !randomListModalOpen && !statsErrorModalOpen && !searchModalOpen && !searchDetailsModalOpen && !highestModalOpen && !highest2ModalOpen && !methodsModalOpen && !completeModalOpen && !notesModalOpen && !addEquipmentModalOpen && !stickerModalOpen && !backlogSourcesModalOpen && !chunkHistoryModalOpen && !challengeAltsModalOpen && !manualOuterModalOpen && !monsterModalOpen && !slayerLockedModalOpen && !constructionLockedModalOpen && !rollChunkModalOpen && !questStepsModalOpen && !friendsListModalOpen && !friendsAddModalOpen && !passiveSkillModalOpen && !mapIntroOpen && !xpRewardOpen && !manualAreasModalOpen && !chunkSectionsModalOpen && !chunkSectionPickerModalOpen && !slayerMasterInfoModalOpen && !doableClueStepsModalOpen && !clueChunksModalOpen && !notesOpen && !newTasksOpen && !clipboardModalOpen && !overlaysModalOpen && !userTasksListModalOpen && !userTaskDeleteConfirmationModalOpen && !questChunksModalOpen) {
+            if (testMode && !modalJustClosed && !importMenuOpen && !highscoreMenuOpen && !helpMenuOpen && !patchNotesOpen && !manualModalOpen && !detailsModalOpen && !rulesModalOpen && !settingsModalOpen && !userTasksModalOpen && !searchModalOpen && !searchDetailsModalOpen && !highestModalOpen && !highest2ModalOpen && !methodsModalOpen && !completeModalOpen && !notesModalOpen && !addEquipmentModalOpen && !stickerModalOpen && !paintModalOpen && !backlogSourcesModalOpen && !chunkHistoryModalOpen && !challengeAltsModalOpen && !manualOuterModalOpen && !monsterModalOpen && !slayerLockedModalOpen && !constructionLockedModalOpen && !rollChunkModalOpen && !questStepsModalOpen && !friendsListModalOpen && !friendsAddModalOpen && !passiveSkillModalOpen && !mapIntroOpen && !xpRewardOpen && !manualAreasModalOpen && !chunkSectionsModalOpen && !chunkSectionPickerModalOpen && !slayerMasterInfoModalOpen && !doableClueStepsModalOpen && !clueChunksModalOpen && !notesOpen && !newTasksOpen && !clipboardModalOpen && !overlaysModalOpen && !userTasksListModalOpen && !userTaskDeleteConfirmationModalOpen && !questChunksModalOpen) {
                 warnExitSandbox();
             }
-        } else if ((e.keyCode === 37 || e.keyCode === 38 || e.keyCode === 39 || e.keyCode === 40) && !importMenuOpen && !highscoreMenuOpen && !helpMenuOpen && !patchNotesOpen && !manualModalOpen && !detailsModalOpen && !rulesModalOpen && !settingsModalOpen && !randomModalOpen && !userTasksModalOpen && !randomListModalOpen && !statsErrorModalOpen && !searchModalOpen && !searchDetailsModalOpen && !highestModalOpen && !highest2ModalOpen && !methodsModalOpen && !completeModalOpen && !notesModalOpen && !addEquipmentModalOpen && !stickerModalOpen && !backlogSourcesModalOpen && !chunkHistoryModalOpen && !challengeAltsModalOpen && !manualOuterModalOpen && !monsterModalOpen && !slayerLockedModalOpen && !constructionLockedModalOpen && !rollChunkModalOpen && !questStepsModalOpen && !friendsListModalOpen && !friendsAddModalOpen && !passiveSkillModalOpen && !mapIntroOpen && !xpRewardOpen && !manualAreasModalOpen && !chunkSectionsModalOpen && !chunkSectionPickerModalOpen && !slayerMasterInfoModalOpen && !doableClueStepsModalOpen && !clueChunksModalOpen && !notesOpen && !newTasksOpen && !clipboardModalOpen && !overlaysModalOpen && !userTasksListModalOpen && !userTaskDeleteConfirmationModalOpen && !questChunksModalOpen) {
+        } else if ((e.keyCode === 37 || e.keyCode === 38 || e.keyCode === 39 || e.keyCode === 40) && !importMenuOpen && !highscoreMenuOpen && !helpMenuOpen && !patchNotesOpen && !manualModalOpen && !detailsModalOpen && !rulesModalOpen && !settingsModalOpen && !userTasksModalOpen && !searchModalOpen && !searchDetailsModalOpen && !highestModalOpen && !highest2ModalOpen && !methodsModalOpen && !completeModalOpen && !notesModalOpen && !addEquipmentModalOpen && !stickerModalOpen && !paintModalOpen && !backlogSourcesModalOpen && !chunkHistoryModalOpen && !challengeAltsModalOpen && !manualOuterModalOpen && !monsterModalOpen && !slayerLockedModalOpen && !constructionLockedModalOpen && !rollChunkModalOpen && !questStepsModalOpen && !friendsListModalOpen && !friendsAddModalOpen && !passiveSkillModalOpen && !mapIntroOpen && !xpRewardOpen && !manualAreasModalOpen && !chunkSectionsModalOpen && !chunkSectionPickerModalOpen && !slayerMasterInfoModalOpen && !doableClueStepsModalOpen && !clueChunksModalOpen && !notesOpen && !newTasksOpen && !clipboardModalOpen && !overlaysModalOpen && !userTasksListModalOpen && !userTaskDeleteConfirmationModalOpen && !questChunksModalOpen) {
             e.preventDefault();
         }
     }
@@ -4292,6 +4511,10 @@ let exportFunc = function(type) {
         calcCurrentChallengesCanvas(true, true);
     } else if (type === 'assign' && (testMode || !(viewOnly || inEntry || locked))) {
         selectAllNeighborsCanvas();
+    } else if (type === 'fullmap') {
+        $('#fullmap-clipboard-button').html('<i class="spin fa-solid fa-spinner"></i>');
+        createScreenshot();
+        return;
     }
     closeClipboard();
 }
@@ -4403,64 +4626,6 @@ let exitImportMenu = function() {
     }, 500);
 }
 
-// Opens the highscores menu
-let highscoreFunc = function() {
-    $('.username').focus();
-    highscoreMenuOpen = true;
-    $('#highscore-menu').css('opacity', 1).show();
-    settingsOpen = false;
-    $('.settings-menu').hide();
-    $('.settings').css({ 'color': 'var(--colorText)' });
-}
-
-// Sets username for the highscores
-let highscoreOptIn = function() {
-    $('#highscoreoptin').prop('disabled', true).html('<i class="spin fa-solid fa-spinner"></i>');
-    let oldUsername = userName;
-    userName = $('.username').val();
-    databaseRef.child('highscores/players').once('value', function(snap) {
-        if (snap.val().hasOwnProperty(userName.toLowerCase())) {
-            $('#myModal9').show();
-            $('#highscoreoptin').prop('disabled', true).text('Save Username');
-        } else {
-            setTimeout(function() {
-                setUsername(oldUsername);
-                $('.highscoretoggle').html('Change chunk stats username<i class="pic fa-solid fa-trophy"></i>');
-                $('#highscore-menu').css({ 'opacity': 0 }).hide();
-                $('#highscore-menu2').css({ 'opacity': 1 }).show();
-                $('#populateButton').attr({ 'href': 'https://chunk-stats.web.app/user/' + userName });
-                setTimeout(function() {
-                    $('#highscore-menu').css('opacity', 1);
-                    $('#highscoreoptin').prop('disabled', true).text('Save Username');
-                    $('.username').val('');
-                }, 500);
-            }, 1000);
-        }
-    });
-}
-
-// Exits the highscores menu
-let exitHighscoreMenu = function() {
-    $('#highscore-menu').css({ 'opacity': 0 }).hide();
-    setTimeout(function() {
-        $('#highscore-menu').css('opacity', 1);
-        $('#highscoreoptin').prop('disabled', true).text('Save Username');
-        $('.username').val('');
-        highscoreMenuOpen = false;
-    }, 500);
-}
-
-// Exits the highscores menu2
-let exitHighscoreMenu2 = function() {
-    $('#highscore-menu2').css({ 'opacity': 0 }).hide();
-    setTimeout(function() {
-        $('#highscore-menu2').css('opacity', 1);
-        $('#highscoreoptin').prop('disabled', true).text('Save Username');
-        $('.username').val('');
-        highscoreMenuOpen = false;
-    }, 500);
-}
-
 // Opens the help menu
 let helpFunc = function() {
     helpMenuOpen = true;
@@ -4478,13 +4643,13 @@ let dismissHelp = function() {
 // Exits the pick warning window
 let cancelPickWarning = function() {
     pickChunkWarningModalOpen = false;
-    $('#myModal41').hide();
+    $('#rollWarningModal').remove();
 }
 
 // Exits the roll 2 warning window
 let cancelRoll2Warning = function() {
     roll2ChunkWarningModalOpen = false;
-    $('#myModal44').hide();
+    $('#roll2WarningModal').remove();
 }
 
 // Opens the patch notes
@@ -4492,16 +4657,17 @@ let openPatchNotesModal = function(fromClick) {
     if (hasUpdate && fromClick) {
         location.reload();
     } else if (!inEntry && !importMenuOpen && !manualModalOpen && !detailsModalOpen && !notesModalOpen && !highscoreMenuOpen && !helpMenuOpen) {
+        modal.generate('patchNotesModal', onMobile);
         onMobile && hideMobileMenu();
         patchNotesOpen = true;
-        $('#myModal24').show();
+        $('#patchNotesModal').show();
         modalOutsideTime = Date.now();
     }
 }
 
 // Exits the patch notes
 let dismissPatchNotes = function() {
-    $('#myModal24').hide();
+    $('#patchNotesModal').remove();
     patchNotesOpen = false;
     patchNotesOpenSoon = false;
     !locked && setData();
@@ -4510,12 +4676,13 @@ let dismissPatchNotes = function() {
 // Opens the chunk notes modal
 let openChunkNotesModal = function() {
     if (!inEntry && !importMenuOpen && !manualModalOpen && !detailsModalOpen && !notesModalOpen && !highscoreMenuOpen && !helpMenuOpen) {
+        modal.generate('chunkNotesModal', onMobile);
         onMobile && hideMobileMenu();
         notesOpen = true;
         $('#save-chunk-notes-button').text((signedIn || testMode) ? (notesEditing ? 'Save' : 'Edit') : 'Exit');
         $('#chunk-notes-data textarea').attr('disabled', !(signedIn || testMode)).val((!!chunkNotes && Object.keys(chunkNotes).length > 0) ? chunkNotes : "").hide();
         $('#chunk-notes-markdown-text').html(DOMPurify.sanitize(marked.parse(chunkNotes || '')));
-        $('#myModal35').show();
+        $('#chunkNotesModal').show();
         modalOutsideTime = Date.now();
         document.getElementById('chunk-notes-data').scrollTop = 0;
     }
@@ -4524,19 +4691,19 @@ let openChunkNotesModal = function() {
 // Saves the chunk notes
 let saveChunkNotes = function() {
     if (!(signedIn || testMode)) {
-        $('#myModal35').hide();
+        $('#chunkNotesModal').remove();
         notesOpen = false;
         !locked && setData();
     } else {
         notesEditing = !notesEditing;
         if (notesEditing) {
             $('#save-chunk-notes-button').text('Save');
-            $('#myModal35 .manual-close').hide();
+            $('#chunkNotesModal .manual-close').hide();
             $('#chunk-notes-data textarea').show();
             $('#chunk-notes-markdown-text').hide();
         } else {
             $('#save-chunk-notes-button').text('Edit');
-            $('#myModal35 .manual-close').show();
+            $('#chunkNotesModal .manual-close').show();
             $('#chunk-notes-data textarea').hide();
             $('#chunk-notes-markdown-text').show();
             chunkNotes = $('#chunk-notes-data textarea').val() || '';
@@ -4549,16 +4716,18 @@ let saveChunkNotes = function() {
 
 // Opens the new chunk tasks modal
 let openNewTasksModal = function(data, expandFuture) {
+    modal.generate('newTasksModal', onMobile);
     newTasksOpen = true;
     $('.new-tasks-title').text(expandFuture ? 'Potential Chunk Tasks' : 'New Chunk Tasks');
     $('.new-tasks-data').html(data);
-    $('#myModal36').show();
+    $('#newTasksModal').show();
+    document.getElementById('new-tasks-data').scrollTop = 0;
     modalOutsideTime = Date.now();
 }
 
 // Closes the new chunk tasks modal
 let closeNewTasks = function() {
-    $('#myModal36').hide();
+    $('#newTasksModal').remove();
     newTasksOpen = false;
     modalOutsideTime = Date.now();
 }
@@ -4608,8 +4777,9 @@ let openXpRewardModal = function(skill, line, xpArr, num) {
             }
             setData();
             toggleHiddenTasks(settings['hideChecked'] && actuallyHideChecked);
-            $('#myModal30').hide();
+            $('#xpRewardModal').remove();
         } else {
+            modal.generate('xpRewardModal', onMobile);
             if (num === 0) {
                 xpRewardOpen = true;
                 tempXpChoices = [];
@@ -4634,7 +4804,7 @@ let openXpRewardModal = function(skill, line, xpArr, num) {
                     $(this).css({'left': -$(this).width() / 2, 'top': -$(this).height() / 2});
                 });
             });
-            $('#myModal30').show();
+            $('#xpRewardModal').show();
         }
     }
 }
@@ -4673,23 +4843,24 @@ let closeXpRewardModal = function() {
     xpRewardOpen = false;
     tempXpArr = null;
     tempSkillChoice = null;
-    $('#myModal30').hide();
+    $('#xpRewardModal').remove();
 }
 
 // Opens the map intro modal
 let openMapIntroModal = function(justStartingChunk) {
     if (!inEntry && !importMenuOpen && !manualModalOpen && !detailsModalOpen && !notesModalOpen && !highscoreMenuOpen && !helpMenuOpen) {
+        modal.generate('introModal', onMobile);
         mapIntroOpen = true;
         $('.intro-data-2').hide();
         $('#cancel-intro-button').hide();
-        $('#myModal29').show();
+        $('#introModal').show();
         justStartingChunk && nextIntroPage(justStartingChunk);
     }
 }
 
 // Exits the map intro modal
 let closeMapIntroModal = function() {
-    $('#myModal29').hide();
+    $('#introModal').remove();
     mapIntroOpen = false;
     mapIntroOpenSoon = false;
     settings['mapIntro'] = true;
@@ -4817,7 +4988,7 @@ let unlockEntry = function() {
                 firebase.auth().signInWithEmailAndPassword('sourcechunk+' + mid + '@yandex.com', savedPin + mid).then((userCredential) => {
                     signedIn = true;
                     $('.center').css('margin-top', '15px');
-                    $('.lock-opened, .pick, #toggleNeighbors, #toggleRemove, .toggleNeighbors.text, .toggleRemove.text, .import, .pinchange, .toggleNeighbors, .toggleRemove, .roll2toggle, .unpicktoggle, .recenttoggle, .highscoretoggle, .settingstoggle, .friendslist, .blacklist-mobile, .open-sticker-mobile, .taskstoggle').css('opacity', 0).show();
+                    $('.lock-opened, .pick, #toggleNeighbors, #toggleRemove, .toggleNeighbors.text, .toggleRemove.text, .import, .pinchange, .toggleNeighbors, .toggleRemove, .roll2toggle, .unpicktoggle, .recenttoggle, .highscoretoggle, .settingstoggle, .friendslist, .blacklist-mobile, .open-sticker-mobile, .open-paint-mobile, .taskstoggle').css('opacity', 0).show();
                     roll2On && $('.roll2').css('opacity', 0).show();
                     !isPicking && unpickOn && $('.unpick').css('opacity', 0).show();
                     $('.open-manual-outer-container').css('opacity', 0).show();
@@ -4832,7 +5003,7 @@ let unlockEntry = function() {
                     setTimeout(function() {
                         $('#entry-menu').css('opacity', 1).hide();
                         $('.pin.entry').val('');
-                        $('.lock-opened, .pick, #toggleNeighbors, #toggleRemove, .toggleNeighbors.text, .toggleRemove.text, .import, .pinchange, .toggleNeighbors, .toggleRemove, .roll2toggle, .unpicktoggle, .recenttoggle, .highscoretoggle, .settingstoggle, .friendslist, .blacklist-mobile, .open-sticker-mobile, .taskstoggle').animate({ 'opacity': 1 });
+                        $('.lock-opened, .pick, #toggleNeighbors, #toggleRemove, .toggleNeighbors.text, .toggleRemove.text, .import, .pinchange, .toggleNeighbors, .toggleRemove, .roll2toggle, .unpicktoggle, .recenttoggle, .highscoretoggle, .settingstoggle, .friendslist, .blacklist-mobile, .open-sticker-mobile, .open-paint-mobile, .taskstoggle').animate({ 'opacity': 1 });
                         roll2On && $('.roll2').animate({ 'opacity': 1 });
                         !isPicking && unpickOn && $('.unpick').animate({ 'opacity': 1 });
                         $('.open-manual-outer-container').animate({ 'opacity': 1 });
@@ -4879,7 +5050,7 @@ let unlockEntry = function() {
                             });
                             databaseRef.child('mapCreationTimes/' + mid).set(new Date(userCredential.user.metadata.creationTime).getTime());
                             $('.center').css('margin-top', '15px');
-                            $('.lock-opened, .pick, #toggleNeighbors, #toggleRemove, .toggleNeighbors.text, .toggleRemove.text, .import, .pinchange, .toggleNeighbors, .toggleRemove, .roll2toggle, .unpicktoggle, .recenttoggle, .highscoretoggle, .settingstoggle, .friendslist, .blacklist-mobile, .open-sticker-mobile, .taskstoggle').css('opacity', 0).show();
+                            $('.lock-opened, .pick, #toggleNeighbors, #toggleRemove, .toggleNeighbors.text, .toggleRemove.text, .import, .pinchange, .toggleNeighbors, .toggleRemove, .roll2toggle, .unpicktoggle, .recenttoggle, .highscoretoggle, .settingstoggle, .friendslist, .blacklist-mobile, .open-sticker-mobile, .open-paint-mobile, .taskstoggle').css('opacity', 0).show();
                             roll2On && $('.roll2').css('opacity', 0).show();
                             !isPicking && unpickOn && $('.unpick').css('opacity', 0).show();
                             $('.open-manual-outer-container').css('opacity', 0).show();
@@ -4889,7 +5060,7 @@ let unlockEntry = function() {
                             setTimeout(function() {
                                 $('#entry-menu').css('opacity', 1).hide();
                                 $('.pin.entry').val('');
-                                $('.lock-opened, .pick, #toggleNeighbors, #toggleRemove, .toggleNeighbors.text, .toggleRemove.text, .import, .pinchange, .toggleNeighbors, .toggleRemove, .roll2toggle, .unpicktoggle, .recenttoggle, .highscoretoggle, .settingstoggle, .friendslist, .blacklist-mobile, .open-sticker-mobile, .taskstoggle').animate({ 'opacity': 1 });
+                                $('.lock-opened, .pick, #toggleNeighbors, #toggleRemove, .toggleNeighbors.text, .toggleRemove.text, .import, .pinchange, .toggleNeighbors, .toggleRemove, .roll2toggle, .unpicktoggle, .recenttoggle, .highscoretoggle, .settingstoggle, .friendslist, .blacklist-mobile, .open-sticker-mobile, .open-paint-mobile, .taskstoggle').animate({ 'opacity': 1 });
                                 roll2On && $('.roll2').animate({ 'opacity': 1 });
                                 !isPicking && unpickOn && $('.unpick').animate({ 'opacity': 1 });
                                 $('.open-manual-outer-container').animate({ 'opacity': 1 });
@@ -5029,7 +5200,7 @@ let accessMap = function() {
                             $('#page2b, .entry-home-menu-container, .entry-home-menu-extra').hide();
                             $('.background-img').hide();
                             $('.center').css('margin-top', '15px');
-                            $('.lock-opened, .pick, #toggleNeighbors, #toggleRemove, .toggleNeighbors.text, .toggleRemove.text, .import, .pinchange, .toggleNeighbors, .toggleRemove, .roll2toggle, .unpicktoggle, .recenttoggle, .highscoretoggle, .settingstoggle, .friendslist, .blacklist-mobile, .open-sticker-mobile, .taskstoggle').css('opacity', 1).show();
+                            $('.lock-opened, .pick, #toggleNeighbors, #toggleRemove, .toggleNeighbors.text, .toggleRemove.text, .import, .pinchange, .toggleNeighbors, .toggleRemove, .roll2toggle, .unpicktoggle, .recenttoggle, .highscoretoggle, .settingstoggle, .friendslist, .blacklist-mobile, .open-sticker-mobile, .open-paint-mobile, .taskstoggle').css('opacity', 1).show();
                             $('.menu, .menu2, .menu3, .menu4, .menu5, .menu6, .menu8, .menu9, .topnav, #beta, .hiddenInfo, #entry-menu, #highscore-menu, #highscore-menu2, #import-menu, #help-menu, .canvasDiv').show();
                             roll2On && $('.roll2').css('opacity', 1).show();
                             !isPicking && unpickOn && $('.unpick').css('opacity', 1).show();
@@ -5090,7 +5261,7 @@ let accessMap = function() {
                                     $('#page2b, .entry-home-menu-container, .entry-home-menu-extra').hide();
                                     $('.background-img').hide();
                                     $('.center').css('margin-top', '15px');
-                                    $('.lock-opened, .pick, #toggleNeighbors, #toggleRemove, .toggleNeighbors.text, .toggleRemove.text, .import, .pinchange, .toggleNeighbors, .toggleRemove, .roll2toggle, .unpicktoggle, .recenttoggle, .highscoretoggle, .settingstoggle, .friendslist, .blacklist-mobile, .open-sticker-mobile, .taskstoggle').css('opacity', 1).show();
+                                    $('.lock-opened, .pick, #toggleNeighbors, #toggleRemove, .toggleNeighbors.text, .toggleRemove.text, .import, .pinchange, .toggleNeighbors, .toggleRemove, .roll2toggle, .unpicktoggle, .recenttoggle, .highscoretoggle, .settingstoggle, .friendslist, .blacklist-mobile, .open-sticker-mobile, .open-paint-mobile, .taskstoggle').css('opacity', 1).show();
                                     $('.menu, .menu2, .menu3, .menu4, .menu5, .menu6, .menu8, .menu9, .topnav, #beta, .hiddenInfo, #entry-menu, #highscore-menu, #highscore-menu2, #import-menu, #help-menu, .canvasDiv').show();
                                     roll2On && $('.roll2').css('opacity', 1).show();
                                     !isPicking && unpickOn && $('.unpick').css('opacity', 1).show();
@@ -5232,7 +5403,7 @@ let enableTestMode = async function(close, fromConfirm) {
     if (!inEntry && !importMenuOpen && !manualModalOpen && !detailsModalOpen && !notesModalOpen && !highscoreMenuOpen && !helpMenuOpen) {
         onMobile && hideMobileMenu();
         if (fromConfirm) {
-            $('#myModal40').hide();
+            $('#exitSandboxWarningModal').remove();
             exitSandboxWarningModalOpen = false;
             if (close) {
                 return;
@@ -5584,10 +5755,11 @@ let toggleTaskSidebar = function(value, extra) {
 }
 
 // Toggles checked-off task hiding
-let toggleHiddenTasks = function(value, fromSearch) {
+let toggleHiddenTasks = function(value, fromSearch, subTabs) {
+    subTabs = !!subTabs ? subTabs : Object.keys(activeSubTabs);
     $('.no-current').remove();
     value ? $('.hide-backlog').hide() : $('.hide-backlog:not(.searchhide)').show();
-    Object.keys(activeSubTabs).forEach((section) => {
+    subTabs.forEach((section) => {
         if (value) {
             $(`.${section}-challenge:not(.hide-backlog)`).length <= 0 ? $('.marker-' + section).hide() : $('.marker-' + section).show();
         } else {
@@ -5599,8 +5771,8 @@ let toggleHiddenTasks = function(value, fromSearch) {
             $('.panel-active').append(`<span class="no-current">No current chunk tasks.</span>`);
         }
     }
-    Object.keys(activeSubTabs).forEach((subTab) => {
-        settings['hideChecked'] && actuallyHideChecked && $('.challenge.' + subTab + '-challenge').filter($(':not(.hide-backlog)')).length === 0 ? $('.marker-' + subTab).addClass('hide-marker') : $('.marker-' + subTab).removeClass('hide-marker');
+    settings['hideChecked'] && actuallyHideChecked && subTabs.forEach((subTab) => {
+        $('.challenge.' + subTab + '-challenge:not(.hide-backlog)').length === 0 ? $('.marker-' + subTab).addClass('hide-marker') : $('.marker-' + subTab).removeClass('hide-marker');
     });
     !fromSearch && searchActiveTasksFunc();
 }
@@ -5777,7 +5949,7 @@ let setupMap = async function() {
         $('.body').show();
         $('#page1, #page1extra, #page1search, #import-menu, #highscore-menu, #highscore-menu2, #help-menu, .entry-home-menu-container, .entry-home-menu-extra').hide();
         if (locked) {
-            $('.pick, #toggleNeighbors, #toggleRemove, .toggleNeighbors.text, .toggleRemove.text, .import, .pinchange, .toggleNeighbors, .toggleRemove, .roll2toggle, .unpicktoggle, .recenttoggle, .highscoretoggle, .settingstoggle, .friendslist, .blacklist-mobile, .open-sticker-mobile, .taskstoggle').css('opacity', 0).hide();
+            $('.pick, #toggleNeighbors, #toggleRemove, .toggleNeighbors.text, .toggleRemove.text, .import, .pinchange, .toggleNeighbors, .toggleRemove, .roll2toggle, .unpicktoggle, .recenttoggle, .highscoretoggle, .settingstoggle, .friendslist, .blacklist-mobile, .open-sticker-mobile, .open-paint-mobile, .taskstoggle').css('opacity', 0).hide();
             $('.roll2, .unpick').css('opacity', 0).hide();
             $('.center').css('margin-top', '0px');
             $('.center, #toggleIds, .toggleIds.text').css('opacity', 1).show();
@@ -5792,7 +5964,7 @@ let setupMap = async function() {
         if (locked === undefined || locked) {
             locked = true;
             $('.lock-closed, .lock-opened').hide();
-            $('.pick, #toggleNeighbors, #toggleRemove, .toggleNeighbors.text, .toggleRemove.text, .import, .pinchange, .toggleNeighbors, .toggleRemove, .roll2toggle, .unpicktoggle, .recenttoggle, .highscoretoggle, .settingstoggle, .friendslist, .blacklist-mobile, .open-sticker-mobile, .taskstoggle').css('opacity', 0).hide();
+            $('.pick, #toggleNeighbors, #toggleRemove, .toggleNeighbors.text, .toggleRemove.text, .import, .pinchange, .toggleNeighbors, .toggleRemove, .roll2toggle, .unpicktoggle, .recenttoggle, .highscoretoggle, .settingstoggle, .friendslist, .blacklist-mobile, .open-sticker-mobile, .open-paint-mobile, .taskstoggle').css('opacity', 0).hide();
             $('.center').css('margin-top', '0px');
             $('.roll2, .unpick').css('opacity', 0).hide();
             $('.open-manual-outer-container').css('opacity', 0).hide();
@@ -6301,12 +6473,16 @@ let setupCurrentChallenges = function(tempChallengeArr, noDisplay, noClear) {
                 skillTask = tempChallengeArr[skill].replaceAll(/\{[0-9]+\}/g, '');
                 boost = tempChallengeArr[skill].match(/\{[0-9]+\}/g)[0].match(/\d+/)[0];
             }
+            if (boost === 0) {
+                boost = (globalValidsBoosts.hasOwnProperty(skill) && globalValidsBoosts[skill].hasOwnProperty(skillTask) ? globalValidsBoosts[skill][skillTask] : 0);
+            }
             let hasAlts = Object.keys(globalValids[skill]).filter(chal => (globalValids[skill][chal] - (globalValidsBoosts.hasOwnProperty(skill) && globalValidsBoosts[skill].hasOwnProperty(chal) ? globalValidsBoosts[skill][chal] : 0)) === (globalValids[skill][skillTask] - (globalValidsBoosts.hasOwnProperty(skill) && globalValidsBoosts[skill].hasOwnProperty(skillTask) ? globalValidsBoosts[skill][skillTask] : 0)) && chal !== skillTask && (!backlog.hasOwnProperty(skill) || !backlog[skill].hasOwnProperty(chal))).length > 0;
-            if (!!skillTask && (!backlog[skill] || (!backlog[skill].hasOwnProperty(skillTask) && !backlog[skill].hasOwnProperty(skillTask.replaceAll('#', '/')))) && (!completedChallenges[skill] || (!completedChallenges[skill][skillTask] && !completedChallenges[skill][skillTask.replaceAll('#', '/')])) && (!altChallenges[skill] || !altChallenges[skill].hasOwnProperty(chunkInfo['challenges'][skill][skillTask]['Level']) || !completedChallenges[skill] || (!completedChallenges[skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level']]] && !completedChallenges[skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level']].replaceAll('#', '/')]))) {
-                if (!!skillTask && !!altChallenges[skill] && altChallenges[skill].hasOwnProperty(chunkInfo['challenges'][skill][skillTask]['Level']) && globalValids.hasOwnProperty(skill) && globalValids[skill].hasOwnProperty(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level']]) && globalValids[skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level']]] === chunkInfo['challenges'][skill][skillTask]['Level'] && (!backlog.hasOwnProperty(skill) || !backlog[skill].hasOwnProperty(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level']])) && !!altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level']]) {
-                    challengeArr.push(`<div class="challenge skill-challenge noscroll clickable ${skill + '-challenge'} ${(!!checkedChallenges[skill] && !!checkedChallenges[skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level']]]) && 'hide-backlog'} ${!activeSubTabs['skill'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level']])}', '${skill}', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges[skill] && !!checkedChallenges[skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level']]]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('${skill}', '${encodeRFC5987ValueChars(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level']])}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[${(boost > 0 ? (((chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level']]]['Level'] - boost) <= 0 ? 1 : (chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level']]]['Level'] - boost)) + '] (+' + boost + ')') : chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level']]]['Level'] + ']')} <span class="inner noscroll">${skill}</b>: ${decodeQueryParam(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level']].split('~')[0])}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level']].split('|')[1]))}" target="_blank">${decodeQueryParam(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level']].split('~')[1].split('|').join(''))}</a>${decodeQueryParam(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level']].split('~')[2])}</span></span></label> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level']])}', '${skill}', ${hasAlts})"><i class="fa-solid fa-sliders-h noscroll">${hasAlts ? `<i class="fa-solid fa-star burger-star noscroll"></i>` : ''}</i></span></div>`);
-                    listOfTasks.push({ [altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level']]]: skill, prefix: `[${(boost > 0 ? (((chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level']]]['Level'] - boost) <= 0 ? 1 : (chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level']]]['Level'] - boost)) + '] (+' + boost + ')') : chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level']]]['Level'] + ']')} ${skill}:` });
-                    activeTasks[skill] = { [altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level']]]: `${chunkInfo['challenges'][skill][skillTask]['Level']}${boost > 0 ? `{${boost}}` : ''}` };
+            if (!!skillTask && (!backlog[skill] || (!backlog[skill].hasOwnProperty(skillTask) && !backlog[skill].hasOwnProperty(skillTask.replaceAll('#', '/')))) && (!completedChallenges[skill] || (!completedChallenges[skill][skillTask] && !completedChallenges[skill][skillTask.replaceAll('#', '/')])) && (!altChallenges[skill] || !altChallenges[skill].hasOwnProperty(chunkInfo['challenges'][skill][skillTask]['Level'] - boost) || !completedChallenges[skill] || (!completedChallenges[skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]] && !completedChallenges[skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost].replaceAll('#', '/')]))) {
+                if (!!skillTask && !!altChallenges[skill] && altChallenges[skill].hasOwnProperty(chunkInfo['challenges'][skill][skillTask]['Level'] - boost) && globalValids.hasOwnProperty(skill) && globalValids[skill].hasOwnProperty(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]) && (globalValids[skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]] - (globalValidsBoosts.hasOwnProperty(skill) && globalValidsBoosts[skill].hasOwnProperty(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]) ? globalValidsBoosts[skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]] : 0)) === (chunkInfo['challenges'][skill][skillTask]['Level'] - boost) && (!backlog.hasOwnProperty(skill) || !backlog[skill].hasOwnProperty(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost])) && !!altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]) {
+                    boost = (globalValidsBoosts.hasOwnProperty(skill) && globalValidsBoosts[skill].hasOwnProperty(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]) ? globalValidsBoosts[skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]] : 0);
+                    challengeArr.push(`<div class="challenge skill-challenge noscroll clickable ${skill + '-challenge'} ${(!!checkedChallenges[skill] && !!checkedChallenges[skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]) && 'hide-backlog'} ${!activeSubTabs['skill'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost])}', '${skill}', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges[skill] && !!checkedChallenges[skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('${skill}', '${encodeRFC5987ValueChars(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost])}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[${(boost > 0 ? (((chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]['Level'] - boost) <= 0 ? 1 : (chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]['Level'] - boost)) + '] (+' + boost + ')') : chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]['Level'] + ']')} <span class="inner noscroll">${skill}</b>: ${decodeQueryParam(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost].split('~')[0])}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost].split('|')[1]))}" target="_blank">${decodeQueryParam(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost].split('~')[1].split('|').join(''))}</a>${decodeQueryParam(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost].split('~')[2])}</span></span></label> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost])}', '${skill}', ${hasAlts})"><i class="fa-solid fa-sliders-h noscroll">${hasAlts ? `<i class="fa-solid fa-star burger-star noscroll"></i>` : ''}</i></span></div>`);
+                    listOfTasks.push({ [altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]: skill, prefix: `[${(boost > 0 ? (((chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]['Level'] - boost) <= 0 ? 1 : (chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]['Level'] - boost)) + '] (+' + boost + ')') : chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]['Level'] + ']')} ${skill}:` });
+                    activeTasks[skill] = { [altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]: `${chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]['Level']}${boost > 0 ? `{${boost}}` : ''}` };
                 } else if (!!skillTask && !!chunkInfo['challenges'][skill][skillTask]) {
                     challengeArr.push(`<div class="challenge skill-challenge noscroll clickable ${skill + '-challenge'} ${(!!checkedChallenges[skill] && !!checkedChallenges[skill][skillTask]) && 'hide-backlog'} ${!activeSubTabs['skill'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(skillTask)}', '${skill}', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges[skill] && !!checkedChallenges[skill][skillTask]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('${skill}', '${encodeRFC5987ValueChars(skillTask)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[${(boost > 0 ? (((chunkInfo['challenges'][skill][skillTask]['Level'] - boost) <= 0 ? 1 : (chunkInfo['challenges'][skill][skillTask]['Level'] - boost)) + '] (+' + boost + ')') : chunkInfo['challenges'][skill][skillTask]['Level'] + ']')} <span class="inner noscroll">${skill}</b>: ${skillTask.split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((skillTask.split('|')[1]))}" target="_blank">${skillTask.split('~')[1].split('|').join('')}</a>${skillTask.split('~')[2]}</span></span></label> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(skillTask)}', '${skill}', ${hasAlts})"><i class="fa-solid fa-sliders-h noscroll">${hasAlts ? `<i class="fa-solid fa-star burger-star noscroll"></i>` : ''}</i></span></div>`);
                     listOfTasks.push({ [skillTask]: skill, prefix: `[${(boost > 0 ? (((chunkInfo['challenges'][skill][skillTask]['Level'] - boost) <= 0 ? 1 : (chunkInfo['challenges'][skill][skillTask]['Level'] - boost)) + '] (+' + boost + ')') : chunkInfo['challenges'][skill][skillTask]['Level'] + ']')} ${skill}:` });
@@ -6346,14 +6522,14 @@ let setupCurrentChallenges = function(tempChallengeArr, noDisplay, noClear) {
     !!globalValids['Quest'] && rules['Show Quest Tasks'] && Object.keys(globalValids['Quest']).sort(function(a, b) { return a.replaceAll(/ /g, '_').replaceAll(/\|/g, '').replaceAll(/~/g, '').replaceAll(/%/g, '').replaceAll(/\(/g, '').replaceAll(/\)/g, '').replaceAll(/'/g, '').replaceAll(/\./g, '').replaceAll(/\:/g, '').replaceAll(/\//g, '').replaceAll('A_', '').replaceAll('The_', '').localeCompare(b.replaceAll(/ /g, '_').replaceAll(/\|/g, '').replaceAll(/~/g, '').replaceAll(/%/g, '').replaceAll(/\(/g, '').replaceAll(/\)/g, '').replaceAll(/'/g, '').replaceAll(/\./g, '').replaceAll(/\:/g, '').replaceAll(/\//g, '').replaceAll('A_', '').replaceAll('The_', '')) }).forEach((challenge) => {
         if ((!backlog['Quest'] || (!backlog['Quest'].hasOwnProperty(challenge) && !backlog['Quest'].hasOwnProperty(challenge.replaceAll('#', '/')))) && (!completedChallenges['Quest'] || (!completedChallenges['Quest'][challenge] && !completedChallenges['Quest'][challenge.replaceAll('#', '/')])) && globalValids['Quest'][challenge]) {
             if (chunkInfo['challenges']['Quest'][challenge].hasOwnProperty('QuestPoints')) {
-                challengeArr.push(`<div class="challenge quest-challenge noscroll clickable ${'Quest-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Quest'] && !!checkedChallenges['Quest'][challenge]) && 'hide-backlog'} ${!activeSubTabs['quest'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', 'Quest', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Quest'] && !!checkedChallenges['Quest'][challenge]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('Quest', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[Quest] <span class="inner noscroll"><a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a></b>: <a href='javascript:openQuestSteps("Quest", "${encodeForUrl(challenge)}")' class='internal-link noscroll'>${challenge.split('~')[2].substring(1)}</a></span></span></label></span> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(challenge)}', 'Quest')"><i class="fa-solid fa-sliders-h noscroll"></i></span></div>`);
+                challengeArr.push(`<div class="challenge quest-challenge noscroll clickable ${'Quest-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Quest'] && !!checkedChallenges['Quest'][challenge]) && 'hide-backlog'} ${!activeSubTabs['quest'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', 'Quest', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Quest'] && !!checkedChallenges['Quest'][challenge]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('Quest', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[Quest] <span class="inner noscroll"><a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a></b>: <a href='javascript:openQuestSteps("Quest", "${encodeRFC5987ValueChars(challenge)}")' class='internal-link noscroll'>${challenge.split('~')[2].substring(1)}</a></span></span></label></span> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(challenge)}', 'Quest')"><i class="fa-solid fa-sliders-h noscroll"></i></span></div>`);
                 listOfTasks.push({ [challenge]: 'Quest', prefix: `[Quest]` });
                 if (!activeTasks['Quest']) {
                     activeTasks['Quest'] = {};
                 }
                 activeTasks['Quest'][challenge] = '';
             } else if (!rules['Show Quest Tasks Complete']) {
-                challengeArr.push(`<div class="challenge quest-challenge noscroll clickable ${'Quest-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Quest'] && !!checkedChallenges['Quest'][challenge]) && 'hide-backlog'} ${!activeSubTabs['quest'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', 'Quest', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Quest'] && !!checkedChallenges['Quest'][challenge]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('Quest', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[Quest] <span class="inner noscroll"><a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a></b>: Up to <a href='javascript:openQuestSteps("Quest", "${encodeForUrl(challenge)}")' class='internal-link noscroll'>step ${challenge.split('~')[2]}</a></span></span></label></span> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(challenge)}', 'Quest')"><i class="fa-solid fa-sliders-h noscroll"></i></span></div>`);
+                challengeArr.push(`<div class="challenge quest-challenge noscroll clickable ${'Quest-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Quest'] && !!checkedChallenges['Quest'][challenge]) && 'hide-backlog'} ${!activeSubTabs['quest'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', 'Quest', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Quest'] && !!checkedChallenges['Quest'][challenge]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('Quest', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[Quest] <span class="inner noscroll"><a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a></b>: Up to <a href='javascript:openQuestSteps("Quest", "${encodeRFC5987ValueChars(challenge)}")' class='internal-link noscroll'>step ${challenge.split('~')[2]}</a></span></span></label></span> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(challenge)}', 'Quest')"><i class="fa-solid fa-sliders-h noscroll"></i></span></div>`);
                 listOfTasks.push({ [challenge]: 'Quest', prefix: `[Quest]` });
                 if (!activeTasks['Quest']) {
                     activeTasks['Quest'] = {};
@@ -6365,7 +6541,7 @@ let setupCurrentChallenges = function(tempChallengeArr, noDisplay, noClear) {
     !!globalValids['Diary'] && Object.keys(globalValids['Diary']).length > 0 && rules['Show Diary Tasks'] && challengeArr.push(`<div class="marker marker-diary noscroll" onclick="expandActive('diary')"><i class="expand-button fa-solid ${activeSubTabs['diary'] ? 'fa-caret-down' : 'fa-caret-right'} noscroll"></i><span class="noscroll">Diary Tasks</span></div>`);
     !!globalValids['Diary'] && rules['Show Diary Tasks'] && Object.keys(globalValids['Diary']).forEach((challenge) => {
         if ((!backlog['Diary'] || (!backlog['Diary'].hasOwnProperty(challenge) && !backlog['Diary'].hasOwnProperty(challenge.replaceAll('#', '/')))) && (!completedChallenges['Diary'] || (!completedChallenges['Diary'][challenge] && !completedChallenges['Diary'][challenge.replaceAll('#', '/')])) && globalValids['Diary'][challenge] && (!rules['Show Diary Tasks Complete'] || chunkInfo['challenges']['Diary'][challenge].hasOwnProperty('ManualShow'))) {
-            challengeArr.push(`<div class="challenge diary-challenge noscroll clickable ${'Diary-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Diary'] && !!checkedChallenges['Diary'][challenge]) && 'hide-backlog'} ${!activeSubTabs['diary'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', 'Diary', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Diary'] && !!checkedChallenges['Diary'][challenge]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('Diary', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[Diary] <span class="inner noscroll"><a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a></b>: <a href='javascript:openQuestSteps("Diary", "${encodeForUrl(challenge)}")' class='internal-link noscroll'>${challenge.split('~')[2]}</a></span></span></label></span> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(challenge)}', 'Diary')"><i class="fa-solid fa-sliders-h noscroll"></i></span></div>`);
+            challengeArr.push(`<div class="challenge diary-challenge noscroll clickable ${'Diary-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Diary'] && !!checkedChallenges['Diary'][challenge]) && 'hide-backlog'} ${!activeSubTabs['diary'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', 'Diary', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Diary'] && !!checkedChallenges['Diary'][challenge]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('Diary', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[Diary] <span class="inner noscroll"><a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a></b>: <a href='javascript:openQuestSteps("Diary", "${encodeRFC5987ValueChars(challenge)}")' class='internal-link noscroll'>${challenge.split('~')[2]}</a></span></span></label></span> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(challenge)}', 'Diary')"><i class="fa-solid fa-sliders-h noscroll"></i></span></div>`);
             listOfTasks.push({ [challenge]: 'Diary', prefix: `[Diary]` });
             if (!activeTasks['Diary']) {
                 activeTasks['Diary'] = {};
@@ -6427,10 +6603,12 @@ let setupCurrentChallenges = function(tempChallengeArr, noDisplay, noClear) {
                 if (!activeTasks['Extra']) {
                     activeTasks['Extra'] = {};
                 }
-                if (chunkInfo['challenges']['Extra'][challenge]['Label'] === 'Every Drop') {
+                if (!!chunkInfo['challenges']['Extra'][challenge] && chunkInfo['challenges']['Extra'][challenge]['Label'] === 'Every Drop') {
                     activeTasks['Extra'][challenge.split('|')[1]] = chunkInfo['challenges']['Extra'][challenge]['Label'];
-                } else {
+                } else if (!!chunkInfo['challenges']['Extra'][challenge] && chunkInfo['challenges']['Extra'][challenge]['Label'] !== 'Every Drop') {
                     activeTasks['Extra'][challenge] = chunkInfo['challenges']['Extra'][challenge]['Label'];
+                } else {
+                    activeTasks['Extra'][challenge] = '???';
                 }
             }
         }
@@ -6605,6 +6783,7 @@ let expandActive = function(subTab, isSub) {
         $('.challenge.' + subTab + '-challenge').addClass(!isSub ? 'stay-hidden' : 'stay-hidden-sub');
         !isSub && $('.submarker-' + subTab).addClass('stay-hidden-sub');
     }
+    setData();
 }
 
 // Toggles the checkbox state of subtasks
@@ -6663,17 +6842,18 @@ let calcFutureChallenges = function() {
     }
     tempSections = combineJSONs(tempSections, manualSections);
     myWorker2.terminate();
-    myWorker2 = new Worker("./worker.js?v=6.8.24");
+    myWorker2 = new Worker("./worker.js?v=6.9.33");
     myWorker2.onmessage = workerOnMessage;
-    myWorker2.postMessage(['future', chunks, rules, chunkInfo, skillNames, processingSkill, maybePrimary, combatSkills, monstersPlus, objectsPlus, chunksPlus, itemsPlus, mixPlus, npcsPlus, tasksPlus, tools, elementalRunes, manualTasks, completedChallenges, backlog, "1/" + rules['Rare Drop Amount'], universalPrimary, elementalStaves, rangedItems, boneItems, highestCurrent, dropTables, possibleAreas, randomLoot, magicTools, bossLogs, bossMonsters, minigameShops, manualEquipment, checkedChallenges, backloggedSources, altChallenges, manualMonsters, slayerLocked, passiveSkill, f2pSkills, assignedXpRewards, mid === diary2Tier, manualAreas, "1/" + rules['Secondary Primary Amount'], constructionLocked, mid === manualAreasOnly, tempSections, settings['optOutSections'], maxSkill, userTasks, manualPrimary, updateLevel]);
+    myWorker2.postMessage(['future', chunks, rules, chunkInfo, skillNames, processingSkill, maybePrimary, combatSkills, monstersPlus, objectsPlus, chunksPlus, itemsPlus, mixPlus, npcsPlus, tasksPlus, tools, elementalRunes, manualTasks, completedChallenges, backlog, "1/" + rules['Rare Drop Amount'], universalPrimary, elementalStaves, rangedItems, boneItems, highestCurrent, dropTables, possibleAreas, randomLoot, magicTools, bossLogs, bossMonsters, minigameShops, manualEquipment, checkedChallenges, backloggedSources, altChallenges, manualMonsters, slayerLocked, passiveSkill, f2pSkills, assignedXpRewards, mid === diary2Tier, manualAreas, "1/" + rules['Secondary Primary Amount'], constructionLocked, mid === manualAreasOnly, tempSections, settings['optOutSections'], settings['optOutSectionsWater'], maxSkill, userTasks, manualPrimary, updateLevel]);
     workersOut['future'] = infoLockedId;
     workerOut = Object.keys(workersOut).filter((key) => workersOut[key] !== false).length;
 }
 
 // Finds the future challenge in each skill given a possible new chunk 2
-let calcFutureChallenges2 = function(valids, baseChunkDataLocal) {
+let calcFutureChallenges2 = function(valids, baseChunkDataLocal, localHighestOverall) {
     let highestChallenge = {};
     let challengeStr = '';
+    let challengeStrFormatted = '';
     let clueData = {
         'beginner': 0,
         'easy': 0,
@@ -6682,8 +6862,8 @@ let calcFutureChallenges2 = function(valids, baseChunkDataLocal) {
         'elite': 0,
         'master': 0
     };
-
-    Object.keys(valids).forEach((skill) => {
+    let skillOrder = [...skillNames.sort(), 'BiS', 'Quest', 'Diary', 'Extra', 'Nonskill'];
+    Object.keys(valids).sort((a, b) => skillOrder.indexOf(a) - skillOrder.indexOf(b)).forEach((skill) => {
         let highestCompletedLevel = 0;
         let highestCompletedLevelBoost = 0;
         !!completedChallenges[skill] && Object.keys(completedChallenges[skill]).forEach((name) => {
@@ -6755,6 +6935,36 @@ let calcFutureChallenges2 = function(valids, baseChunkDataLocal) {
             }
         }
         checkPrimaryMethod(skill, valids, baseChunkDataLocal) && Object.keys(valids[skill]).forEach((challenge) => {
+            if (!chunkInfo['challenges'][skill].hasOwnProperty(challenge)) {
+                if (skill === 'BiS') {
+                    chunkInfo['challenges'][skill][challenge] = {
+                        'ItemsDetails': [challenge.split('|')[1].charAt(0).toUpperCase() + challenge.split('|')[1].slice(1)],
+                        'Label': skill
+                    }
+                } else if (skill === 'Extra') {
+                    if (challenge.includes('Kill X')) {
+                        chunkInfo['challenges'][skill][challenge] = {
+                            'MonstersDetails': [challenge.split('|')[1].charAt(0).toUpperCase() + challenge.split('|')[1].slice(1)],
+                            'Label': skill
+                        }
+                    } else if (challenge.match(/.*: ~\|.*\|~ \(.*\)/g)) {
+                        chunkInfo['challenges'][skill][challenge] = {
+                            'ItemsDetails': [challenge.split('|')[1].charAt(0).toUpperCase() + challenge.split('|')[1].slice(1)],
+                            'Label': skill
+                        }
+                    }
+                }
+            }
+            let challengeLabelLine = '';
+            if (skillNames.includes(skill) && !!chunkInfo['challenges'][skill][challenge]) {
+                challengeLabelLine = `[${chunkInfo['challenges'][skill][challenge]['Level']}] ${skill}: `;
+            } else if (skill === 'BiS' || skill === 'Extra') {
+                challengeLabelLine = `[${chunkInfo['challenges'][skill][challenge]['Label']}]: `;
+            } else if (skill === 'Quest' || skill === 'Diary') {
+                challengeLabelLine = `[${skill}]: `;
+            } else {
+                challengeLabelLine = `${skill}: `;
+            }
             let bestBoost = 0;
             if (rules["Boosting"] && chunkInfo['codeItems']['boostItems'].hasOwnProperty(skill) && !chunkInfo['challenges'][skill][challenge].hasOwnProperty('NoBoost')) {
                 let ownsCrystalSaw = false;
@@ -6781,7 +6991,7 @@ let calcFutureChallenges2 = function(valids, baseChunkDataLocal) {
                 bestBoost = bestBoost + (ownsCrystalSaw ? 3 : 0);
             }
             if (skill === 'Quest' || skill === 'Diary' || skill === 'BiS' || skill === 'Extra') {
-                if ((!globalValids.hasOwnProperty(skill) || !globalValids[skill].hasOwnProperty(challenge)) && valids[skill][challenge] && !chunkInfo['challenges'][skill][challenge]['NeverShow'] && (!completedChallenges[skill] || !completedChallenges[skill][challenge])) {
+                if ((!globalValids.hasOwnProperty(skill) || !globalValids[skill].hasOwnProperty(challenge)) && valids[skill][challenge] && !chunkInfo['challenges'][skill][challenge]['NeverShow'] && (!completedChallenges[skill] || !completedChallenges[skill][challenge]) && (skill !== 'BiS' || Object.values(localHighestOverall).map(function(y) { return y.toLowerCase() }).includes(challenge.split('|')[1].toLowerCase()))) {
                     if ((skill === 'Quest' && rules["Show Quest Tasks"] && (chunkInfo['challenges'][skill][challenge].hasOwnProperty('QuestPoints') || !rules["Show Quest Tasks Complete"])) || (skill === 'Diary' && rules["Show Diary Tasks"] && (chunkInfo['challenges'][skill][challenge].hasOwnProperty('ManualShow') || !rules["Show Diary Tasks Complete"])) || (skill === 'BiS' && rules["Show Best in Slot Tasks"]) || (skill === 'Extra')) {
                         if (!!chunkInfo['challenges'][skill][challenge]['Skills']) {
                             let tempValid = true;
@@ -6792,6 +7002,7 @@ let calcFutureChallenges2 = function(valids, baseChunkDataLocal) {
                             });
                             if (tempValid) {
                                 challengeStr += `<span class="challenge ${skill + '-challenge'} noscroll">${challenge.split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((challenge.split('|')[1]))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a>${(chunkInfo['challenges'][skill][challenge].hasOwnProperty('QuestPoints') ? ' complete quest' : challenge.split('~')[2])} <span class='noscroll' onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', '${skill}', 'future')"><i class="challenge-icon fa-solid fa-info-circle noscroll"></i></span></span>, `;
+                                challengeStrFormatted += `<div class="new-task-row challenge ${skill + '-challenge'} noscroll"><b>${challengeLabelLine}</b>${challenge.split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((challenge.split('|')[1]))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a>${(chunkInfo['challenges'][skill][challenge].hasOwnProperty('QuestPoints') ? ' complete quest' : challenge.split('~')[2])} <span class='noscroll' onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', '${skill}', 'future')"><i class="challenge-icon fa-solid fa-info-circle noscroll"></i></span></div>`;
                             }
                         } else {
                             let tempTempValid;
@@ -6802,6 +7013,7 @@ let calcFutureChallenges2 = function(valids, baseChunkDataLocal) {
                             }
                             if (tempTempValid) {
                                 challengeStr += `<span class="challenge ${skill + '-challenge'} noscroll">${challenge.split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((challenge.split('|')[1]))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a>${(chunkInfo['challenges'][skill][challenge].hasOwnProperty('QuestPoints') ? ' complete quest' : challenge.split('~')[2])} <span class='noscroll' onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', '${skill}', 'future')"><i class="challenge-icon fa-solid fa-info-circle noscroll"></i></span></span>, `;
+                                challengeStrFormatted += `<div class="new-task-row challenge ${skill + '-challenge'} noscroll"><b>${challengeLabelLine}</b>${challenge.split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((challenge.split('|')[1]))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a>${(chunkInfo['challenges'][skill][challenge].hasOwnProperty('QuestPoints') ? ' complete quest' : challenge.split('~')[2])} <span class='noscroll' onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', '${skill}', 'future')"><i class="challenge-icon fa-solid fa-info-circle noscroll"></i></span></div>`;
                             }
                         }
                     }
@@ -6849,18 +7061,52 @@ let calcFutureChallenges2 = function(valids, baseChunkDataLocal) {
         !highestChallenge[skill] || (chunkInfo['challenges'][skill][highestChallenge[skill]]['Level'] <= 1 && !chunkInfo['challenges'][skill][highestChallenge[skill]]['Primary']) && (highestChallenge[skill] = undefined);
         if (!!highestChallenge[skill] && skill !== 'Quest' && skill !== 'Nonskill') {
             if (skill !== 'Quest' && skill !== 'Diary' && skill !== 'BiS' && skill !== 'Extra' && rules["Show Skill Tasks"]) {
+                if (!chunkInfo['challenges'][skill].hasOwnProperty(highestChallenge[skill])) {
+                    if (skill === 'BiS') {
+                        chunkInfo['challenges'][skill][highestChallenge[skill]] = {
+                            'ItemsDetails': [highestChallenge[skill].split('|')[1].charAt(0).toUpperCase() + highestChallenge[skill].split('|')[1].slice(1)],
+                            'Label': skill
+                        }
+                    } else if (skill === 'Extra') {
+                        if (highestChallenge[skill].includes('Kill X')) {
+                            chunkInfo['challenges'][skill][highestChallenge[skill]] = {
+                                'MonstersDetails': [highestChallenge[skill].split('|')[1].charAt(0).toUpperCase() + highestChallenge[skill].split('|')[1].slice(1)],
+                                'Label': skill
+                            }
+                        } else if (highestChallenge[skill].match(/.*: ~\|.*\|~ \(.*\)/g)) {
+                            chunkInfo['challenges'][skill][highestChallenge[skill]] = {
+                                'ItemsDetails': [highestChallenge[skill].split('|')[1].charAt(0).toUpperCase() + highestChallenge[skill].split('|')[1].slice(1)],
+                                'Label': skill
+                            }
+                        }
+                    }
+                }
+                let challengeLabelLine = '';
+                if (skillNames.includes(skill) && !!chunkInfo['challenges'][skill][highestChallenge[skill]]) {
+                    challengeLabelLine = `[${chunkInfo['challenges'][skill][highestChallenge[skill]]['Level']}] ${skill}: `;
+                } else if (skill === 'BiS' || skill === 'Extra') {
+                    challengeLabelLine = `[${chunkInfo['challenges'][skill][highestChallenge[skill]]['Label']}]: `;
+                } else if (skill === 'Quest' || skill === 'Diary') {
+                    challengeLabelLine = `[${skill}]: `;
+                } else {
+                    challengeLabelLine = `${skill}: `;
+                }
                 challengeStr += `<span class="challenge ${skill + '-challenge'} noscroll">${highestChallenge[skill].split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((highestChallenge[skill].split('|')[1]))}" target="_blank">${highestChallenge[skill].split('~')[1].split('|').join('')}</a>${highestChallenge[skill].split('~')[2]} <span class='noscroll' onclick="showDetails('${encodeRFC5987ValueChars(highestChallenge[skill])}', '${skill}', 'future')"><i class="challenge-icon fa-solid fa-info-circle noscroll"></i></span></span>, `;
+                challengeStrFormatted += `<div class="new-task-row challenge ${skill + '-challenge'} noscroll"><b>${challengeLabelLine}</b>${highestChallenge[skill].split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((highestChallenge[skill].split('|')[1]))}" target="_blank">${highestChallenge[skill].split('~')[1].split('|').join('')}</a>${highestChallenge[skill].split('~')[2]} <span class='noscroll' onclick="showDetails('${encodeRFC5987ValueChars(highestChallenge[skill])}', '${skill}', 'future')"><i class="challenge-icon fa-solid fa-info-circle noscroll"></i></span></div>`;
             }
         }
     });
     challengeStr.length > 0 && (challengeStr = challengeStr.substring(0, challengeStr.length - 2));
-    return challengeStr;
+    if (challengeStrFormatted.length === 0) {
+        challengeStrFormatted = `<div class="noscroll results">No new chunk tasks</div>`;
+    }
+    return [challengeStr, challengeStrFormatted];
 }
 
 // Opens the expanded future challenges window
 let expandFutureChallenges = function(event) {
     event.stopPropagation();
-    openNewTasksModal(expandChallengeStr.replaceAll('</span>,', '</span><br />') || 'None', true);
+    openNewTasksModal(expandChallengeStr.replaceAll('<span class="challenge', '<div class="new-task-row challenge').replaceAll('</span>,', '</div>'), true);
 }
 
 // Hides the chunkinfo sidebar
@@ -7122,7 +7368,7 @@ let printChunkSectionDifferences = function() {
     !!chunkInfo['challenges'] && Object.keys(chunkInfo['challenges']).forEach((skill) => {
         !!chunkInfo['challenges'][skill] && Object.keys(chunkInfo['challenges'][skill]).filter((name) => chunkInfo['challenges'][skill][name].hasOwnProperty('Chunks')).forEach((name) => {
             !!chunkInfo['challenges'][skill][name] && chunkInfo['challenges'][skill][name].hasOwnProperty('Chunks') && chunkInfo['challenges'][skill][name]['Chunks'].forEach((chunkId) => {
-                if (!isNaN(chunkId.split('-')[0])) {
+                if (!isNaN(chunkId.split('-')[0]) && !!chunkInfo['chunks'][chunkId.split('-')[0]]) {
                     if (chunkId.includes('-') && !chunkInfo['chunks'][chunkId.split('-')[0]].hasOwnProperty('Sections')) {
                         console.error(chunkId, 'has no Section object but is referred to with a section', `(${skill}, ${name})`);
                     } else if (!chunkId.includes('-') && chunkInfo['chunks'][chunkId.split('-')[0]].hasOwnProperty('Sections')) {
@@ -7132,7 +7378,7 @@ let printChunkSectionDifferences = function() {
                     }
                 } else if (chunkId.includes('[+]')) {
                     chunksPlus.hasOwnProperty(chunkId) && chunksPlus[chunkId].forEach((plus) => {
-                        if (!isNaN(plus.split('-')[0])) {
+                        if (!isNaN(plus.split('-')[0]) && !!chunkInfo['chunks'][plus.split('-')[0]]) {
                             if (plus.includes('-') && !chunkInfo['chunks'][plus.split('-')[0]].hasOwnProperty('Sections')) {
                                 console.error(plus, 'has no Section object but is referred to with a section', `[${chunkId}] (${skill}, ${name})`);
                             } else if (!plus.includes('-') && chunkInfo['chunks'][plus.split('-')[0]].hasOwnProperty('Sections')) {
@@ -7161,6 +7407,16 @@ let printChunkSectionDifferences = function() {
                 }
             });
         });
+    });
+
+    !!chunkInfo['questSections'] && Object.keys(chunkInfo['questSections']).forEach((chunkId) => {
+        if (chunkId.includes('-') && !chunkInfo['chunks'][chunkId.split('-')[0]].hasOwnProperty('Sections')) {
+            console.error(chunkId, 'has no Section object but is referred to with a section');
+        } else if (!chunkId.includes('-') && chunkInfo['chunks'][chunkId.split('-')[0]].hasOwnProperty('Sections')) {
+            console.error(chunkId, 'has a Section object but is referred to as a whole chunk');
+        } else if (chunkId.includes('-') && chunkInfo['chunks'][chunkId.split('-')[0]].hasOwnProperty('Sections') && !chunkInfo['chunks'][chunkId.split('-')[0]]['Sections'].hasOwnProperty(chunkId.split('-')[1])) {
+            console.error(chunkId, 'has no Section', chunkId.split('-')[1], 'but is referred to with that section');
+        }
     });
 }
 
@@ -7193,12 +7449,13 @@ let setCalculating = function(panelClass, useOld) {
 // Opens the manual areas modal
 let openManualAreas = function() {
     if (!inEntry && !importMenuOpen && !manualModalOpen && !detailsModalOpen && !notesModalOpen && !highscoreMenuOpen && !helpMenuOpen) {
+        modal.generate('manualAreasModal', onMobile);
         manualAreasModalOpen = true;
         $('#searchManualAreas').val('');
         filterByUnlockedManualAreas = false;
         $('.changeManualAreasFilterBy').prop('checked', false);
         searchManualAreas();
-        $('#myModal31').show();
+        $('#manualAreasModal').show();
         modalOutsideTime = Date.now();
         $('#searchManualAreas').focus();
     }
@@ -7242,10 +7499,11 @@ let setManualArea = function(area, value) {
 // Opens the chunk sections modal
 let openChunkSections = function() {
     if (!inEntry && !importMenuOpen && !manualModalOpen && !detailsModalOpen && !notesModalOpen && !highscoreMenuOpen && !helpMenuOpen) {
+        modal.generate('chunkSectionsModal', onMobile);
         chunkSectionsModalOpen = true;
         $('#searchChunkSections').val('');
         searchChunkSections();
-        $('#myModal42').show();
+        $('#chunkSectionsModal').show();
         modalOutsideTime = Date.now();
         $('#searchChunkSections').focus();
         document.getElementById('chunk-sections-data').scrollTop = 0;
@@ -7276,7 +7534,7 @@ let findConnectedSections = function(chunksIn, sections) {
     let added = false;
     Object.keys(chunkInfo['sections']).filter((chunk) => chunksIn.hasOwnProperty(chunk)).forEach((chunk) => {
         Object.keys(chunkInfo['sections'][chunk]).filter((sec) => sec !== "0" && (!sections.hasOwnProperty(chunk) || !sections[chunk].hasOwnProperty(sec))).forEach((sec) => {
-            if (settings['optOutSections'] || (chunkInfo['sections'][chunk][sec].filter((connection) => (connection.includes('-') ? (sections.hasOwnProperty(connection.split('-')[0]) && sections[connection.split('-')[0]].hasOwnProperty(connection.split('-')[1])) : chunksIn.hasOwnProperty(connection))).length > 0) || (!!chunkInfo['chunks'][chunk] && chunkInfo['chunks'][chunk].hasOwnProperty('Sections') && !!chunkInfo['chunks'][chunk]['Sections'][sec] && chunkInfo['chunks'][chunk]['Sections'][sec].hasOwnProperty('Connect') && Object.keys(chunkInfo['chunks'][chunk]['Sections'][sec]['Connect']).filter((subChunk) => !!chunkInfo['chunks'][subChunk] && chunkInfo['chunks'][subChunk].hasOwnProperty('Name') && chunksIn.hasOwnProperty(chunkInfo['chunks'][subChunk]['Name']) && chunksIn[chunkInfo['chunks'][subChunk]['Name']] !== false && chunkInfo['chunks'][subChunk]['Name'] !== 'Zanaris').length > 0)) {
+            if (settings['optOutSectionsWater'] || (settings['optOutSections'] && !sec.includes('W')) || (chunkInfo['sections'][chunk][sec].filter((connection) => (connection.includes('-') ? (sections.hasOwnProperty(connection.split('-')[0]) && sections[connection.split('-')[0]].hasOwnProperty(connection.split('-')[1]) && sections[connection.split('-')[0]][connection.split('-')[1]]) : chunksIn.hasOwnProperty(connection))).length > 0) || (!!chunkInfo['chunks'][chunk] && chunkInfo['chunks'][chunk].hasOwnProperty('Sections') && !!chunkInfo['chunks'][chunk]['Sections'][sec] && chunkInfo['chunks'][chunk]['Sections'][sec].hasOwnProperty('Connect') && Object.keys(chunkInfo['chunks'][chunk]['Sections'][sec]['Connect']).filter((subChunk) => !!chunkInfo['chunks'][subChunk] && chunkInfo['chunks'][subChunk].hasOwnProperty('Name') && chunksIn.hasOwnProperty(chunkInfo['chunks'][subChunk]['Name']) && chunksIn[chunkInfo['chunks'][subChunk]['Name']] !== false && chunkInfo['chunks'][subChunk]['Name'] !== 'Zanaris').length > 0)) {
                 if (!sections[chunk]) {
                     sections[chunk] = {};
                 }
@@ -7311,6 +7569,19 @@ let resetSectionVars = async function(chunkId) {
         imgSection.crossOrigin = 'anonymous';
         imgSection.src = sectionUrls[section];
         sectionImgs[section] = imgSection;
+        sectionImgs[section].onload = async function() {
+            document.body.offsetHeight;
+            await new Promise(resolve => setTimeout(resolve, 0));
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(() => {
+                    redrawSectionCanvas();
+                });
+            } else {
+                setTimeout(() => {
+                    redrawSectionCanvas();
+                }, 0);
+            }
+        }
         if (manualSections[chunkId] && manualSections[chunkId].hasOwnProperty(section)) {
             selectedSections[section] = manualSections[chunkId][section];
         }
@@ -7319,7 +7590,7 @@ let resetSectionVars = async function(chunkId) {
     sectionImgMain.crossOrigin = 'anonymous';
     sectionImgMain.src = sectionMainUrl;
     canvasSection = document.getElementById('chunk-section-picker-canvas');
-    contextSection = canvasSection.getContext('2d');
+    contextSection = canvasSection.getContext('2d', { willReadFrequently: true });
     $('.chunk-section-canvas-spinner').show();
     contextSection.clearRect(0, 0, canvasSection.width, canvasSection.height);
     sectionImgMain.onload = async function() {
@@ -7340,6 +7611,7 @@ let resetSectionVars = async function(chunkId) {
 // Opens the chunk section picker modal
 let openChunkSectionPicker = async function(chunkId, calculateAfter) {
     if (!inEntry && !importMenuOpen && !manualModalOpen && !detailsModalOpen && !notesModalOpen && !highscoreMenuOpen && !helpMenuOpen) {
+        modal.generate('chunkSectionPickerModal', onMobile);
         await resetSectionVars(chunkId);
         chunkSectionPickerModalOpen = true;
         chunkSectionCalculateAfter = calculateAfter;
@@ -7369,7 +7641,7 @@ let openChunkSectionPicker = async function(chunkId, calculateAfter) {
         });
         $('#chunk-section-picker-selectall-btn').prop('checked', Object.keys(selectedSections).filter(num => selectedSections[num]).length === Object.keys(sectionUrls).length);
         $('.section-help').html(`${tooltip.generate('sectionHelpTooltip', '<i class="fa-solid fa-question-circle question-help"></i>', 'sectionHelpTooltip', onMobile ? 'bottom' : 'right', '350px')}`);
-        $('#myModal43').show();
+        $('#chunkSectionPickerModal').show();
         modalOutsideTime = Date.now();
     }
 }
@@ -7412,10 +7684,7 @@ let calculateSectionPixels = function(inputNum) {
         }
         contextSection.fillStyle = "rgba(0, 0, 0, 1)";
         contextSection.fillRect(0, 0, 192, 192);
-        let imgSection = new Image();
-        imgSection.crossOrigin = 'anonymous';
-        imgSection.src = sectionUrls[inputNum];
-        contextSection.drawImage(imgSection, 0, 0);
+        contextSection.drawImage(sectionImgs[inputNum], 0, 0);
         imageData = contextSection.getImageData(0, 0, 192, 192).data;
         for (let y = 0; y < 192; y++) {
             for (let x = 0; x < 192; x++) {
@@ -7472,9 +7741,10 @@ let redrawSectionCanvas = function() {
     }
     if (Object.keys(globalBlackPixelArr).length === 0 || Object.keys(globalHighlightPixelArr).length === 0) {
         $('.chunk-section-canvas-spinner').show();
-        for (let i = -1; i <= Object.keys(sectionUrls).length; i++) {
-            if (i !== 0 && (!globalBlackPixelArr.hasOwnProperty(i) || !globalHighlightPixelArr.hasOwnProperty(i))) {
-                [globalBlackPixelArr[i], globalHighlightPixelArr[i]] = calculateSectionPixels(i);
+        let sectionUrlsRevised = [-1, ...Object.keys(sectionUrls)];
+        for (let i = 0; i < Object.keys(sectionUrlsRevised).length; i++) {
+            if (sectionUrlsRevised[i] !== 0 && (!globalBlackPixelArr.hasOwnProperty(sectionUrlsRevised[i]) || !globalHighlightPixelArr.hasOwnProperty(sectionUrlsRevised[i]))) {
+                [globalBlackPixelArr[sectionUrlsRevised[i]], globalHighlightPixelArr[sectionUrlsRevised[i]]] = calculateSectionPixels(sectionUrlsRevised[i]);
             }
         }
     }
@@ -7568,9 +7838,11 @@ let selectTopbarChoice = function(index) {
 
 // Opens the customize topbar modal
 let openCustomizeTopbar = function() {
+    modal.generate('customizeTopbarModal', onMobile);
+    onMobile && hideMobileMenu();
     $('#cutomize-topbar-data-inner').empty();
     customizeTopbarModalOpen = true;
-    $('#myModal46').show();
+    $('#customizeTopbarModal').show();
     for (let i = 0; i < 8; i++) {
         let tempSelect;
         if (!topbarChoices.includes(topbarSelection[i])) {
@@ -7632,9 +7904,28 @@ let shuffle = function(array) {
     return array;
 }
 
+// Fixes the size of the title text of a modal
+let fixTitleTextSize = function(selector, originalSize) {
+    const output = document.querySelector(selector + ' a');
+    const outputContainer = document.querySelector(selector);
+
+    function resize_to_fit() {
+        let fontSize = window.getComputedStyle(output).fontSize;
+        $(selector).css('fontSize', (parseFloat(fontSize) - 1) + 'px');
+        
+        if (output.clientHeight >= outputContainer.clientHeight) {
+            resize_to_fit();
+        }
+    }
+    $(selector).innerHTML = this.value;
+    $(selector).css('fontSize', originalSize);
+    resize_to_fit();
+}
+
 // Opens the quest steps modal
 let openQuestSteps = function(skill, challenge) {
     if (!inEntry && !importMenuOpen && !manualModalOpen && !detailsModalOpen && !notesModalOpen && !highscoreMenuOpen && !helpMenuOpen) {
+        modal.generate('questStepsModal', onMobile);
         onMobile && hideMobileMenu();
         challenge = decodeQueryParam(challenge);
         let tier = null;
@@ -7642,9 +7933,12 @@ let openQuestSteps = function(skill, challenge) {
             tier = challenge.split('|')[1].split('#XX')[1];
             challenge = challenge.replaceAll('#XX' + tier, '');
         }
+        if (skill === 'Diary' && challenge.includes('/')) {
+            challenge = challenge.split('/').join('#');
+        }
         questStepsModalOpen = true;
         let quest = skill === 'Diary' ? challenge.split('~')[1].split('|').join('').split('#')[0] : challenge.split('~')[1].split('|').join('');
-        $('.quest-steps-title').html(`<a class='noscroll link' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(quest)}" target='_blank'>${quest}</a>`);
+        $('.quest-steps-title').html(`<a class='noscroll link' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(quest)}" target='_blank'>${quest.includes('Disaster/') ? quest.split('Disaster/')[1] : quest}</a>`);
         $('.quest-steps-data').empty();
         $('.quest-steps-data').append(`<div class='noscroll step step-header'><span class='noscroll step-table-header'>Step</span><span class='noscroll description-table-header'>Description</span></div>`);
         let savedLastLine = '';
@@ -7689,7 +7983,8 @@ let openQuestSteps = function(skill, challenge) {
         } else {
             $('.quest-steps-data').removeClass('combat-achievements');
         }
-        $('#myModal25').show();
+        $('#questStepsModal').show();
+        fixTitleTextSize('.quest-steps-title', '4.5vh');
         modalOutsideTime = Date.now();
         if (tier !== null) {
             !!$('.quest-steps-data .diary-start')[0] && $('.quest-steps-data .diary-start')[0].scrollIntoView({
@@ -7707,6 +8002,7 @@ let openQuestSteps = function(skill, challenge) {
 
 // Opens the friends list modal
 let openFriendsList = function() {
+    modal.generate('friendsListModal', onMobile);
     onMobile && hideMobileMenu();
     friendsListModalOpen = true;
     $('.friends-list-data').empty();
@@ -7717,7 +8013,7 @@ let openFriendsList = function() {
     Object.keys(friendsAlt).sort((a, b) => { return friendsAlt[a].toLowerCase().localeCompare(friendsAlt[b].toLowerCase()) }).forEach((friendMid) => {
         $('.friends-list-data').append(`<div class='noscroll friend-item'><a class='noscroll link' href='https://source-chunk.github.io/chunk-picker-rs3/?${friendMid.toLowerCase()}-view' target='_blank'>${DOMPurify.sanitize(friendsAlt[friendMid], { ALLOWED_TAGS: [], ALLOWED_ATTR: [] })} (${friendMid})</a><i class="friend-item-x fa-solid fa-times noscrollhard" onclick="removeFriend('${friendMid}', '${friendsAlt[friendMid]}')"></i></div>`);
     });
-    $('#myModal26').show();
+    $('#friendsListModal').show();
     modalOutsideTime = Date.now();
     document.getElementById('friends-list-data').scrollTop = 0;
     settingsOpen && settingsMenu();
@@ -7725,14 +8021,42 @@ let openFriendsList = function() {
 
 // Opens the friends add modal
 let openFriendsListAdd = function() {
+    modal.generate('addFriendMapModal', onMobile);
     friendsAddModalOpen = true;
     $('#submit-friend-button').prop('disabled', true);
     $('.mid-friend').val('');
     $('.name-friend').val('');
     $(".altsite-friend-checkbox").prop("checked", false);
-    $('#myModal27').show();
+    $('#addFriendMapModal').show();
     modalOutsideTime = Date.now();
     $('.mid-friend').focus();
+
+    $('.mid-friend').on('input', function(e) {
+        if ((!(/^[a-zA-Z]+$/).test(e.target.value) && e.target.value !== '') || e.target.value.length > 4) {
+            $(this).val(prevValueMidFriend);
+        } else {
+            $(this).val(e.target.value.toUpperCase());
+            prevValueMidFriend = e.target.value;
+            if (e.target.value.length === 3 || e.target.value.length === 4) {
+                midFriendGood = true;
+                checkIfGoodFriend();
+            } else {
+                midFriendGood = false;
+                $('#submit-friend-button').prop('disabled', true);
+            }
+        }
+    });
+
+    $('.name-friend').on('input', function(e) {
+        prevValueMidFriend = e.target.value;
+        if (e.target.value.length > 0) {
+            nameFriendGood = true;
+            checkIfGoodFriend();
+        } else {
+            nameFriendGood = false;
+            $('#submit-friend-button').prop('disabled', true);
+        }
+    });
 }
 
 let removeFriend = function(friendMid, friendName) {
@@ -7797,6 +8121,7 @@ let showSlayerLockOnMap = function() {
 
 // Opens the add locked construction chunk modal
 let openConstructionLocked = function() {
+    modal.generate('constructionLockModal', onMobile);
     constructionLockedModalOpen = true;
     $('#construction-locked-input').val('');
     $('#construction-locked-data').html('<div><div class="construction-locked-cancel" onclick="addConstructionLocked(true)">Cancel</div><div class="construction-locked-proceed disabled" onclick="addConstructionLocked()">Lock Mahogany Homes</div></div>');
@@ -7805,7 +8130,7 @@ let openConstructionLocked = function() {
     Object.keys(constructionChunks).forEach((chunk) => {
         $('#construction-locked-dropdown').append(`<option value="${chunk}">${constructionChunks[chunk]} (${chunk})</option>`);
     });
-    $('#myModal37').show();
+    $('#constructionLockModal').show();
 }
 
 // Triggers onchange of construction locked selection to validate submit button
@@ -7821,7 +8146,7 @@ let constructionLockedChange = function() {
 // Submits picked construction chunk/level if one is chosen, then closes modal either way
 let addConstructionLocked = function(close) {
     if (close) {
-        $('#myModal37').hide();
+        $('#constructionLockModal').remove();
         constructionLockedModalOpen = false;
     } else {
         let chunk = $('#construction-locked-dropdown').val();
@@ -7833,7 +8158,7 @@ let addConstructionLocked = function(close) {
                 setData();
                 openHighest2();
             }
-            $('#myModal37').hide();
+            $('#constructionLockModal').remove();
             constructionLockedModalOpen = false;
         }
     }
@@ -7841,20 +8166,23 @@ let addConstructionLocked = function(close) {
 
 // Opens the outer manual modal
 let openManualAddOuter = function() {
+    modal.generate('manuallyAddOuterModal', onMobile);
     onMobile && hideMobileMenu();
     manualOuterModalOpen = true;
-    $('#myModal20').show();
+    $('#manuallyAddOuterModal').show();
     modalOutsideTime = Date.now();
 }
 
 // Opens the manual add monsters modal
 let openMonstersAdd = function() {
+    modal.generate('manuallyAddStuffModal', onMobile);
     manualOuterModalOpen = false;
-    $('#myModal20').hide();
+    $('#manuallyAddOuterModal').remove();
     monsterModalOpen = true;
-    $('#myModal21').show();
+    $('#manuallyAddStuffModal').show();
     modalOutsideTime = Date.now();
     $('#searchMonsters').val('').focus();
+    $('.monsters-searchcontainer span input').prop('checked', filterByCheckedMonsters);
     searchMonsters();
 }
 
@@ -7989,7 +8317,8 @@ let selectManualItemPrimary = function(type, item, num) {
 // Opens the manual add tasks modal
 let openManualAdd = function() {
     manualOuterModalOpen = false;
-    $('#myModal20').hide();
+    modal.generate('manualTasksModal', onMobile);
+    $('#manuallyAddOuterModal').remove();
     fullChallengeArr = {};
     Object.keys(chunkInfo['challenges']).forEach((skill) => {
         if (skill !== 'Nonskill' && skill !== 'BiS') {
@@ -8002,7 +8331,7 @@ let openManualAdd = function() {
         }
     });
     manualModalOpen = true;
-    $('#myModal').show();
+    $('#manualTasksModal').show();
     modalOutsideTime = Date.now();
     $('#searchManual').val('').focus();
     $('.challenge-title span input').prop('checked', filterByChecked);
@@ -8058,8 +8387,9 @@ let addManualTask = function(challenge) {
 
 // Opens the manual complete tasks modal
 let openManualComplete = function() {
+    modal.generate('manualCompleteModal', onMobile);
     completeModalOpen = true;
-    $('#myModal14').show();
+    $('#manualCompleteModal').show();
     modalOutsideTime = Date.now();
 }
 
@@ -8199,13 +8529,9 @@ let loadPoolsData = function() {
         } else {
             $('.pools-list-b').append(`<table><tr><th>Username</th><th>Chunk Picker Map</th><th>Date Joined</th><th>Days Waiting</th></tr>${tableData}</table>`);
         }
-        let upgradeText = splitData[7].replace(/"([^"]*?),([^"]*?)"/g, (match, part1, part2) => {
-            return `"${part1}|${part2}"`;
-        }).split(',')[13].replaceAll('"', '').replaceAll('|', ',');
         let kickText = splitData[10].replace(/"([^"]*?),([^"]*?)"/g, (match, part1, part2) => {
             return `"${part1}|${part2}"`;
         }).split(',')[13].replaceAll('"', '').replaceAll('|', ',');
-        $('.pools-period-b').text(upgradeText);
         $('.pools-period-c').text(kickText);
         $('.content12a .subtitle, .content12b .subtitle').show();
     });
@@ -8213,8 +8539,9 @@ let loadPoolsData = function() {
 
 // Opens the user-inputted tasks modal
 let openUserTasks = function() {
+    modal.generate('userTaskModal', onMobile);
     manualOuterModalOpen = false;
-    $('#myModal20').hide();
+    $('#manuallyAddOuterModal').remove();
     userTasksModalOpen = true;
     $('#usertasks-data').html('<span class="usertasks-list" onclick="openUserTasksList()">Show Added Tasks</span><div><div class="usertasks-cancel" onclick="addUserTask(true)">Cancel</div><div class="usertasks-proceed disabled" onclick="addUserTask()">Add task</div></div>');
     $('#usertasks-skill-dropdown').empty().append(`<option value='${'Select a skill'}'>${'Select a skill'}</option>`);
@@ -8224,24 +8551,27 @@ let openUserTasks = function() {
     });
     $('#usertasks-level-input > input').val(1);
     $('#usertasks-name-input > input').val('');
-    $('#myModal47').show();
+    $('#usertasks-boost-dropdown').val('yes');
+    $('#userTaskModal').show();
     modalOutsideTime = Date.now();
 }
 
 // Opens the usertasks list modal
 let openUserTasksList = function() {
+    modal.generate('userTasksListModal', onMobile);
     userTasksListModalOpen = true;
     showUserTasksList();
-    $('#myModal48').show();
+    $('#userTasksListModal').show();
     modalOutsideTime = Date.now();
 }
 
 // Shows confirmation modal for deleting usertask
 let showDeleteUserTaskConfirmation = function(challenge, skill) {
+    modal.generate('deleteUserTaskWarningModal', onMobile);
     userTaskDeleteConfirmationModalOpen = true;
     userTaskSavedName = decodeQueryParam(challenge);
     userTaskSavedSkill = skill;
-    $('#myModal49').show();
+    $('#deleteUserTaskWarningModal').show();
     modalOutsideTime = Date.now();
 }
 
@@ -8251,7 +8581,7 @@ let cancelUserTaskDelete = function() {
     userTaskSavedName = null;
     userTaskSavedSkill = null;
     modalOutsideTime = Date.now();
-    $('#myModal49').hide();
+    $('#deleteUserTaskWarningModal').remove();
 }
 
 // Deletes the saved usertask
@@ -8266,7 +8596,7 @@ let deleteUserTask = function() {
     userTaskSavedName = null;
     userTaskSavedSkill = null;
     modalOutsideTime = Date.now();
-    $('#myModal49').hide();
+    $('#deleteUserTaskWarningModal').remove();
     showUserTasksList();
     calcCurrentChallengesCanvas(true);
     setData();
@@ -8277,7 +8607,7 @@ let showUserTasksList = function() {
     $('.usertasks-list-data').empty();
     !!userTasks && Object.keys(userTasks).forEach((skill) => {
         !!userTasks[skill] && Object.keys(userTasks[skill]).forEach((challenge) => {
-            $('.usertasks-list-data').append(`<div class="noscroll result-item"><b>${skill === 'Extra' ? '[Custom Tasks]' : `[${userTasks[skill][challenge]}] ${skill}:`}</b> ${challenge.replaceAll(/~/g, '').replaceAll(/\|/g, '')}<span onclick="showDeleteUserTaskConfirmation('${encodeRFC5987ValueChars(challenge)}', '${skill}', '')"><i class="info-icon fa-solid fa-trash-alt"></i></span></div>`);
+            $('.usertasks-list-data').append(`<div class="noscroll result-item"><b>${skill === 'Extra' ? '[Custom Tasks]' : `[${userTasks[skill][challenge].toString().split('~')[0]}] ${skill}:`}</b> ${challenge.replaceAll(/~/g, '').replaceAll(/\|/g, '')}<span onclick="showDeleteUserTaskConfirmation('${encodeRFC5987ValueChars(challenge)}', '${skill}', '')"><i class="info-icon fa-solid fa-trash-alt"></i></span></div>`);
         });
     });
     if ($('.usertasks-list-data').children().length === 0) {
@@ -8291,6 +8621,7 @@ let userTasksSkillChange = function() {
     userTasksSkillValid = val !== 'Select a skill';
     userTasksMaxLevel = val === 'Combat' ? 126 : 99;
     $('#usertasks-level-input > input').attr({ 'disabled': !(val !== 'Select a skill' && val !== 'Other'), 'max': userTasksMaxLevel });
+    $('#usertasks-boost-dropdown').attr({ 'disabled': !(val !== 'Select a skill' && val !== 'Other') });
     checkUserTasksValid();
 }
 
@@ -8320,7 +8651,7 @@ let checkUserTasksValid = function() {
 // Submits user task if added, then closes modal either way
 let addUserTask = function(close) {
     if (close) {
-        $('#myModal47').hide();
+        $('#userTaskModal').remove();
         userTasksModalOpen = false;
     } else {
         if ($('.usertasks-proceed').hasClass('disabled')) {
@@ -8328,6 +8659,7 @@ let addUserTask = function(close) {
         }
         let skill = $('#usertasks-skill-dropdown').val();
         let level = parseInt($('#usertasks-level-input > input').val());
+        let canBoost = $('#usertasks-boost-dropdown').val() === 'yes';
         let name = DOMPurify.sanitize($('#usertasks-name-input > input').val() + '~||~', { ALLOWED_TAGS: [], ALLOWED_ATTR: [] });
         if (skill === 'Other') {
             skill = 'Extra';
@@ -8337,7 +8669,7 @@ let addUserTask = function(close) {
                 if (!userTasks[skill]) {
                     userTasks[skill] = {};
                 }
-                userTasks[skill][name] = skill !== 'Extra' ? level : true;
+                userTasks[skill][name] = skill !== 'Extra' ? (level + (canBoost ? '' : '~')) : true;
                 if (!chunkInfo['challenges'][skill]) {
                     chunkInfo['challenges'][skill] = {};
                 }
@@ -8347,11 +8679,12 @@ let addUserTask = function(close) {
                 }
                 if (skill !== 'Extra') {
                     chunkInfo['challenges'][skill][name]['Level'] = level;
+                    !canBoost && (chunkInfo['challenges'][skill][name]['NoBoost'] = true);
                 }
                 calcCurrentChallengesCanvas(true);
                 setData();
             }
-            $('#myModal47').hide();
+            $('#userTaskModal').remove();
             userTasksModalOpen = false;
         }
     }
@@ -8370,7 +8703,9 @@ let loadUserTasks = function() {
                 'Permanent': false
             }
             if (skill !== 'Extra') {
-                chunkInfo['challenges'][skill][name]['Level'] = userTasks[skill][name];
+                let levelSplit = userTasks[skill][name].toString().split('~');
+                chunkInfo['challenges'][skill][name]['Level'] = parseInt(levelSplit[0]);
+                levelSplit.length > 1 && (chunkInfo['challenges'][skill][name]['NoBoost'] = true);
             }
         });
     });
@@ -8378,9 +8713,10 @@ let loadUserTasks = function() {
 
 // Opens the clipboard modal
 let openClipboard = function() {
+    modal.generate('miscellaneousActionsModal', onMobile);
     onMobile && hideMobileMenu();
     clipboardModalOpen = true;
-    $('#myModal38').show();
+    $('#miscellaneousActionsModal').show();
     settingsOpen = false;
     $('.settings-menu').hide();
     $('.settings').css({ 'color': 'var(--colorText)' });
@@ -8391,10 +8727,11 @@ let openClipboard = function() {
 // Opens the search within my chunks modal
 let openSearch = function() {
     if (!inEntry && !importMenuOpen && !manualModalOpen && !detailsModalOpen && !notesModalOpen && !highscoreMenuOpen && !helpMenuOpen) {
+        modal.generate('searchModal', onMobile);
         onMobile && hideMobileMenu();
         searchModalOpen = true;
         $('.help2').html(`${tooltip.generate('searchTermsTooltips', '<span>~</span>', 'searchTermsTooltips', onMobile ? 'bottom' : 'right')}`);
-        $('#myModal10').show();
+        $('#searchModal').show();
         modalOutsideTime = Date.now();
         $('#searchChunks').val('').focus();
         searchWithinChunks();
@@ -8408,27 +8745,27 @@ let searchWithinChunks = function() {
     onlyInitialData ? $(`.searchchunks-initwarning`).show() : $(`.searchchunks-initwarning`).hide();
     if (searchTemp.startsWith('~') && searchTemp.toLowerCase() === '~items' && Object.keys(baseChunkData).length > 0) {
         Object.keys(baseChunkData['items']).length > 0 && $('.searchchunks-data').append(`<div class="search-header noscroll"><b class="noscroll">Items</b></div>`);
-        Object.keys(baseChunkData['items']).length > 0 && Object.keys(baseChunkData['items']).sort().forEach((item) => {
+        Object.keys(baseChunkData['items']).length > 0 && Object.keys(baseChunkData['items']).filter((item) => !item.includes('^')).sort().forEach((item) => {
             $('.searchchunks-data').append(`<div class="search-result noscroll"><span class='noscroll' onclick='openSearchDetails("items", "${encodeRFC5987ValueChars(item)}")'>${item.replaceAll(/~/g, '').replaceAll(/\|/g, '').replaceAll(/\*/g, '')}</span></div>`);
         });
     } else if (searchTemp.startsWith('~') && searchTemp.toLowerCase() === '~monsters' && Object.keys(baseChunkData).length > 0) {
         Object.keys(baseChunkData['monsters']).length > 0 && $('.searchchunks-data').append(`<div class="search-header noscroll"><b class="noscroll">Monsters</b></div>`);
-        Object.keys(baseChunkData['monsters']).length > 0 && Object.keys(baseChunkData['monsters']).sort().forEach((monster) => {
+        Object.keys(baseChunkData['monsters']).length > 0 && Object.keys(baseChunkData['monsters']).filter((monster) => !monster.includes('^')).sort().forEach((monster) => {
             $('.searchchunks-data').append(`<div class="search-result noscroll"><span class='noscroll' onclick='openSearchDetails("monsters", "${encodeRFC5987ValueChars(monster)}")'>${monster.replaceAll(/~/g, '').replaceAll(/\|/g, '')}</span></div>`);
         });
     } else if (searchTemp.startsWith('~') && searchTemp.toLowerCase() === '~npcs' && Object.keys(baseChunkData).length > 0) {
         Object.keys(baseChunkData['npcs']).length > 0 && $('.searchchunks-data').append(`<div class="search-header noscroll"><b class="noscroll">Npcs</b></div>`);
-        Object.keys(baseChunkData['npcs']).length > 0 && Object.keys(baseChunkData['npcs']).sort().forEach((npc) => {
+        Object.keys(baseChunkData['npcs']).length > 0 && Object.keys(baseChunkData['npcs']).filter((npc) => !npc.includes('^')).sort().forEach((npc) => {
             $('.searchchunks-data').append(`<div class="search-result noscroll"><span class='noscroll' onclick='openSearchDetails("npcs", "${encodeRFC5987ValueChars(npc)}")'>${npc.replaceAll(/~/g, '').replaceAll(/\|/g, '')}</span></div>`);
         });
     } else if (searchTemp.startsWith('~') && searchTemp.toLowerCase() === '~objects' && Object.keys(baseChunkData).length > 0) {
         Object.keys(baseChunkData['objects']).length > 0 && $('.searchchunks-data').append(`<div class="search-header noscroll"><b class="noscroll">Objects</b></div>`);
-        Object.keys(baseChunkData['objects']).length > 0 && Object.keys(baseChunkData['objects']).sort().forEach((object) => {
+        Object.keys(baseChunkData['objects']).length > 0 && Object.keys(baseChunkData['objects']).filter((object) => !object.includes('^')).sort().forEach((object) => {
             $('.searchchunks-data').append(`<div class="search-result noscroll"><span class='noscroll' onclick='openSearchDetails("objects", "${encodeRFC5987ValueChars(object)}")'>${object.replaceAll(/~/g, '').replaceAll(/\|/g, '')}</span></div>`);
         });
     } else if (searchTemp.startsWith('~') && searchTemp.toLowerCase() === '~shops' && Object.keys(baseChunkData).length > 0) {
         Object.keys(baseChunkData['shops']).length > 0 && $('.searchchunks-data').append(`<div class="search-header noscroll"><b class="noscroll">Shops</b></div>`);
-        Object.keys(baseChunkData['shops']).length > 0 && Object.keys(baseChunkData['shops']).sort().forEach((shop) => {
+        Object.keys(baseChunkData['shops']).length > 0 && Object.keys(baseChunkData['shops']).filter((shop) => !shop.includes('^')).sort().forEach((shop) => {
             $('.searchchunks-data').append(`<div class="search-result noscroll"><span class='noscroll' onclick='openSearchDetails("shops", "${encodeRFC5987ValueChars(shop)}")'>${shop.replaceAll(/~/g, '').replaceAll(/\|/g, '').replaceAll(/\*/g, '')}</span></div>`);
         });
     } else if (searchTemp.startsWith('~') && Object.keys(baseChunkData).length > 0) {
@@ -8506,6 +8843,7 @@ let findFraction = function(fraction) {
 
 // Opens the search details modal
 let openSearchDetails = function(category, name, prevCategory, prevName) {
+    modal.generate('searchDetailsModal', onMobile);
     searchDetailsParams = [category, name, prevCategory, prevName];
     name = decodeQueryParam(name);
     searchDetailsModalOpen = true;
@@ -8528,13 +8866,13 @@ let openSearchDetails = function(category, name, prevCategory, prevName) {
         let tempDroprate = 0;
         if (typeof baseChunkData[category][name][source] === "boolean" || !skills.includes(baseChunkData[category][name][source].split('-')[1])) {
             if (chunkInfo['chunks'].hasOwnProperty(source.split('-')[0])) {
-                let realName = source.match(/^[0-9]+(-[0-9]+)?$/g) ? source.match(/^[0-9]+(-[0-9]+)?$/g)[0] : source;
-                if (source.match(/[0-9]+-[0-9]+/g)) {
+                let realName = source.match(/^[0-9]+(-(W)?[0-9]+)?$/g) ? source.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0] : source;
+                if (source.match(/[0-9]+-(W)?[0-9]+/g)) {
                     realName = chunkInfo['chunks'][source.match(/[0-9]+/g)[0]]['Nickname'] + '(' + source.match(/[0-9]+/g)[0] + ' - Section ' + source.split('-')[1] + ')';
-                } else if (source.match(/^[0-9]+(-[0-9]+)?$/g) && !!chunkInfo['chunks'][source.match(/^[0-9]+(-[0-9]+)?$/g)[0]]['Name']) {
-                    realName = chunkInfo['chunks'][source.match(/^[0-9]+(-[0-9]+)?$/g)[0]]['Name'];
-                } else if (source.match(/^[0-9]+(-[0-9]+)?$/g) && !!chunkInfo['chunks'][source.match(/^[0-9]+(-[0-9]+)?$/g)[0]]['Nickname']) {
-                    realName = chunkInfo['chunks'][source.match(/^[0-9]+(-[0-9]+)?$/g)[0]]['Nickname'] + '(' + source.match(/^[0-9]+(-[0-9]+)?$/g)[0] + ')';
+                } else if (source.match(/^[0-9]+(-(W)?[0-9]+)?$/g) && !!chunkInfo['chunks'][source.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0]]['Name']) {
+                    realName = chunkInfo['chunks'][source.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0]]['Name'];
+                } else if (source.match(/^[0-9]+(-(W)?[0-9]+)?$/g) && !!chunkInfo['chunks'][source.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0]]['Nickname']) {
+                    realName = chunkInfo['chunks'][source.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0]]['Nickname'] + '(' + source.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0] + ')';
                 }
                 formattedSource += realName.replaceAll(/~\|/g, '').replaceAll(/\|~/g, '').replaceAll(/\*/g, '');
             } else {
@@ -8625,7 +8963,7 @@ let openSearchDetails = function(category, name, prevCategory, prevName) {
     formattedSources.sort((a, b) => (rankings[b]['shouldRank'] - rankings[a]['shouldRank'] !== 0) ? (rankings[b]['shouldRank'] - rankings[a]['shouldRank']) : (searchDetailSortBy === 'Alphabetical' ? (rankings[a]['name'].localeCompare(rankings[b]['name'])) : (rankings[b]['droprate'] - rankings[a]['droprate']))).forEach((formattedSource) => {
         $('.searchdetails-data').append(`<div class="noscroll results">${formattedSource.replaceAll(/\|~/g, '').replaceAll(/~\|/g, '').replaceAll(/\*/g, '').replaceAll('\~\\', '~').replaceAll('\|\\', '|')}</div>`);
     });
-    $('#myModal11').show();
+    $('#searchDetailsModal').show();
     modalOutsideTime = Date.now();
     document.getElementById('searchdetails-data').scrollTop = 0;
 }
@@ -8640,6 +8978,7 @@ let searchDetailsSorterChange = function() {
 let openHighest = function() {
     if (!inEntry && !importMenuOpen && !manualModalOpen && !detailsModalOpen && !notesModalOpen && !highscoreMenuOpen && !helpMenuOpen) {
         onMobile && hideMobileMenu();
+        modal.generate('highestModal', onMobile);
         highestModalOpen = true;
         let combatStyles = [];
         combatStyles.push('Melee');
@@ -8709,7 +9048,7 @@ let openHighest = function() {
         $('.style-body').hide();
         $(`.${highestTab}-button`).addClass('active-tab');
         $(`.${highestTab}-body`).show();
-        $('#myModal12').show();
+        $('#highestModal').show();
         modalOutsideTime = Date.now();
         document.getElementById('highest-data').scrollTop = 0;
     }
@@ -8724,6 +9063,7 @@ let changeBiSFilterBy = function() {
 // Opens the bis upgrades modal
 let openBisUpgrades = function(key) {
     bisUpgradesModalOpen = true;
+    modal.generate('slotUpgradeModal', onMobile);
     $('.bis-upgrades-data').empty();
     $('.bis-upgrades-slot-name').text(`[${key.replaceAll('_', ' ').replaceAll('-', ' ')}]`);
     let slot = key.split('-')[1];
@@ -8731,14 +9071,55 @@ let openBisUpgrades = function(key) {
         $(`.bis-upgrades-data`).append(`<div class='noscroll row'><span class='noscroll item-pic'><img class='noscroll slot-icon' src='./resources/Clean_slot.png' title="${equip}" /><img class='noscroll' src="./resources/equipment_icons/${equip.replaceAll(/ /g, '_')}.png" onError='this.onerror=null;this.src="./resources/${slot}_slot.png"' title="${equip}" /></span><span class='noscroll slot-text'><a class='link' href="${"https://oldschool.runescape.wiki/w/" + encodeURI(equip)}" target="_blank">${equip}</a></span><span class='double-search-icon' onclick='openSearchDetails("items", "${encodeRFC5987ValueChars(equip)}")'><i class="fa-solid fa-search"></i></span></div>`);
         (i < (bisUpgrades[key].length - 1)) && $(`.bis-upgrades-data`).append(`<div class='noscroll arrow-row' title='Upgrades to'><i class="fa-solid fa-angles-up"></i></div>`);
     });
-    $('#myModal50').show();
+    $('#slotUpgradeModal').show();
     modalOutsideTime = Date.now();
     document.getElementById('bis-upgrades-data').scrollTop = 0;
+}
+
+// Calculates clue chance (close approximation) for given starting amount of clues with given success probability and completion step weightings
+let calcClueChanceForTier = function(startNumClues, successProb, targetTotalsObj) {
+  // Compute the probability of getting exactly `k` total successes (reroll system)
+  const cluesRollingNum = startNumClues <= 0 ? 1 : startNumClues;
+  const totalSuccessProbability2 = (cluesRollingNum, successProb, k) => {
+    const combinations = (a, b) => {
+      let result = 1;
+      for (let i = 1; i <= b; i++) {
+        result *= (a - (b - i)) / i;
+      }
+      return result;
+    };
+    return combinations(k + cluesRollingNum - 1, k) * Math.pow(successProb, k) * Math.pow((1 - successProb), cluesRollingNum);
+  };
+
+  const entries = Object.entries(targetTotalsObj);
+  const totalWeight = entries.reduce((sum, [, w]) => sum + w, 0);
+  const weights = entries.map(([t, w]) => w / totalWeight);
+
+  return entries.reduce((sum, [totalStr, _], i) => {
+    const target = parseInt(totalStr) - startNumClues;
+
+    // Probability of at least `target` successes = 1 - sum of probabilities below target
+    let probAtLeast = 1;
+    for (let k = 0; k < target; k++) {
+      probAtLeast -= totalSuccessProbability2(cluesRollingNum, successProb, k);
+    }
+
+    return sum + weights[i] * probAtLeast;
+  }, 0);
+};
+
+// Calculates the completion chance per inputted clue tier
+let calcClueChances = function(tier) {
+    let chance = 0;
+    let baseChance = (numClueTasksPossible[tier.toLowerCase()] / numClueTasks[tier.toLowerCase()]) || 0;
+    chance = calcClueChanceForTier(parseInt(prevValueLevelInput['ClueSteps']), baseChance, clueStepAmounts[tier]);
+    return `<div class='noscroll row'><span class='noscroll clue-tier'><img class='noscroll tier-icon' src='./resources/${tier}_clue.png' title='${tier}' />${tier} <span onclick="openClueChunks('${tier.toLowerCase()}')"><i class="clue-info-icon fa-solid fa-info-circle"></i></span></span></span><span class='noscroll clue-possible'>${numClueTasksPossible[tier.toLowerCase()]} / ${numClueTasks[tier.toLowerCase()]} (${Math.round((baseChance * 100) * 100) / 100}%) <span onclick="openDoableClueSteps('${tier.toLowerCase()}')"><i class="clue-info-icon fa-solid fa-info-circle"></i></span></span><span class='noscroll clue-percent'> ${(Math.round((chance * 100) * 100) / 100).toLocaleString(undefined, {minimumIntegerDigits: 2, minimumFractionDigits: 2})}%</span></div>`;
 }
 
 // Opens the highest2 modal
 let openHighest2 = function(notScrollTop) {
     if (!inEntry && !importMenuOpen && !manualModalOpen && !detailsModalOpen && !notesModalOpen && !highscoreMenuOpen && !helpMenuOpen) {
+        modal.generate('highest2Modal', onMobile);
         onMobile && hideMobileMenu();
         highest2ModalOpen = true;
         let combatStyles = [];
@@ -8828,7 +9209,7 @@ let openHighest2 = function(notScrollTop) {
                     if (quest === 'break' || quest === 'break2') {
                         $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<hr class='noscroll' />`);
                     } else {
-                        $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<div class='noscroll row${questProgress.hasOwnProperty(quest) ? (questProgress[quest] === 'Complete the quest' ? ' complete' : ' incomplete') : ''}'><span class='noscroll quest-text internal-link' onclick="openQuestSteps('Quest', '~|${encodeForUrl(quest)}|~')">${quest.replaceAll(/~/g, '').replaceAll(/\|/g, '')}</span> ${!onMobile ? `<span class="quest-info-button" onclick="getQuestInfo('` + encodeRFC5987ValueChars(quest) + `')"><i class="quest-icon fa-solid fa-crosshairs"></i></span>` : ''}${(testMode || !(viewOnly || inEntry || locked)) && (chunkInfo['challenges'].hasOwnProperty('Quest') && chunkInfo['challenges']['Quest'].hasOwnProperty(`~|${quest}|~ Complete the quest`) && chunkInfo['challenges']['Quest'][`~|${quest}|~ Complete the quest`].hasOwnProperty('XpReward') && Object.keys(chunkInfo['challenges']['Quest'][`~|${quest}|~ Complete the quest`]['XpReward']).filter(skill => { return !skillNames.includes(skill) }).length > 0 && questProgress.hasOwnProperty(quest) && questProgress[quest] === 'Complete the quest') ? `<span class='noscroll xp-button${(!assignedXpRewards.hasOwnProperty('Quest') || !assignedXpRewards['Quest'].hasOwnProperty(`~|${quest}|~ Complete the quest`) || Object.keys(assignedXpRewards['Quest'][`~|${quest}|~ Complete the quest`]).includes('None')) ? ' unset' : ''}' onclick="openXpRewardModalWithFormat('Quest', '~|${encodeRFC5987ValueChars(quest)}|~ Complete the quest')">xp</span>` : ''}</div>`);
+                        $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<div class='noscroll row${questProgress.hasOwnProperty(quest) ? (questProgress[quest] === 'Complete the quest' ? ' complete' : ' incomplete') : ''}'><span class='noscroll quest-text internal-link' onclick="openQuestSteps('Quest', '~|${encodeRFC5987ValueChars(quest)}|~')">${quest.replaceAll(/~/g, '').replaceAll(/\|/g, '')}</span> ${!onMobile ? `<span class="quest-info-button" onclick="getQuestInfo('` + encodeRFC5987ValueChars(quest) + `')"><i class="quest-icon fa-solid fa-crosshairs"></i></span>` : ''}${(testMode || !(viewOnly || inEntry || locked)) && (chunkInfo['challenges'].hasOwnProperty('Quest') && chunkInfo['challenges']['Quest'].hasOwnProperty(`~|${quest}|~ Complete the quest`) && chunkInfo['challenges']['Quest'][`~|${quest}|~ Complete the quest`].hasOwnProperty('XpReward') && Object.keys(chunkInfo['challenges']['Quest'][`~|${quest}|~ Complete the quest`]['XpReward']).filter(skill => { return !skillNames.includes(skill) }).length > 0 && questProgress.hasOwnProperty(quest) && questProgress[quest] === 'Complete the quest') ? `<span class='noscroll xp-button${(!assignedXpRewards.hasOwnProperty('Quest') || !assignedXpRewards['Quest'].hasOwnProperty(`~|${quest}|~ Complete the quest`) || Object.keys(assignedXpRewards['Quest'][`~|${quest}|~ Complete the quest`]).includes('None')) ? ' unset' : ''}' onclick="openXpRewardModalWithFormat('Quest', '~|${encodeRFC5987ValueChars(quest)}|~ Complete the quest')">xp</span>` : ''}</div>`);
                     }
                 });
                 if (Object.keys(chunkInfo['quests']).filter(quest => { return questFilterType === 'all' || (questFilterType === 'complete' && questProgress.hasOwnProperty(quest) && (questProgress[quest] === 'Complete the quest')) || (questFilterType === 'incomplete' && questProgress.hasOwnProperty(quest) && Array.isArray(questProgress[quest])) || (questFilterType === 'unstarted' && !questProgress.hasOwnProperty(quest)) }).length === 0) {
@@ -8843,18 +9224,25 @@ let openHighest2 = function(notScrollTop) {
                         $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<hr class='noscroll' />`);
                         $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<div class='noscroll row ${diary.replaceAll(' ', '_')}'><span class='noscroll outer-diary-text'>${diary.replaceAll(/~/g, '').replaceAll(/\|/g, '')}</div>`);
                         chunkInfo['diaries'][diary].split(', ').forEach((tier) => {
-                            $(`.${combatStyle.replaceAll(' ', '_')}-body > .${diary.replaceAll(' ', '_')}`).append(`<div class='noscroll fossil${(diaryProgress.hasOwnProperty(diary) && diaryProgress[diary].hasOwnProperty(tier)) ? (diaryProgress[diary][tier]['done'] ? ' complete' : ' incomplete') : ''}'><span class='noscroll diary-text internal-link' onclick="openQuestSteps('Diary', '~|${encodeForUrl(diary)}#XX${tier}|~')">${tier}</span></div>`);
+                            $(`.${combatStyle.replaceAll(' ', '_')}-body > .${diary.replaceAll(' ', '_')}`).append(`<div class='noscroll diary-tier-button fossil${(diaryProgress.hasOwnProperty(diary) && diaryProgress[diary].hasOwnProperty(tier)) ? (diaryProgress[diary][tier]['done'] ? ' complete' : ' incomplete') : ''}'><span class='noscroll diary-text internal-link' onclick="openQuestSteps('Diary', '~|${encodeRFC5987ValueChars(diary)}#XX${encodeRFC5987ValueChars(tier)}|~')">${tier}</span></div>`);
                         });
                     } else if (diary === 'Combat Achievements' && rules['Combat Diary Tasks']) {
                         $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<hr class='noscroll' />`);
                         $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<div class='noscroll row ${diary.replaceAll(' ', '_')}'><span class='noscroll outer-diary-text'>${diary.replaceAll(/~/g, '').replaceAll(/\|/g, '')}</div>`);
                         chunkInfo['diaries'][diary].split(', ').forEach((tier) => {
-                            $(`.${combatStyle.replaceAll(' ', '_')}-body > .${diary.replaceAll(' ', '_')}`).append(`<div class='noscroll combat${(diaryProgress.hasOwnProperty(diary) && diaryProgress[diary].hasOwnProperty(tier)) ? (diaryProgress[diary][tier]['done'] ? ' complete' : ' incomplete') : ''}'><span class='noscroll diary-text internal-link' onclick="openQuestSteps('Diary', '~|${encodeForUrl(diary)}#XX${tier}|~')">${tier}</span></div>`);
+                            $(`.${combatStyle.replaceAll(' ', '_')}-body > .${diary.replaceAll(' ', '_')}`).append(`<div class='noscroll diary-tier-button combat${(diaryProgress.hasOwnProperty(diary) && diaryProgress[diary].hasOwnProperty(tier)) ? (diaryProgress[diary][tier]['done'] ? ' complete' : ' incomplete') : ''}'><span class='noscroll diary-text internal-link' onclick="openQuestSteps('Diary', '~|${encodeRFC5987ValueChars(diary)}#XX${encodeRFC5987ValueChars(tier)}|~')">${tier}</span></div>`);
                         });
-                    } else if (diary !== 'Fossil Island Diary' && diary !== 'Combat Achievements') {
+                    } else if (diary === 'Sea Charting' && rules['Sea Charting']) {
+                        $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<hr class='noscroll' />`);
+                        $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<div class='noscroll row ${diary.replaceAll(' ', '_')}'><span class='noscroll outer-diary-text'>${diary.replaceAll(/~/g, '').replaceAll(/\|/g, '')}</div>`);
+                        $(`.${combatStyle.replaceAll(' ', '_')}-body > .${diary.replaceAll(' ', '_')}`).append(`<div class='noscroll charting-diary-container'></div>`);
+                        chunkInfo['diaries'][diary].split(', ').forEach((tier) => {
+                            $(`.${combatStyle.replaceAll(' ', '_')}-body > .${diary.replaceAll(' ', '_')} .charting-diary-container`).append(`<div class='noscroll diary-tier-button charting${(diaryProgress.hasOwnProperty(diary) && diaryProgress[diary].hasOwnProperty(tier)) ? (diaryProgress[diary][tier]['done'] ? ' complete' : ' incomplete') : ''}'><span class='noscroll diary-text internal-link' onclick="openQuestSteps('Diary', '~|${encodeRFC5987ValueChars(diary)}#XX${encodeRFC5987ValueChars(tier)}|~')">${tier}</span></div>`);
+                        });
+                    } else if (diary !== 'Fossil Island Diary' && diary !== 'Combat Achievements' && diary !== 'Sea Charting') {
                         $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<div class='noscroll row ${diary.replaceAll(' ', '_')}'><span class='noscroll outer-diary-text'>${diary.replaceAll(/~/g, '').replaceAll(/\|/g, '')}</div>`);
                         chunkInfo['diaries'][diary].split(', ').forEach((tier) => {
-                            $(`.${combatStyle.replaceAll(' ', '_')}-body > .${diary.replaceAll(' ', '_')}`).append(`<div class='noscroll${(diaryProgress.hasOwnProperty(diary) && diaryProgress[diary].hasOwnProperty(tier)) ? (diaryProgress[diary][tier]['done'] ? ' complete' : ' incomplete') : ''}'><span class='noscroll diary-text internal-link' onclick="openQuestSteps('Diary', '~|${encodeForUrl(diary)}#XX${tier}|~')">${tier}</span>${(testMode || !(viewOnly || inEntry || locked)) && (diaryProgress.hasOwnProperty(diary) && diaryProgress[diary].hasOwnProperty(tier) && diaryProgress[diary][tier]['done']) ? `<span class='noscroll xp-button${(!assignedXpRewards.hasOwnProperty('Diary') || !assignedXpRewards['Diary'].hasOwnProperty(`~|${diary}#${tier}|~ Complete the ${tier} Diary`) || Object.keys(assignedXpRewards['Diary'][`~|${diary}#${tier}|~ Complete the ${tier} Diary`]).includes('None')) ? ' unset' : ''}' onclick="openXpRewardModalWithFormat('Diary', '~|${diary}#${tier}|~ Complete the ${tier} Diary')">xp</span>` : ''}</div>`);
+                            $(`.${combatStyle.replaceAll(' ', '_')}-body > .${diary.replaceAll(' ', '_')}`).append(`<div class='noscroll diary-tier-button${(diaryProgress.hasOwnProperty(diary) && diaryProgress[diary].hasOwnProperty(tier)) ? (diaryProgress[diary][tier]['done'] ? ' complete' : ' incomplete') : ''}'><span class='noscroll diary-text internal-link' onclick="openQuestSteps('Diary', '~|${encodeRFC5987ValueChars(diary)}#XX${encodeRFC5987ValueChars(tier)}|~')">${tier}</span>${(testMode || !(viewOnly || inEntry || locked)) && (diaryProgress.hasOwnProperty(diary) && diaryProgress[diary].hasOwnProperty(tier) && diaryProgress[diary][tier]['done']) ? `<span class='noscroll xp-button${(!assignedXpRewards.hasOwnProperty('Diary') || !assignedXpRewards['Diary'].hasOwnProperty(`~|${diary}#${tier}|~ Complete the ${tier} Diary`) || Object.keys(assignedXpRewards['Diary'][`~|${diary}#${tier}|~ Complete the ${tier} Diary`]).includes('None')) ? ' unset' : ''}' onclick="openXpRewardModalWithFormat('Diary', '~|${diary}#${tier}|~ Complete the ${tier} Diary')">xp</span>` : ''}</div>`);
                         });
                     }
                 });
@@ -8867,30 +9255,12 @@ let openHighest2 = function(notScrollTop) {
                         prevValueLevelInput['ClueSteps'] = e.target.value || 0;
                         $(`.${combatStyle.replaceAll(' ', '_')}-body .row:not(.row-header)`).remove();
                         clueTiers.forEach((tier) => {
-                            let chance = 0;
-                            let baseChance = (numClueTasksPossible[tier.toLowerCase()] / numClueTasks[tier.toLowerCase()]) || 0;
-                            Object.keys(clueStepAmounts[tier]).forEach((numSteps) => {
-                                if (parseInt(prevValueLevelInput['ClueSteps']) >= parseInt(numSteps)) {
-                                    chance += clueStepAmounts[tier][numSteps];
-                                } else {
-                                    chance += Math.pow(baseChance, (parseInt(numSteps) - parseInt(prevValueLevelInput['ClueSteps']))) * clueStepAmounts[tier][numSteps];
-                                }
-                            });
-                            $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<div class='noscroll row'><span class='noscroll clue-tier'><img class='noscroll tier-icon' src='./resources/${tier}_clue.png' title='${tier}' />${tier} <span onclick="openClueChunks('${tier.toLowerCase()}')"><i class="clue-info-icon fa-solid fa-info-circle"></i></span></span></span><span class='noscroll clue-possible'>${numClueTasksPossible[tier.toLowerCase()]} / ${numClueTasks[tier.toLowerCase()]} (${Math.round((baseChance * 100) * 100) / 100}%) <span onclick="openDoableClueSteps('${tier.toLowerCase()}')"><i class="clue-info-icon fa-solid fa-info-circle"></i></span></span><span class='noscroll clue-percent'> ${(Math.round((chance * 100) * 100) / 100).toLocaleString(undefined, {minimumIntegerDigits: 2, minimumFractionDigits: 2})}%</span></div>`);
+                            $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(calcClueChances(tier));
                         });
                     }
                 });
                 clueTiers.forEach((tier) => {
-                    let chance = 0;
-                    let baseChance = (numClueTasksPossible[tier.toLowerCase()] / numClueTasks[tier.toLowerCase()]) || 0;
-                    Object.keys(clueStepAmounts[tier]).forEach((numSteps) => {
-                        if (parseInt(prevValueLevelInput['ClueSteps']) >= parseInt(numSteps)) {
-                            chance += clueStepAmounts[tier][numSteps];
-                        } else {
-                            chance += Math.pow(baseChance, parseInt(numSteps)) * clueStepAmounts[tier][numSteps];
-                        }
-                    });
-                    $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<div class='noscroll row'><span class='noscroll clue-tier'><img class='noscroll tier-icon' src='./resources/${tier}_clue.png' title='${tier}' />${tier} <span onclick="openClueChunks('${tier.toLowerCase()}')"><i class="clue-info-icon fa-solid fa-info-circle"></i></span></span></span><span class='noscroll clue-possible'>${numClueTasksPossible[tier.toLowerCase()]} / ${numClueTasks[tier.toLowerCase()]} (${Math.round((baseChance * 100) * 100) / 100}%) <span onclick="openDoableClueSteps('${tier.toLowerCase()}')"><i class="clue-info-icon fa-solid fa-info-circle"></i></span></span><span class='noscroll clue-percent'> ${(Math.round((chance * 100) * 100) / 100).toLocaleString(undefined, {minimumIntegerDigits: 2, minimumFractionDigits: 2})}%</span></div>`);
+                    $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(calcClueChances(tier));
                 });
             } else if (combatStyle === 'Shooting Stars') {
                 $(`.${combatStyle.replaceAll(' ', '_')}-body`).append(`<div class='noscroll row row-header'><span class='noscroll region-table-header'>Region</span><span class='noscroll sites-table-header'>Possible Sites</span></div>`);
@@ -8912,7 +9282,7 @@ let openHighest2 = function(notScrollTop) {
         $('.style-body').hide();
         $(`.${highestTab2}-button`).addClass('active-tab');
         $(`.${highestTab2}-body`).show();
-        $('#myModal12_2').show();
+        $('#highest2Modal').show();
         modalOutsideTime = Date.now();
         !notScrollTop && (document.getElementById('highest2-data').scrollTop = 0);
     }
@@ -8926,12 +9296,13 @@ let filterQuests = function(opt) {
 
 // Opens the add passive skill modal
 let openPassiveModal = function(skill) {
+    modal.generate('passiveLevelModal', onMobile);
     passiveSkillModalOpen = true;
     $('#passive-skill-input').val((!!passiveSkill && passiveSkill.hasOwnProperty(skill)) ? passiveSkill[skill] : 1);
     $('#max-skill-input').val((!!maxSkill && maxSkill.hasOwnProperty(skill)) ? maxSkill[skill] : 99);
     $('.passive-skill-name').text(skill);
     $('#passive-skill-data').html(`<div><div class="passive-skill-cancel" onclick="addPassiveSkill(true)">Cancel</div><div class="passive-skill-proceed disabled" onclick="addPassiveSkill(false, '${skill}')">Save Levels</div></div>`);
-    $('#myModal28').show();
+    $('#passiveLevelModal').show();
     $('#passive-skill-input').focus();
 }
 
@@ -8949,23 +9320,18 @@ let passiveLockedChange = function() {
 // Adds passive skill
 let addPassiveSkill = function(close, skill) {
     if (close) {
-        $('#myModal28').hide();
+        $('#passiveLevelModal').remove();
         passiveSkillModalOpen = false;
     } else {
+        let passiveLevelChanged = false;
+        let maxLevelChanged = false;
         let level = !!$('#passive-skill-input').val() ? parseInt($('#passive-skill-input').val()) : NaN;
         if (!isNaN(level) && level >= 0 && level <= 99 && level % 1 === 0) {
             if (!passiveSkill) {
                 passiveSkill = {};
             }
             passiveSkill[skill] = level;
-            if (skill === 'Slayer' && !!slayerLocked && slayerLocked.hasOwnProperty('level')) {
-                slayerLocked['level'] = level;
-                openHighest2(true);
-            }
-            calcCurrentChallengesCanvas(true);
-            setData();
-            $('#myModal28').hide();
-            passiveSkillModalOpen = false;
+            passiveLevelChanged = true;
         }
         let level2 = !!$('#max-skill-input').val() ? parseInt($('#max-skill-input').val()) : NaN;
         if (!isNaN(level2) && level2 >= 0 && level2 <= 99 && level2 % 1 === 0) {
@@ -8973,9 +9339,16 @@ let addPassiveSkill = function(close, skill) {
                 maxSkill = {};
             }
             maxSkill[skill] = level2;
+            maxLevelChanged = true;
+        }
+        if (passiveLevelChanged || maxLevelChanged) {
+            if (passiveLevelChanged && skill === 'Slayer' && !!slayerLocked && slayerLocked.hasOwnProperty('level')) {
+                slayerLocked['level'] = level;
+                openHighest2(true);
+            }
             calcCurrentChallengesCanvas(true);
             setData();
-            $('#myModal28').hide();
+            $('#passiveLevelModal').remove();
             passiveSkillModalOpen = false;
         }
     }
@@ -9025,7 +9398,7 @@ let checkConstructionLocked = function() {
 // Submits questchunks modal
 let addQuestChunk = function(close) {
     if (close) {
-        $('#myModal51').hide();
+        $('#missingQuestModal').remove();
         questChunksModalOpen = false;
         questChunksQuestTasks = [];
     } else {
@@ -9042,7 +9415,7 @@ let addQuestChunk = function(close) {
             calcCurrentChallengesCanvas(true, true);
             setData();
         }
-        $('#myModal51').hide();
+        $('#missingQuestModal').remove();
         questChunksModalOpen = false;
     }
 }
@@ -9069,6 +9442,7 @@ let checkQuestChunks = function() {
             });
         }
         if (questInvalid) {
+            modal.generate('missingQuestModal', onMobile);
             questChunksModalOpen = true;
             questChunksQuestTasks = [];
             let chunkName = chunkInfo['chunks'][chunk].hasOwnProperty('Nickname') ? `${chunkInfo['chunks'][chunk]['Nickname']} (${chunk}${!!chunkSection ? ` - Section ${chunkSection}` : ''})` : `${chunk}${!!chunkSection ? ` - Section ${chunkSection}` : ''}`;
@@ -9079,7 +9453,7 @@ let checkQuestChunks = function() {
                 questChunksQuestTasks.push(quest);
             });
             $('#questchunks-data').html('<div><div class="questchunks-cancel" onclick="addQuestChunk(true)">Exit</div><div class="questchunks-proceed" onclick="addQuestChunk()">Yes, add quest(s) to my map</div></div>');
-            $('#myModal51').show();
+            $('#missingQuestModal').show();
             return true;
         }
     });
@@ -9143,6 +9517,13 @@ let calculateSlayerTasks = function() {
                     }
                 }
             });
+            monsterDetails.hasOwnProperty('Tasks') && Object.keys(monsterDetails['Tasks']).filter(task => { return monsterDetails['Tasks'][task] !== 'Quest' || task === '~|Song of the Elves|~ Complete the quest' }).forEach((task) => {
+                    if (task.includes('[+]') && (!tasksPlus[task] || tasksPlus[task].filter((plus) => { return globalValids.hasOwnProperty(monsterDetails['Tasks'][task]) && globalValids[monsterDetails['Tasks'][task]].hasOwnProperty(plus) }).length === 0)) {
+                        isAssignable = false;
+                    } else if (!task.includes('[+]') && (!globalValids.hasOwnProperty(monsterDetails['Tasks'][task]) || !globalValids[monsterDetails['Tasks'][task]].hasOwnProperty(task))) {
+                        isAssignable = false;
+                    }
+                });
             monsterDetails.hasOwnProperty('Skills') && Object.keys(monsterDetails['Skills']).forEach((skill) => {
                 if (!(!!highestOverall[skill] && ((globalValids[skill].hasOwnProperty(highestOverall[skill].split('{')[0]) && globalValids[skill][highestOverall[skill].split('{')[0]] >= monsterDetails['Skills'][skill]) || (chunkInfo['challenges'][skill].hasOwnProperty(highestOverall[skill].split('{')[0]) && chunkInfo['challenges'][skill][highestOverall[skill].split('{')[0]]['Level'] >= monsterDetails['Skills'][skill])))) {
                     isAssignable = false;
@@ -9193,6 +9574,7 @@ let calculateSlayerTasks = function() {
 
 // Shows specific task info on the given slayer master
 let openSlayerMasterInfo = function(master) {
+    modal.generate('slayerMasterInfoModal', onMobile);
     slayerMasterInfoModalOpen = true;
     $('.slayermasterinfo-data').empty();
     $('.slayermasterinfo-title').text(master);
@@ -9205,12 +9587,13 @@ let openSlayerMasterInfo = function(master) {
             $('.slayermasterinfo-data').append(`<div class="noscroll results ${assignableSlayerTasks[master][monster]}"><a class='noscroll link' href='https://oldschool.runescape.wiki/w/Slayer_task/${monster}' target='_blank'>${monster}</a></div>`);
         }
     });
-    $('#myModal32').show();
+    $('#slayerMasterInfoModal').show();
     document.getElementById('slayermasterinfo-data').scrollTop = 0;
 }
 
 // Shows any doable clue steps of the given tier
 let openDoableClueSteps = function(tier) {
+    modal.generate('doableClueStepsModal', onMobile);
     doableClueStepsModalOpen = true;
     $('.doablecluesteps-data').empty();
     $('.doablecluesteps-title').text(tier.charAt(0).toUpperCase() + tier.slice(1) + ' Clue Steps:');
@@ -9225,12 +9608,13 @@ let openDoableClueSteps = function(tier) {
     if (possibleClueTasks[tier].length === 0) {
         $('.doablecluesteps-data').append(`<div class="noscroll no-results">No doable steps</div>`);
     }
-    $('#myModal33').show();
+    $('#doableClueStepsModal').show();
     document.getElementById('doablecluesteps-data').scrollTop = 0;
 }
 
 // Shows all chunks needed for the given clue tier
 let openClueChunks = function(tier) {
+    modal.generate('clueChunksModal', onMobile);
     clueChunksModalOpen = true;
     $('.cluechunks-data').empty();
     $('.cluechunks-title').text(tier.charAt(0).toUpperCase() + tier.slice(1) + ' Chunks:');
@@ -9255,14 +9639,15 @@ let openClueChunks = function(tier) {
         }
     });
     $('.cluechunks-subtitle').text('(' + doableChunks + '/' + Object.keys(chunkInfo['clues'][tier]).length + ')');
-    $('#myModal34').show();
+    $('#clueChunksModal').show();
     document.getElementById('cluechunks-data').scrollTop = 0;
 }
 
 // Opens the add equipment modal
 let addEquipment = function() {
+    modal.generate('addEquipmentModal', onMobile);
     addEquipmentModalOpen = true;
-    $('#myModal15').show();
+    $('#addEquipmentModal').show();
     modalOutsideTime = Date.now();
     $('#searchAddEquipment').val('').focus();
     searchAddEquipment();
@@ -9304,8 +9689,9 @@ let addManualEquipment = function(equip) {
 
 // Opens the backlog sources modal
 let backlogSources = function() {
+    modal.generate('backlogSourcesModal', onMobile);
     backlogSourcesModalOpen = true;
-    $('#myModal17').show();
+    $('#backlogSourcesModal').show();
     modalOutsideTime = Date.now();
     $('#searchBacklogSources').val('').focus();
     $('.backlog-sources-searchcontainer span input').prop('checked', filterByCheckedSources);
@@ -9406,9 +9792,10 @@ let backlogManualSource = function(category, source) {
 // Opens the sticker menu
 let openStickers = function(id) {
     if (signedIn || testMode) {
+        modal.generate('stickerModal', onMobile);
         stickerModalOpen = true;
         $('.sticker-data').empty();
-        $('#myModal16').show();
+        $('#stickerModal').show();
         modalOutsideTime = Date.now();
         document.getElementById('sticker-data').scrollTop = 0;
         let chunkNickname = chunkInfo['chunks'].hasOwnProperty(id) ? chunkInfo['chunks'][id]['Nickname'] + ' ' : '';
@@ -9495,6 +9882,82 @@ let changeCurrentStickerColor = function() {
         $('.sticker-option-container.color-sticker').addClass('black-outline');
     } else {
         $('.sticker-option-container.color-sticker').removeClass('black-outline');
+    }
+}
+
+// Opens the paint menu
+let openPaint = function(id) {
+    if (signedIn || testMode) {
+        modal.generate('paintModal', onMobile);
+        paintModalOpen = true;
+        $('.paint-data').empty();
+        $('#paintModal').show();
+        modalOutsideTime = Date.now();
+        document.getElementById('paint-data').scrollTop = 0;
+        let chunkNickname = chunkInfo['chunks'].hasOwnProperty(id) ? chunkInfo['chunks'][id]['Nickname'] + ' ' : '';
+        $('.paint-chunk').text(chunkNickname + '(' + id + ')');
+        paintChoices.forEach((color) => {
+            $('.paint-data').append(`<span style='background-color:${color}' class='noscroll paint-option-container color-paint black-outline ${color}-tag' title='${color.charAt(0).toUpperCase() + color.slice(1)}' onclick="setPaint('${id}', '${color.charAt(0).toUpperCase() + color.slice(1)}')"></span>`);
+        });
+        savedStickerId = id;
+        if (painted.hasOwnProperty(id)) {
+            painted[id].forEach((color) => {
+                $(`.paint-data > .paint-option-container.${color.toLowerCase()}-tag`).addClass('selected-paint');
+            });
+            savedPaintedColors = painted[id];
+        } else {
+            savedPaintedColors = [];
+        }
+        savedPaintedColors.length < 4 ? $('.paint-option-container:not(.selected-paint)').removeClass('disabled') : $('.paint-option-container:not(.selected-paint)').addClass('disabled');
+        $('.paint-color-data-2').text(!!painted[id] && painted[id].length > 0 ? painted[id].join(', ') : 'None');
+    }
+}
+
+// Submits the paint modal
+let submitPaint = function() {
+    let id = savedStickerId;
+    let colors = savedPaintedColors;
+    if (colors.length !== 0) {
+        painted[id] = colors;
+    } else if (!!id && id.length > 0) {
+        delete painted[id];
+    }
+    tempChunks = {
+        ...tempChunks,
+        painted: painted,
+        stickeredNotes: stickeredNotes,
+        stickeredColors: stickeredColors
+    };
+    setData();
+    closePaint();
+    drawCanvas();
+}
+
+// Sets the given paint color on the given chunk
+let setPaint = function(id, color) {
+    savedStickerId = id;
+    if (savedPaintedColors.includes(color)) {
+        savedPaintedColors.splice(savedPaintedColors.indexOf(color), 1);
+    } else if (savedPaintedColors.length < 4) {
+        savedPaintedColors.push(color);
+    }
+    $('.selected-paint').removeClass('selected-paint');
+    if (savedPaintedColors.length !== 0) {
+        savedPaintedColors.forEach((color) => {
+            $(`.paint-data > .paint-option-container.${color.toLowerCase()}-tag`).addClass('selected-paint');
+        });
+    }
+    savedPaintedColors.length < 4 ? $('.paint-option-container:not(.selected-paint)').removeClass('disabled') : $('.paint-option-container:not(.selected-paint)').addClass('disabled');
+    $('.paint-color-data-2').text(!!savedPaintedColors && savedPaintedColors.length > 0 ? savedPaintedColors.join(', ') : 'None');
+}
+
+// Changes the paint options color
+let changeCurrentPaintColor = function() {
+    $('.paint-option-container:not(.unset-option)').css('color', $('.paint-color-picker').val());
+    if ($('.paint-color-picker').val() !== '#000000') {
+        $('.paint-option-container.color-paint').addClass('black-outline');
+    } else {
+        $('.paint-option-container.color-paint').removeClass('black-outline');
     }
 }
 
@@ -9615,22 +10078,25 @@ let decodeObject = function(obj) {
 
 // Opens the methods modal
 let viewPrimaryMethodsOrTasks = function(skill, showTasks) {
+    modal.generate('methodsModal', onMobile);
     methodsModalOpen = true;
     $('.methods-data').empty();
     if (showTasks) {
+        $('.methods-topbar').addClass('show-tasks');
         let completedNum = checkedAllTasks.hasOwnProperty(skill) ? Math.min(Object.keys(checkedAllTasks[skill]).filter(task => globalValids[skill].hasOwnProperty(task) && (!backlog.hasOwnProperty(skill) || !backlog[skill].hasOwnProperty(task))).length, Object.keys(globalValids[skill]).filter(task => !backlog.hasOwnProperty(skill) || !backlog[skill].hasOwnProperty(task)).length) : 0;
         $('.methods-topbar').html(`${skill} Tasks <span class='noscroll ${Object.keys(globalValids[skill]).filter(task => !backlog.hasOwnProperty(skill) || !backlog[skill].hasOwnProperty(task)).length > completedNum ? 'yellow' : 'green'}'>(${completedNum}/${Object.keys(globalValids[skill]).filter(task => !backlog.hasOwnProperty(skill) || !backlog[skill].hasOwnProperty(task)).length})</span><i class="manual-close pic fa-solid fa-times noscrollhard" onclick="closeMethods()"></i>`);
         !!globalValids[skill] && Object.keys(globalValids[skill]).sort(function(a, b) { return globalValids[skill][a] - globalValids[skill][b] }).filter(task => !backlog.hasOwnProperty(skill) || !backlog[skill].hasOwnProperty(task)).forEach((task) => {
             $('.methods-data').append(`<div class='noscroll skill-method'><span><input class="noscroll" ${checkedAllTasks[skill] && checkedAllTasks[skill][task] && "checked"} ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''} type="checkbox" onclick="checkOffAllTask('${skill}', '${encodeRFC5987ValueChars(task)}')" /></span><span class='skill-method-text'>[${globalValids[skill][task]}]: ${task.includes('~') ? `${task.replaceAll('*', '').split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((task.replaceAll('*', '').split('|')[1]))}" target="_blank">${task.replaceAll('*', '').split('~')[1].split('|').join('')}</a>${task.replaceAll('*', '').split('~')[2]}` : `${task.replaceAll('~', '').replaceAll('|', '').replaceAll('*', '')}`} ${chunkInfo['challenges'][skill].hasOwnProperty(task) ? `<span class='noscroll details-info' onclick="showDetails('${encodeRFC5987ValueChars(task)}', '${skill}', '')"><i class="challenge-icon fa-solid fa-info-circle noscroll"></i></span></span>` : ''}</div>`);
         });
     } else {
+        $('.methods-topbar').removeClass('show-tasks');
         $('.methods-topbar').html(`<i class="manual-close pic fa-solid fa-times noscrollhard" onclick="closeMethods()"></i>`);
         let methods = checkPrimaryMethod(skill, globalValids, baseChunkData, true);
         Object.keys(methods).sort(function(a, b) { return methods[a] - methods[b] }).forEach((method) => {
             $('.methods-data').append(`<div class='noscroll skill-method'><span>[${methods[method]}]: ${method.includes('~') ? `${method.replaceAll('*', '').split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((method.replaceAll('*', '').split('|')[1]))}" target="_blank">${method.replaceAll('*', '').split('~')[1].split('|').join('')}</a>${method.replaceAll('*', '').split('~')[2]}` : `${method.replaceAll('~', '').replaceAll('|', '').replaceAll('*', '')}`} ${chunkInfo['challenges'][skill].hasOwnProperty(method) ? `<span class='noscroll details-info' onclick="showDetails('${encodeRFC5987ValueChars(method)}', '${skill}', '')"><i class="challenge-icon fa-solid fa-info-circle noscroll"></i></span><span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openTrainingMethodsContextMenu('${encodeRFC5987ValueChars(method)}', '${skill}')"><i class="fa-solid fa-sliders-h noscroll"></i></span></span>` : ''}</div>`);
         });
     }
-    $('#myModal13').show();
+    $('#methodsModal').show();
     modalOutsideTime = Date.now();
     document.getElementById('methods-data').scrollTop = 0;
 }
@@ -9679,84 +10145,70 @@ let switchHighest2Tab = function(tab) {
 let closeManualAdd = function() {
     manualModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal').hide();
+    $('#manualTasksModal').remove();
 }
 
 // Closes the usertasks list modal
 let closeUserTasksList = function() {
     userTasksListModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal48').hide();
+    $('#userTasksListModal').remove();
 }
 
 // Closes the challenge details modal
 let closeChallengeDetails = function() {
     detailsModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal2').hide();
+    $('#challengeDetailsModal').remove();
 }
 
 // Closes the challenge notes modal
 let closeChallengeNotes = function() {
     notesModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal3').hide();
+    $('#backlogNotesModal').remove();
 }
 
 // Closes the rules modal
 let closeRules = function() {
     rulesModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal4').hide();
+    $('#rulesModal').remove();
 }
 
 // Closes the settings modal
 let closeSettings = function() {
     settingsModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal7').hide();
-}
-
-// Closes the random list modal
-let closeRandomList = function() {
-    randomListModalOpen = false;
-    modalOutsideTime = Date.now();
-    $('#myModal8').hide();
-}
-
-// Closes the stats error modal
-let closeStatsError = function() {
-    statsErrorModalOpen = false;
-    modalOutsideTime = Date.now();
-    $('#myModal9').hide();
+    $('#settingsModal').remove();
 }
 
 // Closes the search modal
 let closeSearch = function() {
     searchModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal10').hide();
+    $('#searchModal').remove();
 }
 
 // Closes the search details modal
 let closeSearchDetails = function() {
     searchDetailsModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal11').hide();
+    $('#searchDetailsModal').remove();
 }
 
 // Closes the highest modal
 let closeHighest = function() {
     highestModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal12').hide();
+    $('#highestModal').remove();
 }
 
 // Closes the bis upgrades modal
 let closeBisUpgrades = function() {
     bisUpgradesModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal50').hide();
+    $('#slotUpgradeModal').remove();
 }
 
 // Closes the highest modal
@@ -9764,7 +10216,7 @@ let closeHighest2 = function() {
     $(".primarymethods-context-menu").hide(100);
     highest2ModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal12_2').hide();
+    $('#highest2Modal').remove();
     editingSlayerLock = false;
 }
 
@@ -9773,119 +10225,126 @@ let closeMethods = function() {
     $(".trainingmethods-context-menu").hide(100);
     methodsModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal13').hide();
+    $('#methodsModal').remove();
 }
 
 // Closes the complete modal
 let closeComplete = function() {
     completeModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal14').hide();
+    $('#manualCompleteModal').remove();
 }
 
 // Closes the clipboard modal
 let closeClipboard = function() {
     clipboardModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal38').hide();
+    $('#miscellaneousActionsModal').remove();
 }
 
 // Closes the add equipment modal
 let closeAddEquipment = function() {
     addEquipmentModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal15').hide();
+    $('#addEquipmentModal').remove();
 }
 
 // Closes the sticker modal
 let closeSticker = function() {
     stickerModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal16').hide();
+    $('#stickerModal').remove();
+}
+
+// Closes the paint modal
+let closePaint = function() {
+    paintModalOpen = false;
+    modalOutsideTime = Date.now();
+    $('#paintModal').remove();
 }
 
 // Closes the backlog sources modal
 let closeBacklogSources = function() {
     backlogSourcesModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal17').hide();
+    $('#backlogSourcesModal').remove();
 }
 
 // Closes the chunk history modal
 let closeChunkHistory = function() {
     chunkHistoryModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal18').hide();
+    $('#chunkHistoryModal').remove();
 }
 
 // Closes the challenge alts modal
 let closeChallengeAlts = function() {
     challengeAltsModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal19').hide();
+    $('#altChallengesModal').remove();
 }
 
 // Closes the overlays modal
 let closeOverlays = function() {
     overlaysModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal39').hide();
+    $('#mapOverlaysModal').remove();
 }
 
 // Closes the outer add modal
 let closeOuterAdd = function() {
     manualOuterModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal20').hide();
+    $('#manuallyAddOuterModal').remove();
 }
 
 // Closes the monsters add modal
 let closeMonstersAdd = function() {
     monsterModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal21').hide();
+    $('#manuallyAddStuffModal').remove();
 }
 
 // Closes the quest steps modal
 let closeQuestSteps = function() {
     questStepsModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal25').hide();
+    $('#questStepsModal').remove();
 }
 
 // Closes the friends list modal
 let closeFriendsList = function() {
     friendsListModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal26').hide();
+    $('#friendsListModal').remove();
 }
 
 // Closes the friends list add modal
 let closeFriendsListAdd = function() {
     friendsAddModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal27').hide();
+    $('#addFriendMapModal').remove();
 }
 
 // Closes the manual areas modal
 let closeManualAreas = function() {
     manualAreasModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal31').hide();
+    $('#manualAreasModal').remove();
 }
 
 // Closes the chunk sections modal
 let closeChunkSections = function() {
     chunkSectionsModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal42').hide();
+    $('#chunkSectionsModal').remove();
 }
 
 // Closes the customize topbar modal
 let closeCustomizeTopbar = function() {
     customizeTopbarModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal46').hide();
+    $('#customizeTopbarModal').remove();
 }
 
 // Closes the chunk section picker modal
@@ -9916,7 +10375,7 @@ let saveChunkSectionPicker = function() {
     unlockedSections = combineJSONs(unlockedSections, manualSectionsModified);
     unlockedSections = combineJSONs(unlockedSections, findConnectedSections((Object.keys(savedChunks).length > 0 ? savedChunks : {...tempChunks['unlocked'], ...manualAreas}) || {}, unlockedSections));
     modalOutsideTime = Date.now();
-    $('#myModal43').hide();
+    $('#chunkSectionPickerModal').remove();
     if (needsUpdating) {
         calcCurrentChallengesCanvas(true, chunkSectionCalculateAfter, false, JSON.parse(JSON.stringify(unlockedSections)));
         setData();
@@ -9927,28 +10386,28 @@ let saveChunkSectionPicker = function() {
 let closeSlayerMasterInfo = function() {
     slayerMasterInfoModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal32').hide();
+    $('#slayerMasterInfoModal').remove();
 }
 
 // Closes the doable clue steps modal
 let closeDoableClueSteps = function() {
     doableClueStepsModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal33').hide();
+    $('#doableClueStepsModal').remove();
 }
 
 // Closes the clue chunks modal
 let closeClueChunks = function() {
     clueChunksModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal34').hide();
+    $('#clueChunksModal').remove();
 }
 
 // Closes the chunk notes modal
 let closeChunkNotes = function() {
     notesOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal35').hide();
+    $('#chunkNotesModal').remove();
 }
 
 // Manually completes checked-off tasks
@@ -9956,7 +10415,7 @@ let submitCompleteTasks = function() {
     completeChallenges(true);
     completeModalOpen = false;
     modalOutsideTime = Date.now();
-    $('#myModal14').hide();
+    $('#manualCompleteModal').remove();
 }
 
 // Unlocks various parts of the chunk tasks panel
@@ -10174,6 +10633,7 @@ let goBackDetails = function(type) {
 // Shows challenge details
 let showDetails = function(challenge, skill, dataType, isNested) {
     if (!activeContextMenuOpen && (Date.now() > activeContextMenuOpenTime + 10) && !inEntry && !importMenuOpen && !notesModalOpen && !highscoreMenuOpen && !helpMenuOpen) {
+        modal.generate('challengeDetailsModal', onMobile);
         let baseChunkDataIn = dataType === 'future' ? futureChunkData : baseChunkData;
         let unlockedSectionsIn = dataType === 'future' ? futureUnlockedSections : unlockedSections;
         let chunksIn = !!tempChunks['unlocked'] ? JSON.parse(JSON.stringify(tempChunks['unlocked'])) : {};
@@ -10231,7 +10691,7 @@ let showDetails = function(challenge, skill, dataType, isNested) {
             chunkInfo['challenges'][skill][challenge] = {};
         }
         $('#details-title').html(`<b class="noscroll">${challengeLabelLine}${challenge.split('~').length > 1 ? `${challenge.split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((challenge.split('|')[1]))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a>${challenge.split('~')[2]}` : `${challenge.replaceAll(/\|/g, '').replaceAll(/~/g, '').replaceAll(/\*/g, '')}`}${chunkInfo['challenges'][skill][challenge].hasOwnProperty('InfoLink') ? ` (<a class='link external-info-link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(chunkInfo['challenges'][skill][challenge]['InfoLink'])}" target="_blank">Wiki <i class="fa-solid fa-external-link-alt"></i></a>)` : ''}</b>`);
-        chunkInfo['challenges'][skill][challenge].hasOwnProperty('Description') && $('#details-data').append(`<span class="details-subtitle noscroll"><i class="noscroll">${chunkInfo['challenges'][skill][challenge]['Description']}</i></span><br />`);
+        chunkInfo['challenges'][skill][challenge].hasOwnProperty('Description') && $('#details-data').append(`<span class="details-subtitle details-description noscroll"><i class="noscroll">${chunkInfo['challenges'][skill][challenge]['Description']}</i></span><br />`);
         detailsKeys.forEach((key) => {
             if (key === 'Skill RequirementsDetails' && skill !== 'Quest' && skill !== 'Diary') {
                 return;
@@ -10260,7 +10720,7 @@ let showDetails = function(challenge, skill, dataType, isNested) {
                     if (!!chunkInfo['codeItems'][type + 'Plus'] && !!chunkInfo['codeItems'][type + 'Plus'][el]) {
                         let validElem = false;
                         chunkInfo['codeItems'][type + 'Plus'][el].forEach((elem) => {
-                            if (chunksIn.hasOwnProperty(elem) || (elem.match(/^[0-9]+(-[0-9]+)?$/g) && chunksIn.hasOwnProperty(elem.match(/[0-9]+/g)[0]) && unlockedSectionsIn.hasOwnProperty(elem.match(/[0-9]+/g)[0]) && unlockedSectionsIn[elem.match(/[0-9]+/g)[0]][elem.match(/[0-9]+/g)[1]]) || possibleAreasIn.hasOwnProperty(elem)) {
+                            if (chunksIn.hasOwnProperty(elem) || (elem.match(/^[0-9]+(-(W)?[0-9]+)?$/g) && chunksIn.hasOwnProperty(elem.match(/[0-9]+/g)[0]) && unlockedSectionsIn.hasOwnProperty(elem.match(/[0-9]+/g)[0]) && unlockedSectionsIn[elem.match(/[0-9]+/g)[0]][elem.match(/[0-9]+/g)[1]]) || possibleAreasIn.hasOwnProperty(elem)) {
                                 els.push(elem);
                                 validElem = true;
                             }
@@ -10274,18 +10734,18 @@ let showDetails = function(challenge, skill, dataType, isNested) {
                                 writtenPlus = true;
                                 formattedSource = `<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(element.replaceAll(/\|/g, '').replaceAll(/~/g, '').replaceAll(/\*/g, ''))}" target="_blank">${element.replaceAll(/\|/g, '').replaceAll(/~/g, '').replaceAll(/\*/g, '')}</a>`;
                                 $('#details-data').append(`<span class="noscroll"><b class="noscroll"><span class='noscroll special'>-</span> ${formattedSource}</b></span><br />`);
-                            } else if (!!element.match(/^[0-9]+(-[0-9]+)?$/g) && chunksIn.hasOwnProperty(element.match(/[0-9]+/g)[0]) && (!element.match(/[0-9]+-[0-9]+/g) || !unlockedSectionsIn.hasOwnProperty(element.match(/[0-9]+/g)[0]) || unlockedSectionsIn[element.match(/[0-9]+/g)[0]][element.match(/[0-9]+/g)[1]])) {
+                            } else if (!!element.match(/^[0-9]+(-(W)?[0-9]+)?$/g) && chunksIn.hasOwnProperty(element.match(/[0-9]+/g)[0]) && (!element.match(/[0-9]+-(W)?[0-9]+/g) || !unlockedSectionsIn.hasOwnProperty(element.match(/[0-9]+/g)[0]) || unlockedSectionsIn[element.match(/[0-9]+/g)[0]][element.match(/[0-9]+/g)[1]])) {
                                 written = true;
                                 writtenPlus = true;
-                                let realName = element.match(/^[0-9]+(-[0-9]+)?$/g) ? element.match(/^[0-9]+(-[0-9]+)?$/g)[0] : element;
+                                let realName = element.match(/^[0-9]+(-(W)?[0-9]+)?$/g) ? element.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0] : element;
                                 if (el.match(/[A-Za-z ]+\([0-9]+\)/g)) {
                                     realName = element;
-                                } else if (element.match(/[0-9]+-[0-9]+/g)) {
+                                } else if (element.match(/[0-9]+-(W)?[0-9]+/g)) {
                                     realName = chunkInfo['chunks'][element.match(/[0-9]+/g)[0]]['Nickname'] + '(' + element.match(/[0-9]+/g)[0] + ' - Section ' + element.split('-')[1] + ')';
-                                } else if (element.match(/^[0-9]+(-[0-9]+)?$/g) && !!chunkInfo['chunks'][element.match(/^[0-9]+(-[0-9]+)?$/g)[0]]['Name']) {
-                                    realName = chunkInfo['chunks'][element.match(/^[0-9]+(-[0-9]+)?$/g)[0]]['Name'];
-                                } else if (element.match(/^[0-9]+(-[0-9]+)?$/g) && !!chunkInfo['chunks'][element.match(/^[0-9]+(-[0-9]+)?$/g)[0]]['Nickname']) {
-                                    realName = chunkInfo['chunks'][element.match(/^[0-9]+(-[0-9]+)?$/g)[0]]['Nickname'] + '(' + element.match(/^[0-9]+(-[0-9]+)?$/g)[0] + ')';
+                                } else if (element.match(/^[0-9]+(-(W)?[0-9]+)?$/g) && !!chunkInfo['chunks'][element.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0]]['Name']) {
+                                    realName = chunkInfo['chunks'][element.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0]]['Name'];
+                                } else if (element.match(/^[0-9]+(-(W)?[0-9]+)?$/g) && !!chunkInfo['chunks'][element.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0]]['Nickname']) {
+                                    realName = chunkInfo['chunks'][element.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0]]['Nickname'] + '(' + element.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0] + ')';
                                 }
                                 formattedSource = realName.replaceAll(/\|/g, '').replaceAll(/~/g, '').replaceAll(/\*/g, '');
                                 $('#details-data').append(`<span class="noscroll"><b class="noscroll"><span class='noscroll special'>-</span> ${formattedSource}</b></span><br />`);
@@ -10300,31 +10760,31 @@ let showDetails = function(challenge, skill, dataType, isNested) {
                             written = true;
                             formattedSource = `<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(el.replaceAll(/\|/g, '').replaceAll(/~/g, '').replaceAll(/\*/g, ''))}" target="_blank">${el.replaceAll(/\|/g, '').replaceAll(/~/g, '').replaceAll(/\*/g, '')}</a>`;
                             $('#details-data').append(`<span class="noscroll"><b class="noscroll">${formattedSource}</b></span><br />`);
-                        } else if (!!el.match(/^[0-9]+(-[0-9]+)?$/g) && chunksIn.hasOwnProperty(el.match(/[0-9]+/g)[0]) && (!el.match(/[0-9]+-[0-9]+/g) || !unlockedSectionsIn.hasOwnProperty(el.match(/[0-9]+/g)[0]) || unlockedSectionsIn[el.match(/[0-9]+/g)[0]][el.match(/[0-9]+/g)[1]])) {
+                        } else if (!!el.match(/^[0-9]+(-(W)?[0-9]+)?$/g) && chunksIn.hasOwnProperty(el.match(/[0-9]+/g)[0]) && (!el.match(/[0-9]+-(W)?[0-9]+/g) || !unlockedSectionsIn.hasOwnProperty(el.match(/[0-9]+/g)[0]) || unlockedSectionsIn[el.match(/[0-9]+/g)[0]][el.match(/(W)?[0-9]+/g)[1]])) {
                             written = true;
-                            let realName = el.match(/^[0-9]+(-[0-9]+)?$/g) ? el.match(/^[0-9]+(-[0-9]+)?$/g)[0] : el;
+                            let realName = el.match(/^[0-9]+(-(W)?[0-9]+)?$/g) ? el.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0] : el;
                             if (el.match(/[A-Za-z ]+\([0-9]+\)/g)) {
                                 realName = el;
-                            } else if (el.match(/[0-9]+-[0-9]+/g)) {
+                            } else if (el.match(/[0-9]+-(W)?[0-9]+/g)) {
                                 realName = chunkInfo['chunks'][el.match(/[0-9]+/g)[0]]['Nickname'] + '(' + el.match(/[0-9]+/g)[0] + ' - Section ' + el.split('-')[1] + ')';
-                            } else if (el.match(/^[0-9]+(-[0-9]+)?$/g) && !!chunkInfo['chunks'][el.match(/^[0-9]+(-[0-9]+)?$/g)[0]]['Name']) {
-                                realName = chunkInfo['chunks'][el.match(/^[0-9]+(-[0-9]+)?$/g)[0]]['Name'];
-                            } else if (el.match(/^[0-9]+(-[0-9]+)?$/g) && !!chunkInfo['chunks'][el.match(/^[0-9]+(-[0-9]+)?$/g)[0]]['Nickname']) {
-                                realName = chunkInfo['chunks'][el.match(/^[0-9]+(-[0-9]+)?$/g)[0]]['Nickname'] + '(' + el.match(/^[0-9]+(-[0-9]+)?$/g)[0] + ')';
+                            } else if (el.match(/^[0-9]+(-(W)?[0-9]+)?$/g) && !!chunkInfo['chunks'][el.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0]]['Name']) {
+                                realName = chunkInfo['chunks'][el.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0]]['Name'];
+                            } else if (el.match(/^[0-9]+(-(W)?[0-9]+)?$/g) && !!chunkInfo['chunks'][el.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0]]['Nickname']) {
+                                realName = chunkInfo['chunks'][el.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0]]['Nickname'] + '(' + el.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0] + ')';
                             }
                             formattedSource = realName.replaceAll(/\|/g, '').replaceAll(/~/g, '').replaceAll(/\*/g, '');
                             $('#details-data').append(`<span class="noscroll"><b class="noscroll">${formattedSource}</b></span><br />`);
                         } else {
                             written = true;
-                            let realName = el.match(/^[0-9]+(-[0-9]+)?$/g) ? el.match(/^[0-9]+(-[0-9]+)?$/g)[0] : el;
+                            let realName = el.match(/^[0-9]+(-(W)?[0-9]+)?$/g) ? el.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0] : el;
                             if (el.match(/[A-Za-z ]+\([0-9]+\)/g)) {
                                 realName = el;
-                            } else if (el.match(/[0-9]+-[0-9]+/g)) {
+                            } else if (el.match(/[0-9]+-(W)?[0-9]+/g)) {
                                 realName = chunkInfo['chunks'][el.match(/[0-9]+/g)[0]]['Nickname'] + '(' + el.match(/[0-9]+/g)[0] + ' - Section ' + el.split('-')[1] + ')';
-                            } else if (el.match(/^[0-9]+(-[0-9]+)?$/g) && !!chunkInfo['chunks'][el.match(/^[0-9]+(-[0-9]+)?$/g)[0]]['Name']) {
-                                realName = chunkInfo['chunks'][el.match(/^[0-9]+(-[0-9]+)?$/g)[0]]['Name'];
-                            } else if (el.match(/^[0-9]+(-[0-9]+)?$/g) && !!chunkInfo['chunks'][el.match(/^[0-9]+(-[0-9]+)?$/g)[0]]['Nickname']) {
-                                realName = chunkInfo['chunks'][el.match(/^[0-9]+(-[0-9]+)?$/g)[0]]['Nickname'] + '(' + el.match(/^[0-9]+(-[0-9]+)?$/g)[0] + ')';
+                            } else if (el.match(/^[0-9]+(-(W)?[0-9]+)?$/g) && !!chunkInfo['chunks'][el.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0]]['Name']) {
+                                realName = chunkInfo['chunks'][el.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0]]['Name'];
+                            } else if (el.match(/^[0-9]+(-(W)?[0-9]+)?$/g) && !!chunkInfo['chunks'][el.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0]]['Nickname']) {
+                                realName = chunkInfo['chunks'][el.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0]]['Nickname'] + '(' + el.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0] + ')';
                             }
                             $('#details-data').append(`<span class="noscroll red"><b class="noscroll">${realName}</b></span><br />`);
                         }
@@ -10364,13 +10824,13 @@ let showDetails = function(challenge, skill, dataType, isNested) {
                                 if ((chunkInfo['codeItems']['boostItems'].hasOwnProperty(skill) && chunkInfo['codeItems']['boostItems'][skill].hasOwnProperty(element)) || ((!chunkInfo['challenges'][skill][challenge].hasOwnProperty('NonShop') || !chunkInfo['challenges'][skill][challenge]['NonShop'] || baseChunkDataIn[type][element][source] !== 'shop') && (rules['Wield Crafted Items'] || ![...combatSkills, 'BiS', 'Extra'].includes(skill) || chunkInfo['challenges'][skill][challenge]['Label'] === 'Fill Stashes' || (typeof baseChunkDataIn[type][element][source] !== 'string' || !processingSkill[baseChunkDataIn[type][element][source].split('-')[1]])))) {
                                     if (typeof baseChunkDataIn[type][element][source] === "boolean" || !skills.includes(baseChunkDataIn[type][element][source].split('-')[1])) {
                                         if (chunkInfo['chunks'].hasOwnProperty(source.split('-')[0])) {
-                                            let realName = source.match(/^[0-9]+(-[0-9]+)?$/g) ? source.match(/^[0-9]+(-[0-9]+)?$/g)[0] : source;
-                                            if (source.match(/[0-9]+-[0-9]+/g)) {
+                                            let realName = source.match(/^[0-9]+(-(W)?[0-9]+)?$/g) ? source.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0] : source;
+                                            if (source.match(/[0-9]+-(W)?[0-9]+/g)) {
                                                 realName = chunkInfo['chunks'][source.match(/[0-9]+/g)[0]]['Nickname'] + '(' + source.match(/[0-9]+/g)[0] + ' - Section ' + source.split('-')[1] + ')';
-                                            } else if (source.match(/^[0-9]+(-[0-9]+)?$/g) && !!chunkInfo['chunks'][source.match(/^[0-9]+(-[0-9]+)?$/g)[0]]['Name']) {
-                                                realName = chunkInfo['chunks'][source.match(/^[0-9]+(-[0-9]+)?$/g)[0]]['Name'];
-                                            } else if (source.match(/^[0-9]+(-[0-9]+)?$/g) && !!chunkInfo['chunks'][source.match(/^[0-9]+(-[0-9]+)?$/g)[0]]['Nickname']) {
-                                                realName = chunkInfo['chunks'][source.match(/^[0-9]+(-[0-9]+)?$/g)[0]]['Nickname'] + '(' + source.match(/^[0-9]+(-[0-9]+)?$/g)[0] + ')';
+                                            } else if (source.match(/^[0-9]+(-(W)?[0-9]+)?$/g) && !!chunkInfo['chunks'][source.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0]]['Name']) {
+                                                realName = chunkInfo['chunks'][source.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0]]['Name'];
+                                            } else if (source.match(/^[0-9]+(-(W)?[0-9]+)?$/g) && !!chunkInfo['chunks'][source.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0]]['Nickname']) {
+                                                realName = chunkInfo['chunks'][source.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0]]['Nickname'] + '(' + source.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0] + ')';
                                             }
                                             formattedSource += `<span class='noscroll ${typeof baseChunkDataIn[type][element][source] !== "boolean" && (baseChunkDataIn[type][element][source].includes('primary-') || baseChunkDataIn[type][element][source].includes('shop')) ? 'green' : ''}'>${realName.replaceAll(/\|/g, '').replaceAll(/~/g, '').replaceAll(/\*/g, '')}</span>`;
                                         } else {
@@ -10411,13 +10871,13 @@ let showDetails = function(challenge, skill, dataType, isNested) {
                             if ((chunkInfo['codeItems']['boostItems'].hasOwnProperty(skill) && chunkInfo['codeItems']['boostItems'][skill].hasOwnProperty(el)) || ((!chunkInfo['challenges'][skill][challenge].hasOwnProperty('NonShop') || !chunkInfo['challenges'][skill][challenge]['NonShop'] || baseChunkDataIn[type][el][source] !== 'shop') && (rules['Wield Crafted Items'] || ![...combatSkills, 'BiS', 'Extra'].includes(skill) || chunkInfo['challenges'][skill][challenge]['Label'] === 'Fill Stashes' || (typeof baseChunkDataIn[type][el][source] !== 'string' || !processingSkill[baseChunkDataIn[type][el][source].split('-')[1]])))) {
                                 if (typeof baseChunkDataIn[type][el][source] === "boolean" || !skills.includes(baseChunkDataIn[type][el][source].split('-')[1])) {
                                     if (chunkInfo['chunks'].hasOwnProperty(source.split('-')[0])) {
-                                        let realName = source.match(/^[0-9]+(-[0-9]+)?$/g) ? source.match(/^[0-9]+(-[0-9]+)?$/g)[0] : source;
-                                        if (source.match(/[0-9]+-[0-9]+/g)) {
+                                        let realName = source.match(/^[0-9]+(-(W)?[0-9]+)?$/g) ? source.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0] : source;
+                                        if (source.match(/[0-9]+-(W)?[0-9]+/g)) {
                                             realName = chunkInfo['chunks'][source.match(/[0-9]+/g)[0]]['Nickname'] + '(' + source.match(/[0-9]+/g)[0] + ' - Section ' + source.split('-')[1] + ')';
-                                        } else if (source.match(/^[0-9]+(-[0-9]+)?$/g) && !!chunkInfo['chunks'][source.match(/^[0-9]+(-[0-9]+)?$/g)[0]]['Name']) {
-                                            realName = chunkInfo['chunks'][source.match(/^[0-9]+(-[0-9]+)?$/g)[0]]['Name'];
-                                        } else if (source.match(/^[0-9]+(-[0-9]+)?$/g) && !!chunkInfo['chunks'][source.match(/^[0-9]+(-[0-9]+)?$/g)[0]]['Nickname']) {
-                                            realName = chunkInfo['chunks'][source.match(/^[0-9]+(-[0-9]+)?$/g)[0]]['Nickname'] + '(' + source.match(/^[0-9]+(-[0-9]+)?$/g)[0] + ')';
+                                        } else if (source.match(/^[0-9]+(-(W)?[0-9]+)?$/g) && !!chunkInfo['chunks'][source.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0]]['Name']) {
+                                            realName = chunkInfo['chunks'][source.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0]]['Name'];
+                                        } else if (source.match(/^[0-9]+(-(W)?[0-9]+)?$/g) && !!chunkInfo['chunks'][source.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0]]['Nickname']) {
+                                            realName = chunkInfo['chunks'][source.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0]]['Nickname'] + '(' + source.match(/^[0-9]+(-(W)?[0-9]+)?$/g)[0] + ')';
                                         }
                                         formattedSource += `<span class='noscroll ${typeof baseChunkDataIn[type][el][source] !== "boolean" && (baseChunkDataIn[type][el][source].includes('primary-') || baseChunkDataIn[type][el][source].includes('shop')) ? 'green' : ''}'>${realName.replaceAll(/\|/g, '').replaceAll(/~/g, '').replaceAll(/\*/g, '')}</span>`;
                                     } else {
@@ -10465,7 +10925,7 @@ let showDetails = function(challenge, skill, dataType, isNested) {
             detailsStack = [];
         }
         detailsStack.push([challenge, skill]);
-        $('#myModal2').show();
+        $('#challengeDetailsModal').show();
         modalOutsideTime = Date.now();
         document.getElementById('details-data').scrollTop = 0;
     }
@@ -10473,32 +10933,34 @@ let showDetails = function(challenge, skill, dataType, isNested) {
 
 // Shows challenge alternatives
 let showAlternatives = function(challenge, skill) {
+    modal.generate('altChallengesModal', onMobile);
     challenge = decodeQueryParam(challenge);
     challengeAltsModalOpen = true;
     $('#alts-data').empty();
     !!globalValids[skill] && Object.keys(globalValids[skill]).filter(chal => !backlog.hasOwnProperty(skill) || !backlog[skill].hasOwnProperty(chal)).forEach((chal) => {
-        if (globalValids[skill][chal] === globalValids[skill][challenge]) {
-            if (skill === 'BiS') {
-                $('#alts-data').append(`<div class="alt-challenge noscroll ${skill + '-alt-challenge'}"><label class="radio noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "radio--disabled" : ''}"><span class="radio__input noscroll"><input type="radio" name="radio" ${(!!highestOverall && Object.values(highestOverall).map(function(y) { return y.toLowerCase() }).includes(chal.split('|')[1].toLowerCase())) ? "checked" : ''} class='noscroll' onclick="checkOffAltChallenge('${skill}', '${encodeRFC5987ValueChars(chal)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="radio__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='currentColor' stroke='currentColor' d='M 12 12 m -7.5 0 a 7.5 7.5 90 1 0 15 0 a 7.5 7.5 90 1 0 -15 0' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll"><span class="inner noscroll">${skill}</b>: ${chal.split('~')[0]} <a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((chal.split('|')[1]))}" target="_blank">${chal.split('~')[1].split('|').join('')}</a> ${chal.split('~')[2]}</span></span></label></div>`);
-            } else if (skill !== 'Quest' && skill !== 'Diary' && skill !== 'Extra') {
-                $('#alts-data').append(`<div class="alt-challenge noscroll ${skill + '-alt-challenge'}"><label class="radio noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "radio--disabled" : ''}"><span class="radio__input noscroll"><input type="radio" name="radio" ${(chal === challenge) ? "checked" : ''} class='noscroll' onclick="checkOffAltChallenge('${skill}', '${encodeRFC5987ValueChars(chal)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="radio__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='currentColor' stroke='currentColor' d='M 12 12 m -7.5 0 a 7.5 7.5 90 1 0 15 0 a 7.5 7.5 90 1 0 -15 0' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll"><span class="inner noscroll">${skill}</b>: ${chal.split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((chal.split('|')[1]))}" target="_blank">${chal.split('~')[1].split('|').join('')}</a>${chal.split('~')[2]}</span></span></label></div>`);
-            } else {
-                $('#alts-data').empty();
-                $('#alts-data').append(`<div class="alt-challenge noscroll ${skill + '-alt-challenge'}"><div class='noscroll results'><span class='noscroll holder'><span class='noscroll topline'>No Alternatives</span></span></div></div>`);
+        if (skill === 'BiS' && globalValids[skill][chal] === globalValids[skill][challenge]) {
+            $('#alts-data').append(`<div class="alt-challenge noscroll ${skill + '-alt-challenge'}"><label class="radio noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "radio--disabled" : ''}"><span class="radio__input noscroll"><input type="radio" name="radio" ${(!!highestOverall && Object.values(highestOverall).map(function(y) { return y.toLowerCase() }).includes(chal.split('|')[1].toLowerCase())) ? "checked" : ''} class='noscroll' onclick="checkOffAltChallenge('${skill}', '${encodeRFC5987ValueChars(chal)}', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="radio__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='currentColor' stroke='currentColor' d='M 12 12 m -7.5 0 a 7.5 7.5 90 1 0 15 0 a 7.5 7.5 90 1 0 -15 0' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll"><span class="inner noscroll">${skill}</b>: ${chal.split('~')[0]} <a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((chal.split('|')[1]))}" target="_blank">${chal.split('~')[1].split('|').join('')}</a> ${chal.split('~')[2]}</span></span></label></div>`);
+        } else if (skill !== 'Quest' && skill !== 'Diary' && skill !== 'Extra') {
+            if ((globalValids[skill][chal] - (globalValidsBoosts.hasOwnProperty(skill) && globalValidsBoosts[skill].hasOwnProperty(chal) ? globalValidsBoosts[skill][chal] : 0)) === (globalValids[skill][challenge] - (globalValidsBoosts.hasOwnProperty(skill) && globalValidsBoosts[skill].hasOwnProperty(challenge) ? globalValidsBoosts[skill][challenge] : 0)) && (!backlog.hasOwnProperty(skill) || !backlog[skill].hasOwnProperty(chal))) {
+                $('#alts-data').append(`<div class="alt-challenge noscroll ${skill + '-alt-challenge'}"><label class="radio noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "radio--disabled" : ''}"><span class="radio__input noscroll"><input type="radio" name="radio" ${(chal === challenge) ? "checked" : ''} class='noscroll' onclick="checkOffAltChallenge('${skill}', '${encodeRFC5987ValueChars(chal)}', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="radio__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='currentColor' stroke='currentColor' d='M 12 12 m -7.5 0 a 7.5 7.5 90 1 0 15 0 a 7.5 7.5 90 1 0 -15 0' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll"><span class="inner noscroll">${skill}</b>: ${chal.split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((chal.split('|')[1]))}" target="_blank">${chal.split('~')[1].split('|').join('')}</a>${chal.split('~')[2]}</span></span></label></div>`);
             }
+        } else if (globalValids[skill][chal] === globalValids[skill][challenge]) {
+            $('#alts-data').empty();
+            $('#alts-data').append(`<div class="alt-challenge noscroll ${skill + '-alt-challenge'}"><div class='noscroll results'><span class='noscroll holder'><span class='noscroll topline'>No Alternatives</span></span></div></div>`);
         }
     });
     if (!$('#alts-data').children() || $('#alts-data').children().length < 2) {
         $('#alts-data').empty();
         $('#alts-data').append(`<div class='noscroll results'><span class='noscroll holder'><span class='noscroll topline'>No Alternatives</span></span></div>`);
     }
-    $('#myModal19').show();
+    $('#altChallengesModal').show();
     modalOutsideTime = Date.now();
 }
 
 // Switches active challenge to alt
-let checkOffAltChallenge = function(skill, chal) {
+let checkOffAltChallenge = function(skill, chal, originalChallenge) {
     chal = decodeQueryParam(chal);
+    originalChallenge = decodeQueryParam(originalChallenge);
     if (!altChallenges[skill]) {
         altChallenges[skill] = {};
     }
@@ -10507,7 +10969,7 @@ let checkOffAltChallenge = function(skill, chal) {
             altChallenges[skill][bit + ' BiS ' + globalValids[skill][chal].split(' BiS ')[1]] = chal;
         });
     } else {
-        !!chunkInfo['challenges'][skill][chal] && (altChallenges[skill][chunkInfo['challenges'][skill][chal]['Level']] = chal);
+        !!chunkInfo['challenges'][skill][originalChallenge] && (altChallenges[skill][chunkInfo['challenges'][skill][originalChallenge]['Level'] - (globalValidsBoosts.hasOwnProperty(skill) && globalValidsBoosts[skill].hasOwnProperty(originalChallenge) ? globalValidsBoosts[skill][originalChallenge] : 0)] = chal);
     }
     setupCurrentChallenges(tempChallengeArrSaved, false, true);
     setData();
@@ -10541,6 +11003,7 @@ let changeOverlayFilterBy = function() {
 // Shows overlay options
 let showOverlays = function(fromHelper) {
     if (!inEntry && !importMenuOpen && !manualModalOpen && !detailsModalOpen && !notesModalOpen && !highscoreMenuOpen && !helpMenuOpen) {
+        !fromHelper && modal.generate('mapOverlaysModal', onMobile);
         $('#map-marker-btn').hasClass('notice-me') && $('#map-marker-btn').removeClass('notice-me');
         onMobile && hideMobileMenu();
         overlaysModalOpen = true;
@@ -10568,7 +11031,7 @@ let showOverlays = function(fromHelper) {
                 $('#overlays-data').append(`<div class="overlay noscroll ${overlay.replaceAll(' ', '_') + '-overlay'}"><label class="radio noscroll"><span class="radio__input noscroll"><input type="radio" name="radio" ${(selectedOverlay === overlayText) ? "checked" : ''} class='noscroll' onclick="selectedOverlay='${overlayText}'; clearOverlayClues();"><span class="radio__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='currentColor' stroke='currentColor' d='M 12 12 m -7.5 0 a 7.5 7.5 90 1 0 15 0 a 7.5 7.5 90 1 0 -15 0' /></svg></span></span><span class="radio__label noscroll">${overlay === 'None' ? overlay : `<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(overlayLink)}" target="_blank">${overlay}</a>`}</span></label></div>`);
             }
         });
-        $('#myModal39').show();
+        $('#mapOverlaysModal').show();
         !fromHelper && (document.getElementById('overlays-data').scrollTop = 0);
         modalOutsideTime = Date.now();
     }
@@ -10612,6 +11075,14 @@ let openStickersMobile = function() {
     drawCanvas();
 }
 
+// Mobile paint helper
+let openPaintMobile = function() {
+    onMobile && hideMobileChunkMenu();
+    infoLockedId = -1;
+    openPaint(mobileChunkId);
+    drawCanvas();
+}
+
 // Shows mobile-only menu
 let showMobileMenu = function() {
     if (!inEntry && !importMenuOpen && !manualModalOpen && !detailsModalOpen && !notesModalOpen && !highscoreMenuOpen && !helpMenuOpen) {
@@ -10628,6 +11099,7 @@ let hideMobileMenu = function() {
 
 // Shows challenge notes
 let showNotes = function(challenge, skill, note) {
+    modal.generate('backlogNotesModal', onMobile);
     let baseChunkDataIn = baseChunkData;
     let detailsKeys = ['ItemsDetails', 'ObjectsDetails', 'MonstersDetails', 'NPCsDetails'];
     challenge = decodeQueryParam(challenge);
@@ -10690,7 +11162,7 @@ let showNotes = function(challenge, skill, note) {
                 }
                 $('#notes-data').append(`<div class="notes-row noscroll"><label class="radio noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "radio--disabled" : ''}"><span class="radio__input noscroll"><input type="radio" name="radio" class='noscroll' onclick="saveNotesData(` + "`" + type + "`, " + "`" + el + "`" + `)" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="radio__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='currentColor' stroke='currentColor' d='M 12 12 m -7.5 0 a 7.5 7.5 90 1 0 15 0 a 7.5 7.5 90 1 0 -15 0' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">${el}</b></span></label></div>`);
                 !!baseChunkDataIn[type][el] && Object.keys(baseChunkDataIn[type][el]).forEach((source) => {
-                    if (typeof baseChunkDataIn[type][el][source] === 'string' && baseChunkDataIn[type][el][source].includes('-drop')) {
+                    if (typeof baseChunkDataIn[type][el][source] === 'string' && baseChunkDataIn[type][el][source].includes('-drop') && !source.includes('*')) {
                         let shownSource = source;
                         if (shownSource.includes('|')) {
                             shownSource = shownSource.split('|')[1].charAt(0).toUpperCase() + shownSource.split('|')[1].slice(1);
@@ -10702,7 +11174,7 @@ let showNotes = function(challenge, skill, note) {
         });
     });
     notesModalOpen = true;
-    $('#myModal3').show();
+    $('#backlogNotesModal').show();
     $('#notes-data textarea').val(note).focus();
     saveNotesData('task', null);
     notesChallenge = challenge;
@@ -10741,7 +11213,7 @@ let submitFriend = function() {
 // Apply the given rule preset
 let applyPreset = function(preset) {
     presetWarningModalOpen = false;
-    $('#myModal5').hide();
+    $('#rulesPresetModal').remove();
     !!rulePresets && !!rulePresets[preset] && Object.keys(rules).forEach((rule) => {
         if (rule === 'Kill X Amount') {
             rules[rule] = rulePresets[preset][rule];
@@ -10762,39 +11234,44 @@ let applyPreset = function(preset) {
 
 // Shows warning modal for applying a preset
 let warnPreset = function(preset) {
+    modal.generate('rulesPresetModal', onMobile);
     $('#preset-data').empty();
     $('#preset-title').text('Apply the ' + preset + ' preset?');
     $('.specific-preset').text(preset);
     $('#preset-data').html('<div><div class="preset-cancel" onclick="applyPreset(``)">Cancel</div><div class="preset-proceed" onclick="applyPreset(`' + preset + '`)">Yes, proceed</div></div>');
     presetWarningModalOpen = true;
-    $('#myModal5').show();
+    $('#rulesPresetModal').show();
 }
 
 // Shows warning modal for exiting sandbox mode
 let warnExitSandbox = function() {
+    modal.generate('exitSandboxWarningModal', onMobile);
     exitSandboxWarningModalOpen = true;
-    $('#myModal40').show();
+    $('#exitSandboxWarningModal').show();
 }
 
 // Shows warning modal for picking a chunk
 let warnPickChunk = function(both) {
+    modal.generate('rollWarningModal', onMobile);
     pickChunkWarningModalOpen = true;
     $('.rollwarning-proceed').attr('onClick', `pickCanvas(${both}, true)`);
-    $('#myModal41').show();
+    $('#rollWarningModal').show();
 }
 
 // Shows warning modal for rolling 2 chunks
 let warnRoll2Chunk = function() {
+    modal.generate('roll2WarningModal', onMobile);
     roll2ChunkWarningModalOpen = true;
     $('.roll2warning-proceed').attr('onClick', `roll2Canvas(true)`);
-    $('#myModal44').show();
+    $('#roll2WarningModal').show();
 }
 
 // Shows import rules modal
 let importRules = function() {
+    modal.generate('rulesImportModal', onMobile);
     $('.rules-import-error').hide();
     $('.rules-input').val('');
-    $('#myModal45').show();
+    $('#rulesImportModal').show();
 }
 
 // Applies imported rules
@@ -10808,12 +11285,12 @@ let applyImportRules = function(proceed) {
             });
             showRules();
             checkOffRules();
-            $('#myModal45').hide();
+            $('#rulesImportModal').remove();
         } catch (error) {
             $('.rules-import-error').show();
         }
     } else {
-        $('#myModal45').hide();
+        $('#rulesImportModal').remove();
     }
 }
 
@@ -10866,6 +11343,7 @@ let searchRules = function() {
 // Shows chunk rules
 let showRules = function(isPage2) {
     if (!inEntry && !importMenuOpen && !manualModalOpen && !detailsModalOpen && !notesModalOpen && !highscoreMenuOpen && !helpMenuOpen) {
+        modal.generate('rulesModal', onMobile);
         rulesModalOpen = true;
         if (onMobile) {
             toggleRulesPanel(Object.keys(rulesPanelVis).filter(panel => { return rulesPanelVis[panel] })[0]);
@@ -10932,13 +11410,13 @@ let showRules = function(isPage2) {
             });
         }
         if (isPage2) {
-            $('.intro-category, .presets-category, #rules-presets, .show-rule-details-btn, .intro-subcategory, .presets-subcategory, .rules-import-btn').hide();
+            $('.intro-category, .presets-category, #rules-presets, .show-rule-details-btn, .intro-subcategory, .presets-subcategory, .rules-import-btn, .bottom-spacing').hide();
             $('.rules-main-header, .rule-key, .rule-search, .rule-minicategory, #rules-data > .accordion, .rules-names, .rules-content').show();
             !onMobile && $('#rules-data > .accordion, #rules-data > .panel').hide();
             onMobile && $('.rules-names, .rules-content').hide();
             $('.rules-subdata').addClass('page2');
         } else {
-            $('.intro-category, .presets-category, #rules-presets, .show-rule-details-btn, .intro-subcategory, .presets-subcategory, .rules-import-btn').show();
+            $('.intro-category, .presets-category, #rules-presets, .show-rule-details-btn, .intro-subcategory, .presets-subcategory, .rules-import-btn, .bottom-spacing').show();
             $('.rules-main-header, .rule-key, .rule-search, .rule-minicategory, #rules-data > .accordion, .rules-names, .rules-content').hide();
             !onMobile && $('#rules-data > .accordion, #rules-data > .panel').hide();
             onMobile && $('.rules-names, .rules-content').hide();
@@ -10952,13 +11430,14 @@ let showRules = function(isPage2) {
             let tooltipTarget = onMobile ? $(`.rules-data > div:not(.rules-content) .${tooltipTargetSelector}`) : $(`.rules-data > .rules-content .${tooltipTargetSelector}`);
             tooltipTarget.html(tooltip.generate(tooltipTargetSelector, '<i class="fa-solid fa-question-circle question-help"></i>', tooltipTargetSelector, onMobile ? 'bottom' : 'right'));
         });
-        $('#myModal4').show();
+        $('#rulesModal').show();
         modalOutsideTime = Date.now();
     }
 }
 
 // Shows settings details
 let showSettings = function(keepSettingsClosed) {
+    modal.generate('settingsModal', onMobile);
     onMobile && hideMobileMenu();
     settingsModalOpen = true;
     $('#settings-data').empty();
@@ -11022,7 +11501,7 @@ let showSettings = function(keepSettingsClosed) {
         });
     });
     checkOffSettings(false, 'startup');
-    $('#myModal7').show();
+    $('#settingsModal').show();
     document.getElementById('settings-data').scrollTop = 0;
     modalOutsideTime = Date.now();
     !keepSettingsClosed && settingsMenu();
@@ -11126,6 +11605,7 @@ let changeDefaultChunkinfo = function() {
 // Shows chunk history
 let showChunkHistory = function() {
     if (!inEntry && !importMenuOpen && !manualModalOpen && !detailsModalOpen && !notesModalOpen && !highscoreMenuOpen && !helpMenuOpen) {
+        modal.generate('chunkHistoryModal', onMobile);
         onMobile && hideMobileMenu();
         chunkHistoryModalOpen = true;
         $('#chunkhistory-data-inner').empty();
@@ -11159,31 +11639,31 @@ let showChunkHistory = function() {
             $('.canvas-graph-outer').show();
             let canvasGraph = document.getElementById('canvas-graph');
             let ctxGraph = canvasGraph.getContext('2d');
-            let padding = 35;
+            let padding = [60, 35, 35, 60]; // top, right, bottom, left
             ctxGraph.fillStyle = "white";
             ctxGraph.fillRect(0, 0, canvasGraph.width, canvasGraph.height);
             let startingWidth = Object.keys(chunkOrder).sort(function(a, b) { return a - b })[0];
             let fullWidth = Date.now() - Object.keys(chunkOrder).sort(function(a, b) { return a - b })[0];
             let fullHeight = Object.keys(newChunkOrder).length * 1.1;
             let count = 0;
-            let prevY = canvasGraph.height - padding - 2;
+            let prevY = canvasGraph.height - padding[2] - 2;
             ctxGraph.beginPath();
             ctxGraph.strokeStyle = 'black';
             ctxGraph.lineWidth = 3;
-            ctxGraph.moveTo(padding, padding);
-            ctxGraph.lineTo(padding, canvasGraph.height - padding);
-            ctxGraph.lineTo(canvasGraph.width - padding, canvasGraph.height - padding);
+            ctxGraph.moveTo(padding[3], padding[0]);
+            ctxGraph.lineTo(padding[3], canvasGraph.height - padding[2]);
+            ctxGraph.lineTo(canvasGraph.width - padding[1], canvasGraph.height - padding[2]);
             ctxGraph.stroke();
             ctxGraph.beginPath();
             ctxGraph.strokeStyle = "grey";
             ctxGraph.lineWidth = 1;
             for (let lineNum = 1; lineNum <= 3; lineNum++) {
-                ctxGraph.moveTo(padding, canvasGraph.height - padding - ((canvasGraph.height - padding * 2) * (Math.floor(fullHeight / 3) * lineNum / fullHeight)));
-                ctxGraph.lineTo(canvasGraph.width - padding, canvasGraph.height - padding - ((canvasGraph.height - padding * 2) * (Math.floor(fullHeight / 3) * lineNum / fullHeight)));
+                ctxGraph.moveTo(padding[3], canvasGraph.height - padding[2] - ((canvasGraph.height - (padding[0] + padding[2])) * (Math.floor(fullHeight / 3) * lineNum / fullHeight)));
+                ctxGraph.lineTo(canvasGraph.width - padding[1], canvasGraph.height - padding[2] - ((canvasGraph.height - (padding[0] + padding[2])) * (Math.floor(fullHeight / 3) * lineNum / fullHeight)));
             }
             for (let lineNum = 0; lineNum <= 5; lineNum++) {
-                ctxGraph.moveTo(canvasGraph.width - padding - ((canvasGraph.width - padding * 2) * (Math.floor(fullWidth / 6) * lineNum / fullWidth)), padding);
-                ctxGraph.lineTo(canvasGraph.width - padding - ((canvasGraph.width - padding * 2) * (Math.floor(fullWidth / 6) * lineNum / fullWidth)), canvasGraph.height - padding);
+                ctxGraph.moveTo(canvasGraph.width - padding[1] - ((canvasGraph.width - (padding[1] + padding[3])) * (Math.floor(fullWidth / 6) * lineNum / fullWidth)), padding[0]);
+                ctxGraph.lineTo(canvasGraph.width - padding[1] - ((canvasGraph.width - (padding[1] + padding[3])) * (Math.floor(fullWidth / 6) * lineNum / fullWidth)), canvasGraph.height - padding[2]);
             }
             ctxGraph.stroke();
             ctxGraph.font = '16px Calibri, Roboto Condensed, sans-serif';
@@ -11191,29 +11671,38 @@ let showChunkHistory = function() {
             ctxGraph.textAlign = "right";
             let offset = Object.keys(tempChunks['unlocked']).length - Object.keys(newChunkOrder).length;
             for (let lineNum = 0; lineNum <= 3; lineNum++) {
-                ctxGraph.fillText(Math.floor(fullHeight / 3) * lineNum + offset, padding - 5, canvasGraph.height - padding + 4 - ((canvasGraph.height - padding * 2) * (Math.floor(fullHeight / 3) * lineNum / fullHeight)));
+                ctxGraph.fillText(Math.floor(fullHeight / 3) * lineNum + offset, padding[3] - 5, canvasGraph.height - padding[2] + 4 - ((canvasGraph.height - (padding[0] + padding[2])) * (Math.floor(fullHeight / 3) * lineNum / fullHeight)));
             }
             ctxGraph.textAlign = 'center';
             for (let lineNum = 1; lineNum <= 6; lineNum++) {
                 let tempDate = new Date();
                 tempDate.setTime(parseInt(startingWidth) + (Math.floor(fullWidth / 6) * lineNum));
-                ctxGraph.fillText(tempDate.toDateString().split(' ')[1] + ' ' + tempDate.toDateString().split(' ')[2], padding + ((canvasGraph.width - padding * 2) * (Math.floor(fullWidth / 6) * lineNum / fullWidth)), canvasGraph.height - 20);
+                ctxGraph.fillText(tempDate.toDateString().split(' ')[1] + ' ' + tempDate.toDateString().split(' ')[2], padding[3] + ((canvasGraph.width - (padding[1] + padding[3])) * (Math.floor(fullWidth / 6) * lineNum / fullWidth)), canvasGraph.height - padding[2] + 15);
+                ctxGraph.fillText(tempDate.toDateString().split(' ')[3], padding[3] + ((canvasGraph.width - (padding[1] + padding[3])) * (Math.floor(fullWidth / 6) * lineNum / fullWidth)), canvasGraph.height - padding[2] + 30);
             }
+            ctxGraph.font = '18px Calibri, Roboto Condensed, sans-serif';
+            ctxGraph.save();
+            ctxGraph.translate(15, canvasGraph.height / 2);
+            ctxGraph.rotate(Math.PI/2);
+            ctxGraph.fillText('Total Unlocked Chunks', 0, 0);
+            ctxGraph.restore();
+            ctxGraph.font = '24px Calibri, Roboto Condensed, sans-serif';
+            ctxGraph.fillText('Total Unlocked Chunks vs Time', canvasGraph.width / 2, 25);
             ctxGraph.beginPath();
             ctxGraph.strokeStyle = "rgb(66, 133, 244)";
             ctxGraph.lineWidth = 3;
-            ctxGraph.moveTo((((Object.keys(chunkOrder).sort(function(a, b) { return a - b })[0] - startingWidth) / fullWidth) * canvasGraph.width) + padding + 3, prevY);
+            ctxGraph.moveTo((((Object.keys(chunkOrder).sort(function(a, b) { return a - b })[0] - startingWidth) / fullWidth) * canvasGraph.width) + padding[3] + 3, prevY);
             newChunkOrder = {};
             Object.keys(chunkOrder).sort(function(a, b) { return a - b }).forEach((time) => {
                 if (!newChunkOrder.hasOwnProperty(chunkOrder[time]) && tempChunks['unlocked'].hasOwnProperty(chunkOrder[time])) {
                     newChunkOrder[chunkOrder[time]] = time;
                     count++;
-                    ctxGraph.lineTo((((time - startingWidth) / fullWidth) * (canvasGraph.width - (padding * 2) - 3)) + padding + 3, prevY);
-                    ctxGraph.lineTo((((time - startingWidth) / fullWidth) * (canvasGraph.width - (padding * 2) - 3)) + padding + 3, (canvasGraph.height - ((count / fullHeight) * (canvasGraph.height - (padding * 2) - 2))) - padding - 2);
-                    prevY = (canvasGraph.height - ((count / fullHeight) * (canvasGraph.height - (padding * 2) - 2))) - padding - 2;
+                    ctxGraph.lineTo((((time - startingWidth) / fullWidth) * (canvasGraph.width - (padding[1] + padding[3]) - 3)) + padding[3] + 3, prevY);
+                    ctxGraph.lineTo((((time - startingWidth) / fullWidth) * (canvasGraph.width - (padding[1] + padding[3]) - 3)) + padding[3] + 3, (canvasGraph.height - ((count / fullHeight) * (canvasGraph.height - (padding[0] + padding[2]) - 2))) - padding[2] - 2);
+                    prevY = (canvasGraph.height - ((count / fullHeight) * (canvasGraph.height - (padding[0] + padding[2]) - 2))) - padding[2] - 2;
                 }
             });
-            ctxGraph.lineTo((((Date.now() - startingWidth) / fullWidth) * (canvasGraph.width - (padding * 2) - 3)) + padding + 3, prevY);
+            ctxGraph.lineTo((((Date.now() - startingWidth) / fullWidth) * (canvasGraph.width - (padding[1] + padding[3]) - 3)) + padding[3] + 3, prevY);
             ctxGraph.stroke();
             let numDays = Math.round((((fullWidth / Object.keys(newChunkOrder).length) / (1000 * 3600 * 24)) + Number.EPSILON) * 100) / 100;
             $('.average-rolltime-title').show().text(`Average time between chunk rolls: ${numDays} days`);
@@ -11221,7 +11710,7 @@ let showChunkHistory = function() {
             $('.canvas-graph-outer').hide();
             $('.average-rolltime-title').hide().text('');
         }
-        $('#myModal18').show();
+        $('#chunkHistoryModal').show();
         document.getElementById('chunkhistory-data').scrollTop = 0;
         modalOutsideTime = Date.now();
     }
@@ -11527,14 +12016,23 @@ let checkOffChallenge = function(skill, line, skip) {
         if (!skip) {
             $('.panel-active .challenge:has(input:checked)').addClass('hide-backlog');
             $('.panel-active .challenge:not(:has(input:checked))').removeClass('hide-backlog');
-            Object.keys(activeSubTabs).forEach((subTab) => {
-                settings['hideChecked'] && actuallyHideChecked && $('.challenge.' + subTab + '-challenge').filter($(':not(.hide-backlog)')).length === 0 ? $('.marker-' + subTab).addClass('hide-marker') : $('.marker-' + subTab).removeClass('hide-marker');
-            });
             setupCurrentChallenges(tempChallengeArrSaved, true);
             changeChallengeColor();
             setData();
             setTaskNum();
-            toggleHiddenTasks(settings['hideChecked'] && actuallyHideChecked);
+            let challengeLine;
+            let subTabs = [];
+            if (skillNames.includes(skill)) {
+                challengeLine = $('.' + skill + '-challenge');
+                subTabs.push('skill');
+            } else {
+                challengeLine = $('.' + skill + '-' + line.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge');
+                subTabs.push(skill.toLowerCase());
+                if (skill === 'Extra' && $(challengeLine).attr("class").split(/\s+/).filter((className) => className.includes('AllDroptables-') || className.includes('AllShops-')).length > 0) {
+                    subTabs.push($(challengeLine).attr("class").split(/\s+/).filter((className) => className.includes('AllDroptables-') || className.includes('AllShops-'))[0].split('-challenge')[0]);
+                }
+            }
+            toggleHiddenTasks(settings['hideChecked'] && actuallyHideChecked, false, subTabs);
             searchActiveTasksFunc();
         }
     }
@@ -11690,7 +12188,7 @@ let getQuestInfo = function(quest) {
     });
     questChunks = [];
     chunkInfo['quests'][quest].split(', ').forEach((chunkId) => {
-        if (chunkId.match(/^[0-9]+(-[0-9]+)$/g)) {
+        if (chunkId.match(/^[0-9]+-(W)?[0-9]+$/g)) {
             chunkId = chunkId.split('-')[0];
         }
         let chunkName = chunkId;
@@ -11703,7 +12201,7 @@ let getQuestInfo = function(quest) {
         } else if (chunksPlus[chunkName.split('[+]')[0] + '[+]']) {
             $('.panel-questdata').append(`<b class="noscroll"><div class="noscroll"><i class='noscroll'>Any ${chunkName.split('[+]x')[1] || 1} of:</i></div></b>`);
             chunksPlus[chunkName.split('[+]')[0] + '[+]'].forEach((plus) => {
-                if (plus.match(/^[0-9]+(-[0-9]+)$/g)) {
+                if (plus.match(/^[0-9]+-(W)?[0-9]+$/g)) {
                     plus = plus.split('-')[0];
                 }
                 let abovegroundPlus = false;
@@ -11976,8 +12474,8 @@ let preloadChunkImages = async function(elArr) {
     let xCoord;
     let yCoord;
     !!elArr && elArr.forEach((chunkId) => {
-        xCoord = Math.floor(parseInt(chunkId) / 256) - 15;
-        yCoord = 65 - (parseInt(chunkId) % 256);
+        xCoord = Math.floor(parseInt(chunkId) / 256) - 14;
+        yCoord = 66 - (parseInt(chunkId) % 256);
         imgs.push('./resources/chunk_images/row-' + yCoord + '-column-' + xCoord + '.png');
     });
     await preloadImages(imgs);
@@ -12130,6 +12628,10 @@ let loadData = async function(startup) {
         if (settingsTemp['topButtons'] === undefined) {
             settingsTemp['topButtons'] = true;
         }
+
+        if (!settingsTemp.hasOwnProperty('optOutSectionsWater')) {
+            settingsTemp['optOutSectionsWater'] = settingsTemp.hasOwnProperty('optOutSections') ? settingsTemp['optOutSections'] : false;
+        }
         
         (!settingsTemp['mapIntro'] || (!settingsTemp['startingChunk'] || settingsTemp['startingChunk'] === '0000' || settingsTemp['startingChunk'] === '00000')) && (mapIntroOpenSoon = true);
         justStartingChunkSet = (settingsTemp['mapIntro'] && (!settingsTemp['startingChunk'] || settingsTemp['startingChunk'] === '0000' || settingsTemp['startingChunk'] === '00000'));
@@ -12248,6 +12750,7 @@ let loadData = async function(startup) {
         stickered = (chunks ? chunks['stickered'] : {}) || {};
         stickeredNotes = (chunks ? chunks['stickeredNotes'] : {}) || {};
         stickeredColors = (chunks ? chunks['stickeredColors'] : {}) || {};
+        painted = (chunks ? chunks['painted'] : {}) || {};
         mid === roll5Mid && $('.roll2').text('Roll 5');
         if (isPicking && !settings['randomStartAlways']) {
             $('.pick').text('Pick for me');
@@ -12440,7 +12943,7 @@ let loadData = async function(startup) {
         }
 
         if (!rulesTemp.hasOwnProperty('Partial Products')) {
-            rulesTemp['Partial Products'] = rulesTemp.hasOwnProperty('Highest Level') ? rulesTemp['Highest Level'] : false;
+            rulesTemp['Partial Products'] = rulesTemp.hasOwnProperty('Skilling Pets') ? rulesTemp['Skilling Pets'] : false;
         }
 
         if (!rulesTemp.hasOwnProperty('Additional Money Unlockables')) {
@@ -12455,6 +12958,18 @@ let loadData = async function(startup) {
             rulesTemp['Kill X Boss'] = rulesTemp.hasOwnProperty('Kill X') ? rulesTemp['Kill X'] : false;
         }
 
+        if (!rulesTemp.hasOwnProperty('Sail Trimming')) {
+            rulesTemp['Sail Trimming'] = rulesTemp.hasOwnProperty('Skillcape') ? rulesTemp['Skillcape'] : false;
+        }
+
+        if (!rulesTemp.hasOwnProperty('Crewmates')) {
+            rulesTemp['Crewmates'] = true;
+        }
+
+        if (!rulesTemp.hasOwnProperty('Sea Charting')) {
+            rulesTemp['Sea Charting'] = rulesTemp.hasOwnProperty('Show Diary Tasks') ? rulesTemp['Show Diary Tasks'] && (rulesTemp['Fossil Island Tasks'] || rulesTemp['Combat Diary Tasks'] || rulesTemp['Crewmates'] || rulesTemp['Sail Trimming'] || rulesTemp['Money Unlockables']) : false;
+        }
+
         !!rulesTemp && Object.keys(rulesTemp).forEach((rule) => {
             rules[rule] = rulesTemp[rule];
         });
@@ -12464,6 +12979,13 @@ let loadData = async function(startup) {
             rules['Manually Complete Tasks'] && !viewOnly && !inEntry && !locked ? $('.open-complete-container').css('opacity', 1).show() : $('.open-complete-container').css('opacity', 0).hide();
         }
         questFilterType = 'all';
+        !initialLoaded && chunkTasksOn && setupCurrentChallengesFromSaved();
+    });
+    myRef.child('activeSubTabs').once('value', function(snap) {
+        if (!!snap.val()) {
+            activeSubTabs = snap.val();
+            toggleHiddenTasks();
+        }
     });
     myRef.child('uid').once('value', function(snap) {
         if (!chunkOrder || chunkOrder.length === 0) {
@@ -12698,6 +13220,7 @@ let setData = function() {
             'shiftUnlock': settings['shiftUnlock'],
             rollWarning: settings['rollWarning'],
             optOutSections: settings['optOutSections'],
+            optOutSectionsWater: settings['optOutSectionsWater'],
             info: chunkInfoOn,
             'rollingChunksOptions': settings['rollingChunksOptions'],
             'defaultChunkinfo': settings['defaultChunkinfo'],
@@ -12731,8 +13254,10 @@ let setData = function() {
             blacklisted: blacklistedJson,
             stickered,
             stickeredNotes: encodeObject(stickeredNotes, true),
-            stickeredColors
+            stickeredColors,
+            painted
         },
+        activeSubTabs,
     };
     let databaseObject = JSON.parse(JSON.stringify(setSnap));
     delete databaseObject['chunkOrder'];
@@ -12850,7 +13375,7 @@ let changeLocked = function() {
                 firebase.auth().signInWithEmailAndPassword('sourcechunk+' + mid + '@yandex.com', savedPin + mid).then((userCredential) => {
                     signedIn = true;
                     $('.center').css('margin-top', '15px');
-                    $('.lock-opened, .pick, #toggleNeighbors, #toggleRemove, .toggleNeighbors.text, .toggleRemove.text, .import, .pinchange, .toggleNeighbors, .toggleRemove, .roll2toggle, .unpicktoggle, .recenttoggle, .taskstoggle, .highscoretoggle, .settingstoggle, .friendslist, .blacklist-mobile, .open-sticker-mobile').css('opacity', 0).show();
+                    $('.lock-opened, .pick, #toggleNeighbors, #toggleRemove, .toggleNeighbors.text, .toggleRemove.text, .import, .pinchange, .toggleNeighbors, .toggleRemove, .roll2toggle, .unpicktoggle, .recenttoggle, .taskstoggle, .highscoretoggle, .settingstoggle, .friendslist, .blacklist-mobile, .open-sticker-mobile, .open-paint-mobile').css('opacity', 0).show();
                     roll2On && $('.roll2').css('opacity', 0).show();
                     !isPicking && unpickOn && $('.unpick').css('opacity', 0).show();
                     $('.open-manual-outer-container').css('opacity', 0).show();
@@ -12866,7 +13391,7 @@ let changeLocked = function() {
                     });
                     setTimeout(function() {
                         $('.lock-box').css('opacity', 1).hide();
-                        $('.lock-opened, .pick, #toggleNeighbors, #toggleRemove, .toggleNeighbors.text, .toggleRemove.text, .import, .pinchange, .toggleNeighbors, .toggleRemove, .roll2toggle, .unpicktoggle, .recenttoggle, .taskstoggle, .highscoretoggle, .settingstoggle, .friendslist, .blacklist-mobile, .open-sticker-mobile').animate({ 'opacity': 1 });
+                        $('.lock-opened, .pick, #toggleNeighbors, #toggleRemove, .toggleNeighbors.text, .toggleRemove.text, .import, .pinchange, .toggleNeighbors, .toggleRemove, .roll2toggle, .unpicktoggle, .recenttoggle, .taskstoggle, .highscoretoggle, .settingstoggle, .friendslist, .blacklist-mobile, .open-sticker-mobile, .open-paint-mobile').animate({ 'opacity': 1 });
                         roll2On && $('.roll2').animate({ 'opacity': 1 });
                         !isPicking && unpickOn && $('.unpick').animate({ 'opacity': 1 });
                         $('.open-manual-outer-container').animate({ 'opacity': 1 });
@@ -12909,7 +13434,7 @@ let changeLocked = function() {
                             });
                             databaseRef.child('mapCreationTimes/' + mid).set(new Date(userCredential.user.metadata.creationTime).getTime());
                             $('.center').css('margin-top', '15px');
-                            $('.lock-opened, .pick, #toggleNeighbors, #toggleRemove, .toggleNeighbors.text, .toggleRemove.text, .import, .pinchange, .toggleNeighbors, .toggleRemove, .roll2toggle, .unpicktoggle, .recenttoggle, .taskstoggle, .highscoretoggle, .settingstoggle, .friendslist, .blacklist-mobile, .open-sticker-mobile').css('opacity', 0).show();
+                            $('.lock-opened, .pick, #toggleNeighbors, #toggleRemove, .toggleNeighbors.text, .toggleRemove.text, .import, .pinchange, .toggleNeighbors, .toggleRemove, .roll2toggle, .unpicktoggle, .recenttoggle, .taskstoggle, .highscoretoggle, .settingstoggle, .friendslist, .blacklist-mobile, .open-sticker-mobile, .open-paint-mobile').css('opacity', 0).show();
                             roll2On && $('.roll2').css('opacity', 0).show();
                             !isPicking && unpickOn && $('.unpick').css('opacity', 0).show();
                             $('.open-manual-outer-container').css('opacity', 0).show();
@@ -12918,7 +13443,7 @@ let changeLocked = function() {
                             $('.lock-box').animate({ 'opacity': 0 });
                             setTimeout(function() {
                                 $('.lock-box').css('opacity', 1).hide();
-                                $('.lock-opened, .pick, #toggleNeighbors, #toggleRemove, .toggleNeighbors.text, .toggleRemove.text, .import, .pinchange, .toggleNeighbors, .toggleRemove, .roll2toggle, .unpicktoggle, .recenttoggle, .taskstoggle, .highscoretoggle, .settingstoggle, .friendslist, .blacklist-mobile, .open-sticker-mobile').animate({ 'opacity': 1 });
+                                $('.lock-opened, .pick, #toggleNeighbors, #toggleRemove, .toggleNeighbors.text, .toggleRemove.text, .import, .pinchange, .toggleNeighbors, .toggleRemove, .roll2toggle, .unpicktoggle, .recenttoggle, .taskstoggle, .highscoretoggle, .settingstoggle, .friendslist, .blacklist-mobile, .open-sticker-mobile, .open-paint-mobile').animate({ 'opacity': 1 });
                                 roll2On && $('.roll2').animate({ 'opacity': 1 });
                                 !isPicking && unpickOn && $('.unpick').animate({ 'opacity': 1 });
                                 $('.open-manual-outer-container').animate({ 'opacity': 1 });

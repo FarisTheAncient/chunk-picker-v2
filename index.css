@@ -809,58 +809,6 @@ button.menu2 {
     cursor: not-allowed;
 }
 
-.username {
-    margin-top: 25px;
-    font-size: 2vw;
-    border: solid;
-    border-width: 1px;
-}
-
-#highscoreoptin {
-    border: 2px solid rgb(50, 50, 150);
-    background-color: var(--colorLink);
-    color: white;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    height: 4vw;
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-around;
-    line-height: .75vw;
-}
-
-#highscoreoptin:hover {
-    background-color: rgb(75, 75, 225);
-}
-
-#highscoreoptin:disabled {
-    border: 2px solid var(--color8);
-    background-color: rgb(225, 225, 225);
-    color: var(--colorText);
-    cursor: not-allowed;
-}
-
-#populateButton {
-    text-decoration: none;
-}
-
-#highscoreoptin2 {
-    border: 2px solid rgb(50, 50, 150);
-    background-color: var(--colorLink);
-    color: white;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    height: 4vw;
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-around;
-    line-height: .75vw;
-}
-
-#highscoreoptin2:hover {
-    background-color: rgb(75, 75, 225);
-}
-
 .highest {
     background-color: rgb(255, 50, 150);
     width: min(8vw, 125px);
@@ -2631,6 +2579,7 @@ input#searchPlayerMaps {
 
 .rules-content .panel.visible {
     max-height: 100%;
+    padding-bottom: 0;
 }
 
 .menu8 .panel.visible {
@@ -2715,7 +2664,13 @@ input#searchPlayerMaps {
 .arrow {
     font-weight: bold;
     cursor: pointer;
-    color: #2d2d79;
+    transition: color .5s;
+    margin-left: 5px;
+    pointer-events: all;
+}
+
+.arrow:hover {
+    color: gray;
 }
 
 .burger {
@@ -2915,7 +2870,7 @@ input#searchPlayerMaps {
     padding: 8px;
 }
 
-#myModal43.mobile .section-help {
+#chunkSectionPickerModal.mobile .section-help {
     display: none;
 }
 
@@ -3097,13 +3052,13 @@ label .tooltip-base-el:active {
 .highlightAllQuest > span {
     font-size: 14px;
     cursor: pointer;
-    color: rgb(61, 61, 61);
+    color: var(--colorTextAlt);
     transition: color .5s;
     text-decoration: underline;
 }
 
 .highlightAllQuest >span:hover {
-    color: var(--colorText);
+    color: var(--colorLink);
 }
 
 .modal {
@@ -3136,6 +3091,8 @@ label .tooltip-base-el:active {
     width: 45%;
     height: 30%;
     border: solid black;
+    display: flex;
+    flex-direction: column;
 }
 
 .modal .topbar {
@@ -3147,20 +3104,20 @@ label .tooltip-base-el:active {
     -webkit-box-sizing: border-box;
 }
 
-#myModal2 > .modal-content.noscroll {
+#challengeDetailsModal > .modal-content.noscroll {
     height: 42%;
 }
 
-#myModal3 > .modal-content.noscroll {
+#backlogNotesModal > .modal-content.noscroll {
     height: 55%;
     width: 35%;
 }
 
-#myModal4:not(.mobile) {
+#rulesModal:not(.mobile) {
     padding-top:16vh !important;
 }
 
-#myModal4 > .modal-content {
+#rulesModal > .modal-content {
     height: 60%;
     width: 55%;
     background-color: var(--color1);
@@ -3171,163 +3128,162 @@ label .tooltip-base-el:active {
     height: 25%;
 }
 
-#myModal > .modal-content {
+#manualTasksModal > .modal-content {
     height: 60%;
     width: 45%;
 }
 
-#myModal48 > .modal-content {
+#userTasksListModal > .modal-content {
     height: 60%;
     width: 45%;
 }
 
-#myModal8 > .modal-content {
-    height: 25%;
-    width: 25%;
-    margin-top: 1.5%;
-}
-
-#myModal10 > .modal-content {
+#searchModal > .modal-content {
     height: 50%;
     width: 35%;
 }
 
-#myModal11 > .modal-content {
+#searchDetailsModal > .modal-content {
     margin-top: -2.5%;
     width: 30%;
     height: 40%;
 }
 
-#myModal12 > .modal-content {
+#highestModal > .modal-content {
     height: 67%;
     width: 45%;
     margin-top: -5%;
 }
 
-#myModal50 > .modal-content {
+#slotUpgradeModal > .modal-content {
     height: 85%;
     width: 45%;
     margin-top: -10%;
 }
 
-#myModal12_2 > .modal-content {
+#highest2Modal > .modal-content {
     height: 67%;
     width: 45%;
     margin-top: -5%;
 }
 
-#myModal13 > .modal-content {
+#methodsModal > .modal-content {
     height: 55%;
     width: 35%;
     margin-top: -2.5%;
 }
 
-#myModal14 > .modal-content {
+#manualCompleteModal > .modal-content {
     height: 25%;
     width: 25%;
     margin-top: 1.5%;
 }
 
-#myModal15 > .modal-content {
+#addEquipmentModal > .modal-content {
     height: 60%;
     width: 40%;
     margin-top: -2.5%;
 }
 
-#myModal16 > .modal-content {
+#stickerModal > .modal-content {
     height: 50%;
     width: 35%;
 }
 
-#myModal30 > .modal-content {
+#paintModal > .modal-content {
+    height: 50%;
+    width: 35%;
+}
+
+#xpRewardModal > .modal-content {
     height: 40%;
     width: 35%;
 }
 
-#myModal29 > .modal-content {
+#introModal > .modal-content {
     height: 66%;
     width: 35%;
     margin-top: -2.5%;
 }
 
-#myModal17 > .modal-content {
+#backlogSourcesModal > .modal-content {
     height: 60%;
     width: 40%;
     margin-top: -2.5%;
 }
 
-#myModal18:not(.mobile), #myModal46:not(.mobile) {
+#chunkHistoryModal:not(.mobile), #customizeTopbarModal:not(.mobile) {
     padding-top: 16vh !important;
 }
 
-#myModal18 > .modal-content, #myModal46 > .modal-content {
+#chunkHistoryModal > .modal-content, #customizeTopbarModal > .modal-content {
     height: 60%;
     width: 45%;
     background-color: var(--color1);
     color: var(--colorText);
 }
 
-#myModal18 > .modal-content:not(.mobile), #myModal46 > .modal-content:not(.mobile) {
+#chunkHistoryModal:not(.mobile) > .modal-content, #customizeTopbarModal:not(.mobile) > .modal-content {
     min-width: 650px;
 }
 
-#myModal26:not(.mobile) {
+#friendsListModal:not(.mobile) {
     padding-top: 16vh !important;
 }
 
-#myModal26 > .modal-content {
+#friendsListModal > .modal-content {
     height: 60%;
     width: 45%;
     background-color: var(--color1);
     color: var(--colorText);
 }
 
-#myModal21 > .modal-content {
+#manuallyAddStuffModal > .modal-content {
     height: 60%;
     width: 40%;
     margin-top: -2.5%;
 }
 
-#myModal23 > .modal-content {
+#fancyRollModal > .modal-content {
     height: 70%;
     width: 40%;
     margin-top: -5%;
 }
 
-#myModal31 > .modal-content {
+#manualAreasModal > .modal-content {
     height: 60%;
     width: 45%;
     background-color: var(--color1);
     color: var(--colorText);
 }
 
-#myModal42 > .modal-content {
+#chunkSectionsModal > .modal-content {
     height: 60%;
     width: 45%;
     background-color: var(--color1);
     color: var(--colorText);
 }
 
-#myModal43 > .modal-content {
+#chunkSectionPickerModal > .modal-content {
     height: 60%;
     width: 45%;
     background-color: var(--color1);
     color: var(--colorText);
 }
 
-#myModal32 > .modal-content {
+#slayerMasterInfoModal > .modal-content {
     margin-top: -4.5%;
     width: 30%;
     height: 65%;
 }
 
-#myModal33 > .modal-content {
+#doableClueStepsModal > .modal-content {
     margin-top: -4.5%;
     width: 40%;
     height: 65%;
 }
 
-#myModal34 > .modal-content {
+#clueChunksModal > .modal-content {
     margin-top: -4.5%;
     width: 40%;
     height: 65%;
@@ -3538,6 +3494,7 @@ label .tooltip-base-el:active {
     text-decoration: underline;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
+    word-break: break-word;
 }
 
 .open-monsters:hover {
@@ -3753,10 +3710,7 @@ label .tooltip-base-el:active {
 
 .details-title {
     font-size: 2.6vh;
-    padding-left: 10px;
-    max-height: 20%;
-    min-height: 20%;
-    overflow-y: hidden;
+    padding: 5px 10px;
 }
 
 .details-title .external-info-link i {
@@ -3768,13 +3722,15 @@ label .tooltip-base-el:active {
 }
 
 .details-subtitle {
-    text-transform: capitalize;
     font-size: 20px;
 }
 
+.details-subtitle:not(.details-description) {
+    text-transform: capitalize;
+}
+
 .details-data {
-    overflow-y: scroll;
-    height: 73%;
+    overflow-y: auto;
     padding-left: 10px;
 }
 
@@ -3830,18 +3786,20 @@ label .tooltip-base-el:active {
     pointer-events: all;
 }
 
+#mapOverlaysModal > .modal-content {
+    height: 40%;
+}
+
 .overlays-title {
     font-size: min(10vw, 40px);
     padding-left: 10px;
-    max-height: 20%;
-    min-height: 20%;
     text-align: center;
     font-weight: bold;
     overflow-y: hidden;
 }
 
-.mobile .overlays-title .overlays-title-checkbox {
-    top: 100px;
+.overlays-title-checkbox {
+    margin: 5px 10px;
 }
 
 .overlays-title .overlays-title-checkbox {
@@ -3914,16 +3872,15 @@ label .tooltip-base-el:active {
 .notes-title {
     font-size: min(6vw, 28px);
     padding: 0px 10px;
-    height: 20%;
-    overflow-y: hidden;
     text-align: center;
+    border-bottom: solid 1px;
 }
 
 .notes-data {
-    height: 67%;
     overflow-y: auto;
-    padding: 0px 20px;
+    padding: 5px 20px;
     background-color: var(--color2);
+    height: 100%;
 }
 
 .notes-subtitle {
@@ -3970,10 +3927,6 @@ label .tooltip-base-el:active {
     color: var(--colorText);
     font-size: 16px;
     font-weight: bold;
-}
-
-.notes-footer {
-    height: 13%;
 }
 
 .settings-title {
@@ -4074,27 +4027,21 @@ label .tooltip-base-el:active {
 
 .rules-title {
     font-size: min(10vw, 40px);
-    padding-left: 10px;
-    max-height: 9%;
-    min-height: 9%;
     text-align: center;
     background-color: var(--color2);
-    overflow-y: hidden;
 }
 
 .rules-subtitle {
-    padding: 0px 15px;
+    padding: 0px 15px 5px;
     background-color: var(--color2);
     font-size: min(3.25vw, 14px);
     text-align: center;
-    max-height: 10%;
-    min-height: 10%;
 }
 
 .rules-data {
-    height: 80.5%;
     padding-left: 10px;
     border-top: solid 1px;
+    overflow-y: auto;
 }
 
 .mobile .rules-data {
@@ -4102,12 +4049,12 @@ label .tooltip-base-el:active {
     padding-right: 10px;
 }
 
-.modal-content:not(.mobile) .rules-subdata:not(.page2) {
+#rulesModal:not(.mobile) .rules-subdata:not(.page2) {
     width: 75%;
     margin: auto;
 }
 
-.modal-content:not(.mobile) .rules-subdata.page2 {
+#rulesModal:not(.mobile) .rules-subdata.page2 {
     width: 64%;
     right: 0px;
     position: absolute;
@@ -4143,7 +4090,7 @@ label .tooltip-base-el:active {
 }
 
 .show-rule-back-btn {
-    padding: 10px 0px;
+    padding: 0.5rem 0;
 }
 
 .show-rule-back-btn > span {
@@ -4248,7 +4195,7 @@ label .tooltip-base-el:active {
 
 .rules-names {
     float: left;
-    height: 97.25%;
+    height: 96%;
     overflow: auto;
     width: 30%;
     padding-right: 10px;
@@ -4267,16 +4214,12 @@ label .tooltip-base-el:active {
 .manual-areas-title {
     font-size: 4.5vh;
     padding-left: 10px;
-    max-height: 10%;
-    min-height: 10%;
     text-align: center;
     background-color: var(--color2);
-    overflow-y: hidden;
 }
 
 .manual-areas-searchcontainer {
-    height: 8%;
-    padding: 0px 15px;
+    padding: 10px 15px;
     font-size: 1.7vh;
     background-color: var(--color2);
 }
@@ -4286,8 +4229,7 @@ input#searchManualAreas {
 }
 
 .manual-areas-data {
-    overflow-y: scroll;
-    height: 81.5%;
+    overflow-y: auto;
     padding-left: 10px;
     padding-right: 10px;
     border-top: solid 1px;
@@ -4310,22 +4252,20 @@ input#searchManualAreas {
     padding: 2px;
     background-color: var(--color3);
     position: relative;
-    display: flow-root;
+    display: flex;
 }
 
 .manual-area-text {
-    float: right;
     font-weight: normal;
     border: solid 1px var(--color1);
     border-radius: 5px;
     margin: 5px;
     padding: 2px;
     background-color: var(--color3);
-    max-width: 59%;
+    margin-left: auto;
 }
 
 .manual-area-btn {
-    float: left;
     font-weight: normal;
     border: solid 1px var(--color1);
     color: black;
@@ -4334,6 +4274,8 @@ input#searchManualAreas {
     cursor: pointer;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
+    display: flex;
+    align-items: center;
 }
 
 .manual-area-btn.locked {
@@ -4453,16 +4395,12 @@ input#searchChunkSections {
 
 .chunk-section-picker-title {
     font-size: 4.5vh;
-    max-height: 10%;
-    min-height: 10%;
     text-align: center;
     background-color: var(--color2);
-    overflow-y: hidden;
 }
 
 .chunk-section-picker-subtitle {
-    height: 10%;
-    padding: 0px 15px;
+    padding: 0px 15px 5px;
     background-color: var(--color2);
     font-size: min(4vw, 16px);
     text-align: center;
@@ -4470,7 +4408,7 @@ input#searchChunkSections {
 
 .chunk-section-picker-data {
     overflow-y: scroll;
-    height: 66.5%;
+    height: 100%;
     padding-left: 10px;
     padding-right: 10px;
     border-top: solid 1px;
@@ -4582,15 +4520,14 @@ input#searchChunkSections {
 }
 
 .chunk-section-picker-footer {
-    height: 13%;
     text-align: center;
     background-color: var(--color2);
+    border-top: solid 1px;
 }
 
 #save-chunk-section-picker-button {
     background-color: rgb(30, 100, 30);
     width: 200px;
-    height: 5vh;
     font-size: 24px;
     color: white;
     border-width: 1px 1px 1px 1px;
@@ -4600,7 +4537,7 @@ input#searchChunkSections {
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     cursor: pointer;
-    margin: 20px 10px;
+    margin: 10px;
 }
 
 #save-chunk-section-picker-button.disabled {
@@ -4612,7 +4549,7 @@ input#searchChunkSections {
     background-color: rgb(15, 150, 15);
 }
 
-#myModal4 > .modal-content {
+#rulesModal > .modal-content {
     max-width: 750px;
 }
 
@@ -4723,7 +4660,11 @@ input#searchChunkSections {
 
 #canvas-graph {
     border: solid black;
-    margin: 25px;
+    margin: 25px 0;
+}
+
+.mobile #canvas-graph {
+    width: 85%;
 }
 
 .average-rolltime-title {
@@ -4771,78 +4712,64 @@ input#searchChunkSections {
     margin: 10px;
 }
 
-#myModal7 > .modal-content {
+#settingsModal > .modal-content {
     height: 60%;
     width: 55%;
     background-color: var(--color1);
     max-width: 750px;
 }
 
-#myModal37 > .modal-content {
+#constructionLockModal > .modal-content {
     max-width: 400px;
     height: 35%;
 }
 
-#myModal51 > .modal-content {
+#missingQuestModal > .modal-content {
     max-width: 400px;
     height: 35%;
 }
 
-#myModal38 > .modal-content {
-    height: 40%;
+#miscellaneousActionsModal > .modal-content {
+    height: 55%;
     width: 25%;
-    margin-top: 1.5%;
 }
 
-#myModal28 > .modal-content {
+#passiveLevelModal > .modal-content {
     max-width: 450px;
     height: 52%;
     overflow-y: auto;
 }
 
-#myModal5 > .modal-content {
+#rulesPresetModal > .modal-content {
     max-width: 400px;
 }
 
-#myModal49 > .modal-content {
+#deleteUserTaskWarningModal > .modal-content {
     max-width: 400px;
 }
 
-#myModal45 > .modal-content {
+#rulesImportModal > .modal-content {
     max-width: 400px;
     height: 35%;
 }
 
-#myModal47 > .modal-content {
+#userTaskModal > .modal-content {
     height: 60%;
     width: 40%;
     margin-top: -5%;
 }
 
-#myModal40 > .modal-content {
+#exitSandboxWarningModal > .modal-content {
     max-width: 400px;
-}
-
-#myModal6 > .modal-content {
-    max-width: 400px;
-}
-
-#myModal9 > .modal-content {
-    height: 25%;
-    width: 25%;
-    margin-top: 1.5%;
 }
 
 .preset-title {
     font-size: 24px;
     font-weight: bold;
     padding-top: 0px;
-    max-height: 20%;
-    min-height: 20%;
     line-height: 50px;
     text-align: center;
     background-color: var(--color1);
-    overflow-y: hidden;
 }
 
 .preset-subtitle {
@@ -4851,14 +4778,14 @@ input#searchChunkSections {
     font-size: 18px;
     text-align: center;
     border-top: solid 1px;
-    height: 72%;
+    height: 100%;
     padding-top: 5%;
+    overflow-y: auto;
 }
 
 .preset-data > div {
     float: right;
-    margin-right: 10px;
-    margin-top: -55px;
+    margin: 10px;
     display: flex;
 }
 
@@ -4867,8 +4794,12 @@ input#searchChunkSections {
     font-size: 20px;
 }
 
+.preset-data {
+    border-top: solid 1px;
+}
+
 .preset-cancel {
-    padding: 10px;
+    padding: 5px;
     font-size: 18px;
     margin-right: 10px;
     cursor: pointer;
@@ -4877,7 +4808,7 @@ input#searchChunkSections {
 .preset-proceed {
     border: solid 1px black;
     background-color: rgb(75, 200, 75);
-    padding: 10px;
+    padding: 5px;
     color: white;
     font-size: 18px;
     cursor: pointer;
@@ -4893,12 +4824,9 @@ input#searchChunkSections {
     font-size: 24px;
     font-weight: bold;
     padding-top: 0px;
-    max-height: 20%;
-    min-height: 20%;
-    line-height: 50px;
+    line-height: 40px;
     text-align: center;
     background-color: var(--color1);
-    overflow-y: hidden;
 }
 
 .usertasks-delete-subtitle {
@@ -4907,14 +4835,18 @@ input#searchChunkSections {
     font-size: 18px;
     text-align: center;
     border-top: solid 1px;
-    height: 72%;
+    height: 100%;
     padding-top: 5%;
+    overflow-y: auto;
+}
+
+.usertasks-delete-data {
+    border-top: solid 1px;
 }
 
 .usertasks-delete-data > div {
     float: right;
-    margin-right: 10px;
-    margin-top: -55px;
+    margin: 10px;
     display: flex;
 }
 
@@ -4924,7 +4856,7 @@ input#searchChunkSections {
 }
 
 .usertasks-delete-cancel {
-    padding: 10px;
+    padding: 5px;
     font-size: 18px;
     margin-right: 10px;
     cursor: pointer;
@@ -4933,7 +4865,7 @@ input#searchChunkSections {
 .usertasks-delete-proceed {
     border: solid 1px black;
     background-color: rgb(75, 200, 75);
-    padding: 10px;
+    padding: 5px;
     color: white;
     font-size: 18px;
     cursor: pointer;
@@ -4949,12 +4881,9 @@ input#searchChunkSections {
     font-size: 24px;
     font-weight: bold;
     padding-top: 0px;
-    max-height: 20%;
-    min-height: 20%;
     line-height: 50px;
     text-align: center;
     background-color: var(--color1);
-    overflow-y: hidden;
 }
 
 .rules-import-subtitle {
@@ -4963,14 +4892,18 @@ input#searchChunkSections {
     font-size: 18px;
     text-align: center;
     border-top: solid 1px;
-    height: 72%;
+    height: 100%;
     padding-top: 5%;
+    overflow-y: auto;
+}
+
+.rules-import-data {
+    border-top: solid 1px;
 }
 
 .rules-import-data > div {
     float: right;
-    margin-right: 10px;
-    margin-top: -55px;
+    margin: 10px;
     display: flex;
 }
 
@@ -5024,12 +4957,9 @@ input#searchChunkSections {
     font-size: 24px;
     font-weight: bold;
     padding-top: 0px;
-    max-height: 20%;
-    min-height: 20%;
     line-height: 50px;
     text-align: center;
     background-color: var(--color1);
-    overflow-y: hidden;
 }
 
 .exitsandbox-subtitle {
@@ -5038,14 +4968,14 @@ input#searchChunkSections {
     font-size: 18px;
     text-align: center;
     border-top: solid 1px;
-    height: 72%;
+    height: 100%;
     padding-top: 5%;
+    overflow-y: auto;
 }
 
 .exitsandbox-data > div {
     float: right;
-    margin-right: 10px;
-    margin-top: -55px;
+    margin: 10px;
     display: flex;
 }
 
@@ -5054,8 +4984,12 @@ input#searchChunkSections {
     font-size: 20px;
 }
 
+.exitsandbox-data {
+    border-top: solid 1px;
+}
+
 .exitsandbox-cancel {
-    padding: 10px;
+    padding: 5px;
     font-size: 18px;
     margin-right: 10px;
     cursor: pointer;
@@ -5064,7 +4998,7 @@ input#searchChunkSections {
 .exitsandbox-proceed {
     border: solid 1px black;
     background-color: rgb(75, 200, 75);
-    padding: 10px;
+    padding: 5px;
     color: white;
     font-size: 18px;
     cursor: pointer;
@@ -5080,12 +5014,9 @@ input#searchChunkSections {
     font-size: 24px;
     font-weight: bold;
     padding-top: 0px;
-    max-height: 20%;
-    min-height: 20%;
-    line-height: 50px;
+    line-height: 40px;
     text-align: center;
     background-color: var(--color1);
-    overflow-y: hidden;
 }
 
 .rollwarning-subtitle, .roll2warning-subtitle {
@@ -5094,17 +5025,21 @@ input#searchChunkSections {
     font-size: 18px;
     text-align: center;
     border-top: solid 1px;
-    height: 79.75%;
+    height: 100%;
+    overflow-y: auto;
 }
 
 .rollwarning-firsttext, .roll2warning-firsttext {
     margin-top: 7%;
 }
 
+.rollwarning-data, .roll2warning-data {
+    border-top: solid 1px;
+}
+
 .rollwarning-data > div, .roll2warning-data > div {
     float: right;
-    margin-right: 10px;
-    margin-top: -55px;
+    margin: 10px;
     display: flex;
 }
 
@@ -5114,7 +5049,7 @@ input#searchChunkSections {
 }
 
 .rollwarning-cancel, .roll2warning-cancel {
-    padding: 10px;
+    padding: 5px;
     font-size: 18px;
     margin-right: 10px;
     cursor: pointer;
@@ -5123,7 +5058,7 @@ input#searchChunkSections {
 .rollwarning-proceed, .roll2warning-proceed {
     border: solid 1px black;
     background-color: rgb(75, 200, 75);
-    padding: 10px;
+    padding: 5px;
     color: white;
     font-size: 18px;
     cursor: pointer;
@@ -5206,13 +5141,13 @@ input#searchChunkSections {
     font-size: min(3vw, 36px);
     font-weight: bold;
     padding-top: 0px;
-    max-height: 6vh;
-    min-height: 6vh;
-    line-height: 6vh;
     text-align: center;
     background-color: var(--color2);
-    overflow-y: hidden;
     border-bottom: solid 1px;
+}
+
+.mobile .usertasks-title {
+    font-size: 3.5vh;
 }
 
 .usertasks-subtitle {
@@ -5224,29 +5159,48 @@ input#searchChunkSections {
     border-radius: 5px;
 }
 
-.usertasks-data > div {
-    margin-right: 10px;
-    margin-bottom: 10px;
+.mobile .usertasks-subtitle {
+    font-size: 2.5vh;
+}
+
+.usertasks-data {
     display: flex;
-    position: absolute;
-    right: 0px;
-    bottom: 0px;
+    margin-top: auto;
+    border-top: solid 1px;
+    background-color: var(--color2);
+}
+
+.usertasks-data > div {
+    margin: 5px 10px;
+    display: flex;
+    margin-left: auto;
 }
 
 .usertasks-list {
-    left: 10px;
+    margin-left: 10px;
     width: auto;
-    position: absolute;
-    bottom: 10px;
     cursor: pointer;
+    height: 24px;
+    margin-top: auto;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+.usertasks-list:hover {
+    color: var(--colorLink);
 }
 
 .usertasks-body {
     text-align: center;
+    overflow-y: auto;
 }
 
 #usertasks-dropdown-container {
     font-size: min(2vw, 24px);
+}
+
+.mobile #usertasks-dropdown-container {
+    font-size: 3.5vh;
 }
 
 #usertasks-skill-dropdown {
@@ -5255,9 +5209,17 @@ input#searchChunkSections {
     text-align: center;
 }
 
+.mobile #usertasks-skill-dropdown {
+    font-size: 3vh;
+}
+
 .usertasks-level-input {
     font-size: min(2vw, 24px);
     margin: 10px 0px;
+}
+
+.mobile .usertasks-level-input {
+    font-size: 3.5vh;
 }
 
 .usertasks-level-input > input {
@@ -5265,9 +5227,22 @@ input#searchChunkSections {
     text-align: center;
 }
 
+#usertasks-boost-dropdown {
+    font-size: min(2vw, 24px);
+    text-align: center;
+}
+
+.mobile .usertasks-level-input > input {
+    font-size: 3vh;
+}
+
 .usertasks-name-input {
     font-size: min(2vw, 24px);
     margin: 10px 0px;
+}
+
+.mobile .usertasks-name-input {
+    font-size: 3.5vh;
 }
 
 .usertasks-name-input > input {
@@ -5276,8 +5251,12 @@ input#searchChunkSections {
     text-align: center;
 }
 
+.mobile .usertasks-name-input > input {
+    font-size: 3vh;
+}
+
 .usertasks-cancel {
-    padding: 10px;
+    padding: 7px;
     font-size: 18px;
     margin-right: 10px;
     cursor: pointer;
@@ -5286,7 +5265,7 @@ input#searchChunkSections {
 .usertasks-proceed {
     border: solid 1px black;
     background-color: rgb(75, 200, 75);
-    padding: 10px;
+    padding: 7px;
     color: white;
     font-size: 18px;
     cursor: pointer;
@@ -5312,7 +5291,6 @@ input#searchChunkSections {
     line-height: 5vh;
     text-align: center;
     background-color: var(--color2);
-    overflow-y: hidden;
 }
 
 .slayer-locked-subtitle {
@@ -5493,8 +5471,6 @@ input#searchChunkSections {
     font-size: min(8vw, 28px);
     font-weight: bold;
     padding-top: 0px;
-    max-height: 15%;
-    min-height: 15%;
     line-height: 5vh;
     text-align: center;
     background-color: var(--color2);
@@ -5507,22 +5483,18 @@ input#searchChunkSections {
     font-size: min(5vw, 16px);
     text-align: center;
     border-top: solid 1px;
-    height: 85%;
 }
 
 .construction-locked-data > div {
-    float: right;
-    margin-right: 10px;
-    margin-top: -7vh;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
     display: flex;
-    height: 15%;
 }
 
 #construction-locked-dropdown-container {
     text-align: center;
-    position: absolute;
-    width: 100%;
-    top: 45%;
+    margin: 10px;
 }
 
 #construction-locked-dropdown {
@@ -5539,7 +5511,7 @@ input#searchChunkSections {
 }
 
 .construction-locked-cancel {
-    padding: 10px;
+    padding: 7px;
     font-size: 2vh;
     margin-right: 10px;
     cursor: pointer;
@@ -5569,12 +5541,9 @@ input#searchChunkSections {
     font-size: min(8vw, 28px);
     font-weight: bold;
     padding-top: 0px;
-    max-height: 15%;
-    min-height: 15%;
     line-height: 5vh;
     text-align: center;
     background-color: var(--color2);
-    overflow-y: hidden;
 }
 
 .questchunks-subtitle {
@@ -5583,7 +5552,6 @@ input#searchChunkSections {
     font-size: min(5vw, 16px);
     text-align: center;
     border-top: solid 1px;
-    height: 25%;
 }
 
 .questchunks-body {
@@ -5591,8 +5559,7 @@ input#searchChunkSections {
     background-color: var(--color1);
     font-size: min(5vw, 16px);
     text-align: center;
-    height: 35%;
-    padding-bottom: 20%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -5616,16 +5583,19 @@ input#searchChunkSections {
     width: 80%;
 }
 
+.questchunks-data {
+    border-top: solid 1px;
+    background-color: var(--color2);
+}
+
 .questchunks-data > div {
     float: right;
-    margin-right: 10px;
-    margin-top: -7vh;
+    margin: 10px;
     display: flex;
-    height: 15%;
 }
 
 .questchunks-cancel {
-    padding: 10px;
+    padding: 5px;
     font-size: 2vh;
     margin-right: 10px;
     cursor: pointer;
@@ -5634,7 +5604,7 @@ input#searchChunkSections {
 .questchunks-proceed {
     border: solid 1px black;
     background-color: rgb(75, 200, 75);
-    padding: 1vh;
+    padding: 5px;
     color: white;
     font-size: 2vh;
     cursor: pointer;
@@ -5650,12 +5620,16 @@ input#searchChunkSections {
     font-size: min(8vw, 28px);
     font-weight: bold;
     padding-top: 0px;
-    max-height: 15%;
-    min-height: 15%;
-    line-height: 5vh;
+    padding-bottom: 10px;
     text-align: center;
     background-color: var(--color2);
-    overflow-y: hidden;
+}
+
+.passive-skill-container {
+    overflow-y: auto;
+    border-top: solid 1px;
+    border-bottom: solid 1px;
+    height: 100%;
 }
 
 .passive-skill-subtitle {
@@ -5663,7 +5637,6 @@ input#searchChunkSections {
     background-color: var(--color1);
     font-size: min(4vw, 16px);
     text-align: center;
-    border-top: solid 1px;
 }
 
 .passive-skill-subtitle2 {
@@ -5677,10 +5650,10 @@ input#searchChunkSections {
 }
 
 .passive-skill-data {
-    height: 17%;
     display: flex;
     justify-content: right;
     align-items: center;
+    padding: 5px 0;
 }
 
 .passive-skill-data > div {
@@ -5702,7 +5675,6 @@ input#searchChunkSections {
     font-size: 20px;
     margin-top: 20px;
     padding-bottom: 20px;
-    border-bottom: solid 1px;
 }
 
 #passive-skill-input, #max-skill-input {
@@ -5710,7 +5682,7 @@ input#searchChunkSections {
 }
 
 .passive-skill-cancel {
-    padding: 10px;
+    padding: 7px;
     font-size: 2vh;
     margin-right: 10px;
     cursor: pointer;
@@ -5736,9 +5708,13 @@ input#searchChunkSections {
     background-color: rgb(50, 175, 50);
 }
 
+.notes-footer {
+    border-top: solid 1px;
+}
+
 #cancel-notes-button {
     float: right;
-    padding: 20px 10px;
+    padding: 10px;
     cursor: pointer;
     font-size: 20px;
 }
@@ -5756,7 +5732,7 @@ input#searchChunkSections {
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     cursor: pointer;
-    margin: 20px 10px;
+    margin: 10px;
 }
 
 #submit-notes-button:hover {
@@ -5840,7 +5816,7 @@ input#searchChunkSections {
 }
 
 .results .holder {
-    margin-top: -50px;
+    margin-top: -10%;
 }
 
 .results .topline {
@@ -5955,24 +5931,19 @@ input#searchChunkSections {
 .searchchunks-title {
     font-size: min(6.25vw, 30px);
     text-align: center;
-    max-height: 10%;
-    min-height: 10%;
     font-weight: bold;
-    padding: 0px 10px;
+    padding: 5px 10px;
     background-color: var(--color2);
-    overflow-y: hidden;
 }
 
 .searchchunks-subtitle {
-    height: 10%;
-    padding: 0px 15px;
+    padding: 5px 15px;
     background-color: var(--color2);
     font-size: min(4vw, 16px);
 }
 
 .searchchunks-searchcontainer {
-    height: 8%;
-    padding: 0px 15px;
+    padding: 5px 15px;
     background-color: var(--color2);
     font-size: 1.7vh;
 }
@@ -6019,17 +5990,13 @@ input#searchChunks {
 .searchdetails-title {
     font-size: 30px;
     text-align: center;
-    max-height: 25%;
-    min-height: 25%;
     font-weight: bold;
-    padding: 0px 10px;
-    overflow-y: hidden;
+    padding: 0 10px 10px;
 }
 
 .searchdetails-sorter {
-    position: absolute;
-    margin-top: -30px;
     margin-left: 10px;
+    margin-bottom: 5px;
     font-size: 18px;
 }
 
@@ -6375,12 +6342,15 @@ input#searchChunks {
     background-color: rgb(50, 175, 50);
 }
 
+.clipboard-container {
+    overflow-y: auto;
+}
+
 .clipboard-title {
     font-size: min(10vw, 36px);
     font-weight: bold;
     padding-top: 0px;
-    max-height: 15%;
-    min-height: 15%;
+    padding-bottom: 5px;
     line-height: 5.5vh;
     text-align: center;
     background-color: var(--color1);
@@ -6390,19 +6360,16 @@ input#searchChunks {
     font-size: min(1vw, 14px);
     font-weight: bold;
     padding-top: 0px;
-    max-height: 5%;
-    min-height: 5%;
     line-height: 2vh;
     text-align: center;
     background-color: var(--color1);
 }
 
-.clipboard-data, .clipboard-data-2, .clipboard-data-3, .clipboard-data-4 {
+.clipboard-data, .clipboard-data-2, .clipboard-data-3, .clipboard-data-4, .clipboard-data-5 {
     margin: 0px 15px;
     font-size: 2vh;
     display: flex;
     align-items: center;
-    height: 15%;
     justify-content: center;
     position: relative;
 }
@@ -6533,6 +6500,25 @@ input#searchChunks {
     cursor: not-allowed;
 }
 
+#fullmap-clipboard-button {
+    background-color: rgb(195, 195, 0);
+    width: 250px;
+    font-size: 2.7vh;
+    color: white;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid;
+    border-color: black;
+    outline: none;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin: 10px;
+}
+
+#fullmap-clipboard-button:hover {
+    background-color: rgb(165, 165, 0);
+}
+
 .clipboard-data-2 i {
     cursor: pointer;
     -webkit-transition-duration: 0.4s;
@@ -6542,6 +6528,10 @@ input#searchChunks {
 
 .clipboard-data-2 i:hover {
     color: var(--colorLink);
+}
+
+#clipboard-data-5 {
+    margin-top: 10px;
 }
 
 .modal-content.mobile .style-button {
@@ -6575,8 +6565,6 @@ input#searchChunks {
     font-size: 3.9vh;
     font-weight: bold;
     padding-top: 0px;
-    max-height: 7%;
-    min-height: 7%;
     line-height: 5.5vh;
     text-align: center;
     background-color: var(--color2);
@@ -6654,8 +6642,8 @@ input#searchChunks {
     background-color: var(--color2);
 }
 
-#myModal12.mobile .row, #myModal50.mobile .row {
-    width: 85%;
+#highestModal.mobile .row, #slotUpgradeModal.mobile .row {
+    width: 75%;
 }
 
 .slot-text {
@@ -6974,7 +6962,11 @@ input#searchChunks {
     font-size: 32px;
     font-weight: bold;
     text-align: center;
-    height: 9% !important;
+    border-bottom-color: unset !important;
+}
+
+.methods-topbar.show-tasks {
+    height: unset !important;
 }
 
 .methods-topbar > .yellow {
@@ -7052,22 +7044,18 @@ input#searchChunks {
     font-size: min(5.25vw, 30px);
     font-weight: bold;
     padding-top: 0px;
-    max-height: 7%;
-    min-height: 7%;
     line-height: 5vh;
     text-align: center;
 }
 
 .add-equipment-subtitle {
-    padding: 0px 15px;
+    padding: 5px 15px;
     font-size: min(3.25vw, 16px);
     text-align: center;
-    height: 15%;
 }
 
 .add-equipment-searchcontainer {
-    height: 8%;
-    padding: 0px 15px;
+    padding: 5px 15px;
     font-size: 1.7vh;
 }
 
@@ -7135,8 +7123,6 @@ input#searchAddEquipment {
     font-size: min(10vw, 36px);
     font-weight: bold;
     padding-top: 0px;
-    max-height: 7%;
-    min-height: 7%;
     line-height: 5vh;
     text-align: center;
 }
@@ -7145,12 +7131,10 @@ input#searchAddEquipment {
     padding: 0px 15px;
     font-size: min(3.25vw, 16px);
     text-align: center;
-    height: 10%;
 }
 
 .backlog-sources-searchcontainer {
-    height: 8%;
-    padding: 0px 15px;
+    padding: 5px 15px;
     font-size: 1.7vh;
 }
 
@@ -7159,9 +7143,9 @@ input#searchBacklogSources {
 }
 
 .backlog-sources-data {
-    height: 75%;
     padding: 0px 25px;
     overflow-y: auto;
+    height: 100%;
 }
 
 .backlog-sources-data > .results {
@@ -7195,8 +7179,6 @@ input#searchBacklogSources {
     font-size: min(9vw, 36px);
     font-weight: bold;
     padding-top: 0px;
-    max-height: 7%;
-    min-height: 7%;
     line-height: 50px;
     text-align: center;
 }
@@ -7205,12 +7187,10 @@ input#searchBacklogSources {
     padding: 0px 15px;
     font-size: min(3.5vw, 16px);
     text-align: center;
-    height: 12%;
 }
 
 .monsters-searchcontainer {
-    height: 8%;
-    padding: 0px 15px;
+    padding: 5px 15px;
     font-size: 1.7vh;
 }
 
@@ -7326,8 +7306,6 @@ input#searchMonsters {
 .sticker-title {
     font-size: 30px;
     text-align: center;
-    max-height: 25%;
-    min-height: 25%;
     padding: 0px 10px;
     border-bottom: 1px solid;
 }
@@ -7335,8 +7313,6 @@ input#searchMonsters {
 .sticker-data-container {
     font-size: 30px;
     text-align: center;
-    max-height: 63%;
-    min-height: 63%;
     padding: 0px 10px;
     overflow-y: auto;
     background-color: var(--color4);
@@ -7400,13 +7376,12 @@ input#searchMonsters {
 }
 
 .sticker-footer {
-    height: 13%;
     border-top: 1px solid;
 }
 
 #cancel-sticker-button {
     float: right;
-    padding: 20px 10px;
+    padding: 10px;
     cursor: pointer;
     font-size: 20px;
 }
@@ -7424,10 +7399,121 @@ input#searchMonsters {
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     cursor: pointer;
-    margin: 20px 10px;
+    margin: 10px;
 }
 
 #submit-sticker-button:hover {
+    background-color: rgb(80, 80, 80);
+}
+
+.paint-chunk {
+    font-weight: bold;
+    display: block;
+}
+
+.paint-title {
+    font-size: 30px;
+    text-align: center;
+    padding: 0px 10px;
+    border-bottom: 1px solid;
+}
+
+.paint-data-container {
+    font-size: 30px;
+    text-align: center;
+    padding: 0px 10px;
+    overflow-y: auto;
+    background-color: var(--color4);
+    height: 100%;
+}
+
+.paint-color-data, .paint-color-data-2 {
+    font-size: 24px;
+}
+
+.paint-data {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+}
+
+.paint-option-container {
+    padding: 10px;
+    border: solid 3px;
+    margin: 10px auto 10px auto;
+    cursor: pointer;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    border-color: var(--colorText);
+    border-radius: 10px;
+    outline: 2px solid black;
+    outline-offset: -4px;
+}
+
+.paint-option-container.disabled {
+    cursor: not-allowed;
+    filter: brightness(30%);
+}
+
+.paint-option-container > img {
+    max-width: 35px;
+}
+
+.paint-option-container.black-outline > i {
+    -webkit-text-stroke-width: 0.05em;
+    -webkit-text-stroke-color: black;
+}
+
+.paint-option-container.black-outline {
+    -webkit-text-stroke: 1.5px;
+    -webkit-text-stroke-color: black;
+    font-weight: bold;
+}
+
+.paint-option-container.unset-option {
+    color: rgb(100, 100, 100);
+    border: dashed;
+}
+
+.selected-paint {
+    border-color: rgb(50, 175, 50);
+}
+
+.paint-option-container:not(.disabled):hover {
+    border-color: rgb(75, 75, 225);
+}
+
+.paint-footer {
+    border-top: solid 1px;
+    margin-top: auto;
+}
+
+#cancel-paint-button {
+    float: right;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#submit-paint-button {
+    background-color: gray;
+    width: 100px;
+    font-size: 20px;
+    color: white;
+    float: right;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid;
+    border-color: black;
+    outline: none;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin: 10px;
+}
+
+#submit-paint-button:hover {
     background-color: rgb(80, 80, 80);
 }
 
@@ -7622,8 +7708,6 @@ input#searchMonsters {
 .roll-chunk-title {
     font-size: 36px;
     padding-left: 10px;
-    max-height: 8%;
-    min-height: 8%;
     text-align: center;
     font-weight: bold;
 }
@@ -7631,8 +7715,6 @@ input#searchMonsters {
 .roll-chunk-subtitle {
     font-size: 28px;
     padding-left: 10px;
-    max-height: 7%;
-    min-height: 7%;
     text-align: center;
     font-weight: bold;
 }
@@ -7650,7 +7732,7 @@ input#searchMonsters {
 .roll-chunk-data {
     max-height: 72%;
     min-height: 72%;
-    top: 10%;
+    margin-top: 10px;
 }
 
 .roll-chunk-outer {
@@ -7875,7 +7957,7 @@ input#searchMonsters {
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     cursor: pointer;
-    margin: 20px 10px;
+    margin: 10px;
 }
 
 #submit-roll-chunk-button:disabled {
@@ -7890,8 +7972,6 @@ input#searchMonsters {
 .patch-notes-title {
     font-size: 36px;
     padding-left: 10px;
-    max-height: 8%;
-    min-height: 8%;
     text-align: center;
     font-weight: bold;
     background-color: var(--color2);
@@ -7901,17 +7981,12 @@ input#searchMonsters {
     padding: 0px 15px;
     font-size: min(3.25vw, 16px);
     text-align: center;
-    max-height: 4%;
-    min-height: 4%;
     background-color: var(--color2);
 }
 
 .patch-notes-data {
     border-top: solid 1px;
     border-bottom: solid 1px;
-    max-height: 72%;
-    min-height: 72%;
-    top: 10%;
     overflow-y: auto;
     padding: 10px;
 }
@@ -7954,8 +8029,6 @@ input#searchMonsters {
 .chunk-notes-title {
     font-size: 36px;
     padding-left: 10px;
-    max-height: 8%;
-    min-height: 8%;
     text-align: center;
     font-weight: bold;
     background-color: var(--color2);
@@ -7973,12 +8046,9 @@ input#searchMonsters {
 
 .chunk-notes-data {
     border-top: solid 1px;
-    border-bottom: solid 1px;
-    max-height: 75.5%;
-    min-height: 75.5%;
-    height: 75.5%;
     overflow-y: auto;
     padding: 10px;
+    height: 100%;
 }
 
 .chunk-notes-data textarea {
@@ -7992,9 +8062,10 @@ input#searchMonsters {
 }
 
 .chunk-notes-footer {
-    height: 13%;
     text-align: center;
     background-color: var(--color2);
+    margin-top: auto;
+    border-top: solid 1px;
 }
 
 #save-chunk-notes-button {
@@ -8020,8 +8091,6 @@ input#searchMonsters {
 .new-tasks-title {
     font-size: 36px;
     padding-left: 10px;
-    max-height: 12%;
-    min-height: 12%;
     text-align: center;
     font-weight: bold;
     background-color: var(--color2);
@@ -8030,16 +8099,51 @@ input#searchMonsters {
 .new-tasks-data {
     border-top: solid 1px;
     border-bottom: solid 1px;
-    max-height: 59%;
-    min-height: 59%;
-    height: 59%;
     overflow-y: auto;
     padding: 10px;
     text-align: center;
+    height: 100%;
+}
+
+.new-tasks-data .results {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    font-size: 32px;
+}
+
+.new-task-row {
+    width: 88%;
+    display: block;
+    font-size: 20px;
+    border: solid 1px var(--colorQuestBorderText);
+    color: var(--colorQuestBorderText);
+    border-radius: 5px;
+    margin: 3px;
+    padding: 2px;
+    padding-left: 10px;
+    padding-right: 30px;
+    background-color: var(--color3);
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    text-align: left;
+}
+
+.mobile .new-task-row {
+    width: 80%;
+}
+
+.new-task-row > span {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .new-tasks-footer {
-    height: 23%;
     text-align: center;
     background-color: var(--color2);
 }
@@ -8047,7 +8151,6 @@ input#searchMonsters {
 #close-new-tasks-button {
     background-color: gray;
     width: 200px;
-    height: 5vh;
     font-size: 24px;
     color: white;
     border-width: 1px 1px 1px 1px;
@@ -8057,26 +8160,26 @@ input#searchMonsters {
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     cursor: pointer;
-    margin: 20px 10px;
+    margin: 10px;
 }
 
 #close-new-tasks-button:not(:disabled):hover {
     background-color: rgb(80, 80, 80);
 }
 
-#myModal35 > .modal-content {
+#chunkNotesModal > .modal-content {
     height: 70%;
     width: 40%;
     margin-top: -5%;
 }
 
-#myModal36 > .modal-content {
-    height: 40%;
+#newTasksModal > .modal-content {
+    height: 60%;
     width: 40%;
     margin-top: -5%;
 }
 
-#myModal24 > .modal-content {
+#patchNotesModal > .modal-content {
     height: 70%;
     width: 40%;
     margin-top: -5%;
@@ -8092,7 +8195,7 @@ input#searchMonsters {
     color: var(--colorLink);
 }
 
-#myModal25 > .modal-content {
+#questStepsModal > .modal-content {
     height: 67%;
     width: 45%;
     margin-top: -5%;
@@ -8106,6 +8209,14 @@ input#searchMonsters {
     text-align: center;
     background-color: var(--color2);
     overflow-y: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.quest-steps-title a {
+    display: block;
 }
 
 .quest-steps-data {
@@ -8625,31 +8736,44 @@ input#searchMonsters {
     color: var(--colorQuestBorderText);
 }
 
-.modal-content.mobile .Diaries-body .row > div {
+.charting-diary-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.modal-content.mobile .Diaries-body .row .diary-tier-button {
     width: 30vw;
 }
 
-.Diaries-body .row > div {
+.Diaries-body .row .diary-tier-button {
     display: inline-block;
     width: 8vw;
     border-radius: 5px;
     border: solid 1px;
     margin: 10px 5px 10px 5px;
     position: relative;
+    font-size: min(1.25rem, 20px);
 }
 
-.Diaries-body .row > div.fossil {
+.Diaries-body .row .diary-tier-button.charting {
+    height: 48px;
+    align-items: center;
+    display: flex !important;
+    justify-content: center;
+}
+
+.Diaries-body .row .diary-tier-button.fossil {
     width: 110px;
     overflow-wrap: anywhere;
 }
 
-.Diaries-body .row > div.complete {
+.Diaries-body .row .diary-tier-button.complete {
     background-color: var(--colorQuestCompleteBackground);
     color: var(--colorQuestCompleteBorderText);
     border: solid 1px var(--colorQuestCompleteBorderText);
 }
 
-.Diaries-body .row > div.incomplete {
+.Diaries-body .row .diary-tier-button.incomplete {
     background-color: var(--colorQuestIncompleteBackground);
     color: var(--colorQuestIncompleteBorderText);
     border: solid 1px var(--colorQuestIncompleteBorderText);
@@ -8700,11 +8824,8 @@ input#searchMonsters {
 .xp-reward-title {
     font-size: 32px;
     text-align: center;
-    max-height: 25%;
-    min-height: 25%;
     padding: 0px 10px;
     border-bottom: 1px solid;
-    overflow-y: hidden;
 }
 
 .xp-reward-data {
@@ -8715,11 +8836,10 @@ input#searchMonsters {
 .xp-reward-data-container {
     font-size: 30px;
     text-align: center;
-    max-height: 63%;
-    min-height: 63%;
     padding: 0px 10px;
     overflow-y: auto;
     background-color: var(--color4);
+    height: 100%;
 }
 
 .xp-reward-option-container {
@@ -8768,7 +8888,6 @@ input#searchMonsters {
 }
 
 .xp-reward-footer {
-    height: 13%;
     border-top: 1px solid;
 }
 
@@ -9045,7 +9164,7 @@ input#searchMonsters {
     width: 95%;
 }
 
-#myModal4 > .modal-content.mobile {
+#rulesModal > .modal-content.mobile {
     width: 95%;
 }
 
