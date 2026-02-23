@@ -31578,7 +31578,7 @@
 				"Not F2P": true
 			},
 			"Player-owned house to Brimhaven": {
-				"Sections":["11057","Player-owned house"],
+				"Sections":["11057-1","Player-owned house"],
 				"ConnectsSections": true,
 				"Tasks": {
 					"Move your house to ~|Brimhaven|~": "Construction"
@@ -31586,7 +31586,7 @@
 				"Not F2P": true
 			},
 			"Player-owned house to Hosidius": {
-				"Sections":["6966","Player-owned house"],
+				"Sections":["6966-1","Player-owned house"],
 				"ConnectsSections": true,
 				"Tasks": {
 					"Move your house to ~|Hosidius|~": "Construction"
@@ -31688,8 +31688,8 @@
 				"ConnectsSections": true,
 				"Not F2P": true
 			},
-			"11310-1 to 11058": {
-				"Sections": ["11310-1", "11058"],
+			"11310-1 to 11058-1": {
+				"Sections": ["11310-1", "11058-1"],
 				"Tasks": {
 					"~|Shilo Village|~ Complete the quest": "Quest"
 				},
@@ -31736,14 +31736,6 @@
 				"ConnectsSections": true,
 				"Not F2P": true
 			},
-			"10810-1 to 10558": {
-				"Sections": ["10810-1", "10558"],
-				"Tasks": {
-					"~|Cold War|~ 2": "Quest"
-				},
-				"ConnectsSections": true,
-				"Not F2P": true
-			},
 			"14652 to 14142": {
 				"Sections": ["14652", "14142"],
 				"Tasks": {
@@ -31752,8 +31744,8 @@
 				"ConnectsSections": true,
 				"Not F2P": true
 			},
-			"10553 to 9790": {
-				"Sections": ["10553", "9790"],
+			"10553-1 to 9790-1": {
+				"Sections": ["10553-1", "9790-1"],
 				"Tasks": {
 					"~|The Fremennik Exiles|~ 7": "Quest"
 				},
@@ -31764,14 +31756,6 @@
 				"Sections": ["14638-1", "15148"],
 				"Tasks": {
 					"~|The Great Brain Robbery|~ 1": "Quest"
-				},
-				"ConnectsSections": true,
-				"Not F2P": true
-			},
-			"10810-1 to 11325": {
-				"Sections": ["10810-1", "11325"],
-				"Tasks": {
-					"~|Making Friends with My Arm|~ 3": "Quest"
 				},
 				"ConnectsSections": true,
 				"Not F2P": true
@@ -31841,26 +31825,10 @@
 				"ConnectsSections": true,
 				"Not F2P": true
 			},
-			"10553 to 9275": {
-				"Sections" : ["10553", "9275"],
-				"Tasks" : {
-					"~|The Fremennik Isles|~ 1": "Quest"
-				},
-				"ConnectsSections": true,
-				"Not F2P": true
-			},
 			"10553 to 9531-1": {
 				"Sections" : ["10553", "9531-1"],
 				"Tasks" : {
 					"~|The Fremennik Isles|~ 1": "Quest"
-				},
-				"ConnectsSections": true,
-				"Not F2P": true
-			},
-			"10297-1 to 8763": {
-				"Sections" : ["10297-1", "8763"],
-				"Tasks" : {
-					"~|Lunar Diplomacy|~ 2": "Quest"
 				},
 				"ConnectsSections": true,
 				"Not F2P": true
@@ -31881,34 +31849,10 @@
 				"ConnectsSections": true,
 				"Not F2P": true
 			},
-			"10553 to 10300": {
-				"Sections" : ["10553", "10300"],
-				"Tasks" : {
-					"~|The Fremennik Trials|~ Complete the quest": "Quest"
-				},
-				"ConnectsSections": true,
-				"Not F2P": true
-			},
-			"10553 to 9023": {
-				"Sections" : ["10553", "9023"],
-				"Tasks" : {
-					"~|Dragon Slayer II|~ 17c1": "Quest"
-				},
-				"ConnectsSections": true,
-				"Not F2P": true
-			},
 			"13365 to 14907-1": {
 				"Sections" : ["13365", "14907-1"],
 				"Tasks" : {
 					"~|Bone Voyage|~ 10": "Quest"
-				},
-				"ConnectsSections": true,
-				"Not F2P": true
-			},
-			"8763 to 8508": {
-				"Sections" : ["8763", "8508"],
-				"Tasks" : {
-					"~|Lunar Diplomacy|~ 5": "Quest"
 				},
 				"ConnectsSections": true,
 				"Not F2P": true
@@ -32457,8 +32401,8 @@
 				"ConnectsSections": true,
 				"Not F2P": true
 			},
-			"8500 Charter Ship": {
-				"Sections": ["8500","CharterShips[+]"],
+			"8500-1 Charter Ship": {
+				"Sections": ["8500-1","CharterShips[+]"],
 				"Tasks": {
 					"~|Song of the Elves|~ Complete the quest": "Quest"
 				},
@@ -32481,7 +32425,21 @@
 				"ConnectsSections": true,
 				"Not F2P": true
 			},
-			"11562": {
+			"8493-1": {
+				"Tasks": {
+					"Access Soul Wars": "Nonskill"
+				},
+				"UnlocksArea": true,
+				"Not F2P": true
+			},
+			"9005-1": {
+				"Tasks": {
+					"Access Soul Wars": "Nonskill"
+				},
+				"UnlocksArea": true,
+				"Not F2P": true
+			},
+			"11562-1": {
 				"Tasks": {
 					"~|Monkey Madness I|~ 4": "Quest"
 				},
@@ -34863,6 +34821,15 @@
 				"Category": ["Minigame"],
 				"Chunks": ["12600"],
 				"TotalLevelNeeded": 1500,
+				"Not F2P": true
+			},
+			"Access Soul Wars": {
+				"Category": ["Minigame"],
+				"Chunks": ["8748-1"],
+				"TotalLevelNeeded": 500,
+				"Skills":{
+					"Combat":40
+				},
 				"Not F2P": true
 			},
 			"Access Justine's shop": {
@@ -133494,7 +133461,8 @@
 		},
 		"7509": {
 			"Connect": {
-				"10322": true
+				"10322": true,
+				"Barbarian Assault#Basement": true
 			},
 			"Monster":{
 				"Penance Fighter": 1,
@@ -135695,7 +135663,11 @@
 		},
 		"8493": {
 			"Sections": {
-				"1": {},
+				"1": {
+					"Connect":{
+						"8748-1": true
+					}
+				},
 				"2": {
 					"Object": {
 						"Tree": 11
@@ -135711,9 +135683,6 @@
 						"Tree": 9
 					}
 				}
-			},
-			"Object": {
-				"Tree": 11
 			},
 			"Nickname": "Blue Base"
 		},
@@ -136557,7 +136526,8 @@
 			"Sections": {
 				"1": {
 					"Connect": {
-						"12700": true
+						"12700": true,
+						"Ferox Enclave Dungeon": true
 					},
 					"Monster": {
 						"Moss giant": 6
@@ -137397,7 +137367,11 @@
 		},
 		"9005": {
 			"Sections": {
-				"1": {},
+				"1": {
+					"Connect":{
+						"8748-1": true
+					}
+				},
 				"2": {
 					"Object": {
 						"Tree": 12
@@ -149190,9 +149164,6 @@
 
 				},
 				"5": {
-
-				},
-				"6": {
 
 				}
 			},
@@ -166048,7 +166019,8 @@
 		},
 		"Ancient Guthix Temple": {
 			"Connect": {
-				"12948": true
+				"12948": true,
+				"Lumbridge Swamp Caves": true
 			},
 			"Monster": {
 				"Tormented Demon": 22
@@ -166211,7 +166183,8 @@
 		},
 		"Barbarian Assault#Basement": {
 			"Connect": {
-				"10039": true
+				"10039": true,
+				"7509": true
 			},
 			"Diary": {
 				"Kandarin": "MD11"
@@ -166295,7 +166268,8 @@
 		},
 		"Blast Furnace": {
 			"Connect": {
-				"11679": true
+				"11679": true,
+				"Keldagrim": true
 			},
 			"Diary": {
 				"Fremennik": "HD9"
@@ -166826,7 +166800,8 @@
 		},
 		"Chaos altar": {
 			"Connect": {
-				"12625": true
+				"12625": true,
+				"Tunnel of Chaos": true
 			},
 			"Object": {
 				"Altar": 1,
@@ -166904,7 +166879,8 @@
 		},
 		"Yama's Domain": {
 			"Connect": {
-				"5789": true
+				"5789": true,
+				"Chasm of Fire": true
 			},
 			"Monster": {
 				"Judge of Yama (Yama)": 1,
@@ -167467,7 +167443,8 @@
 		},
 		"Dondakan's mine": {
 			"Connect": {
-				"11166": true
+				"11166": true,
+				"Keldagrim": true
 			},
 			"Diary": {
 				"Fremennik": "MD9"
@@ -167485,7 +167462,8 @@
 			"Connect": {
 				"9814": true,
 				"10833": true,
-				"13206": true
+				"13206": true,
+				"Dorgesh-Kaan mine": true
 			},
 			"Diary": {
 				"Lumbridge & Draynor": "EL1"
@@ -167608,7 +167586,8 @@
 		"Dorgesh-Kaan mine": {
 			"Connect": {
 				"10835": true,
-				"12950": true
+				"12950": true,
+				"Lumbridge Castle#Cellar": true
 			},
 			"Monster": {
 				"Cave goblin guard": 4,
@@ -167633,7 +167612,9 @@
 		"Dorgesh-Kaan-Keldagrim Train Platforms": {
 			"Connect": {
 				"10834": true,
-				"11679": true
+				"Dorgesh-Kaan": true,
+				"11679": true,
+				"Keldagrim": true
 			},
 			"Diary": {
 				"Lumbridge & Draynor": "HD6"
@@ -167760,7 +167741,8 @@
 		},
 		"Mining Guild": {
 			"Connect": {
-				"12185": true
+				"12185": true,
+				"Dwarven Mine": true
 			},
 			"Diary": {
 				"Falador": "HD6"
@@ -168139,7 +168121,8 @@
 		},
 		"Fortis Colosseum Underground": {
 			"Connect": {
-				"7216": true
+				"7216-1": true,
+				"7216-3": true
 			},
 			"NPC": {
 				"Gladiator (Fortis Colosseum)": 27,
@@ -168590,7 +168573,8 @@
 		},
 		"H.A.M. Store room": {
 			"Connect": {
-				"12694": true
+				"12694": true,
+				"H.A.M. Hideout": true
 			},
 			"Monster": {
 				"Guard (H.A.M. storeroom)": 5
@@ -168732,7 +168716,9 @@
 		},
 		"Ice Queen's Lair": {
 			"Connect": {
-				"11318": true
+				"11318-2":true,
+				"11318-5":true,
+				"11318-6":true
 			},
 			"Monster": {
 				"Ice Queen": 1,
@@ -169020,7 +169006,8 @@
 		},
 		"Kalphite Queen's Lair": {
 			"Connect": {
-				"13972": true
+				"13972": true,
+				"Kalphite Lair": true
 			},
 			"Diary": {
 				"Desert": "HD4"
@@ -169260,7 +169247,8 @@
 		},
 		"Keldagrim Rat Pits": {
 			"Connect": {
-				"11679": true
+				"11679": true,
+				"Keldagrim": true
 			},
 			"Monster": {
 				"Rat": 8
@@ -169383,7 +169371,8 @@
 		},
 		"Lassar Undercity": {
 			"Connect": {
-				"11866": true
+				"11866": true,
+				"Ruins of Camdozaal": true
 			},
 			"Monster": {
 				"The Whisperer": 1
@@ -169657,7 +169646,8 @@
 		"Meiyerditch Laboratories Entrance": {
 			"Connect": {
 				"14387": true,
-				"14487": true
+				"14487": true,
+				"Meiyerditch Laboratories": true
 			},
 			"Monster": {
 				"Rat": 4
@@ -169683,8 +169673,11 @@
 		"Meiyerditch Laboratories": {
 			"Connect": {
 				"11338": true,
+				"Blood altar": true,
 				"13978": true,
-				"14233": true
+				"Myreque hideout#Canifis/Mort Myre Hideout": true,
+				"14233": true,
+				"Meiyerditch Laboratories Entrance": true
 			},
 			"Monster": {
 				"Bloodveld": 4,
@@ -170009,7 +170002,8 @@
 		},
 		"Motherlode Mine": {
 			"Connect": {
-				"12184": true
+				"12184": true,
+				"Dwarven Mine": true
 			},
 			"Diary": {
 				"Falador": "EA9"
@@ -170068,7 +170062,8 @@
 				"8519": true,
 				"8779": true,
 				"9369": true,
-				"9823": true
+				"9823": true,
+				"Underground Pass": true
 			},
 			"Monster": {
 				"Dark beast": 19,
@@ -170272,7 +170267,8 @@
 		},
 		"Neypotzli": {
 			"Connect": {
-				"5780": true
+				"5780": true,
+				"Cam Torum": true
 			},
 			"Monster": {
 				"Blood jaguar": 8,
@@ -170314,7 +170310,8 @@
 		},
 		"Observatory Dungeon": {
 			"Connect": {
-				"9777": true
+				"9777-2": true,
+				"9777-3": true
 			},
 			"Monster": {
 				"Goblin#Drop table 1": 18,
@@ -171673,7 +171670,8 @@
 		},
 		"Tarn's Lair": {
 			"Connect": {
-				"13718": true
+				"13718": true,
+				"Abandoned Mine": true
 			},
 			"Diary": {
 				"Morytania": "MD5"
@@ -171910,7 +171908,9 @@
 		"Temple of the Eye": {
 			"Connect": {
 				"8036": true,
-				"12437": true
+				"The Scar": true,
+				"12437": true,
+				"Wizards' Tower#Basement": true
 			},
 			"NPC": {
 				"Apprentice Felix": 1,
@@ -171979,7 +171979,8 @@
 		},
 		"Scar essence mine": {
 			"Connect": {
-				"8036": true
+				"8036": true,
+				"The Scar": true
 			},
 			"NPC": {
 				"Hagus": 1
@@ -172081,7 +172082,8 @@
 		},
 		"Tombs of Amascut": {
 			"Connect": {
-				"13198": true
+				"13198": true,
+				"Tombs of Amascut Lobby": true
 			},
 			"Monster": {
 				"Akkha": 1,
@@ -172523,7 +172525,8 @@
 		},
 		"Varrock Museum#Paleontology Floor": {
 			"Connect": {
-				"6989": true
+				"6989": true,
+				"Varrock Museum#Natural History Exhibit": true
 			},
 			"NPC": {
 				"David": 1
@@ -173045,7 +173048,8 @@
 		},
 		"Witchaven Dungeon#Secret section": {
 			"Connect": {
-				"10903": true
+				"10903": true,
+				"Witchaven Dungeon": true
 			},
 			"Monster": {
 				"Giant lobster": 7
@@ -173172,7 +173176,8 @@
 		},
 		"Yanille Agility Dungeon#Section 1": {
 			"Connect": {
-				"10389": true
+				"10389": true,
+				"Yanille Agility Dungeon": true
 			},
 			"Monster": {
 				"Giant bat": 3
@@ -173186,7 +173191,8 @@
 		},
 		"Yanille Agility Dungeon#Section 2": {
 			"Connect": {
-				"10389": true
+				"10389": true,
+				"Yanille Agility Dungeon": true
 			},
 			"Monster": {
 				"Chaos druid warrior": 9
@@ -173203,7 +173209,8 @@
 		},
 		"Yanille Agility Dungeon#Section 3": {
 			"Connect": {
-				"10389": true
+				"10389": true,
+				"Yanille Agility Dungeon": true
 			},
 			"Monster": {
 				"Skeleton#Armed": 6
@@ -173218,7 +173225,8 @@
 		},
 		"Yanille Agility Dungeon#Section 4": {
 			"Connect": {
-				"10389": true
+				"10389": true,
+				"Yanille Agility Dungeon": true
 			},
 			"Diary": {
 				"Ardougne": "EL2"
@@ -173238,7 +173246,8 @@
 		},
 		"Yanille Agility Dungeon#Section 5": {
 			"Connect": {
-				"10389": true
+				"10389": true,
+				"Yanille Agility Dungeon": true
 			},
 			"Monster": {
 				"Chaos druid": 4,
@@ -173253,7 +173262,8 @@
 		},
 		"Yanille Agility Dungeon#Section 6": {
 			"Connect": {
-				"10389": true
+				"10389": true,
+				"Yanille Agility Dungeon": true
 			},
 			"Diary": {
 				"Ardougne": "EL2"
@@ -173268,7 +173278,8 @@
 		},
 		"Yanille Agility Dungeon#Section 7": {
 			"Connect": {
-				"10389": true
+				"10389": true,
+				"Yanille Agility Dungeon": true
 			},
 			"Monster": {
 				"Poison spider": 18
@@ -173460,7 +173471,8 @@
 		},
 		"Yu'biusk": {
 			"Connect": {
-				"10833": true
+				"10833": true,
+				"Dorgesh-Kaan South Dungeon": true
 			},
 			"Object": {
 				"Portal": 1,
@@ -173475,7 +173487,8 @@
 		},
 		"Vet'ion's Rest": {
 			"Connect": {
-				"13472": true
+				"13472": true,
+				"Escape Caves": true
 			},
 			"Monster": {
 				"Greater Skeleton Hellhound (Vet'ion)": 2,
@@ -173501,7 +173514,8 @@
 		},
 		"Callisto's Den": {
 			"Connect": {
-				"13472": true
+				"13472": true,
+				"Escape Caves": true
 			},
 			"Monster": {
 				"Callisto": 1
@@ -173523,7 +173537,8 @@
 		},
 		"Silk Chasm": {
 			"Connect": {
-				"13472": true
+				"13472": true,
+				"Escape Caves": true
 			},
 			"Monster": {
 				"Venenatis": 1
@@ -264203,7 +264218,7 @@
 				"9016-W1",
 				"9018",
 				"9273-W1",
-				"9273-W1"
+				"9273-W2"
 			]
 		},
 		"9018": {
@@ -269158,6 +269173,7 @@
 			"1": [
 				"12327-1",
 				"12582-1",
+				"12582-4",
 				"12839-1"
 			],
 			"W1": [
@@ -269268,7 +269284,8 @@
 			"W1": [
 				"12335-W2",
 				"12592-W1",
-				"12592-W2"
+				"12592-W2",
+				"12847-W1"
 			]
 		},
 		"12592": {
@@ -269639,6 +269656,7 @@
 				"13104-1"
 			],
 			"W1": [
+				"12847-W1",
 				"12592-W1",
 				"12849-W1"
 			]
