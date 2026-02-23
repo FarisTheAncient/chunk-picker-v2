@@ -28700,21 +28700,18 @@
 				"Items": ["Stormy key"],
 				"Objects": ["Chest (Pandemonium Cave)"],
 				"Output": "Chest (Pandemonium Cave)",
-				"ForcedSecondary": true,
 				"Not F2P": true
 			},
 			"Open the chest on Anglers' Retreat with the fetid key*": {
 				"Items": ["Fetid key"],
 				"Objects": ["Chest (Anglers' Retreat)"],
 				"Output": "Chest (Anglers' Retreat)",
-				"ForcedSecondary": true,
 				"Not F2P": true
 			},
 			"Open the chest on Laguna Aurorae with the serrated key*": {
 				"Items": ["Serrated key"],
 				"Objects": ["Chest (Laguna Aurorae)"],
 				"Output": "Chest (Laguna Aurorae)",
-				"ForcedSecondary": true,
 				"Not F2P": true
 			},
 			"Find the salvaging station schematic*": {
