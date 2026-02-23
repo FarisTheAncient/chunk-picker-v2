@@ -45580,7 +45580,7 @@
 				"Not F2P": true
 			},
 			"Their bane awaits.": {
-				"Monsters": ["Shellbane Gryphon"],
+				"Monsters": ["Shellbane gryphon"],
 				"ClueTier": "elite",
 				"ClueType": "Cryptic",
 				"Not F2P": true
@@ -53291,7 +53291,7 @@
 				"Primary": false,
 				"Priority": 7,
 				"Tasks": {
-					"~|Fremennik Trials|~ Complete the quest": "Quest"
+					"~|The Fremennik Trials|~ Complete the quest": "Quest"
 				},
 				"NoBoost": true,
 				"NoPet": true
@@ -53971,7 +53971,7 @@
 				"Primary": false,
 				"Priority": 17,
 				"Tasks": {
-					"~|Fremennik Trials|~ Complete the quest": "Quest"
+					"~|The Fremennik Trials|~ Complete the quest": "Quest"
 				},
 				"NoBoost": true,
 				"NoPet": true
@@ -55460,7 +55460,7 @@
 				"Output": "Kraken",
 				"NoBoost": true
 			},
-			"Slay the ~|shellbane gryphon|~": {
+			"Slay the ~|Shellbane gryphon|~": {
 				"Category": ["Boss Level"],
 				"Chunks": ["Shellbane Gryphon Cave"],
 				"Level": 51,
@@ -55469,7 +55469,7 @@
 				"Priority": 12,
 				"NoBoost": true
 			},
-			"Slay the ~|shellbane gryphon|~ alt": {
+			"Slay the ~|Shellbane gryphon|~ alt": {
 				"Category": ["Boss", "Boss Level"],
 				"Chunks": ["Shellbane Gryphon Cave"],
 				"Level": 51,
@@ -55480,7 +55480,7 @@
 				"Output": "Shellbane gryphon",
 				"NoBoost": true
 			},
-			"Slay the ~|thermonuclear smoke devil|~": {
+			"Slay the ~|Thermonuclear smoke devil|~": {
 				"Category": ["Boss Level"],
 				"Chunks": ["Smoke Devil Dungeon"],
 				"Level": 93,
@@ -55489,7 +55489,7 @@
 				"Priority": 2,
 				"NoBoost": true
 			},
-			"Slay the ~|thermonuclear smoke devil|~ alt": {
+			"Slay the ~|Thermonuclear smoke devil|~ alt": {
 				"Category": ["Boss", "Boss Level"],
 				"Chunks": ["Smoke Devil Dungeon"],
 				"Level": 93,
@@ -65027,25 +65027,25 @@
 				"Items": ["Scurry"],
 				"Not F2P": true
 			},
-			"(Shellbane Gryphon) Obtain a ~|gull (pet)|~": {
+			"(Shellbane gryphon) Obtain a ~|gull (pet)|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
 				"Items": ["Gull (pet)"],
 				"Not F2P": true
 			},
-			"(Shellbane Gryphon) Obtain a ~|jar of feathers|~": {
+			"(Shellbane gryphon) Obtain a ~|jar of feathers|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Jars"],
 				"Label": "Collection Log",
 				"Items": ["Jar of feathers"],
 				"Not F2P": true
 			},
-			"(Shellbane Gryphon) Obtain a ~|Belle's folly (tarnished)|~": {
+			"(Shellbane gryphon) Obtain a ~|Belle's folly (tarnished)|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
 				"Items": ["Belle's folly (tarnished)"],
 				"Not F2P": true
 			},
-			"(Shellbane Gryphon) Obtain a ~|gryphon feather|~": {
+			"(Shellbane gryphon) Obtain a ~|gryphon feather|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
 				"Items": ["Gryphon feather"],
@@ -92151,7 +92151,7 @@
 			"~|Combat Achievements#Easy|~ Dry Cleaning": {
 				"Category": ["Combat Diary Tasks"],
 				"Description": "Kill the Shellbane Gryphon after clearing its corrosive spit from your armour.",
-				"Monsters": ["Shellbane Gryphon"],
+				"Monsters": ["Shellbane gryphon"],
 				"BaseQuest": "Combat Achievements",
 				"Not F2P": true,
 				"CombatPoints": 1
@@ -92159,7 +92159,7 @@
 			"~|Combat Achievements#Easy|~ Shellbane Adept": {
 				"Category": ["Combat Diary Tasks"],
 				"Description": "Kill the Shellbane Gryphon 25 times.",
-				"Monsters": ["Shellbane Gryphon"],
+				"Monsters": ["Shellbane gryphon"],
 				"BaseQuest": "Combat Achievements",
 				"Not F2P": true,
 				"CombatPoints": 1
@@ -92634,7 +92634,7 @@
 			"~|Combat Achievements#Medium|~ Shellbane Veteran": {
 				"Category": ["Combat Diary Tasks"],
 				"Description": "Kill the Shellbane Gryphon 50 times.",
-				"Monsters": ["Shellbane Gryphon"],
+				"Monsters": ["Shellbane gryphon"],
 				"BaseQuest": "Combat Achievements",
 				"Not F2P": true,
 				"CombatPoints": 2
@@ -92642,7 +92642,7 @@
 			"~|Combat Achievements#Medium|~ Shellbane Speedrunner": {
 				"Category": ["Combat Diary Tasks"],
 				"Description": "Kill the Shellbane Gryphon 10 times within 12:30 minutes of entering the cave.",
-				"Monsters": ["Shellbane Gryphon"],
+				"Monsters": ["Shellbane gryphon"],
 				"BaseQuest": "Combat Achievements",
 				"Not F2P": true,
 				"CombatPoints": 2
@@ -92650,7 +92650,7 @@
 			"~|Combat Achievements#Medium|~ Perfect Shellbane": {
 				"Category": ["Combat Diary Tasks"],
 				"Description": "Kill the Shellbane Gryphon without taking damage.",
-				"Monsters": ["Shellbane Gryphon"],
+				"Monsters": ["Shellbane gryphon"],
 				"BaseQuest": "Combat Achievements",
 				"Not F2P": true,
 				"CombatPoints": 2
@@ -93359,7 +93359,7 @@
 			"~|Combat Achievements#Hard|~ Featherweight Fighter": {
 				"Category": ["Combat Diary Tasks"],
 				"Description": "Kill the Shellbane Gryphon 5 times without leaving the cave, while wearing gear weighing less than 40kg.",
-				"Monsters": ["Shellbane Gryphon"],
+				"Monsters": ["Shellbane gryphon"],
 				"BaseQuest": "Combat Achievements",
 				"Not F2P": true,
 				"CombatPoints": 3
@@ -93367,7 +93367,7 @@
 			"~|Combat Achievements#Hard|~ Shellbane Survivor": {
 				"Category": ["Combat Diary Tasks"],
 				"Description": "Kill the Shellbane Gryphon 25 times without leaving the cave.",
-				"Monsters": ["Shellbane Gryphon"],
+				"Monsters": ["Shellbane gryphon"],
 				"BaseQuest": "Combat Achievements",
 				"Not F2P": true,
 				"CombatPoints": 3
@@ -94546,7 +94546,7 @@
 				"CombatPoints": 4,
 				"Monsters": ["Thermonuclear smoke devil"],
 				"Tasks": {
-					"Slay the ~|thermonuclear smoke devil|~": "Slayer"
+					"Slay the ~|Thermonuclear smoke devil|~": "Slayer"
 				}
 			},
 			"~|Combat Achievements#Elite|~ Hazard Prevention": {
@@ -94557,7 +94557,7 @@
 				"CombatPoints": 4,
 				"Monsters": ["Thermonuclear smoke devil"],
 				"Tasks": {
-					"Slay the ~|thermonuclear smoke devil|~": "Slayer"
+					"Slay the ~|Thermonuclear smoke devil|~": "Slayer"
 				}
 			},
 			"~|Combat Achievements#Elite|~ Thermonuclear Veteran": {
@@ -94568,7 +94568,7 @@
 				"CombatPoints": 4,
 				"Monsters": ["Thermonuclear smoke devil"],
 				"Tasks": {
-					"Slay the ~|thermonuclear smoke devil|~": "Slayer"
+					"Slay the ~|Thermonuclear smoke devil|~": "Slayer"
 				}
 			},
 			"~|Combat Achievements#Elite|~ Tomb Explorer": {
@@ -132920,7 +132920,7 @@
 						"Iron rocks": 2,
 						"Mithril rocks": 1,
 						"Mooring point (scenery)": 1,
-						"Potter's oven space": 1,
+						"Pottery oven space": 1,
 						"Potter's wheel space": 1,
 						"Rowboat space": 1,
 						"Rusty chest": 1,
@@ -159323,6 +159323,7 @@
 					},
 					"Object": {
 						"Rocks (Cape Conch Lower)": 2,
+						"Rocks (The Great Conch#South-east)": 1,
 						"Tree": 3,
 						"Yew tree": 3
 					},
@@ -173797,7 +173798,9 @@
 			"MooringArdougne[+]": ["10546-W1", "10547-1"],
 			"MooringPortKhazard[+]": ["10545-W2", "10545-1"],
 			"MooringWitchaven[+]": ["10803-W1", "10803-1"],
+			"MooringEntrana[+]":["11317-W1","11317-1"],
 			"MooringCivitasillaFortis[+]": ["6961-W1", "6961-2"],
+			"MooringCorsairCove[+]":["10284-W1","10284-1"],
 			"MooringDognoseIsland[+]": ["12073-W1", "12073-1"],
 			"MooringCairnIsle[+]": ["10798-W1", "10798-1"],
 			"MooringChinchompaIsland[+]": ["7477-W1", "7477-1"],
@@ -200515,7 +200518,7 @@
 		},
 		"Narwhal": {
 			"Adamant arrow": {
-				"1": "108120"
+				"1": "8/120"
 			},
 			"Adamant cannonball": {
 				"30-45": "8/120"
