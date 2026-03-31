@@ -30182,6 +30182,14 @@
 				"Output": "Secateurs",
 				"Not F2P": true
 			},
+			"10284-1 to 10285-1":{
+				"Sections":["10284-1","10285-1"],
+				"Tasks":{
+					"~|The Corsair Curse|~ Complete the quest":"Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
 			"11569-W1 to 11313-W2": {
 				"Sections": ["11569-W1", "11313-W2"],
 				"Tasks": {
