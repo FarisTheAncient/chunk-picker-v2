@@ -31582,6 +31582,86 @@
 				"ConnectsSections": true,
 				"Not F2P": true
 			},
+			"River Lum Canoe Connection 1-2":{
+				"Sections":["12850-1","12852-1"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Carve a ~log |canoe|~": "Woodcutting"
+				},
+				"Not F2P": true
+			},
+			"River Lum Canoe Connection 2-3":{
+				"Sections":["12852-1","12341"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Carve a ~log |canoe|~": "Woodcutting"
+				},
+				"Not F2P": true
+			},
+			"River Lum Canoe Connection 3-4":{
+				"Sections":["12341","12342-1"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Carve a ~log |canoe|~": "Woodcutting"
+				},
+				"Not F2P": true
+			},
+			"River Lum Canoe Connection 1-3":{
+				"Sections":["12850-1","12341"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Carve a ~stable dugout |canoe|~": "Woodcutting"
+				},
+				"Not F2P": true
+			},
+			"River Lum Canoe Connection 2-4":{
+				"Sections":["12852-1","12342-1"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Carve a ~stable dugout |canoe|~": "Woodcutting"
+				},
+				"Not F2P": true
+			},
+			"River Lum Canoe Connection 1-4":{
+				"Sections":["12850-1","12342-1"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Carve a ~stable |canoe|~": "Woodcutting"
+				},
+				"Not F2P": true
+			},
+			"River Lum Canoe Connection 1-5":{
+				"Sections":["12850-1","12600"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Carve a ~waka |canoe|~": "Woodcutting"
+				},
+				"Not F2P": true
+			},
+			"River Lum Canoe Connection 2-5":{
+				"Sections":["12852-1","12600"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Carve a ~waka |canoe|~": "Woodcutting"
+				},
+				"Not F2P": true
+			},
+			"River Lum Canoe Connection 3-5":{
+				"Sections":["12341","12600"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Carve a ~waka |canoe|~": "Woodcutting"
+				},
+				"Not F2P": true
+			},
+			"River Lum Canoe Connection 4-5":{
+				"Sections":["12342-1","12600"],
+				"ConnectsSections": true,
+				"Tasks": {
+					"Carve a ~waka |canoe|~": "Woodcutting"
+				},
+				"Not F2P": true
+			},
 			"Player-owned house to Brimhaven": {
 				"Sections":["11057-1","Player-owned house"],
 				"ConnectsSections": true,
