@@ -7868,7 +7868,7 @@
 				"NoBoost": true
 			},
 			"Complete a beginner contract for ~|Mahogany Homes|~": {
-				"Chunks": ["11828-1"],
+				"Chunks": ["11828-1","10291","10547-1","12854-1","12853-1","12852-1","12084-1","6967","6968-1"],
 				"Items": ["Hammer[+]", "Saw[+]", "Plank*", "Steel bar*"],
 				"Level": 1,
 				"Primary": true,
@@ -7876,21 +7876,21 @@
 				"NoBoost": true
 			},
 			"Complete a novice contract for ~|Mahogany Homes|~": {
-				"Chunks": ["11828-1"],
+				"Chunks": ["11828-1","10291","10547-1","12854-1","12853-1","12852-1","12084-1","6967","6968-1"],
 				"Items": ["Hammer[+]", "Saw[+]", "Oak plank", "Steel bar"],
 				"Level": 20,
 				"Primary": true,
 				"Priority": 466
 			},
 			"Complete an adept contract for ~|Mahogany Homes|~": {
-				"Chunks": ["11828-1"],
+				"Chunks": ["11828-1","10291","10547-1","12854-1","12853-1","12852-1","12084-1","6967","6968-1"],
 				"Items": ["Hammer[+]", "Saw[+]", "Teak plank", "Steel bar"],
 				"Level": 50,
 				"Primary": true,
 				"Priority": 467
 			},
 			"Complete an expert contract for ~|Mahogany Homes|~": {
-				"Chunks": ["11828-1"],
+				"Chunks": ["11828-1","10291","10547-1","12854-1","12853-1","12852-1","12084-1","6967","6968-1"],
 				"Items": ["Hammer[+]", "Saw[+]", "Mahogany plank", "Steel bar"],
 				"Level": 70,
 				"Primary": true,
