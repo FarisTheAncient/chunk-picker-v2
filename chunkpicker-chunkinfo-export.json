@@ -33003,7 +33003,7 @@
 				"Items": ["Spade", "Amulet of defence", "Blue dye", "Bowl", "Chaos rune", "Emerald amulet", "Feather", "Fire tiara", "Fish food", "Hammer", "Iron chainbody", "Leather cowl", "Mind tiara", "Pie shell", "Poisoned fish food", "Potato", "Purple dye", "Raw beef", "Raw rat meat", "Raw sardine", "Red bead", "Redberries", "Redberry pie", "Shrimps", "Steel arrow", "Steel scimitar", "Tin ore", "Water rune"],
 				"Output": "Robes of ruin"
 			},
-			"Obtain the robe bottom of ruin of ruin*": {
+			"Obtain the robe bottom of ruin*": {
 				"Description": "Carry only the required items in the inventory, then speak to Betty in Port Sarim.",
 				"InfoLink": "Robes_of_Ruin#Alternative_ways_of_obtaining_individual_pieces",
 				"Chunks": ["12082-1"],
