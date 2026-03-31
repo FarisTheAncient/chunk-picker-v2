@@ -32454,6 +32454,148 @@
 				"ConnectsSections": true,
 				"Not F2P": true
 			},
+			"5178 Fairy Ring": {
+				"Sections":["5178","9285"],
+				"Tasks": {
+					"~|Fairytale II - Cure a Queen|~ 2": "Quest"
+				},
+				"Chunks":["7225-1"],
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"5689 Fairy Ring": {
+				"Sections":["5689","9285"],
+				"Tasks": {
+					"~|Fairytale II - Cure a Queen|~ 2": "Quest"
+				},
+				"Chunks":["7225-1"],
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"5421-1 Fairy Ring":{
+				"Sections":["5421-1","9285"],
+				"Tasks":{
+					"~|Children of the Sun|~ Complete the quest": "Quest",
+					"~|Fairytale II - Cure a Queen|~ 2": "Quest"
+				},
+				"Chunks":["6705"],
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"5683-3 Fairy Ring":{
+				"Sections":["5683-3","9285"],
+				"Tasks":{
+					"~|Children of the Sun|~ Complete the quest": "Quest",
+					"~|Fairytale II - Cure a Queen|~ 2": "Quest"
+				},
+				"Chunks":["6705"],
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"6447 Fairy Ring":{
+				"Sections":["6447","9285"],
+				"Tasks":{
+					"~|Children of the Sun|~ Complete the quest": "Quest",
+					"~|Fairytale II - Cure a Queen|~ 2": "Quest"
+				},
+				"Chunks":["6705"],
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"6460-1 Fairy Ring": {
+				"Sections":["6460-1","9285"],
+				"Tasks": {
+					"~|Fairytale II - Cure a Queen|~ 2": "Quest"
+				},
+				"Chunks":["7225-1"],
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"8495-2 Fairy Ring": {
+				"Sections": ["8495-2","9285"],
+				"Tasks":{
+					"~|Regicide|~ Complete the quest": "Quest",
+					"~|Fairytale II - Cure a Queen|~ 2": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"10044-1 Fairy Ring": {
+				"Sections":["10044-1","9285"],
+				"Tasks": {
+					"~|The Fremennik Trials|~ Complete the quest": "Quest",
+					"~|Fairytale II - Cure a Queen|~ 2": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"10794-3 Fairy Ring": {
+				"Sections":["10794-3","9285"],
+				"Tasks": {
+					"~|Monkey Madness I|~ Complete the quest": "Quest",
+					"~|Fairytale II - Cure a Queen|~ 2": "Quest"
+				},
+				"Skills":{
+					"Agility":48
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"12582-1 Fairy Ring": {
+				"Sections":["12582-1","9285"],
+				"Tasks": {
+					"~|Fairytale II - Cure a Queen|~ 2": "Quest"
+				},
+				"Chunks":["12581-1"],
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"13098-2 Fairy Ring":{
+				"Sections":["13098-2","9285"],
+				"Tasks":{
+					"~|Beneath Cursed Sands|~ 3": "Quest",
+					"~|Fairytale II - Cure a Queen|~ 2": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"Dorgesh-Kaan South Dungeon Fairy Ring":{
+				"Sections":["Dorgesh-Kaan South Dungeon","9285"],
+				"Tasks":{
+					"~|Death to the Dorgeshuun|~ Complete the quest": "Quest",
+					"~|Fairytale II - Cure a Queen|~ 2": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"Fisher Realm Fairy Ring":{
+				"Sections":["Fisher Realm","9285"],
+				"Tasks":{
+					"~|Holy Grail|~ 3": "Quest",
+					"~|Fairytale II - Cure a Queen|~ 2": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"Myreque hideout#Canifis/Mort Myre Hideout Fairy Ring": {
+				"Sections":["Myreque hideout#Canifis/Mort Myre Hideout","9285"],
+				"Tasks": {
+					"~|In Search of the Myreque|~ Complete the quest": "Quest",
+					"~|Fairytale II - Cure a Queen|~ 2": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"Yu'biusk Fairy Ring": {
+				"Sections":["Yu'biusk","9285"],
+				"Tasks": {
+					"~|Land of the Goblins|~ 12": "Quest",
+					"~|Fairytale II - Cure a Queen|~ 2": "Quest"
+				},
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+
 			"8496-1 Charter Ship": {
 				"Sections": ["8496-1","CharterShips[+]"],
 				"Tasks": {
