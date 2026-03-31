@@ -63667,354 +63667,413 @@
 			"(Abyssal Sire) Obtain an ~|abyssal orphan|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Abyssal Sire"],
 				"Items": ["Abyssal orphan"],
 				"Not F2P": true
 			},
 			"(Abyssal Sire) Obtain an ~|unsired|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Abyssal Sire"],
 				"Items": ["Unsired"],
 				"Not F2P": true
 			},
 			"(Abyssal Sire) Obtain an ~|abyssal head|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Abyssal Sire"],
 				"Items": ["Abyssal head"],
 				"Not F2P": true
 			},
 			"(Abyssal Sire) Obtain a ~|bludgeon spine|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Abyssal Sire"],
 				"Items": ["Bludgeon spine"],
 				"Not F2P": true
 			},
 			"(Abyssal Sire) Obtain a ~|bludgeon claw|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Abyssal Sire"],
 				"Items": ["Bludgeon claw"],
 				"Not F2P": true
 			},
 			"(Abyssal Sire) Obtain a ~|bludgeon axon|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Abyssal Sire"],
 				"Items": ["Bludgeon axon"],
 				"Not F2P": true
 			},
 			"(Abyssal Sire) Obtain a ~|jar of miasma|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Jars"],
 				"Label": "Collection Log",
+				"Monsters": ["Abyssal Sire"],
 				"Items": ["Jar of miasma"],
 				"Not F2P": true
 			},
 			"(Abyssal Sire) Obtain an ~|abyssal dagger|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Abyssal Sire"],
 				"Items": ["Abyssal dagger"],
 				"Not F2P": true
 			},
 			"(Abyssal Sire) Obtain an ~|abyssal whip|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Abyssal Sire"],
 				"Items": ["Abyssal whip"],
 				"Not F2P": true
 			},
 			"(Alchemical Hydra) Obtain an ~|ikkle hydra|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Alchemical Hydra"],
 				"Items": ["Ikkle hydra"],
 				"Not F2P": true
 			},
 			"(Alchemical Hydra) Obtain a ~|hydra's claw|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Alchemical Hydra"],
 				"Items": ["Hydra's claw"],
 				"Not F2P": true
 			},
 			"(Alchemical Hydra) Obtain a ~|hydra tail|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Alchemical Hydra"],
 				"Items": ["Hydra tail"],
 				"Not F2P": true
 			},
 			"(Alchemical Hydra) Obtain a ~|hydra leather|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Alchemical Hydra"],
 				"Items": ["Hydra leather"],
 				"Not F2P": true
 			},
 			"(Alchemical Hydra) Obtain a ~|hydra's fang|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Alchemical Hydra"],
 				"Items": ["Hydra's fang"],
 				"Not F2P": true
 			},
 			"(Alchemical Hydra) Obtain a ~|hydra's eye|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Alchemical Hydra"],
 				"Items": ["Hydra's eye"],
 				"Not F2P": true
 			},
 			"(Alchemical Hydra) Obtain a ~|hydra's heart|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Alchemical Hydra"],
 				"Items": ["Hydra's heart"],
 				"Not F2P": true
 			},
 			"(Alchemical Hydra) Obtain a ~|dragon knife|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Alchemical Hydra"],
 				"Items": ["Dragon knife"],
 				"Not F2P": true
 			},
 			"(Alchemical Hydra) Obtain a ~|dragon thrownaxe|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Alchemical Hydra"],
 				"Items": ["Dragon thrownaxe"],
 				"Not F2P": true
 			},
 			"(Alchemical Hydra) Obtain a ~|jar of chemicals|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Jars"],
 				"Label": "Collection Log",
+				"Monsters": ["Alchemical Hydra"],
 				"Items": ["Jar of chemicals"],
 				"Not F2P": true
 			},
 			"(Alchemical Hydra) Obtain ~|alchemical hydra heads|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Alchemical Hydra"],
 				"Items": ["Alchemical hydra heads"],
 				"Not F2P": true
 			},
 			"(Amoxliatl) Obtain a ~|moxi|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Amoxliatl"],
 				"Items": ["Moxi"],
 				"Not F2P": true
 			},
 			"(Amoxliatl) Obtain a ~|glacial temotli|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Amoxliatl"],
 				"Items": ["Glacial temotli"],
 				"Not F2P": true
 			},
 			"(Amoxliatl) Obtain a ~|pendant of ates (inert)|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Amoxliatl"],
 				"Items": ["Pendant of ates (inert)"],
 				"Not F2P": true
 			},
 			"(Amoxliatl) Obtain a ~|frozen tear|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Amoxliatl"],
 				"Items": ["Frozen tear"],
 				"Not F2P": true
 			},
 			"(Araxxor) Obtain a ~|nid|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Araxxor"],
 				"Items": ["Nid"],
 				"Not F2P": true
 			},
 			"(Araxxor) Obtain an ~|araxyte venom sack|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Araxxor"],
 				"Items": ["Araxyte venom sack"],
 				"Not F2P": true
 			},
 			"(Araxxor) Obtain a ~|spider cave teleport|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Araxxor"],
 				"Items": ["Spider cave teleport"],
 				"Not F2P": true
 			},
 			"(Araxxor) Obtain an ~|araxyte fang|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Araxxor"],
 				"Items": ["Araxyte fang"],
 				"Not F2P": true
 			},
 			"(Araxxor) Obtain a ~|noxious point|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Araxxor"],
 				"Items": ["Noxious point"],
 				"Not F2P": true
 			},
 			"(Araxxor) Obtain a ~|noxious blade|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Araxxor"],
 				"Items": ["Noxious blade"],
 				"Not F2P": true
 			},
 			"(Araxxor) Obtain a ~|noxious pommel|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Araxxor"],
 				"Items": ["Noxious pommel"],
 				"Not F2P": true
 			},
 			"(Araxxor) Obtain an ~|araxyte head|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Araxxor"],
 				"Items": ["Araxyte head"],
 				"Not F2P": true
 			},
 			"(Araxxor) Obtain a ~|jar of venom|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Jars"],
 				"Label": "Collection Log",
+				"Monsters": ["Araxxor"],
 				"Items": ["Jar of venom"],
 				"Not F2P": true
 			},
 			"(Araxxor) Obtain a ~|coagulated venom|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Araxxor"],
 				"Items": ["Coagulated venom"],
 				"Not F2P": true
 			},
 			"(Barrows Chests) Obtain a ~|karil's coif|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Karil the Tainted"],
 				"Items": ["Karil's coif"],
 				"Not F2P": true
 			},
 			"(Barrows Chests) Obtain a ~|karil's leathertop|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Karil the Tainted"],
 				"Items": ["Karil's leathertop"],
 				"Not F2P": true
 			},
 			"(Barrows Chests) Obtain a ~|karil's leatherskirt|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Karil the Tainted"],
 				"Items": ["Karil's leatherskirt"],
 				"Not F2P": true
 			},
 			"(Barrows Chests) Obtain a ~|karil's crossbow|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Karil the Tainted"],
 				"Items": ["Karil's crossbow"],
 				"Not F2P": true
 			},
 			"(Barrows Chests) Obtain an ~|ahrim's hood|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Ahrim the Blighted"],
 				"Items": ["Ahrim's hood"],
 				"Not F2P": true
 			},
 			"(Barrows Chests) Obtain an ~|ahrim's robetop|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Ahrim the Blighted"],
 				"Items": ["Ahrim's robetop"],
 				"Not F2P": true
 			},
 			"(Barrows Chests) Obtain an ~|ahrim's robeskirt|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Ahrim the Blighted"],
 				"Items": ["Ahrim's robeskirt"],
 				"Not F2P": true
 			},
 			"(Barrows Chests) Obtain an ~|ahrim's staff|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Ahrim the Blighted"],
 				"Items": ["Ahrim's staff"],
 				"Not F2P": true
 			},
 			"(Barrows Chests) Obtain a ~|dharok's helm|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Dharok the Wretched"],
 				"Items": ["Dharok's helm"],
 				"Not F2P": true
 			},
 			"(Barrows Chests) Obtain a ~|dharok's platebody|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Dharok the Wretched"],
 				"Items": ["Dharok's platebody"],
 				"Not F2P": true
 			},
 			"(Barrows Chests) Obtain a ~|dharok's platelegs|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Dharok the Wretched"],
 				"Items": ["Dharok's platelegs"],
 				"Not F2P": true
 			},
 			"(Barrows Chests) Obtain a ~|dharok's greataxe|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Dharok the Wretched"],
 				"Items": ["Dharok's greataxe"],
 				"Not F2P": true
 			},
 			"(Barrows Chests) Obtain a ~|guthan's helm|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Guthan the Infested"],
 				"Items": ["Guthan's helm"],
 				"Not F2P": true
 			},
 			"(Barrows Chests) Obtain a ~|guthan's platebody|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Guthan the Infested"],
 				"Items": ["Guthan's platebody"],
 				"Not F2P": true
 			},
 			"(Barrows Chests) Obtain a ~|guthan's chainskirt|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Guthan the Infested"],
 				"Items": ["Guthan's chainskirt"],
 				"Not F2P": true
 			},
 			"(Barrows Chests) Obtain a ~|guthan's warspear|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Guthan the Infested"],
 				"Items": ["Guthan's warspear"],
 				"Not F2P": true
 			},
 			"(Barrows Chests) Obtain a ~|torag's helm|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Torag the Corrupted"],
 				"Items": ["Torag's helm"],
 				"Not F2P": true
 			},
 			"(Barrows Chests) Obtain a ~|torag's platebody|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Torag the Corrupted"],
 				"Items": ["Torag's platebody"],
 				"Not F2P": true
 			},
 			"(Barrows Chests) Obtain a ~|torag's platelegs|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Torag the Corrupted"],
 				"Items": ["Torag's platelegs"],
 				"Not F2P": true
 			},
 			"(Barrows Chests) Obtain a ~|torag's hammers|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Torag the Corrupted"],
 				"Items": ["Torag's hammers"],
 				"Not F2P": true
 			},
 			"(Barrows Chests) Obtain a ~|verac's helm|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Verac the Defiled"],
 				"Items": ["Verac's helm"],
 				"Not F2P": true
 			},
 			"(Barrows Chests) Obtain a ~|verac's brassard|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Verac the Defiled"],
 				"Items": ["Verac's brassard"],
 				"Not F2P": true
 			},
 			"(Barrows Chests) Obtain a ~|verac's plateskirt|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Verac the Defiled"],
 				"Items": ["Verac's plateskirt"],
 				"Not F2P": true
 			},
 			"(Barrows Chests) Obtain a ~|verac's flail|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Verac the Defiled"],
 				"Items": ["Verac's flail"],
 				"Not F2P": true
 			},
 			"(Barrows Chests) Obtain a ~|bolt rack|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Chunks":["Barrows Crypts"],
 				"Items": ["Bolt rack"],
 				"NonShop": true,
 				"Not F2P": true
@@ -64022,393 +64081,454 @@
 			"(Bryophyta) Obtain a ~|bryophyta's essence|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Bryophyta"],
 				"Items": ["Bryophyta's essence"]
 			},
 			"(Callisto and Artio) Obtain a ~|callisto cub|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Callisto[+]"],
 				"Items": ["Callisto cub"],
 				"Not F2P": true
 			},
 			"(Callisto and Artio) Obtain a ~|tyrannical ring|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Callisto[+]"],
 				"Items": ["Tyrannical ring"],
 				"Not F2P": true
 			},
 			"(Callisto and Artio) Obtain a ~|dragon pickaxe|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Callisto[+]"],
 				"Items": ["Dragon pickaxe"],
-				"Monsters": ["DragonPickaxeDropper[+]"],
 				"Not F2P": true
 			},
 			"(Callisto and Artio) Obtain a ~|dragon 2h sword|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Callisto[+]"],
 				"Items": ["Dragon 2h sword"],
 				"Not F2P": true
 			},
 			"(Callisto and Artio) Obtain a ~|claws of callisto|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Callisto[+]"],
 				"Items": ["Claws of callisto"],
 				"Not F2P": true
 			},
 			"(Callisto and Artio) Obtain a ~|voidwaker hilt|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Callisto[+]"],
 				"Items": ["Voidwaker hilt"],
 				"Not F2P": true
 			},
 			"(Cerberus) Obtain a ~|hellpuppy|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Cerberus"],
 				"Items": ["Hellpuppy"],
 				"Not F2P": true
 			},
 			"(Cerberus) Obtain an ~|eternal crystal|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Cerberus"],
 				"Items": ["Eternal crystal"],
 				"Not F2P": true
 			},
 			"(Cerberus) Obtain a ~|pegasian crystal|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Cerberus"],
 				"Items": ["Pegasian crystal"],
 				"Not F2P": true
 			},
 			"(Cerberus) Obtain a ~|primordial crystal|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Cerberus"],
 				"Items": ["Primordial crystal"],
 				"Not F2P": true
 			},
 			"(Cerberus) Obtain a ~|jar of souls|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Jars"],
 				"Label": "Collection Log",
+				"Monsters": ["Cerberus"],
 				"Items": ["Jar of souls"],
 				"Not F2P": true
 			},
 			"(Cerberus) Obtain a ~|smouldering stone|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Cerberus"],
 				"Items": ["Smouldering stone"],
 				"Not F2P": true
 			},
 			"(Cerberus) Obtain a ~|key master teleport|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Cerberus"],
 				"Items": ["Key master teleport"],
 				"Not F2P": true
 			},
 			"(Chaos Elemental) Obtain a ~|pet chaos elemental|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Chaos Elemental"],
 				"Items": ["Pet chaos elemental"],
 				"Not F2P": true
 			},
 			"(Chaos Elemental) Obtain a ~|dragon pickaxe|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Chaos Elemental"],
 				"Items": ["Dragon pickaxe"],
-				"Monsters": ["DragonPickaxeDropper[+]"],
 				"Not F2P": true
 			},
 			"(Chaos Elemental) Obtain a ~|dragon 2h sword|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Chaos Elemental"],
 				"Items": ["Dragon 2h sword"],
 				"Not F2P": true
 			},
 			"(Chaos Fanatic) Obtain a ~|pet chaos elemental|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Chaos Fanatic"],
 				"Items": ["Pet chaos elemental"],
 				"Not F2P": true
 			},
 			"(Chaos Fanatic) Obtain an ~|odium shard 1|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Chaos Fanatic"],
 				"Items": ["Odium shard 1"],
 				"Not F2P": true
 			},
 			"(Chaos Fanatic) Obtain a ~|malediction shard 1|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Chaos Fanatic"],
 				"Items": ["Malediction shard 1"],
 				"Not F2P": true
 			},
 			"(Commander Zilyana) Obtain a ~|pet zilyana|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Commander Zilyana"],
 				"Items": ["Pet zilyana"],
 				"Not F2P": true
 			},
 			"(Commander Zilyana) Obtain an ~|armadyl crossbow|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Commander Zilyana"],
 				"Items": ["Armadyl crossbow"],
 				"Not F2P": true
 			},
 			"(Commander Zilyana) Obtain a ~|saradomin hilt|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Commander Zilyana"],
 				"Items": ["Saradomin hilt"],
 				"Not F2P": true
 			},
 			"(Commander Zilyana) Obtain a ~|saradomin sword|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Commander Zilyana"],
 				"Items": ["Saradomin sword"],
 				"Not F2P": true
 			},
 			"(Commander Zilyana) Obtain a ~|saradomin's light|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Commander Zilyana"],
 				"Items": ["Saradomin's light"],
 				"Not F2P": true
 			},
 			"(Commander Zilyana) Obtain a ~|godsword shard 1|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Commander Zilyana"],
 				"Items": ["Godsword shard 1"],
 				"Not F2P": true
 			},
 			"(Commander Zilyana) Obtain a ~|godsword shard 2|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Commander Zilyana"],
 				"Items": ["Godsword shard 2"],
 				"Not F2P": true
 			},
 			"(Commander Zilyana) Obtain a ~|godsword shard 3|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Commander Zilyana"],
 				"Items": ["Godsword shard 3"],
 				"Not F2P": true
 			},
 			"(Corporeal Beast) Obtain a ~|pet dark core|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Corporeal Beast"],
 				"Items": ["Pet dark core"],
 				"Not F2P": true
 			},
 			"(Corporeal Beast) Obtain an ~|elysian sigil|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Corporeal Beast"],
 				"Items": ["Elysian sigil"],
 				"Not F2P": true
 			},
 			"(Corporeal Beast) Obtain a ~|spectral sigil|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Corporeal Beast"],
 				"Items": ["Spectral sigil"],
 				"Not F2P": true
 			},
 			"(Corporeal Beast) Obtain an ~|arcane sigil|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Corporeal Beast"],
 				"Items": ["Arcane sigil"],
 				"Not F2P": true
 			},
 			"(Corporeal Beast) Obtain a ~|holy elixir|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Corporeal Beast"],
 				"Items": ["Holy elixir"],
 				"Not F2P": true
 			},
 			"(Corporeal Beast) Obtain a ~|spirit shield|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Corporeal Beast"],
 				"Items": ["Spirit shield"],
 				"Not F2P": true
 			},
 			"(Corporeal Beast) Obtain a ~|jar of spirits|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Jars"],
 				"Label": "Collection Log",
+				"Monsters": ["Corporeal Beast"],
 				"Items": ["Jar of spirits"],
 				"Not F2P": true
 			},
-			"(Crazy Archaeologist) Obtain an ~|odium shard 2|~": {
+			"(Crazy archaeologist) Obtain an ~|odium shard 2|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Crazy archaeologist"],
 				"Items": ["Odium shard 2"],
 				"Not F2P": true
 			},
-			"(Crazy Archaeologist) Obtain a ~|malediction shard 2|~": {
+			"(Crazy archaeologist) Obtain a ~|malediction shard 2|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Crazy archaeologist"],
 				"Items": ["Malediction shard 2"],
 				"Not F2P": true
 			},
-			"(Crazy Archaeologist) Obtain a ~|fedora|~": {
+			"(Crazy archaeologist) Obtain a ~|fedora|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Crazy archaeologist"],
 				"Items": ["Fedora"],
 				"Not F2P": true
 			},
 			"(Dagannoth Kings) Obtain a ~|pet dagannoth prime|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Dagannoth Prime"],
 				"Items": ["Pet dagannoth prime"],
 				"Not F2P": true
 			},
 			"(Dagannoth Kings) Obtain a ~|pet dagannoth supreme|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Dagannoth Supreme"],
 				"Items": ["Pet dagannoth supreme"],
 				"Not F2P": true
 			},
 			"(Dagannoth Kings) Obtain a ~|pet dagannoth rex|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Dagannoth Rex"],
 				"Items": ["Pet dagannoth rex"],
 				"Not F2P": true
 			},
 			"(Dagannoth Kings) Obtain a ~|berserker ring|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Dagannoth Rex"],
 				"Items": ["Berserker ring"],
 				"Not F2P": true
 			},
 			"(Dagannoth Kings) Obtain an ~|archers ring|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Dagannoth Supreme"],
 				"Items": ["Archers ring"],
 				"Not F2P": true
 			},
 			"(Dagannoth Kings) Obtain a ~|seers ring|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Dagannoth Prime"],
 				"Items": ["Seers ring"],
 				"Not F2P": true
 			},
 			"(Dagannoth Kings) Obtain a ~|warrior ring|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Dagannoth Rex"],
 				"Items": ["Warrior ring"],
 				"Not F2P": true
 			},
 			"(Dagannoth Kings) Obtain a ~|dragon axe|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["DagannothKings[+]"],
 				"Items": ["Dragon axe"],
 				"Not F2P": true
 			},
 			"(Dagannoth Kings) Obtain a ~|seercull|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Dagannoth Supreme"],
 				"Items": ["Seercull"],
 				"Not F2P": true
 			},
 			"(Dagannoth Kings) Obtain a ~|mud battlestaff|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Dagannoth Prime"],
 				"Items": ["Mud battlestaff"],
 				"Not F2P": true
 			},
-			"(Deranged Archaeologist) Obtain a ~|steel ring|~": {
+			"(Deranged archaeologist) Obtain a ~|steel ring|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Deranged archaeologist"],
 				"Items": ["Steel ring"],
 				"Not F2P": true
 			},
 			"(Doom of Mokhaiotl) Obtain ~|dom|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Doom of Mokhaiotl"],
 				"Items": ["Dom"],
 				"Not F2P": true
 			},
 			"(Doom of Mokhaiotl) Obtain ~|avernic treads|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Doom of Mokhaiotl"],
 				"Items": ["Avernic treads"],
 				"Not F2P": true
 			},
 			"(Doom of Mokhaiotl) Obtain an ~|eye of ayak (uncharged)|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Doom of Mokhaiotl"],
 				"Items": ["Eye of ayak (uncharged)"],
 				"Not F2P": true
 			},
 			"(Doom of Mokhaiotl) Obtain a ~|mokhaiotl cloth|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Doom of Mokhaiotl"],
 				"Items": ["Mokhaiotl cloth"],
 				"Not F2P": true
 			},
 			"(Doom of Mokhaiotl) Obtain a ~|mokhaiotl waystone|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Doom of Mokhaiotl"],
 				"Items": ["Mokhaiotl waystone"],
 				"Not F2P": true
 			},
 			"(Doom of Mokhaiotl) Obtain a ~|demon tear|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
-				"Items": ["Mokhaiotl cloth"],
 				"Monsters": ["Doom of Mokhaiotl"],
+				"Items": ["Mokhaiotl cloth"],
 				"Not F2P": true
 			},
 			"(Duke Sucellus) Obtain a ~|baron|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Duke Sucellus"],
 				"Items": ["Baron"],
 				"Not F2P": true
 			},
 			"(Duke Sucellus) Obtain an ~|eye of the duke|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Duke Sucellus"],
 				"Items": ["Eye of the duke"],
 				"Not F2P": true
 			},
 			"(Duke Sucellus) Obtain a ~|virtus mask|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Duke Sucellus"],
 				"Items": ["Virtus mask"],
 				"Not F2P": true
 			},
 			"(Duke Sucellus) Obtain a ~|virtus robe top|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Duke Sucellus"],
 				"Items": ["Virtus robe top"],
 				"Not F2P": true
 			},
 			"(Duke Sucellus) Obtain a ~|virtus robe bottom|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Duke Sucellus"],
 				"Items": ["Virtus robe bottom"],
 				"Not F2P": true
 			},
 			"(Duke Sucellus) Obtain a ~|magus vestige|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Duke Sucellus"],
 				"Items": ["Magus vestige"],
 				"Not F2P": true
 			},
 			"(Duke Sucellus) Obtain an ~|ice quartz|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Duke Sucellus"],
 				"Items": ["Ice quartz"],
 				"Not F2P": true
 			},
 			"(Duke Sucellus) Obtain a ~|frozen tablet|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Duke Sucellus"],
 				"Items": ["Frozen tablet"],
 				"Not F2P": true
 			},
 			"(Duke Sucellus) Obtain a ~|chromium ingot|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Duke Sucellus"],
 				"Items": ["Chromium ingot"],
-				"Monsters": ["DT2Boss[+]"],
 				"Not F2P": true
 			},
 			"(Duke Sucellus) Obtain a ~|awakener's orb|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Duke Sucellus"],
 				"Items": ["Awakener's orb"],
 				"Not F2P": true
 			},
@@ -64505,60 +64625,70 @@
 			"(General Graardor) Obtain a ~|pet general graardor|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["General Graardor"],
 				"Items": ["Pet general graardor"],
 				"Not F2P": true
 			},
 			"(General Graardor) Obtain a ~|bandos chestplate|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["General Graardor"],
 				"Items": ["Bandos chestplate"],
 				"Not F2P": true
 			},
 			"(General Graardor) Obtain ~|bandos tassets|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["General Graardor"],
 				"Items": ["Bandos tassets"],
 				"Not F2P": true
 			},
 			"(General Graardor) Obtain ~|bandos boots|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["General Graardor"],
 				"Items": ["Bandos boots"],
 				"Not F2P": true
 			},
 			"(General Graardor) Obtain a ~|bandos hilt|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["General Graardor"],
 				"Items": ["Bandos hilt"],
 				"Not F2P": true
 			},
 			"(General Graardor) Obtain a ~|godsword shard 1|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["General Graardor"],
 				"Items": ["Godsword shard 1"],
 				"Not F2P": true
 			},
 			"(General Graardor) Obtain a ~|godsword shard 2|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["General Graardor"],
 				"Items": ["Godsword shard 2"],
 				"Not F2P": true
 			},
 			"(General Graardor) Obtain a ~|godsword shard 3|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["General Graardor"],
 				"Items": ["Godsword shard 3"],
 				"Not F2P": true
 			},
 			"(Giant Mole) Obtain a ~|baby mole|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Giant Mole"],
 				"Items": ["Baby mole"],
 				"Not F2P": true
 			},
 			"(Giant Mole) Obtain a ~|mole skin|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Giant Mole"],
 				"Items": ["Mole skin"],
 				"Not F2P": true
 			},
@@ -64572,103 +64702,119 @@
 			"(Grotesque Guardians) Obtain ~|noon|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Grotesque Guardians"],
 				"Items": ["Noon"],
 				"Not F2P": true
 			},
 			"(Grotesque Guardians) Obtain a ~|black tourmaline core|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Grotesque Guardians"],
 				"Items": ["Black tourmaline core"],
 				"Not F2P": true
 			},
 			"(Grotesque Guardians) Obtain ~|granite gloves|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Grotesque Guardians"],
 				"Items": ["Granite gloves"],
 				"Not F2P": true
 			},
 			"(Grotesque Guardians) Obtain a ~|granite ring|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Grotesque Guardians"],
 				"Items": ["Granite ring"],
 				"Not F2P": true
 			},
 			"(Grotesque Guardians) Obtain a ~|granite hammer|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Grotesque Guardians"],
 				"Items": ["Granite hammer"],
 				"Not F2P": true
 			},
 			"(Grotesque Guardians) Obtain a ~|jar of stone|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Jars"],
 				"Label": "Collection Log",
+				"Monsters": ["Grotesque Guardians"],
 				"Items": ["Jar of stone"],
 				"Not F2P": true
 			},
 			"(Grotesque Guardians) Obtain ~|granite dust|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Grotesque Guardians"],
 				"Items": ["Granite dust"],
 				"Not F2P": true
 			},
 			"(Hespori) Obtain a ~|bottomless compost bucket|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Hespori"],
 				"Items": ["Bottomless compost bucket"],
 				"Not F2P": true
 			},
 			"(Hespori) Obtain an ~|iasor seed|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Hespori"],
 				"Items": ["Iasor seed"],
 				"Not F2P": true
 			},
 			"(Hespori) Obtain a ~|kronos seed|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Hespori"],
 				"Items": ["Kronos seed"],
 				"Not F2P": true
 			},
 			"(Hespori) Obtain an ~|attas seed|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Hespori"],
 				"Items": ["Attas seed"],
 				"Not F2P": true
 			},
 			"(The Hueycoatl) Obtain a ~|huberte|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Hespori"],
 				"Items": ["Huberte"],
 				"Not F2P": true
 			},
 			"(The Hueycoatl) Obtain a ~|dragon hunter wand|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Hueycoatl"],
 				"Items": ["Dragon hunter wand"],
 				"Not F2P": true
 			},
 			"(The Hueycoatl) Obtain a ~|tome of earth (empty)|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Hueycoatl"],
 				"Items": ["Tome of earth (empty)"],
 				"Not F2P": true
 			},
 			"(The Hueycoatl) Obtain a ~|soiled page|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
-				"Items": ["Soiled page"],
 				"Monsters": ["The Hueycoatl"],
+				"Items": ["Soiled page"],
 				"Not F2P": true
 			},
 			"(The Hueycoatl) Obtain a ~|Hueycoatl hide|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Hueycoatl"],
 				"Items": ["Hueycoatl hide"],
 				"Not F2P": true
 			},
 			"(The Hueycoatl) Obtain a ~|huasca seed|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Hueycoatl"],
 				"Items": ["Huasca seed"],
 				"Not F2P": true
 			},
@@ -64687,339 +64833,392 @@
 			"(Kalphite Queen) Obtain a ~|kalphite princess|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Kalphite Queen"],
 				"Items": ["Kalphite princess"],
 				"Not F2P": true
 			},
 			"(Kalphite Queen) Obtain a ~|kq head|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Kalphite Queen"],
 				"Items": ["Kq head"],
 				"Not F2P": true
 			},
 			"(Kalphite Queen) Obtain a ~|jar of sand|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Jars"],
 				"Label": "Collection Log",
+				"Monsters": ["Kalphite Queen"],
 				"Items": ["Jar of sand"],
 				"Not F2P": true
 			},
 			"(Kalphite Queen) Obtain a ~|dragon 2h sword|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Kalphite Queen"],
 				"Items": ["Dragon 2h sword"],
 				"Not F2P": true
 			},
 			"(Kalphite Queen) Obtain a ~|dragon chainbody|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Kalphite Queen"],
 				"Items": ["Dragon chainbody"],
 				"Not F2P": true
 			},
 			"(Kalphite Queen) Obtain a ~|dragon pickaxe|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Kalphite Queen"],
 				"Items": ["Dragon pickaxe"],
-				"Monsters": ["DragonPickaxeDropper[+]"],
 				"Not F2P": true
 			},
 			"(King Black Dragon) Obtain a ~|prince black dragon|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["King Black Dragon"],
 				"Items": ["Prince black dragon"],
 				"Not F2P": true
 			},
 			"(King Black Dragon) Obtain a ~|kbd heads|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["King Black Dragon"],
 				"Items": ["Kbd heads"],
 				"Not F2P": true
 			},
 			"(King Black Dragon) Obtain a ~|dragon pickaxe|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["King Black Dragon"],
 				"Items": ["Dragon pickaxe"],
-				"Monsters": ["DragonPickaxeDropper[+]"],
 				"Not F2P": true
 			},
 			"(King Black Dragon) Obtain a ~|draconic visage|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["King Black Dragon"],
 				"Items": ["Draconic visage"],
 				"Not F2P": true
 			},
 			"(Kraken) Obtain a ~|pet kraken|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Kraken"],
 				"Items": ["Pet kraken"],
 				"Not F2P": true
 			},
 			"(Kraken) Obtain a ~|kraken tentacle|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Kraken"],
 				"Items": ["Kraken tentacle"],
 				"Not F2P": true
 			},
 			"(Kraken) Obtain a ~|trident of the seas (full)|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Kraken"],
 				"Items": ["Trident of the seas (full)"],
 				"Not F2P": true
 			},
 			"(Kraken) Obtain a ~|jar of dirt|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Jars"],
 				"Label": "Collection Log",
+				"Monsters": ["Kraken"],
 				"Items": ["Jar of dirt"],
 				"Not F2P": true
 			},
 			"(Kree'arra) Obtain a ~|pet kree'arra|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Kree'arra"],
 				"Items": ["Pet kree'arra"],
 				"Not F2P": true
 			},
 			"(Kree'arra) Obtain an ~|armadyl helmet|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Kree'arra"],
 				"Items": ["Armadyl helmet"],
 				"Not F2P": true
 			},
 			"(Kree'arra) Obtain an ~|armadyl chestplate|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Kree'arra"],
 				"Items": ["Armadyl chestplate"],
 				"Not F2P": true
 			},
 			"(Kree'arra) Obtain an ~|armadyl chainskirt|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Kree'arra"],
 				"Items": ["Armadyl chainskirt"],
 				"Not F2P": true
 			},
 			"(Kree'arra) Obtain an ~|armadyl hilt|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Kree'arra"],
 				"Items": ["Armadyl hilt"],
 				"Not F2P": true
 			},
 			"(Kree'arra) Obtain a ~|godsword shard 1|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Kree'arra"],
 				"Items": ["Godsword shard 1"],
 				"Not F2P": true
 			},
 			"(Kree'arra) Obtain a ~|godsword shard 2|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Kree'arra"],
 				"Items": ["Godsword shard 2"],
 				"Not F2P": true
 			},
 			"(Kree'arra) Obtain a ~|godsword shard 3|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Kree'arra"],
 				"Items": ["Godsword shard 3"],
 				"Not F2P": true
 			},
 			"(K'ril Tsutsaroth) Obtain a ~|pet k'ril tsutsaroth|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["K'ril Tsutsaroth"],
 				"Items": ["Pet k'ril tsutsaroth"],
 				"Not F2P": true
 			},
 			"(K'ril Tsutsaroth) Obtain a ~|staff of the dead|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["K'ril Tsutsaroth"],
 				"Items": ["Staff of the dead"],
 				"Not F2P": true
 			},
 			"(K'ril Tsutsaroth) Obtain a ~|zamorakian spear|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["K'ril Tsutsaroth"],
 				"Items": ["Zamorakian spear"],
 				"Not F2P": true
 			},
 			"(K'ril Tsutsaroth) Obtain a ~|steam battlestaff|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["K'ril Tsutsaroth"],
 				"Items": ["Steam battlestaff"],
 				"Not F2P": true
 			},
 			"(K'ril Tsutsaroth) Obtain a ~|zamorak hilt|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["K'ril Tsutsaroth"],
 				"Items": ["Zamorak hilt"],
 				"Not F2P": true
 			},
 			"(K'ril Tsutsaroth) Obtain a ~|godsword shard 1|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["K'ril Tsutsaroth"],
 				"Items": ["Godsword shard 1"],
 				"Not F2P": true
 			},
 			"(K'ril Tsutsaroth) Obtain a ~|godsword shard 2|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["K'ril Tsutsaroth"],
 				"Items": ["Godsword shard 2"],
 				"Not F2P": true
 			},
 			"(K'ril Tsutsaroth) Obtain a ~|godsword shard 3|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["K'ril Tsutsaroth"],
 				"Items": ["Godsword shard 3"],
 				"Not F2P": true
 			},
 			"(The Leviathan) Obtain a ~|lil'viathan|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["The Leviathan"],
 				"Items": ["Lil'viathan"],
 				"Not F2P": true
 			},
 			"(The Leviathan) Obtain a ~|leviathan's lure|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Leviathan"],
 				"Items": ["Leviathan's lure"],
 				"Not F2P": true
 			},
 			"(The Leviathan) Obtain a ~|virtus mask|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Leviathan"],
 				"Items": ["Virtus mask"],
 				"Not F2P": true
 			},
 			"(The Leviathan) Obtain a ~|virtus robe top|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Leviathan"],
 				"Items": ["Virtus robe top"],
 				"Not F2P": true
 			},
 			"(The Leviathan) Obtain a ~|virtus robe bottom|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Leviathan"],
 				"Items": ["Virtus robe bottom"],
 				"Not F2P": true
 			},
 			"(The Leviathan) Obtain a ~|venator vestige|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Leviathan"],
 				"Items": ["Venator vestige"],
 				"Not F2P": true
 			},
 			"(The Leviathan) Obtain a ~|smoke quartz|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Leviathan"],
 				"Items": ["Smoke quartz"],
 				"Not F2P": true
 			},
 			"(The Leviathan) Obtain a ~|scarred tablet|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Leviathan"],
 				"Items": ["Scarred tablet"],
 				"Not F2P": true
 			},
 			"(The Leviathan) Obtain a ~|chromium ingot|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Leviathan"],
 				"Items": ["Chromium ingot"],
-				"Monsters": ["DT2Boss[+]"],
 				"Not F2P": true
 			},
 			"(The Leviathan) Obtain a ~|awakener's orb|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Leviathan"],
 				"Items": ["Awakener's orb"],
 				"Not F2P": true
 			},
 			"(Moons of Peril) Obtain an ~|eclipse moon chestplate|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Eclipse Moon"],
 				"Items": ["Eclipse moon chestplate"],
 				"Not F2P": true
 			},
 			"(Moons of Peril) Obtain an ~|eclipse moon tassets|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Eclipse Moon"],
 				"Items": ["Eclipse moon tassets"],
 				"Not F2P": true
 			},
 			"(Moons of Peril) Obtain an ~|eclipse moon helm|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Eclipse Moon"],
 				"Items": ["Eclipse moon helm"],
 				"Not F2P": true
 			},
 			"(Moons of Peril) Obtain an ~|eclipse atlatl|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Eclipse Moon"],
 				"Items": ["Eclipse atlatl"],
 				"Not F2P": true
 			},
 			"(Moons of Peril) Obtain a ~|blue moon chestplate|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Blue Moon"],
 				"Items": ["Blue moon chestplate"],
 				"Not F2P": true
 			},
 			"(Moons of Peril) Obtain a ~|blue moon tassets|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Blue Moon"],
 				"Items": ["Blue moon tassets"],
 				"Not F2P": true
 			},
 			"(Moons of Peril) Obtain a ~|blue moon helm|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Blue Moon"],
 				"Items": ["Blue moon helm"],
 				"Not F2P": true
 			},
 			"(Moons of Peril) Obtain a ~|blue moon spear|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Blue Moon"],
 				"Items": ["Blue moon spear"],
 				"Not F2P": true
 			},
 			"(Moons of Peril) Obtain a ~|blood moon chestplate|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Blood Moon"],
 				"Items": ["Blood moon chestplate"],
 				"Not F2P": true
 			},
 			"(Moons of Peril) Obtain a ~|blood moon tassets|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Blood Moon"],
 				"Items": ["Blood moon tassets"],
 				"Not F2P": true
 			},
 			"(Moons of Peril) Obtain a ~|blood moon helm|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Blood Moon"],
 				"Items": ["Blood moon helm"],
 				"Not F2P": true
 			},
 			"(Moons of Peril) Obtain a ~|dual macuahuitl|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Blood Moon"],
 				"Items": ["Dual macuahuitl"],
 				"Not F2P": true
 			},
 			"(Moons of Peril) Obtain an ~|atlatl dart|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["MoonsOfPeril[+]"],
 				"Items": ["Atlatl dart"],
 				"Not F2P": true
 			},
 			"(Nex) Obtain a ~|nexling|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Nex"],
 				"Items": ["Nexling"],
 				"Not F2P": true
 			},
 			"(Nex) Obtain an ~|ancient hilt|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Nex"],
 				"Items": ["Ancient hilt"],
 				"Not F2P": true
 			},
 			"(Nex) Obtain a ~|nihil horn|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Nex"],
 				"Items": ["Nihil horn"],
 				"Not F2P": true
 			},
@@ -65032,128 +65231,150 @@
 			"(Nex) Obtain a ~|torva full helm (damaged)|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Nex"],
 				"Items": ["Torva full helm (damaged)"],
 				"Not F2P": true
 			},
 			"(Nex) Obtain a ~|torva platebody (damaged)|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Nex"],
 				"Items": ["Torva platebody (damaged)"],
 				"Not F2P": true
 			},
 			"(Nex) Obtain a ~|torva platelegs (damaged)|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Nex"],
 				"Items": ["Torva platelegs (damaged)"],
 				"Not F2P": true
 			},
 			"(Nex) Obtain a ~|nihil shard|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Nex"],
 				"Items": ["Nihil shard"],
 				"Not F2P": true
 			},
 			"(The Nightmare) Obtain a ~|little nightmare|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["The Nightmare"],
 				"Items": ["Little nightmare"],
 				"Not F2P": true
 			},
 			"(The Nightmare) Obtain an ~|inquisitor's mace|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Nightmare"],
 				"Items": ["Inquisitor's mace"],
 				"Not F2P": true
 			},
 			"(The Nightmare) Obtain an ~|inquisitor's great helm|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Nightmare"],
 				"Items": ["Inquisitor's great helm"],
 				"Not F2P": true
 			},
 			"(The Nightmare) Obtain an ~|inquisitor's hauberk|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Nightmare"],
 				"Items": ["Inquisitor's hauberk"],
 				"Not F2P": true
 			},
 			"(The Nightmare) Obtain an ~|inquisitor's plateskirt|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Nightmare"],
 				"Items": ["Inquisitor's plateskirt"],
 				"Not F2P": true
 			},
 			"(The Nightmare) Obtain a ~|nightmare staff|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Nightmare"],
 				"Items": ["Nightmare staff"],
 				"Not F2P": true
 			},
 			"(The Nightmare) Obtain a ~|volatile orb|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Nightmare"],
 				"Items": ["Volatile orb"],
 				"Not F2P": true
 			},
 			"(The Nightmare) Obtain a ~|harmonised orb|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Nightmare"],
 				"Items": ["Harmonised orb"],
 				"Not F2P": true
 			},
 			"(The Nightmare) Obtain an ~|eldritch orb|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Nightmare"],
 				"Items": ["Eldritch orb"],
 				"Not F2P": true
 			},
 			"(The Nightmare) Obtain a ~|jar of dreams|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Jars"],
 				"Label": "Collection Log",
+				"Monsters": ["The Nightmare"],
 				"Items": ["Jar of dreams"],
 				"Not F2P": true
 			},
 			"(The Nightmare) Obtain a ~|slepey tablet|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Nightmare"],
 				"Items": ["Slepey tablet"],
 				"Not F2P": true
 			},
 			"(The Nightmare) Obtain a ~|parasitic egg|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Nightmare"],
 				"Items": ["Parasitic egg"],
 				"Not F2P": true
 			},
 			"(Obor) Obtain a ~|hill giant club|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Obor"],
 				"Items": ["Hill giant club"]
 			},
 			"(Phantom Muspah) Obtain a ~|muphin|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Phantom Muspah"],
 				"Items": ["Muphin"],
 				"Not F2P": true
 			},
 			"(Phantom Muspah) Obtain an ~|venator shard|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Phantom Muspah"],
 				"Items": ["Venator shard"]
 			},
 			"(Phantom Muspah) Obtain an ~|ancient icon|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Phantom Muspah"],
 				"Items": ["Ancient icon"]
 			},
 			"(Phantom Muspah) Obtain a ~|charged ice|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Phantom Muspah"],
 				"Items": ["Charged ice"]
 			},
 			"(Phantom Muspah) Obtain a ~|frozen cache|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Phantom Muspah"],
 				"Items": ["Frozen cache"]
 			},
 			"(Phantom Muspah) Obtain an ~|ancient essence|~": {
@@ -65165,144 +65386,168 @@
 			"(Royal Titans) Obtain a ~|bran|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["RoyalTitans[+]"],
 				"Items": ["Bran"],
 				"Not F2P": true
 			},
 			"(Royal Titans) Obtain a ~|deadeye prayer scroll|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["RoyalTitans[+]"],
 				"Items": ["Deadeye prayer scroll"],
 				"Not F2P": true
 			},
 			"(Royal Titans) Obtain a ~|mystic vigour prayer scroll|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["RoyalTitans[+]"],
 				"Items": ["Mystic vigour prayer scroll"],
 				"Not F2P": true
 			},
 			"(Royal Titans) Obtain a ~|giantsoul amulet (uncharged)|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["RoyalTitans[+]"],
 				"Items": ["Giantsoul amulet (uncharged)"],
 				"Not F2P": true
 			},
 			"(Royal Titans) Obtain a ~|ice element staff crown|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["RoyalTitans[+]"],
 				"Items": ["Ice element staff crown"],
 				"Not F2P": true
 			},
 			"(Royal Titans) Obtain a ~|fire element staff crown|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["RoyalTitans[+]"],
 				"Items": ["Fire element staff crown"],
 				"Not F2P": true
 			},
 			"(Royal Titans) Obtain a ~|desiccated page|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["RoyalTitans[+]"],
 				"Items": ["Desiccated page"],
 				"Not F2P": true
 			},
 			"(Sarachnis) Obtain a ~|sraracha|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Sarachnis"],
 				"Items": ["Sraracha"],
 				"Not F2P": true
 			},
 			"(Sarachnis) Obtain a ~|jar of eyes|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Jars"],
 				"Label": "Collection Log",
+				"Monsters": ["Sarachnis"],
 				"Items": ["Jar of eyes"],
 				"Not F2P": true
 			},
 			"(Sarachnis) Obtain a ~|giant egg sac(full)|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Sarachnis"],
 				"Items": ["Giant egg sac(full)"],
 				"Not F2P": true
 			},
 			"(Sarachnis) Obtain a ~|sarachnis cudgel|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Sarachnis"],
 				"Items": ["Sarachnis cudgel"],
 				"Not F2P": true
 			},
 			"(Scorpia) Obtain a ~|scorpia's offspring|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Scorpia"],
 				"Items": ["Scorpia's offspring"],
 				"Not F2P": true
 			},
 			"(Scorpia) Obtain an ~|odium shard 3|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Scorpia"],
 				"Items": ["Odium shard 3"],
 				"Not F2P": true
 			},
 			"(Scorpia) Obtain a ~|malediction shard 3|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Scorpia"],
 				"Items": ["Malediction shard 3"],
 				"Not F2P": true
 			},
 			"(Scorpia) Obtain a ~|dragon 2h sword|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Scorpia"],
 				"Items": ["Dragon 2h sword"],
 				"Not F2P": true
 			},
 			"(Scurrius) Obtain a ~|Scurrius' spine|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Scurrius"],
 				"Items": ["Scurrius' spine"],
 				"Not F2P": true
 			},
 			"(Scurrius) Obtain a ~|scurry|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Scurrius"],
 				"Items": ["Scurry"],
 				"Not F2P": true
 			},
 			"(Shellbane gryphon) Obtain a ~|gull (pet)|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Shellbane gryphon"],
 				"Items": ["Gull (pet)"],
 				"Not F2P": true
 			},
 			"(Shellbane gryphon) Obtain a ~|jar of feathers|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Jars"],
 				"Label": "Collection Log",
+				"Monsters": ["Shellbane gryphon"],
 				"Items": ["Jar of feathers"],
 				"Not F2P": true
 			},
 			"(Shellbane gryphon) Obtain a ~|Belle's folly (tarnished)|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Shellbane gryphon"],
 				"Items": ["Belle's folly (tarnished)"],
 				"Not F2P": true
 			},
 			"(Shellbane gryphon) Obtain a ~|gryphon feather|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Shellbane gryphon"],
 				"Items": ["Gryphon feather"],
 				"Not F2P": true
 			},
 			"(Skotizo) Obtain a ~|skotos|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Skotizo"],
 				"Items": ["Skotos"],
 				"Not F2P": true
 			},
 			"(Skotizo) Obtain a ~|jar of darkness|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Jars"],
 				"Label": "Collection Log",
+				"Monsters": ["Skotizo"],
 				"Items": ["Jar of darkness"],
 				"Not F2P": true
 			},
 			"(Skotizo) Obtain a ~|dark claw|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Skotizo"],
 				"Items": ["Dark claw"],
 				"Not F2P": true
 			},
@@ -65317,332 +65562,379 @@
 			"(Skotizo) Obtain an ~|uncut onyx|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Skotizo"],
 				"Items": ["Uncut onyx"],
 				"NonShop": true,
-				"Tasks": {
-					"UncutOnyxSource[+]": "Nonskill"
-				},
 				"Not F2P": true
 			},
 			"(Skotizo) Obtain an ~|ancient shard|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Skotizo"],
 				"Items": ["Ancient shard"],
 				"Not F2P": true
 			},
 			"(Tempoross) Obtain a ~|tiny tempor|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"NPCs": ["Tempoross"],
 				"Items": ["Tiny tempor"],
 				"Not F2P": true
 			},
 			"(Tempoross) Obtain a ~|big harpoonfish|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"NPCs": ["Tempoross"],
 				"Items": ["Big harpoonfish"],
 				"Not F2P": true
 			},
 			"(Tempoross) Obtain a ~|spirit angler headband|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"NPCs": ["Tempoross"],
 				"Items": ["Spirit angler headband"],
 				"Not F2P": true
 			},
 			"(Tempoross) Obtain a ~|spirit angler top|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"NPCs": ["Tempoross"],
 				"Items": ["Spirit angler top"],
 				"Not F2P": true
 			},
 			"(Tempoross) Obtain ~|spirit angler waders|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"NPCs": ["Tempoross"],
 				"Items": ["Spirit angler waders"],
 				"Not F2P": true
 			},
 			"(Tempoross) Obtain ~|spirit angler boots|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"NPCs": ["Tempoross"],
 				"Items": ["Spirit angler boots"],
 				"Not F2P": true
 			},
 			"(Tempoross) Obtain a ~|tome of water (empty)|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"NPCs": ["Tempoross"],
 				"Items": ["Tome of water (empty)"],
 				"Not F2P": true
 			},
 			"(Tempoross) Obtain a ~|soaked page|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
-				"Items": ["Soaked page"],
 				"NPCs": ["Tempoross"],
+				"Items": ["Soaked page"],
 				"Not F2P": true
 			},
 			"(Tempoross) Obtain a ~|tackle box|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"NPCs": ["Tempoross"],
 				"Items": ["Tackle box"],
 				"Not F2P": true
 			},
 			"(Tempoross) Obtain a ~|fish barrel|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"NPCs": ["Tempoross"],
 				"Items": ["Fish barrel"],
 				"Not F2P": true
 			},
 			"(Tempoross) Obtain a ~|dragon harpoon|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"NPCs": ["Tempoross"],
 				"Items": ["Dragon harpoon"],
 				"Not F2P": true
 			},
 			"(Tempoross) Obtain a ~|spirit flakes|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"NPCs": ["Tempoross"],
 				"Items": ["Spirit flakes"],
 				"Not F2P": true
 			},
 			"(Thermonuclear smoke devil) Obtain a ~|pet smoke devil|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Thermonuclear smoke devil"],
 				"Items": ["Pet smoke devil"],
 				"Not F2P": true
 			},
 			"(Thermonuclear smoke devil) Obtain an ~|occult necklace|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Thermonuclear smoke devil"],
 				"Items": ["Occult necklace"],
 				"Not F2P": true
 			},
 			"(Thermonuclear smoke devil) Obtain a ~|smoke battlestaff|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Thermonuclear smoke devil"],
 				"Items": ["Smoke battlestaff"],
 				"Not F2P": true
 			},
 			"(Thermonuclear smoke devil) Obtain a ~|dragon chainbody|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Thermonuclear smoke devil"],
 				"Items": ["Dragon chainbody"],
 				"Not F2P": true
 			},
 			"(Thermonuclear smoke devil) Obtain a ~|jar of smoke|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Jars"],
 				"Label": "Collection Log",
+				"Monsters": ["Thermonuclear smoke devil"],
 				"Items": ["Jar of smoke"],
 				"Not F2P": true
 			},
 			"(Vardorvis) Obtain a ~|butch|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Vardorvis"],
 				"Items": ["Butch"],
 				"Not F2P": true
 			},
 			"(Vardorvis) Obtain an ~|executioner's axe head|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Vardorvis"],
 				"Items": ["Executioner's axe head"],
 				"Not F2P": true
 			},
 			"(Vardorvis) Obtain a ~|virtus mask|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Vardorvis"],
 				"Items": ["Virtus mask"],
 				"Not F2P": true
 			},
 			"(Vardorvis) Obtain a ~|virtus robe top|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Vardorvis"],
 				"Items": ["Virtus robe top"],
 				"Not F2P": true
 			},
 			"(Vardorvis) Obtain a ~|virtus robe bottom|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Vardorvis"],
 				"Items": ["Virtus robe bottom"],
 				"Not F2P": true
 			},
 			"(Vardorvis) Obtain an ~|ultor vestige|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Vardorvis"],
 				"Items": ["Ultor vestige"],
 				"Not F2P": true
 			},
 			"(Vardorvis) Obtain a ~|blood quartz|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Vardorvis"],
 				"Items": ["Blood quartz"],
 				"Not F2P": true
 			},
 			"(Vardorvis) Obtain a ~|strangled tablet|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Vardorvis"],
 				"Items": ["Strangled tablet"],
 				"Not F2P": true
 			},
 			"(Vardorvis) Obtain a ~|chromium ingot|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Vardorvis"],
 				"Items": ["Chromium ingot"],
-				"Monsters": ["DT2Boss[+]"],
 				"Not F2P": true
 			},
 			"(Vardorvis) Obtain a ~|awakener's orb|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Vardorvis"],
 				"Items": ["Awakener's orb"],
 				"Not F2P": true
 			},
 			"(Venenatis and Spindel) Obtain a ~|venenatis spiderling|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Venenatis[+]"],
 				"Items": ["Venenatis spiderling"],
 				"Not F2P": true
 			},
 			"(Venenatis and Spindel) Obtain a ~|treasonous ring|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Venenatis[+]"],
 				"Items": ["Treasonous ring"],
 				"Not F2P": true
 			},
 			"(Venenatis and Spindel) Obtain a ~|dragon pickaxe|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Venenatis[+]"],
 				"Items": ["Dragon pickaxe"],
-				"Monsters": ["DragonPickaxeDropper[+]"],
 				"Not F2P": true
 			},
 			"(Venenatis and Spindel) Obtain a ~|dragon 2h sword|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Venenatis[+]"],
 				"Items": ["Dragon 2h sword"],
 				"Not F2P": true
 			},
 			"(Venenatis and Spindel) Obtain a ~|fangs of venenatis|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Venenatis[+]"],
 				"Items": ["Fangs of venenatis"],
 				"Not F2P": true
 			},
 			"(Venenatis and Spindel) Obtain a ~|voidwaker gem|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Venenatis[+]"],
 				"Items": ["Voidwaker gem"],
 				"Not F2P": true
 			},
 			"(Vet'ion and Calvar'ion) Obtain a ~|vet'ion jr.|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Vet'ion[+]"],
 				"Items": ["Vet'ion jr."],
 				"Not F2P": true
 			},
 			"(Vet'ion and Calvar'ion) Obtain a ~|ring of the gods|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Vet'ion[+]"],
 				"Items": ["Ring of the gods"],
 				"Not F2P": true
 			},
 			"(Vet'ion and Calvar'ion) Obtain a ~|dragon pickaxe|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Vet'ion[+]"],
 				"Items": ["Dragon pickaxe"],
-				"Monsters": ["DragonPickaxeDropper[+]"],
 				"Not F2P": true
 			},
 			"(Vet'ion and Calvar'ion) Obtain a ~|dragon 2h sword|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Vet'ion[+]"],
 				"Items": ["Dragon 2h sword"],
 				"Not F2P": true
 			},
 			"(Vet'ion and Calvar'ion) Obtain a ~|skull of vet'ion|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Vet'ion[+]"],
 				"Items": ["Skull of vet'ion"],
 				"Not F2P": true
 			},
 			"(Vet'ion and Calvar'ion) Obtain a ~|voidwaker blade|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Vet'ion[+]"],
 				"Items": ["Voidwaker blade"],
 				"Not F2P": true
 			},
 			"(Vorkath) Obtain a ~|vorki|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Vorkath"],
 				"Items": ["Vorki"],
 				"Not F2P": true
 			},
 			"(Vorkath) Obtain a ~|vorkath's head|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Vorkath"],
 				"Items": ["Vorkath's head"],
 				"Not F2P": true
 			},
 			"(Vorkath) Obtain a ~|draconic visage|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Vorkath"],
 				"Items": ["Draconic visage"],
 				"Not F2P": true
 			},
 			"(Vorkath) Obtain a ~|skeletal visage|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Vorkath"],
 				"Items": ["Skeletal visage"],
 				"Not F2P": true
 			},
 			"(Vorkath) Obtain a ~|jar of decay|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Jars"],
 				"Label": "Collection Log",
+				"Monsters": ["Vorkath"],
 				"Items": ["Jar of decay"],
 				"Not F2P": true
 			},
 			"(Vorkath) Obtain a ~|dragonbone necklace|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Vorkath"],
 				"Items": ["Dragonbone necklace"],
 				"Not F2P": true
 			},
 			"(The Whisperer) Obtain a ~|wisp|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["The Whisperer"],
 				"Items": ["Wisp"],
 				"Not F2P": true
 			},
 			"(The Whisperer) Obtain a ~|siren's staff|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Whisperer"],
 				"Items": ["Siren's staff"],
 				"Not F2P": true
 			},
 			"(The Whisperer) Obtain a ~|virtus mask|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Whisperer"],
 				"Items": ["Virtus mask"],
 				"Not F2P": true
 			},
 			"(The Whisperer) Obtain a ~|virtus robe top|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Whisperer"],
 				"Items": ["Virtus robe top"],
 				"Not F2P": true
 			},
 			"(The Whisperer) Obtain a ~|virtus robe bottom|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Whisperer"],
 				"Items": ["Virtus robe bottom"],
 				"Not F2P": true
 			},
 			"(The Whisperer) Obtain a ~|bellator vestige|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Whisperer"],
 				"Items": ["Bellator vestige"],
 				"Not F2P": true
 			},
 			"(The Whisperer) Obtain a ~|shadow quartz|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Whisperer"],
 				"Items": ["Shadow quartz"],
 				"Not F2P": true
 			},
@@ -65655,25 +65947,28 @@
 			"(The Whisperer) Obtain a ~|chromium ingot|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Whisperer"],
 				"Items": ["Chromium ingot"],
-				"Monsters": ["DT2Boss[+]"],
 				"Not F2P": true
 			},
 			"(The Whisperer) Obtain a ~|awakener's orb|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["The Whisperer"],
 				"Items": ["Awakener's orb"],
 				"Not F2P": true
 			},
 			"(Wintertodt) Obtain a ~|phoenix|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"NPCs": ["Howling Snow Storm"],
 				"Items": ["Phoenix"],
 				"Not F2P": true
 			},
 			"(Wintertodt) Obtain a ~|tome of fire (empty)|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"NPCs": ["Howling Snow Storm"],
 				"Items": ["Tome of fire (empty)"],
 				"Not F2P": true
 			},
@@ -65687,282 +65982,323 @@
 			"(Wintertodt) Obtain a ~|pyromancer garb|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"NPCs": ["Howling Snow Storm"],
 				"Items": ["Pyromancer garb"],
 				"Not F2P": true
 			},
 			"(Wintertodt) Obtain a ~|pyromancer hood|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"NPCs": ["Howling Snow Storm"],
 				"Items": ["Pyromancer hood"],
 				"Not F2P": true
 			},
 			"(Wintertodt) Obtain a ~|pyromancer robe|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"NPCs": ["Howling Snow Storm"],
 				"Items": ["Pyromancer robe"],
 				"Not F2P": true
 			},
 			"(Wintertodt) Obtain ~|pyromancer boots|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"NPCs": ["Howling Snow Storm"],
 				"Items": ["Pyromancer boots"],
 				"Not F2P": true
 			},
 			"(Wintertodt) Obtain ~|warm gloves|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"NPCs": ["Howling Snow Storm"],
 				"Items": ["Warm gloves"],
 				"Not F2P": true
 			},
 			"(Wintertodt) Obtain a ~|bruma torch|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"NPCs": ["Howling Snow Storm"],
 				"Items": ["Bruma torch"],
 				"Not F2P": true
 			},
 			"(Wintertodt) Obtain a ~|dragon axe|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"NPCs": ["Howling Snow Storm"],
 				"Items": ["Dragon axe"],
 				"Not F2P": true
 			},
 			"(Yama) Obtain ~|yami|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Yama"],
 				"Items": ["Yami"],
 				"Not F2P": true
 			},
 			"(Yama) Obtain a ~|chasm teleport scroll|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Yama"],
 				"Items": ["Chasm teleport scroll"],
 				"Not F2P": true
 			},
 			"(Yama) Obtain ~|oathplate shards|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Yama"],
 				"Items": ["Oathplate shards"],
 				"Not F2P": true
 			},
 			"(Yama) Obtain an ~|oathplate helm|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Yama"],
 				"Items": ["Oathplate helm"],
 				"Not F2P": true
 			},
 			"(Yama) Obtain an ~|oathplate chest|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Yama"],
 				"Items": ["Oathplate chest"],
 				"Not F2P": true
 			},
 			"(Yama) Obtain an ~|oathplate legs|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Yama"],
 				"Items": ["Oathplate legs"],
 				"Not F2P": true
 			},
 			"(Yama) Obtain a ~|soulflame horn|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Yama"],
 				"Items": ["Soulflame horn"],
 				"Not F2P": true
 			},
 			"(Yama) Obtain a ~|rite of vile transference|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Yama"],
 				"Items": ["Rite of vile transference"],
 				"Not F2P": true
 			},
 			"(Yama) Obtain a ~|forgotten lockbox|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Yama"],
 				"Items": ["Forgotten lockbox"],
 				"Not F2P": true
 			},
 			"(Yama) Obtain a ~|dossier|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Yama"],
 				"Items": ["Dossier"],
 				"Not F2P": true
 			},
 			"(Yama) Obtain a ~|barrel of demonic tallow (full)|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Yama"],
 				"Items": ["Barrel of demonic tallow (full)"],
 				"Not F2P": true
 			},
 			"(Zalcano) Obtain a ~|smolcano|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Zalcano"],
 				"Items": ["Smolcano"],
 				"Not F2P": true
 			},
 			"(Zalcano) Obtain a ~|crystal tool seed|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Zalcano"],
 				"Items": ["Crystal tool seed"],
 				"Not F2P": true
 			},
 			"(Zalcano) Obtain a ~|zalcano shard|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Zalcano"],
 				"Items": ["Zalcano shard"],
 				"Not F2P": true
 			},
 			"(Zalcano) Obtain an ~|uncut onyx|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Zalcano"],
 				"Items": ["Uncut onyx"],
 				"NonShop": true,
-				"Tasks": {
-					"UncutOnyxSource[+]": "Nonskill"
-				},
 				"Not F2P": true
 			},
 			"(Zulrah) Obtain a ~|pet snakeling|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Pets"],
 				"Label": "Collection Log",
+				"Monsters": ["Zulrah"],
 				"Items": ["Pet snakeling"],
 				"Not F2P": true
 			},
 			"(Zulrah) Obtain a ~|tanzanite mutagen|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Zulrah"],
 				"Items": ["Tanzanite mutagen"],
 				"Not F2P": true
 			},
 			"(Zulrah) Obtain a ~|magma mutagen|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Zulrah"],
 				"Items": ["Magma mutagen"],
 				"Not F2P": true
 			},
 			"(Zulrah) Obtain a ~|jar of swamp|~": {
 				"Category": ["Collection Log", "Collection Log Bosses", "Jars"],
 				"Label": "Collection Log",
+				"Monsters": ["Zulrah"],
 				"Items": ["Jar of swamp"],
 				"Not F2P": true
 			},
 			"(Zulrah) Obtain a ~|magic fang|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Zulrah"],
 				"Items": ["Magic fang"],
 				"Not F2P": true
 			},
 			"(Zulrah) Obtain a ~|serpentine visage|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Zulrah"],
 				"Items": ["Serpentine visage"],
 				"Not F2P": true
 			},
 			"(Zulrah) Obtain a ~|tanzanite fang|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Zulrah"],
 				"Items": ["Tanzanite fang"],
 				"Not F2P": true
 			},
 			"(Zulrah) Obtain a ~|zul-andra teleport|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Zulrah"],
 				"Items": ["Zul-andra teleport"],
 				"Not F2P": true
 			},
 			"(Zulrah) Obtain an ~|uncut onyx|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
+				"Monsters": ["Zulrah"],
 				"Items": ["Uncut onyx"],
 				"NonShop": true,
-				"Tasks": {
-					"UncutOnyxSource[+]": "Nonskill"
-				},
 				"Not F2P": true
 			},
 			"(Zulrah) Obtain ~|zulrah's scales|~": {
 				"Category": ["Collection Log", "Collection Log Bosses"],
 				"Label": "Collection Log",
-				"Items": ["Zulrah's scales"],
 				"Monsters": ["Zulrah"],
+				"Items": ["Zulrah's scales"],
 				"Not F2P": true
 			},
 			"(CoX) Obtain an ~|olmlet|~": {
 				"Category": ["Collection Log", "Collection Log Raids", "Pets"],
 				"Label": "Collection Log",
+				"Chunks": ["Chambers of Xeric"],
 				"Items": ["Olmlet"]
 			},
 			"(CoX) Obtain a ~|metamorphic dust|~": {
 				"Category": ["Collection Log", "Collection Log Raids", "Pets"],
 				"Label": "Collection Log",
+				"Chunks": ["Chambers of Xeric"],
 				"Items": ["Metamorphic dust"]
 			},
 			"(CoX) Obtain a ~|twisted bow|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Chambers of Xeric"],
 				"Items": ["Twisted bow"]
 			},
 			"(CoX) Obtain an ~|elder maul|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Chambers of Xeric"],
 				"Items": ["Elder maul"]
 			},
 			"(CoX) Obtain a ~|kodai insignia|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Chambers of Xeric"],
 				"Items": ["Kodai insignia"]
 			},
 			"(CoX) Obtain a ~|dragon claws|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Chambers of Xeric"],
 				"Items": ["Dragon claws"]
 			},
 			"(CoX) Obtain an ~|ancestral hat|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Chambers of Xeric"],
 				"Items": ["Ancestral hat"]
 			},
 			"(CoX) Obtain an ~|ancestral robe top|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Chambers of Xeric"],
 				"Items": ["Ancestral robe top"]
 			},
 			"(CoX) Obtain an ~|ancestral robe bottom|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Chambers of Xeric"],
 				"Items": ["Ancestral robe bottom"]
 			},
 			"(CoX) Obtain a ~|dinh's bulwark|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Chambers of Xeric"],
 				"Items": ["Dinh's bulwark"]
 			},
 			"(CoX) Obtain a ~|dexterous prayer scroll|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Chambers of Xeric"],
 				"Items": ["Dexterous prayer scroll"]
 			},
 			"(CoX) Obtain an ~|arcane prayer scroll|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Chambers of Xeric"],
 				"Items": ["Arcane prayer scroll"]
 			},
 			"(CoX) Obtain a ~|dragon hunter crossbow|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Chambers of Xeric"],
 				"Items": ["Dragon hunter crossbow"]
 			},
 			"(CoX) Obtain a ~|twisted buckler|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Chambers of Xeric"],
 				"Items": ["Twisted buckler"]
 			},
 			"(CoX) Obtain a ~|torn prayer scroll|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Chambers of Xeric"],
 				"Items": ["Torn prayer scroll"]
 			},
 			"(CoX) Obtain a ~|dark relic|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Chambers of Xeric"],
 				"Items": ["Dark relic"]
 			},
 			"(CoX) Obtain an ~|onyx|~": {
@@ -65974,251 +66310,301 @@
 			"(CoX) Obtain a ~|twisted ancestral colour kit|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Chambers of Xeric"],
 				"Items": ["Twisted ancestral colour kit"]
 			},
 			"(CoX) Obtain a ~|xeric's guard|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Chambers of Xeric"],
 				"Items": ["Xeric's guard"]
 			},
 			"(CoX) Obtain a ~|xeric's warrior|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Chambers of Xeric"],
 				"Items": ["Xeric's warrior"]
 			},
 			"(CoX) Obtain a ~|xeric's sentinel|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Chambers of Xeric"],
 				"Items": ["Xeric's sentinel"]
 			},
 			"(CoX) Obtain a ~|xeric's general|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Chambers of Xeric"],
 				"Items": ["Xeric's general"]
 			},
 			"(CoX) Obtain a ~|xeric's champion|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Chambers of Xeric"],
 				"Items": ["Xeric's champion"]
 			},
 			"(ToB) Obtain a ~|lil' zik|~": {
 				"Category": ["Collection Log", "Collection Log Raids", "Pets"],
 				"Label": "Collection Log",
+				"Chunks": ["Theatre of Blood"],
 				"Items": ["Lil' zik"]
 			},
 			"(ToB) Obtain a ~|scythe of vitur (uncharged)|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Theatre of Blood"],
 				"Items": ["Scythe of vitur (uncharged)"]
 			},
 			"(ToB) Obtain a ~|ghrazi rapier|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Theatre of Blood"],
 				"Items": ["Ghrazi rapier"]
 			},
 			"(ToB) Obtain a ~|sanguinesti staff (uncharged)|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Theatre of Blood"],
 				"Items": ["Sanguinesti staff (uncharged)"]
 			},
 			"(ToB) Obtain a ~|justiciar faceguard|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Theatre of Blood"],
 				"Items": ["Justiciar faceguard"]
 			},
 			"(ToB) Obtain a ~|justiciar chestguard|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Theatre of Blood"],
 				"Items": ["Justiciar chestguard"]
 			},
 			"(ToB) Obtain a ~|justiciar legguards|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Theatre of Blood"],
 				"Items": ["Justiciar legguards"]
 			},
 			"(ToB) Obtain an ~|avernic defender hilt|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Theatre of Blood"],
 				"Items": ["Avernic defender hilt"]
 			},
 			"(ToB) Obtain a ~|vial of blood|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Theatre of Blood"],
 				"Items": ["Vial of blood"]
 			},
 			"(ToB) Obtain a ~|sinhaza shroud tier 1|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Theatre of Blood"],
 				"Items": ["Sinhaza shroud tier 1"]
 			},
 			"(ToB) Obtain a ~|sinhaza shroud tier 2|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Theatre of Blood"],
 				"Items": ["Sinhaza shroud tier 2"]
 			},
 			"(ToB) Obtain a ~|sinhaza shroud tier 3|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Theatre of Blood"],
 				"Items": ["Sinhaza shroud tier 3"]
 			},
 			"(ToB) Obtain a ~|sinhaza shroud tier 4|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Theatre of Blood"],
 				"Items": ["Sinhaza shroud tier 4"]
 			},
 			"(ToB) Obtain a ~|sinhaza shroud tier 5|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Theatre of Blood"],
 				"Items": ["Sinhaza shroud tier 5"]
 			},
 			"(ToB) Obtain a ~|sanguine dust|~": {
 				"Category": ["Collection Log", "Collection Log Raids", "Pets"],
 				"Label": "Collection Log",
+				"Chunks": ["Theatre of Blood"],
 				"Items": ["Sanguine dust"]
 			},
 			"(ToB) Obtain a ~|holy ornament kit|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Theatre of Blood"],
 				"Items": ["Holy ornament kit"]
 			},
 			"(ToB) Obtain a ~|sanguine ornament kit|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Theatre of Blood"],
 				"Items": ["Sanguine ornament kit"]
 			},
 			"(ToA) Obtain a ~|tumeken's guardian|~": {
 				"Category": ["Collection Log", "Collection Log Raids", "Pets"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Tumeken's guardian"]
 			},
 			"(ToA) Obtain a ~|tumeken's shadow (uncharged)|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Tumeken's shadow (uncharged)"]
 			},
 			"(ToA) Obtain an ~|elidinis' ward|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Elidinis' ward"]
 			},
 			"(ToA) Obtain a ~|masori mask|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Masori mask"]
 			},
 			"(ToA) Obtain a ~|masori body|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Masori body"]
 			},
 			"(ToA) Obtain ~|masori chaps|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Masori chaps"]
 			},
 			"(ToA) Obtain a ~|lightbearer|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Lightbearer"]
 			},
 			"(ToA) Obtain an ~|osmumten's fang|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Osmumten's fang"]
 			},
 			"(ToA) Obtain a ~|thread of elidinis|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Thread of elidinis"]
 			},
 			"(ToA) Obtain a ~|breach of the scarab|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Breach of the scarab"]
 			},
 			"(ToA) Obtain an ~|eye of the corruptor|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Eye of the corruptor"]
 			},
 			"(ToA) Obtain a ~|jewel of the sun|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Jewel of the sun"]
 			},
 			"(ToA) Obtain a ~|jewel of amascut|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Jewel of amascut"]
 			},
 			"(ToA) Obtain a ~|menaphite ornament kit|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Menaphite ornament kit"]
 			},
 			"(ToA) Obtain a ~|cursed phalanx|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Cursed phalanx"]
 			},
 			"(ToA) Obtain a ~|masori crafting kit|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Masori crafting kit"]
 			},
 			"(ToA) Obtain a ~|cache of runes|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Cache of runes"]
 			},
 			"(ToA) Obtain an ~|icthlarin's shroud (tier 1)|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Icthlarin's shroud (tier 1)"]
 			},
 			"(ToA) Obtain an ~|icthlarin's shroud (tier 2)|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Icthlarin's shroud (tier 2)"]
 			},
 			"(ToA) Obtain an ~|icthlarin's shroud (tier 3)|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Icthlarin's shroud (tier 3)"]
 			},
 			"(ToA) Obtain an ~|icthlarin's shroud (tier 4)|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Icthlarin's shroud (tier 4)"]
 			},
 			"(ToA) Obtain an ~|icthlarin's shroud (tier 5)|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Icthlarin's shroud (tier 5)"]
 			},
 			"(ToA) Obtain a ~|remnant of akkha|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Remnant of akkha"]
 			},
 			"(ToA) Obtain a ~|remnant of ba-ba|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Remnant of ba-ba"]
 			},
 			"(ToA) Obtain a ~|remnant of kephri|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Remnant of kephri"]
 			},
 			"(ToA) Obtain a ~|remnant of zebak|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Remnant of zebak"]
 			},
 			"(ToA) Obtain a ~|ancient remnant|~": {
 				"Category": ["Collection Log", "Collection Log Raids"],
 				"Label": "Collection Log",
+				"Chunks": ["Tombs of Amascut"],
 				"Items": ["Ancient remnant"]
 			},
 			"(Beginner Treasure Trails) Obtain ~|mole slippers|~": {
