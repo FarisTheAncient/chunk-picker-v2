@@ -47590,7 +47590,8 @@
 				"Not F2P": true
 			},
 			"Callisto's Den": {
-				"UnlocksArea": true,
+				"Sections":["Callisto's Den","13116"],
+				"ConnectsSections":true,
 				"Chunks": ["Escape Caves"],
 				"Tasks": {
 					"~|Wilderness Diary#Medium|~ Complete the Medium Diary": "Diary"
