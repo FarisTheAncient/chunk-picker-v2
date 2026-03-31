@@ -48207,7 +48207,8 @@
 				"Not F2P": true
 			},
 			"Vet'ion's Rest": {
-				"UnlocksArea": true,
+				"Sections":["Vet'ion's Rest","12859-1"],
+				"ConnectsSections": true,
 				"Chunks": ["Escape Caves"],
 				"Tasks": {
 					"~|Wilderness Diary#Medium|~ Complete the Medium Diary": "Diary"
@@ -48514,7 +48515,8 @@
 				"Not F2P": true
 			},
 			"Silk Chasm": {
-				"UnlocksArea": true,
+				"Sections":["Silk Chasm","13115"],
+				"ConnectsSections": true,
 				"Chunks": ["Escape Caves"],
 				"Tasks": {
 					"~|Wilderness Diary#Medium|~ Complete the Medium Diary": "Diary"
