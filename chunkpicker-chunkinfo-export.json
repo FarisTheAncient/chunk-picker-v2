@@ -34099,35 +34099,27 @@
 				"Output": "Arclight",
 				"Not F2P": true
 			},
-			"Empty sweetcorn (bowl)": {
+			"Eat sweetcorn (bowl)": {
 				"Items": ["Sweetcorn (bowl)*"],
 				"Output": "Bowl"
 			},
-			"Empty stew": {
+			"Eat stew": {
 				"Items": ["Stew*"],
 				"Output": "Bowl"
 			},
-			"Empty chopped garlic": {
-				"Items": ["Chopped garlic*"],
-				"Output": "Bowl"
-			},
-			"Empty chopped onion": {
+			"Eat chopped onion": {
 				"Items": ["Chopped onion*"],
 				"Output": "Bowl"
 			},
-			"Empty sliced mushrooms": {
-				"Items": ["Sliced mushrooms*"],
-				"Output": "Bowl"
-			},
-			"Empty curry": {
+			"Eat curry": {
 				"Items": ["Curry*"],
 				"Output": "Bowl"
 			},
-			"Empty fried mushrooms": {
+			"Eat fried mushrooms": {
 				"Items": ["Fried mushrooms*"],
 				"Output": "Bowl"
 			},
-			"Empty banana stew": {
+			"Eat banana stew": {
 				"Items": ["Banana stew*"],
 				"Output": "Bowl"
 			},
