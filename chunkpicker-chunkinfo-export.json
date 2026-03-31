@@ -16386,6 +16386,14 @@
 				"Output": "Banana",
 				"Primary": true
 			},
+			"Fill a sack with hay*": {
+				"Items": ["Empty sack"],
+				"Objects": ["Hay[+]"],
+				"Output": "Hay sack",
+				"Level": 23,
+				"Not F2P": true,
+				"Primary": false
+			},
 			"Grow a ~|bologano fruit|~": {
 				"Category": ["Tithe Farm"],
 				"Chunks": ["7222-1"],
@@ -37806,12 +37814,6 @@
 			"Empty potatoes(10)*": {
 				"Items": ["Potatoes(10)*"],
 				"Output": "Potato",
-				"Not F2P": true
-			},
-			"Fill a sack with hay*": {
-				"Items": ["Empty sack"],
-				"Objects": ["Hay[+]"],
-				"Output": "Hay sack",
 				"Not F2P": true
 			},
 			"Fill a sack with cabbages*": {
