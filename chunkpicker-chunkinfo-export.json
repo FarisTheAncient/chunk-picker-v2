@@ -32406,6 +32406,18 @@
 				"ConnectsSections": true,
 				"Not F2P": true
 			},
+			"5941-1 Charter Ship": {
+				"Sections": ["5941-1","CharterShips[+]"],
+				"Chunks":["12082-1"],
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
+			"7225-1 Charter Ship": {
+				"Sections": ["7225-1","CharterShips[+]"],
+				"Chunks":["12082-1"],
+				"ConnectsSections": true,
+				"Not F2P": true
+			},
 			"8500-1 Charter Ship": {
 				"Sections": ["8500-1","CharterShips[+]"],
 				"Tasks": {
