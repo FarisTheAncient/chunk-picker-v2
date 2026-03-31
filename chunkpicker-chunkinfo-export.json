@@ -32634,8 +32634,10 @@
 				"Not F2P": true
 			},
 			"Access Brimhaven Dungeon#Section 4 1": {
-				"Chunks": ["11055-1", "Brimhaven Dungeon"],
+				"Sections": ["11055-1", "Brimhaven Dungeon"],
+				"Chunks":["11055-1"],
 				"Items": ["Trading sticks"],
+				"ConnectsSections":true,
 				"Not F2P": true
 			},
 			"Access Brimhaven Dungeon#Section 4 2": {
