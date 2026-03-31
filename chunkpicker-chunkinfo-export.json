@@ -131570,7 +131570,7 @@
 		"6813": {
 			"Connect": {
 				"6457": true,
-				"6716": true
+				"6716-2": true
 			},
 			"Monster": {
 				"Abyssal demon": 13,
@@ -139324,28 +139324,23 @@
 		},
 		"9285": {
 			"Connect": {
-				"5178":true,
-				"5689":true,
-				"6460-1":true,
 				"7223":true,
 				"8267":true,
-				"8495-2":true,
 				"8752-2":true,
 				"9006":true,
 				"9272-1":true,
 				"9519":true,
 				"9541": true,
 				"9808":true,
+				"10044-2":true,
 				"10032-1":true,
 				"10040":true,
-				"10044-2": true,
 				"10286":true,
 				"10544":true,
 				"10546":true,
 				"10547-4":true,
 				"10550":true,
 				"10569":true,
-				"10794-3":true,
 				"10802-3":true,
 				"10804":true,
 				"10807-1":true,
@@ -139364,7 +139359,6 @@
 				"12338-2":true,
 				"12342-1":true,
 				"12848":true,
-				"13098-2":true,
 				"13615":true,
 				"13619-2":true,
 				"13622-2":true,
@@ -139373,9 +139367,7 @@
 				"Abyssal Area":true,
 				"Abyssal Nexus":true,
 				"Cosmic entity's plane":true,
-				"Dorgesh-Kaan South Dungeon":true,
 				"Enchanted Valley":true,
-				"Fisher Realm":true,
 				"Gorak Plane":true,
 				"Mor Ul Rek#Outer Area":true,
 				"Zanaris":true
@@ -148465,9 +148457,6 @@
 		"11055": {
 			"Sections": {
 				"1": {
-					"Connect": {
-						"10900": true
-					},
 					"Monster": {
 						"Broodoo victim": 1,
 						"Bush snake": 1,
@@ -155265,7 +155254,7 @@
 		},
 		"12181": {
 			"Connect": {
-				"12081": true
+				"12081-1": true
 			},
 			"Monster": {
 				"Hobgoblin": 7,
@@ -157510,6 +157499,7 @@
 		},
 		"12598": {
 			"Connect": {
+				"9776": true,
 				"10307": true,
 				"11678": true,
 				"12704": true
@@ -166764,8 +166754,7 @@
 		},
 		"Asgarnian Ice Dungeon": {
 			"Connect": {
-				"11825": true,
-				"12081": true
+				"12081-1": true
 			},
 			"Diary": {
 				"Falador": "HD4"
@@ -167296,7 +167285,7 @@
 				"5785": true,
 				"6203": true,
 				"6457": true,
-				"6716": true,
+				"6716-2": true,
 				"6810": true,
 				"7323": true
 			},
@@ -173967,50 +173956,7 @@
 		},
 		"Zanaris": {
 			"Connect": {
-				"5178": true,
-				"5689": true,
-				"6460": true,
-				"8267": true,
-				"8495": true,
-				"8523": true,
-				"8752": true,
-				"9272": true,
-				"9519": true,
-				"9796": true,
-				"9808": true,
-				"10032": true,
-				"10040": true,
-				"10044": true,
-				"10286": true,
-				"10307": true,
-				"10546": true,
-				"10547-4": true,
-				"10550": true,
-				"10569": true,
-				"10794": true,
-				"10802": true,
-				"10804": true,
-				"10807": true,
-				"10810": true,
-				"10833": true,
-				"11054": true,
-				"11064": true,
-				"11568": true,
-				"11824": true,
-				"12102": true,
-				"12106": true,
-				"12108": true,
-				"12115": true,
-				"12337": true,
-				"12338": true,
-				"12342": true,
-				"12848": true,
-				"12849": true,
-				"13615": true,
-				"13619": true,
-				"13622": true,
-				"13877": true,
-				"14390": true
+				"12849": true
 			},
 			"Diary": {
 				"Lumbridge & Draynor": "MD10"
