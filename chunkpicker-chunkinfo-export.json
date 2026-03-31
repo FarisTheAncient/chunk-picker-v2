@@ -27677,7 +27677,7 @@
 			"Mine ~|gold ore|~": {
 				"Items": ["Pickaxe[+]"],
 				"Level": 40,
-				"Objects": ["Gold[+]"],
+				"Objects": ["GoldRocks[+]"],
 				"Output": "Gold ore",
 				"Primary": true,
 				"Priority": 1
