@@ -31742,6 +31742,13 @@
 				},
 				"Not F2P": true
 			},
+			"Ectofunctus access to Port Phasmatys": {
+				"Sections":["14646-1","14646-2"],
+				"Items": ["Bones[+]", "Bucket", "Pot","Ghostspeak amulet"],
+				"Objects": ["Ectofuntus", "Bone grinder"],
+				"ConnectsSections":true,
+				"Not F2P": true
+			},
 			"5176-1 to 5432-1": {
 				"Sections": ["5176-1", "5432-1"],
 				"ConnectsSections": true,
@@ -127350,7 +127357,7 @@
 				"3": {
 					"Monster": {
 						"Rabbit": 3
-			        },
+					},
 					"NPC": {
 						"Diana": 1,
 						"Dominicus, Teoki of Ranul": 1,
@@ -165489,7 +165496,7 @@
 		},
 		"14746": {
 			"Connect": {
-				"14646": true
+				"14646-2": true
 			},
 			"Object": {
 				"Stairs": 6
@@ -165497,7 +165504,7 @@
 		},
 		"14747": {
 			"Connect": {
-				"14646": true
+				"14646-1": true
 			},
 			"NPC": {
 				"Metarialus": 1
@@ -271672,7 +271679,6 @@
 		"14647": {
 			"1": [
 				"14391",
-				"14646-1",
 				"14646-2"
 			],
 			"2": [
