@@ -45,6 +45,9 @@ const modalContents = {
             <div id='rulesconstruction' class='accordion' onclick="toggleRulesPanel('construction')"><span class='exp'><i
                 class="acc pic fa-solid fa-plus"></i></span><span class="accordion-title">Construction</span></div>
             <div class="panel panel-construction"></div>
+            <div id='rulescooking' class='accordion' onclick="toggleRulesPanel('cooking')"><span class='exp'><i
+                class="acc pic fa-solid fa-plus"></i></span><span class="accordion-title">Cooking</span></div>
+            <div class="panel panel-cooking"></div>
             <div id='rulesfarming' class='accordion' onclick="toggleRulesPanel('farming')"><span class='exp'><i
                 class="acc pic fa-solid fa-plus"></i></span><span class="accordion-title">Farming</span></div>
             <div class="panel panel-farming"></div>
@@ -91,6 +94,7 @@ const modalContents = {
                 <div id='rulesagility' class='accordion-sidebar' onclick="toggleRulesPanel('agility')"><span class="accordion-title">Agility</span></div>
                 <div id='rulescombat' class='accordion-sidebar' onclick="toggleRulesPanel('combat')"><span class="accordion-title">Combat</span></div>
                 <div id='rulesconstruction' class='accordion-sidebar' onclick="toggleRulesPanel('construction')"><span class="accordion-title">Construction</span></div>
+                <div id='rulescooking' class='accordion-sidebar' onclick="toggleRulesPanel('cooking')"><span class="accordion-title">Cooking</span></div>
                 <div id='rulesfarming' class='accordion-sidebar' onclick="toggleRulesPanel('farming')"><span class="accordion-title">Farming</span></div>
                 <div id='rulesherblore' class='accordion-sidebar' onclick="toggleRulesPanel('herblore')"><span class="accordion-title">Herblore</span></div>
                 <div id='ruleshunter' class='accordion-sidebar' onclick="toggleRulesPanel('hunter')"><span class="accordion-title">Hunter</span></div>
@@ -111,6 +115,7 @@ const modalContents = {
                 <div class="panel panel-agility"></div>
                 <div class="panel panel-combat"></div>
                 <div class="panel panel-construction"></div>
+                <div class="panel panel-cooking"></div>
                 <div class="panel panel-farming"></div>
                 <div class="panel panel-herblore"></div>
                 <div class="panel panel-hunter"></div>
@@ -540,6 +545,7 @@ const modalContents = {
         <div class="clipboard-container">
             <div id="clipboard-title" class="clipboard-title noscroll">Copy to clipboard:</div>
             <div id="clipboard-data" class="clipboard-data noscroll"><button id='chunks-clipboard-button' class='modal-button' onclick='exportFunc("chunks")'>Chunks</button><button id='tasks-clipboard-button' class='modal-button' onclick='exportFunc("tasks")'>Tasks</button><button id='rules-clipboard-button' class='modal-button' onclick='exportFunc("rules")'>Rules</button></div>
+            <div id="clipboard-data-4" class="clipboard-data-6 noscroll"><button id='clues-clipboard-button' class='modal-button' onclick='exportFunc("clues")'>Doable Clue Steps (Clue Details format)</button></div>
             <div id="clipboard-data-4" class="clipboard-data-4 noscroll"><button id='equipment-clipboard-button' class='modal-button' onclick='exportFunc("equipment")'>Equipment (Bank Memory format)</button></div>
             <div id="clipboard-subtitle" class="clipboard-subtitle noscroll">For use in <a href="https://gearscape.net/calculators/best" target="_blank" >GearScape's Best Setup calculator</a></div>
             <div id="clipboard-title2" class="clipboard-title noscroll">Other Actions:</div>

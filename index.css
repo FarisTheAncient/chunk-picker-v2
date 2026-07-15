@@ -1279,6 +1279,10 @@ button.menu2 {
     padding: 0px 20px;
 }
 
+.mobile .content11 {
+    width: 95%;
+}
+
 #pools-menu:not(.mobile) {
     overflow-y: auto;
     height: 100vh;
@@ -1364,6 +1368,25 @@ button.menu2 {
 
 .pools-list tr:nth-child(2n+1) {
     background-color: var(--color1);
+}
+
+.content13 {
+    border: solid;
+    width: 60%;
+    max-height: 100%;
+    margin: auto;
+    text-align: center;
+    margin-top: 14vh;
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 150);
+    background-color: var(--color6);
+    font-size: 24px;
+    overflow-y: auto;
+    margin-bottom: 100px;
+    padding-bottom: 20px;
+}
+
+.mobile .content13 {
+    width: 95%;
 }
 
 .mobile #page8 {
@@ -2723,7 +2746,7 @@ input#searchPlayerMaps {
     float: right;
 }
 
-.active-context-menu-alternatives {
+.active-context-menu-alternatives, .active-context-menu-favorite, .active-context-menu-unfavorite {
     display: none;
 }
 
@@ -4193,6 +4216,10 @@ label .tooltip-base-el:active {
     margin-left: 20px;
 }
 
+.clue-complete-num-input {
+    pointer-events: all;
+}
+
 .rules-names {
     float: left;
     height: 96%;
@@ -4730,8 +4757,9 @@ input#searchChunkSections {
 }
 
 #miscellaneousActionsModal > .modal-content {
-    height: 55%;
+    height: 65%;
     width: 25%;
+    margin-top: -5%;
 }
 
 #passiveLevelModal > .modal-content {
@@ -6365,7 +6393,7 @@ input#searchChunks {
     background-color: var(--color1);
 }
 
-.clipboard-data, .clipboard-data-2, .clipboard-data-3, .clipboard-data-4, .clipboard-data-5 {
+.clipboard-data, .clipboard-data-2, .clipboard-data-3, .clipboard-data-4, .clipboard-data-5, .clipboard-data-6 {
     margin: 0px 15px;
     font-size: 2vh;
     display: flex;
@@ -6436,6 +6464,25 @@ input#searchChunks {
 
 #rules-clipboard-button:hover {
     background-color: rgb(195, 80, 80);
+}
+
+#clues-clipboard-button {
+    background-color: rgb(100, 74, 35);
+    font-size: 2.2vh;
+    color: white;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid;
+    border-color: black;
+    outline: none;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin: 10px;
+    padding: 5px 10px;
+}
+
+#clues-clipboard-button:hover {
+    background-color: rgb(75, 55, 25);
 }
 
 #equipment-clipboard-button {
@@ -6993,9 +7040,13 @@ input#searchChunks {
     border: solid 1px var(--color1);
     border-radius: 5px;
     margin: 10px;
-    padding: 2px 30px 2px 5px;
+    padding: 2px 5px;
     background-color: var(--color3);
     position: relative;
+}
+
+.methods-data > .skill-method.with-burger {
+    padding-right: 40px;
 }
 
 .methods-data > .skill-method .skill-method-text {
@@ -7717,6 +7768,7 @@ input#searchMonsters {
     padding-left: 10px;
     text-align: center;
     font-weight: bold;
+    opacity: 0;
 }
 
 .roll-chunk-spinner {
@@ -8248,6 +8300,14 @@ input#searchMonsters {
 .quest-steps-data .step.highlighted {
     border: solid 2px var(--colorFlash);
     background-color: var(--color6);
+}
+
+.quest-steps-data .step.extra-highlighted {
+    padding: 15px;
+    border: solid 2px var(--colorFlash);
+    outline: solid 2px var(--colorText);
+    outline-offset: -8px;
+    border-radius: 10px;
 }
 
 .quest-steps-info {

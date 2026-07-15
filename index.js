@@ -164,6 +164,7 @@ let rulesPanelVis = {
 };
 
 let activeSubTabs = {
+    favorite: true,
     skill: true,
     bis: true,
     quest: true,
@@ -309,6 +310,11 @@ let selectedOverlayClues = {
 
 // Imported data
 let boneItems = [];
+let unconnectedAreas = [
+    'Zanaris',
+    'Puro-Puro',
+    'Player-owned house',
+];
 let rangedItems = [];
 let elementalRunes = [];
 let itemsPlus = {};
@@ -409,6 +415,7 @@ let rules = {
     "Stuffables": false,
     "Kill X Amount": "1",
     "Rare Drop Amount": "1000",
+    "Collection Log Clues Amount": "100",
     "Manually Complete Tasks": false,
     "Every Drop": false,
     "Herblore Unlocked Snake Weed": false,
@@ -441,6 +448,7 @@ let rules = {
     "Sail Trimming": false,
     "Crewmates": false,
     "Sea Charting": false,
+    "Fish Offcuts Valid Processing": false,
 };                                                                              // List of rules and their on/off state
 
 let ruleNames = {
@@ -456,7 +464,7 @@ let ruleNames = {
     "Slayer Equipment": "Using Slayer equipment can count for chunk tasks",
     "Normal Farming": "Allow normal farming to count as a primary method for training Farming",
     "Raking": "Allow raking patches to count as a primary method for training Farming <span class='rule-asterisk noscroll'>*</span>",
-    "Sulphurous Fertiliser": "Allow making supercompost via saltpetre (2xp each) to count as a primary method for training Farming",
+    "Sulphurous Fertiliser": "Allow making sulphurous fertiliser/supercompost via saltpetre (1xp/2xp each) to count as a primary method for training Farming",
     "CoX": "Allow methods inside the Chambers of Xeric/Neypotzli to count for chunk tasks/primary training methods (Fishing, Hunter, Cooking, Woodcutting, etc.)",
     "Tithe Farm": "Allow Tithe Farm to count as a primary method for training Farming",
     "Kill X": "Kill X-amount of every new, unique monster you encounter",
@@ -494,7 +502,7 @@ let ruleNames = {
     "Extra implings": "Include implings that have non-guaranteed spawns in Puro-Puro as chunk tasks",
     "Collection Log Bosses": "<b class='noscroll'>[Collection log]</b> Obtain items in the 'Bosses' tab",
     "Collection Log Raids": "<b class='noscroll'>[Collection log]</b> Obtain items in the 'Raids' tab",
-    "Collection Log Clues": "<b class='noscroll'>[Collection log]</b> Obtain items in the 'Clues' tab when each tier of clue is 100% completable within your chunks <span class='rule-asterisk noscroll'>†</span>",
+    "Collection Log Clues": "<b class='noscroll'>[Collection log]</b> Obtain items in the 'Clues' tab when each tier of clue is clue-amount% completable within your chunks <span class='rule-asterisk noscroll'>†</span>",
     "Collection Log Minigames": "<b class='noscroll'>[Collection log]</b> Obtain items in the 'Minigames' tab",
     "Collection Log Other": "<b class='noscroll'>[Collection log]</b> Obtain items in the 'Other' tab",
     "Herblore Unlocked": "Herblore tasks are automatically required once Druidic Ritual is completable",
@@ -541,7 +549,8 @@ let ruleNames = {
     "KeyItem Bosses": "For bosses that require keys to kill (Skotizo), factor in the droprate of the key as part of the droprate of each drop",
     "Sail Trimming": "Allow trimming the sails on your boat to count as a primary training method for training Sailing <span class='rule-asterisk noscroll'>*</span>",
     "Crewmates": "Getting the Sailing level to recruit crewmates to your ship can be a skill task",
-    "Sea Charting": "Require Sea Charting tasks be completed"
+    "Sea Charting": "Require Sea Charting tasks be completed",
+    "Fish Offcuts Valid Processing": "Creating fish offcuts and fine fish offcuts counts as a valid way to process raw fish via Cooking (otherwise, most raw fish will require they be cooked to process them)",
 };                                                                              // List of rule definitions
 
 let rulePresets = {
@@ -570,6 +579,7 @@ let rulePresets = {
         "Cleaning Herbs": true,
         "Forestry": true,
         "Crewmates": true,
+        "Fish Offcuts Valid Processing": true,
     },
     "Xtreme Chunker": {
         "Skillcape": true,
@@ -636,6 +646,7 @@ let rulePresets = {
         "POH Rooms": true,
         "Crewmates": true,
         "Sail Trimming": true,
+        "Fish Offcuts Valid Processing": true,
     },
     "Supreme Chunker": {
         "Skillcape": true,
@@ -688,6 +699,7 @@ let rulePresets = {
         "Pets": true,
         "Jars": true,
         "Collection Log Clues": true,
+        "Collection Log Clues Amount": "100",
         "Rare Drop Amount": "0",
         "HigherLander": true,
         "Secondary MTA": true,
@@ -709,6 +721,7 @@ let rulePresets = {
         "POH Rooms": true,
         "Crewmates": true,
         "Sail Trimming": true,
+        "Fish Offcuts Valid Processing": true,
     },
 };                                                                              // List of rules that are part of each preset
 
@@ -750,6 +763,9 @@ let ruleStructure = {
         "Construction Milestone": true,
         "Construction Minigame": true,
         "POH Rooms": true
+    },
+    "Cooking": {
+        "Fish Offcuts Valid Processing": true
     },
     "Farming": {
         "Normal Farming": true,
@@ -911,6 +927,7 @@ let settings = {
     "chunkNeighboursOptions": { "neighbors": true, "walkableRollable": true, "autoWalkableRollable": false, "remove": false },
     "defaultChunkinfo": 'monsters',
     "taskSearchbar": false,
+    "generatePluginData": false,
 };                                                                              // Current state of all settings
 
 let settingNames = {
@@ -940,7 +957,8 @@ let settingNames = {
     "optOutSectionsWater": "Include water sections, typically only accessible through Sailing",
     "unlockedBorderColor": "Change the color of the border surrounding your unlocked chunks",
     "defaultChunkinfo": "Select the default tab when first opening the Chunk Info Panel",
-    "taskSearchbar": "Show a searchbar at the top of your Active Tasks to allow filtering. Useful for maps with large task lists that have trouble finding specific tasks"
+    "taskSearchbar": "Show a searchbar at the top of your Active Tasks to allow filtering. Useful for maps with large task lists that have trouble finding specific tasks",
+    "generatePluginData": "Opt-in to generate data used in the Chunk Tasks plugin"
 };                                                                              // Descriptions of the settings
 
 let settingStructure = {
@@ -965,19 +983,22 @@ let settingStructure = {
         "shiftUnlock": true,
         "rollWarning": true
     },
-    "Customization": {
+    "Visual Customization": {
         "theme": true,
-        "startingChunk": true,
-        "ids": true,
         "cinematicRoll": true,
-        "optOutSections": ["optOutSectionsWater"],
-        "newTasks": true,
+        "ids": true,
         "highvis": true,
         "numTasksPercent": true,
         "completedTaskStrikethrough": true,
         "completedTaskColor": true,
         "defaultStickerColor": true,
         "unlockedBorderColor": true
+    },
+    "Miscellaneous": {
+        "startingChunk": true,
+        "optOutSections": ["optOutSectionsWater"],
+        "newTasks": true,
+        "generatePluginData": true
     }
 };                                                                              // Structure of the settings
 
@@ -1119,9 +1140,11 @@ let randomLoot = {};
 let friends = {};
 let friendsAlt = {};
 let globalValids = {};
+let globalSectionsValid = true;
 let challengeArr = [];
 let checkedChallenges = {};
 let backlog = {};
+let favoriteTasks = {};
 let completedChallenges = {};
 let possibleAreas = {};
 let manualAreas = {};
@@ -1362,6 +1385,7 @@ let highestOverallCompleted = {};
 let bisUpgrades = {};
 let bankMemoryFormat = '';
 let globalValidsBoosts = {};
+let globalEveryDropAltMap = {};
 let oldChallengeArr = {};
 let futureChunkData = {};
 let futureUnlockedSections = {};
@@ -1494,10 +1518,14 @@ let chunkInfoOpen = false;
 let detailsStack = [];
 let touchTime = 0;
 let listOfTasksPlugin = [];
+let listOfTasksSaved = [];
+let forceUpdatePluginOutput = false;
 let activeTasks = {};
 let pluginOutput = null;
+let isGeneratingPluginData = false;
 let mobileChunkId = 0;
 let sidebarHidden = false;
+let isUnderMaintenance = false;
 let topbarSelection = ['Help', 'Patreon', 'Map Notes', 'Patch Notes', 'Discord', 'Report a Bug', 'WiseOldMan', 'Settings'];
 let topbarChoices = ['Map Notes', 'Patch Notes', 'Report a Bug', 'WiseOldMan', 'Chunk-roll History', 'Screenshot Mode', 'Sandbox Mode'];
 let topbarElements = {
@@ -1510,9 +1538,10 @@ let topbarElements = {
     'Sandbox Mode': `<div><span class='noscroll' onclick="enableTestMode()"><i class="gosandbox fa-solid fa-flask" title='Sandbox Mode'></i></span></div>`,
 };
 
-let currentVersion = '6.9.33';
+let currentVersion = '6.9.59';
+let currentEnforcedVersion = '6.9.45';
 let patchNotesVersion = '6.9.12';
-let updateLevel = 'difference';
+let updateLevel = 'unconnected-areas';
 
 // Patreon Test Server Data
 let onTestServer = false;
@@ -1609,6 +1638,7 @@ let osrsStickers = {};
 let numberStickers = {'zero': '0', 'one': '1', 'two': '2', 'three': '3', 'four': '4', 'five': '5', 'six': '6', 'seven': '7', 'eight': '8', 'nine': '9'};
 let chosenFromCinematic = null;
 let imgNotLoaded = false;
+let clueImgs = {};
 let hoveredChunk = 0;
 let colorBox = "rgba(150, 150, 150, 0.6)";
 let colorBoxLight = "rgba(150, 150, 150, 0.4)";
@@ -1645,7 +1675,8 @@ let hintTexts = [
     "Join the Chunk Chat Discord!",
     "Celebrating over 6 years of Chunk Picking!",
     "Check out our RS3 Sister-site!",
-    "Now with Custom Themes!"
+    "Now with Custom Themes!",
+    "Fire Team best team!"
 ];
 let hintNum = Math.floor(Math.random() * hintTexts.length);
 $('.loading-hint-2').text(hintTexts[hintNum]);
@@ -1679,7 +1710,7 @@ mapImg.addEventListener("load", e => {
         centerCanvas('quick');
     }
 });
-mapImg.src = "osrs_world_map.png?v=6.9.33";
+mapImg.src = "osrs_world_map.png?v=6.9.59";
 
 // Rounded rectangle
 CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
@@ -2220,11 +2251,17 @@ let drawCanvas = function(ctxIn = ctx) {
             ctxIn.fillText('\uf00d', (dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 200, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180);
             ctxIn.fillStyle = getComputedStyle(ctxIn.canvas).getPropertyValue('--color1');
             ctxIn.strokeStyle = 'black';
-            let overlayImg = new Image();
-            overlayImg.src = overlayEl.img;
             ctxIn.fillRect((dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 20, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 175, 200, 200);
             ctxIn.strokeRect((dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 20, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 175, 200, 200);
-            ctxIn.drawImage(overlayImg, (dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 25, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 170, 190, 190);
+            if (!clueImgs[overlayEl.img]) {
+                clueImgs[overlayEl.img] = new Image();
+                clueImgs[overlayEl.img].src = overlayEl.img;
+                clueImgs[overlayEl.img].onload = () => {
+                    drawCanvas();
+                };
+            } else {
+                ctxIn.drawImage(clueImgs[overlayEl.img], (dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 25, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 170, 190, 190);
+            }
             overlayCloseLocation = [(dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 200, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180];
             overlayLeftLocation = (selectedOverlayIndex > 0 && selectedOverlayIds.length > 1 ? [(dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 165, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180] : -1);
             overlayRightLocation = (selectedOverlayIndex < (selectedOverlayIds.length - 1) ? [(dragTotalX + (totalZoom * (((overlayEl.x/64) - 15) * imgW / rowSize))) + 180, dragTotalY + (totalZoom * ((66 - (overlayEl.y/64)) * imgH / (fullSize / rowSize))) - 180] : -1);
@@ -3040,6 +3077,8 @@ let selectAllNeighborsCanvas = function() {
         }
     });
     sortSelectedChunks();
+    $('#chunkInfo2').text('Selected chunks: ' + ((!!tempChunks['selected'] ? Object.keys(tempChunks['selected']).length : 0) + (!!tempChunks['potential'] ? Object.keys(tempChunks['potential']).length : 0)));
+    $('#chunkInfo1').text('Unlocked chunks: ' + (!!tempChunks['unlocked'] ? Object.keys(tempChunks['unlocked']).length : 0));
     drawCanvas();
 }
 
@@ -3083,7 +3122,7 @@ let openRollChunkCanvas = async function(el, rand, sNum, rand2, sNum2, isUnpick)
     $('.unpick-preloading').text('Unpick Chunk').addClass('unpick').removeClass('unpick-preloading').attr('disabled', false);
     rollChunkModalOpen = true;
     $('.roll-chunk-title').text(isUnpick ? 'Unpicking your next chunk...' : 'Rolling your next chunk...');
-    $('.roll-chunk-subtitle').text('');
+    $('.roll-chunk-subtitle').text('[Rolled number: ]').css('opacity', 0);
     $('.roll-chunk-outer').empty().css('top', '0');
     $('#submit-roll-chunk-button').hide();
     if (rolling2) {
@@ -3132,11 +3171,11 @@ let openRollChunkCanvas = async function(el, rand, sNum, rand2, sNum2, isUnpick)
             easing: "easeOutCubic",
             complete: function() {
                 !rolling2 && $('.roll-chunk-title').text((chunkInfo['chunks'].hasOwnProperty(chosenFromCinematic) && chunkInfo['chunks'][chosenFromCinematic].hasOwnProperty('Nickname') ? chunkInfo['chunks'][chosenFromCinematic]['Nickname'] : 'Unknown') + '(' + chosenFromCinematic + ')');
-                !rolling2 && !!sNum && !isNaN(sNum) && $('.roll-chunk-subtitle').text('[Rolled number: ' + sNum + ']');
+                !rolling2 && !!sNum && !isNaN(sNum) && $('.roll-chunk-subtitle').text('[Rolled number: ' + sNum + ']').css('opacity', 100);
                 !rolling2 && $('#submit-roll-chunk-button').show();
                 if (rolling2 && tempVar) {
                     $('.roll-chunk-title').text(el[rand] + ' and ' + el[rand2]);
-                    !!sNum && !isNaN(sNum) && !!sNum2 && !isNaN(sNum2) && $('.roll-chunk-subtitle').text('[Rolled numbers: ' + sNum + ' & ' + sNum2 + ']');
+                    !!sNum && !isNaN(sNum) && !!sNum2 && !isNaN(sNum2) && $('.roll-chunk-subtitle').text('[Rolled numbers: ' + sNum + ' & ' + sNum2 + ']').css('opacity', 100);
                     $('#submit-roll-chunk-button').show();
                 } else if (rolling2) {
                     tempVar = true;
@@ -3180,7 +3219,7 @@ let openRollChunkCanvas = async function(el, rand, sNum, rand2, sNum2, isUnpick)
                 complete: function() {
                     if (tempVar) {
                         $('.roll-chunk-title').text(el[rand] + ' and ' + el[rand2]);
-                        !!sNum && !isNaN(sNum) && !!sNum2 && !isNaN(sNum2) && $('.roll-chunk-subtitle').text('[Rolled numbers: ' + sNum + ' & ' + sNum2 + ']');
+                        !!sNum && !isNaN(sNum) && !!sNum2 && !isNaN(sNum2) && $('.roll-chunk-subtitle').text('[Rolled numbers: ' + sNum + ' & ' + sNum2 + ']').css('opacity', 100);
                         $('#submit-roll-chunk-button').show();
                     } else {
                         tempVar = true;
@@ -3201,7 +3240,7 @@ let takeMeToChunkCanvas = function() {
     $('.recent').removeClass('recent');
     !isPicking && calcCurrentChallengesCanvas(true, true, true);
     $('.roll-chunk-title').text('Rolling your next chunk...');
-    $('.roll-chunk-subtitle').text('');
+    $('.roll-chunk-subtitle').text('[Rolled number: ]').css('opacity', 0);
     $('.roll-chunk-outer').empty().css('top', '0');
     $('.roll-chunk-outer2').empty().css('top', '0');
     $('.roll-chunk-window-outer2').remove();
@@ -3258,7 +3297,7 @@ let pickCanvas = function(both, override) {
         helpFunc();
         return;
     }
-    if (settings['rollWarning'] && !override) {
+    if (settings['rollWarning'] && !override && !testMode) {
         warnPickChunk(both);
         return;
     }
@@ -3436,8 +3475,9 @@ let roll2Canvas = function(override) {
         helpFunc();
         return;
     }
-    if (settings['rollWarning'] && !override) {
+    if (settings['rollWarning'] && !override && !testMode) {
         warnRoll2Chunk();
+        $('.roll2warning-title').text(isPicking ? 'Unlock both chunks?' : 'Roll 2 chunks?');
         return;
     }
     override && cancelRoll2Warning();
@@ -3543,7 +3583,7 @@ let setUpSelected = function() {
 }
 
 // Finds the current challenge in each skill
-let calcCurrentChallengesCanvas = function(useOld, proceed, fromLoadData, inputTempSections) {
+let calcCurrentChallengesCanvas = function(useOld, proceed, fromLoadData, inputTempSections, fromSectionPicker) {
     if (!proceed) {
         $('.panel-active .calculating').remove();
         $('.panel-active').prepend(`<div class="noscroll calculating"><div class='noscroll display-button' onclick='calcCurrentChallengesCanvas(${useOld}, true)'>Calculate Tasks</div></div>`);
@@ -3566,9 +3606,11 @@ let calcCurrentChallengesCanvas = function(useOld, proceed, fromLoadData, inputT
             if (fromLoadData) {
                 calcCurrentChallengesCanvas(useOld);
                 sectionsValid = false;
+                globalSectionsValid = false;
             } else if (testMode || !(viewOnly || locked)) {
-                openChunkSectionPicker(chunk, true);
+                !fromSectionPicker && openChunkSectionPicker(chunk, true);
                 sectionsValid = false;
+                globalSectionsValid = false;
                 $(`.calculating .display-button`).text('Select Accessible Sections');
             } else if (inEntry) {
                 sectionsValid = false;
@@ -3581,19 +3623,80 @@ let calcCurrentChallengesCanvas = function(useOld, proceed, fromLoadData, inputT
                 });
                 calcCurrentChallengesCanvas(useOld, proceed, fromLoadData, tempSections);
                 sectionsValid = false;
+                globalSectionsValid = true;
             }
             return true;
         }
     });
     tempSections = combineJSONs(tempSections, manualSections);
+    if (sectionsValid) {
+        globalSectionsValid = true;
+    }
 
     if (gotData && sectionsValid) {
         setCalculating('.panel-active', useOld);
         setCurrentChallenges(['No tasks currently backlogged.'], ['No tasks currently completed.'], true, true);
         myWorker.terminate();
-        myWorker = new Worker("./worker.js?v=6.9.33");
+        myWorker = new Worker("./worker.js?v=6.9.59");
         myWorker.onmessage = workerOnMessage;
-        myWorker.postMessage(['current', tempChunks['unlocked'], rules, chunkInfo, skillNames, processingSkill, maybePrimary, combatSkills, monstersPlus, objectsPlus, chunksPlus, itemsPlus, mixPlus, npcsPlus, tasksPlus, tools, elementalRunes, manualTasks, completedChallenges, backlog, "1/" + rules['Rare Drop Amount'], universalPrimary, elementalStaves, rangedItems, boneItems, highestCurrent, dropTables, possibleAreas, randomLoot, magicTools, bossLogs, bossMonsters, minigameShops, manualEquipment, checkedChallenges, backloggedSources, altChallenges, manualMonsters, slayerLocked, passiveSkill, f2pSkills, assignedXpRewards, mid === diary2Tier, manualAreas, "1/" + rules['Secondary Primary Amount'], constructionLocked, mid === manualAreasOnly, tempSections, settings['optOutSections'], settings['optOutSectionsWater'], maxSkill, userTasks, manualPrimary, updateLevel]);
+        myWorker.postMessage({
+            type: 'current',
+            chunks: tempChunks['unlocked'],
+            rules,
+            chunkInfo,
+            skillNames,
+            processingSkill,
+            maybePrimary,
+            combatSkills,
+            monstersPlus,
+            objectsPlus,
+            chunksPlus,
+            itemsPlus,
+            mixPlus,
+            npcsPlus,
+            tasksPlus,
+            tools,
+            elementalRunes,
+            manualTasks,
+            completedChallenges,
+            backlog,
+            rareDropNum: "1/" + rules['Rare Drop Amount'],
+            universalPrimary,
+            elementalStaves,
+            rangedItems,
+            boneItems,
+            highestCurrent,
+            dropTables,
+            possibleAreas,
+            randomLoot,
+            magicTools,
+            bossLogs,
+            bossMonsters,
+            minigameShops,
+            manualEquipment,
+            checkedChallenges,
+            backloggedSources,
+            altChallenges,
+            manualMonsters,
+            slayerLocked,
+            passiveSkill,
+            f2pSkills,
+            assignedXpRewards,
+            isDiary2Tier: mid === diary2Tier,
+            manualAreas,
+            secondaryPrimaryNum: "1/" + rules['Secondary Primary Amount'],
+            constructionLocked,
+            isOnlyManualAreas: mid === manualAreasOnly,
+            manualSections: tempSections,
+            optOutSections: settings['optOutSections'],
+            optOutSectionsWater: settings['optOutSectionsWater'],
+            maxSkill,
+            userTasks,
+            manualPrimary,
+            updateLevel,
+            unconnectedAreas,
+            clueCompleteNum: rules['Collection Log Clues Amount']
+        });
         workersOut['current'] = true;
         workerOut = Object.keys(workersOut).filter((key) => workersOut[key] !== false).length;
     }
@@ -3895,90 +3998,115 @@ $(document).ready(function() {
 // ------------------------------------------------------------
 
 // Recieve message from worker
-let myWorker = new Worker("./worker.js?v=6.9.33");
-let myWorker2 = new Worker("./worker.js?v=6.9.33");
+let myWorker = new Worker("./worker.js?v=6.9.59");
+let myWorker2 = new Worker("./worker.js?v=6.9.59");
 let workerOnMessage = function(e) {
-    if (e.data[0] === 'reload') {
+    if (e.data.type === 'reload') {
         window.location.reload();
     }
-    if (lastUpdated + 2000000 < Date.now() && !hasUpdate) {
+    if (lastUpdated + 200000 < Date.now() && !hasUpdate) {
         lastUpdated = Date.now();
-        databaseRef.child('version').once('value', function(snap) {
-            if (snap.val() !== currentVersion && false) {
-                hasUpdate = true;
-                $(`.godocumentation`).addClass('hasupdate').removeClass('fa-file-alt').addClass('fa-sync').prop('title', 'New version available');
-                $(`.patchnotes-mobile`).addClass('hasupdate').text('New version available');
-            }
+        databaseRef.child('versionEnforced').once('value', function(snap) {
+            snap.val() && databaseRef.child('version').once('value', function(snap2) {
+                let firebaseVersionSplit = snap2.val().split('.');
+                let localVersionSplit = currentEnforcedVersion.split('.');
+                let biggerSplit = firebaseVersionSplit.length >= localVersionSplit.length ? firebaseVersionSplit : localVersionSplit;
+                let isLocalBigEnough = true;
+                biggerSplit.some((el, i) => {
+                    let firebaseVersionNum = parseInt(firebaseVersionSplit[i]);
+                    let localVersionNum = parseInt(localVersionSplit[i]);
+                    if (localVersionNum > firebaseVersionNum) {
+                        return true;
+                    } else if (localVersionNum < firebaseVersionNum || isNaN(localVersionNum)) {
+                        isLocalBigEnough = false;
+                        return true;
+                    }
+                    return false;
+                });
+                if (!isLocalBigEnough) {
+                    hasUpdate = true;
+                    $(`.godocumentation`).addClass('hasupdate').removeClass('fa-file-alt').addClass('fa-sync').prop('title', 'New version available');
+                    $(`.patchnotes-mobile`).addClass('hasupdate').text('New version available');
+                    location.reload();
+                }
+            });
         });
     }
-    if (e.data[0] === 'error') {
+    if (e.data.type === 'error') {
+        let { err } = e.data;
         $('.panel-active > .calculating > .inner-loading-bar').css('background-color', 'red');
         $('.panel-active > .outer-loading-bar').css('color', 'yellow');
         $('.loading-bar-text').css('color', 'yellow').text('Error');
         $('.panel-active > .calculating').css('color', 'red');
         $('.panel-active > .calculating > i').removeClass('fa-spin');
-        logError(e.data[1].toString() + ';' + e.data[1].stack);
-        throw e.data[1];
-    } else if (e.data[0] === 'initial-data') {
-        baseChunkData = e.data[1];
+        logError(err.toString() + ';' + err.stack);
+        throw err;
+    } else if (e.data.type === 'initial-data') {
+        ({ baseChunkData } = e.data);
         onlyInitialData = true;
-    } else if (!Array.isArray(e.data)) {
+    } else if (e.data.type === 'loading-update') {
+        let { percentage } = e.data;
         if (!!tempChunks['unlocked'] && Object.keys(tempChunks['unlocked']).length >= 100) {
-            let barVal = parseInt(e.data) > 100 ? '94%' : e.data;
+            let barVal = parseInt(percentage) > 100 ? '94%' : percentage;
             $('.panel-active > .calculating > .inner-loading-bar').css('width', barVal);
         }
     } else {
         workerOut--;
         workerOut < 0 && (workerOut = 0);
-        if (e.data[0] === 'current') {
+        if (e.data.type === 'current') {
             workerOut = 0;
         }
-        chunkInfo = e.data[3];
-        if (e.data[0] === 'future') {
+        ({ chunkInfo } = e.data);
+        if (e.data.type === 'future') {
             if (workersOut['future'] === infoLockedId) {
-                futureChunkData = e.data[2];
-                futureUnlockedSections = e.data[15];
+                ({
+                    baseChunkData: futureChunkData,
+                    unlockedSections: futureUnlockedSections
+                } = e.data);
                 futurePossibleAreas = {};
-                Object.keys(e.data[12]).filter(area => { return e.data[12][area] === true }).forEach((area) => {
+                Object.keys(savedChunks).filter(area => { return savedChunks[area] === true }).forEach((area) => {
                     futurePossibleAreas[area] = true;
                 });
-                let [challengeStr, challengeStrFormatted] = calcFutureChallenges2(e.data[1], e.data[2], e.data[7]);
+                let [challengeStr, challengeStrFormatted] = calcFutureChallenges2(e.data.globalValids, e.data.baseChunkData, e.data.highestOverall);
                 expandChallengeStr = challengeStrFormatted.replaceAll('No new chunk tasks', 'No potential chunk tasks');
                 $('.panel-challenges').html(challengeStr || 'None');
                 $('.expand').show();
             }
             workersOut['future'] = false;
             workerOut = Object.keys(workersOut).filter((key) => workersOut[key] !== false).length;
-        } else if (e.data[0] === 'current') {
+        } else if (e.data.type === 'current') {
             workersOut['current'] = false;
             workerOut = Object.keys(workersOut).filter((key) => workersOut[key] !== false).length;
-            if (settings['newTasks'] && chunkJustRolled) {
-                openNewTasksModal(calcFutureChallenges2(e.data[1], e.data[2], e.data[7])[1].replaceAll(", 'future'", ", ''"));
-            }
-            globalValids = e.data[1];
-            baseChunkData = e.data[2];
-            onlyInitialData = false;
-            highestCurrent = e.data[4];
-            questPointTotal = e.data[6];
-            highestOverall = e.data[7];
-            dropRatesGlobal = e.data[8];
-            questProgress = e.data[9];
-            diaryProgress = e.data[10];
-            skillQuestXp = e.data[11];
-            savedChunks = e.data[12];
-            dropTablesGlobal = e.data[13];
-            bestEquipmentAltsGlobal = e.data[14];
-            unlockedSections = e.data[15];
-            combatPointTotal = e.data[16];
-            highestOverallCompleted = e.data[17];
-            bisUpgrades = e.data[18];
-            bankMemoryFormat = e.data[19];
-            globalValidsBoosts = e.data[20];
             possibleAreas = {};
-            Object.keys(e.data[12]).filter(area => { return e.data[12][area] === true }).forEach((area) => {
+            onlyInitialData = false;
+            if (settings['newTasks'] && chunkJustRolled) {
+                openNewTasksModal(calcFutureChallenges2(e.data.globalValids, e.data.baseChunkData, e.data.highestOverall)[1].replaceAll(", 'future'", ", ''"));
+            }
+            ({
+                globalValids,
+                baseChunkData,
+                highestCurrent,
+                tempChallengeArrSaved,
+                questPointTotal,
+                highestOverall,
+                dropRatesGlobal,
+                questProgress,
+                diaryProgress,
+                skillQuestXp,
+                savedChunks,
+                dropTablesGlobal,
+                bestEquipmentAltsGlobal,
+                unlockedSections,
+                combatPointTotal,
+                highestOverallCompleted,
+                bisUpgrades,
+                bankMemoryFormat,
+                globalValidsBoosts,
+                globalEveryDropAltMap
+            } = e.data);
+            Object.keys(savedChunks).filter(area => { return savedChunks[area] === true }).forEach((area) => {
                 possibleAreas[area] = true;
             });
-            tempChallengeArrSaved = e.data[5];
             numClueTasks = {
                 'beginner': 0,
                 'easy': 0,
@@ -4051,7 +4179,7 @@ let workerOnMessage = function(e) {
                 }
             });
             if (!tempChunks['unlocked'] || Object.keys(tempChunks['unlocked']).length < 100) {
-                calcCurrentChallenges2(e.data[5]);
+                calcCurrentChallenges2(tempChallengeArrSaved);
             } else {
                 $('.panel-active.calculating > i').remove();
                 $('.panel-active > .calculating').removeClass('outer-loading-bar').html(`<div class='noscroll display-button' onclick='calcCurrentChallenges2()'>Show New Tasks</div>`);
@@ -4505,6 +4633,17 @@ let exportFunc = function(type) {
         navigator.clipboard.writeText(tasksTemp);
     } else if (type === 'rules') {
         navigator.clipboard.writeText(JSON.stringify(rules));
+    } else if (type === 'clues') {
+        let outputArr = [];
+        Object.keys(possibleClueTasks).forEach((tier) => {
+            possibleClueTasks[tier].filter((name) => chunkInfo['challenges']['Nonskill'].hasOwnProperty(name) && chunkInfo['challenges']['Nonskill'][name].hasOwnProperty('ClueId')).forEach((name) => {
+                outputArr.push({
+                    id: parseInt(chunkInfo['challenges']['Nonskill'][name]['ClueId']),
+                    color: '#30FF00'
+                });
+            });
+        });
+        navigator.clipboard.writeText(JSON.stringify(outputArr));
     } else if (type === 'equipment') {
         navigator.clipboard.writeText(bankMemoryFormat);
     } else if (type === 'plugin' && (testMode || !(viewOnly || inEntry || locked))) {
@@ -4974,7 +5113,7 @@ let unlockEntry = function() {
     $('#unlock-entry').prop('disabled', true).html('<i class="spin fa-solid fa-spinner"></i>');
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE);
     firebase.auth().fetchSignInMethodsForEmail('sourcechunk+' + mid + '@yandex.com').then((methods) => {
-        if (signInAttempts > 15) {
+        if (signInAttempts > 5) {
             setTimeout(function() {
                 $('.pin.entry').addClass('animated shake wrong').select();
                 $('#unlock-entry').prop('disabled', true).text('Unlock');
@@ -4982,7 +5121,7 @@ let unlockEntry = function() {
                 setTimeout(function() {
                     $('.pin.entry').removeClass('animated shake');
                 }, 500);
-            }, (1500 + signInAttempts * 10));
+            }, (500 + signInAttempts * 20));
         } else if (!!methods && methods.length > 0) {
             setTimeout(function() {
                 firebase.auth().signInWithEmailAndPassword('sourcechunk+' + mid + '@yandex.com', savedPin + mid).then((userCredential) => {
@@ -5028,7 +5167,7 @@ let unlockEntry = function() {
                 setTimeout(function() {
                     $('.pin.entry').removeClass('animated shake');
                 }, 500);
-            }, 1000);
+            }, 250);
         } else {
             myRef.child('pin').once('value', function(snap) {
                 if ((snap.val() && snap.val() === savedPin)) {
@@ -5080,7 +5219,7 @@ let unlockEntry = function() {
                             console.error('Incorrect map password');
                             signInAttempts++;
                         });
-                    }, 1000);
+                    }, 250);
                     setTimeout(function() {
                         $('.pin.entry').removeClass('animated shake');
                     }, 500);
@@ -5324,13 +5463,13 @@ let changePin = function() {
             return;
         }
 
-        if (signInAttempts > 15) {
+        if (signInAttempts > 5) {
             setTimeout(function() {
                 $('.pin-err').css('visibility', 'visible');
                 $('.pin.old2.first').addClass('wrong').select();
                 $('#change-pin').text('Change Password');
                 signInAttempts++;
-            }, (1500 + signInAttempts * 10));
+            }, (500 + signInAttempts * 20));
         } else {
             setTimeout(function() {
                 firebase.auth().signInWithEmailAndPassword('sourcechunk+' + mid + '@yandex.com', pinOld + mid).then((userCredential) => {
@@ -5733,6 +5872,14 @@ let toggleTaskSearchbar = function(value, extra) {
     extra !== 'startup' && !locked && setData();
 }
 
+// Toggles generate pluginOutput variable
+let togglePluginDataGeneration = function(value, extra) {
+    if (extra !== 'startup' && value && !isGeneratingPluginData) {
+        createPluginOutput();
+    }
+    isGeneratingPluginData = value;
+}
+
 // Toggles the top buttons
 let toggleTopButtons = function(value, extra) {
     topButtonsOn = value;
@@ -5771,8 +5918,8 @@ let toggleHiddenTasks = function(value, fromSearch, subTabs) {
             $('.panel-active').append(`<span class="no-current">No current chunk tasks.</span>`);
         }
     }
-    settings['hideChecked'] && actuallyHideChecked && subTabs.forEach((subTab) => {
-        $('.challenge.' + subTab + '-challenge:not(.hide-backlog)').length === 0 ? $('.marker-' + subTab).addClass('hide-marker') : $('.marker-' + subTab).removeClass('hide-marker');
+    settings['hideChecked'] && subTabs.forEach((subTab) => {
+        $('.challenge.' + subTab + '-challenge:not(.hide-backlog)').length === 0 && actuallyHideChecked ? $('.marker-' + subTab).addClass('hide-marker') : $('.marker-' + subTab).removeClass('hide-marker');
     });
     !fromSearch && searchActiveTasksFunc();
 }
@@ -5903,6 +6050,7 @@ window.mobileCheck = function() {
 
 // Once page has loaded, page is centered and initial chunks are selected/unlocked (from url)
 let doneLoading = function() {
+    if (isUnderMaintenance) return;
     if (onMobile) {
         $('.modal, .entry-content, .menu8, .menu8 .accordion, .menu8 .panel, .menu9, .menu9 .accordion, .menu9 .panel, .modal-content, .open-rules-container, .help-content, .lock-pin').addClass('mobile');
         $('.center').css({ 'height': '40px', 'width': '90px', 'font-size': '12px' });
@@ -6247,6 +6395,7 @@ let updateChunkInfo = function() {
             clueStr.length > 0 && (clueStr = clueStr.substring(0, clueStr.length - 2));
         }
         $('.infoid-content').html((!!chunkInfo['chunks'][id] && !!chunkInfo['chunks'][id]['Nickname']) ? (chunkInfo['chunks'][id]['Nickname'] + ' (' + id + ')') : decodeQueryParam(id));
+        $('.infoid').css({'fontSize': ''});
         $('.infoid').css({'fontSize': $('.infoid-content').height() > 50 ? 'min(2vw, 20px)' : ''});
         $('.panel-monsters').html(monsterStr || 'None');
         $('.panel-npcs').html(npcStr || 'None');
@@ -6453,6 +6602,7 @@ let calcCurrentChallenges2 = function(tempChallengeArr) {
 // Sets up data for displaying
 let setupCurrentChallenges = function(tempChallengeArr, noDisplay, noClear) {
     let listOfTasks = [];
+    let favoriteTasksArr = [];
     activeTasks = {};
     !rules['Show Skill Tasks'] && challengeArr.forEach((line) => {
         skillNames.forEach((skill) => {
@@ -6479,14 +6629,32 @@ let setupCurrentChallenges = function(tempChallengeArr, noDisplay, noClear) {
             let hasAlts = Object.keys(globalValids[skill]).filter(chal => (globalValids[skill][chal] - (globalValidsBoosts.hasOwnProperty(skill) && globalValidsBoosts[skill].hasOwnProperty(chal) ? globalValidsBoosts[skill][chal] : 0)) === (globalValids[skill][skillTask] - (globalValidsBoosts.hasOwnProperty(skill) && globalValidsBoosts[skill].hasOwnProperty(skillTask) ? globalValidsBoosts[skill][skillTask] : 0)) && chal !== skillTask && (!backlog.hasOwnProperty(skill) || !backlog[skill].hasOwnProperty(chal))).length > 0;
             if (!!skillTask && (!backlog[skill] || (!backlog[skill].hasOwnProperty(skillTask) && !backlog[skill].hasOwnProperty(skillTask.replaceAll('#', '/')))) && (!completedChallenges[skill] || (!completedChallenges[skill][skillTask] && !completedChallenges[skill][skillTask.replaceAll('#', '/')])) && (!altChallenges[skill] || !altChallenges[skill].hasOwnProperty(chunkInfo['challenges'][skill][skillTask]['Level'] - boost) || !completedChallenges[skill] || (!completedChallenges[skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]] && !completedChallenges[skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost].replaceAll('#', '/')]))) {
                 if (!!skillTask && !!altChallenges[skill] && altChallenges[skill].hasOwnProperty(chunkInfo['challenges'][skill][skillTask]['Level'] - boost) && globalValids.hasOwnProperty(skill) && globalValids[skill].hasOwnProperty(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]) && (globalValids[skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]] - (globalValidsBoosts.hasOwnProperty(skill) && globalValidsBoosts[skill].hasOwnProperty(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]) ? globalValidsBoosts[skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]] : 0)) === (chunkInfo['challenges'][skill][skillTask]['Level'] - boost) && (!backlog.hasOwnProperty(skill) || !backlog[skill].hasOwnProperty(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost])) && !!altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]) {
-                    boost = (globalValidsBoosts.hasOwnProperty(skill) && globalValidsBoosts[skill].hasOwnProperty(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]) ? globalValidsBoosts[skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]] : 0);
-                    challengeArr.push(`<div class="challenge skill-challenge noscroll clickable ${skill + '-challenge'} ${(!!checkedChallenges[skill] && !!checkedChallenges[skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]) && 'hide-backlog'} ${!activeSubTabs['skill'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost])}', '${skill}', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges[skill] && !!checkedChallenges[skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('${skill}', '${encodeRFC5987ValueChars(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost])}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[${(boost > 0 ? (((chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]['Level'] - boost) <= 0 ? 1 : (chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]['Level'] - boost)) + '] (+' + boost + ')') : chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]['Level'] + ']')} <span class="inner noscroll">${skill}</b>: ${decodeQueryParam(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost].split('~')[0])}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost].split('|')[1]))}" target="_blank">${decodeQueryParam(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost].split('~')[1].split('|').join(''))}</a>${decodeQueryParam(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost].split('~')[2])}</span></span></label> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost])}', '${skill}', ${hasAlts})"><i class="fa-solid fa-sliders-h noscroll">${hasAlts ? `<i class="fa-solid fa-star burger-star noscroll"></i>` : ''}</i></span></div>`);
-                    listOfTasks.push({ [altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]: skill, prefix: `[${(boost > 0 ? (((chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]['Level'] - boost) <= 0 ? 1 : (chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]['Level'] - boost)) + '] (+' + boost + ')') : chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]['Level'] + ']')} ${skill}:` });
-                    activeTasks[skill] = { [altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]: `${chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]['Level']}${boost > 0 ? `{${boost}}` : ''}` };
+                    let newBoost = (globalValidsBoosts.hasOwnProperty(skill) && globalValidsBoosts[skill].hasOwnProperty(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]) ? globalValidsBoosts[skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]] : 0);
+                    let taskEl = `<div class="challenge skill-challenge noscroll clickable ${skill + '-challenge'} ${(!!checkedChallenges[skill] && !!checkedChallenges[skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]) && 'hide-backlog'} ${!activeSubTabs['skill'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost])}', '${skill}', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges[skill] && !!checkedChallenges[skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('${skill}', '${encodeRFC5987ValueChars(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost])}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[${(newBoost > 0 ? (((chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]['Level'] - newBoost) <= 0 ? 1 : (chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]['Level'] - newBoost)) + '] (+' + newBoost + ')') : chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]['Level'] + ']')} <span class="inner noscroll">${skill}</b>: ${decodeQueryParam(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost].split('~')[0])}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost].split('|')[1]))}" target="_blank">${decodeQueryParam(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost].split('~')[1].split('|').join(''))}</a>${decodeQueryParam(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost].split('~')[2])}</span></span></label> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost])}', '${skill}', ${hasAlts})"><i class="fa-solid fa-sliders-h noscroll">${hasAlts ? `<i class="fa-solid fa-star burger-star noscroll"></i>` : ''}</i></span></div>`;
+                    !!favoriteTasks[skill] && favoriteTasks[skill].hasOwnProperty(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]) ? favoriteTasksArr.push(taskEl.replaceAll('skill-challenge', 'favorite-challenge')) : challengeArr.push(taskEl);
+                    listOfTasks.push({ [altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]: skill, prefix: `[${(newBoost > 0 ? (((chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]['Level'] - newBoost) <= 0 ? 1 : (chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]['Level'] - newBoost)) + '] (+' + newBoost + ')') : chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]['Level'] + ']')} ${skill}:` });
+                    let activeTasksEl = { [altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]: `${chunkInfo['challenges'][skill][altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost]]['Level']}${newBoost > 0 ? `{${newBoost}}` : ''}` };
+                    if (!!favoriteTasks[skill] && favoriteTasks[skill].hasOwnProperty(altChallenges[skill][chunkInfo['challenges'][skill][skillTask]['Level'] - boost])) {
+                        if (!activeTasks['Favorite']) {
+                            activeTasks['Favorite'] = {};
+                        }
+                        activeTasks['Favorite'][skill] = activeTasksEl;
+                    } else {
+                        activeTasks[skill] = activeTasksEl;
+                    }
                 } else if (!!skillTask && !!chunkInfo['challenges'][skill][skillTask]) {
-                    challengeArr.push(`<div class="challenge skill-challenge noscroll clickable ${skill + '-challenge'} ${(!!checkedChallenges[skill] && !!checkedChallenges[skill][skillTask]) && 'hide-backlog'} ${!activeSubTabs['skill'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(skillTask)}', '${skill}', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges[skill] && !!checkedChallenges[skill][skillTask]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('${skill}', '${encodeRFC5987ValueChars(skillTask)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[${(boost > 0 ? (((chunkInfo['challenges'][skill][skillTask]['Level'] - boost) <= 0 ? 1 : (chunkInfo['challenges'][skill][skillTask]['Level'] - boost)) + '] (+' + boost + ')') : chunkInfo['challenges'][skill][skillTask]['Level'] + ']')} <span class="inner noscroll">${skill}</b>: ${skillTask.split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((skillTask.split('|')[1]))}" target="_blank">${skillTask.split('~')[1].split('|').join('')}</a>${skillTask.split('~')[2]}</span></span></label> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(skillTask)}', '${skill}', ${hasAlts})"><i class="fa-solid fa-sliders-h noscroll">${hasAlts ? `<i class="fa-solid fa-star burger-star noscroll"></i>` : ''}</i></span></div>`);
+                    let taskEl = `<div class="challenge skill-challenge noscroll clickable ${skill + '-challenge'} ${(!!checkedChallenges[skill] && !!checkedChallenges[skill][skillTask]) && 'hide-backlog'} ${!activeSubTabs['skill'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(skillTask)}', '${skill}', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges[skill] && !!checkedChallenges[skill][skillTask]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('${skill}', '${encodeRFC5987ValueChars(skillTask)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[${(boost > 0 ? (((chunkInfo['challenges'][skill][skillTask]['Level'] - boost) <= 0 ? 1 : (chunkInfo['challenges'][skill][skillTask]['Level'] - boost)) + '] (+' + boost + ')') : chunkInfo['challenges'][skill][skillTask]['Level'] + ']')} <span class="inner noscroll">${skill}</b>: ${skillTask.split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((skillTask.split('|')[1]))}" target="_blank">${skillTask.split('~')[1].split('|').join('')}</a>${skillTask.split('~')[2]}</span></span></label> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(skillTask)}', '${skill}', ${hasAlts})"><i class="fa-solid fa-sliders-h noscroll">${hasAlts ? `<i class="fa-solid fa-star burger-star noscroll"></i>` : ''}</i></span></div>`;
+                    !!favoriteTasks[skill] && favoriteTasks[skill].hasOwnProperty(skillTask) ? favoriteTasksArr.push(taskEl.replaceAll('skill-challenge', 'favorite-challenge')) : challengeArr.push(taskEl);
                     listOfTasks.push({ [skillTask]: skill, prefix: `[${(boost > 0 ? (((chunkInfo['challenges'][skill][skillTask]['Level'] - boost) <= 0 ? 1 : (chunkInfo['challenges'][skill][skillTask]['Level'] - boost)) + '] (+' + boost + ')') : chunkInfo['challenges'][skill][skillTask]['Level'] + ']')} ${skill}:` });
-                    activeTasks[skill] = { [skillTask]: `${chunkInfo['challenges'][skill][skillTask]['Level']}${boost > 0 ? `{${boost}}` : ''}` };
+                    let activeTasksEl = { [skillTask]: `${chunkInfo['challenges'][skill][skillTask]['Level']}${boost > 0 ? `{${boost}}` : ''}` };
+                    if (!!favoriteTasks[skill] && favoriteTasks[skill].hasOwnProperty(skillTask)) {
+                        if (!activeTasks['Favorite']) {
+                            activeTasks['Favorite'] = {};
+                        }
+                        activeTasks['Favorite'][skill] = activeTasksEl;
+                    } else {
+                        activeTasks[skill] = activeTasksEl;
+                    }
                 }
             }
         });
@@ -6510,43 +6678,87 @@ let setupCurrentChallenges = function(tempChallengeArr, noDisplay, noClear) {
         });
         if ((!backlog['BiS'] || (!backlog['BiS'].hasOwnProperty(challenge) && !backlog['BiS'].hasOwnProperty(challenge.replaceAll('#', '/')))) && (!completedChallenges['BiS'] || (!completedChallenges['BiS'][challenge] && !completedChallenges['BiS'][challenge.replaceAll('#', '/')])) && Object.values(highestOverall).map(function(y) { return y.toLowerCase() }).includes(challenge.split('|')[1].toLowerCase())) {
             let hasAlts = Object.keys(globalValids['BiS']).filter(chal => globalValids['BiS'][chal] === globalValids['BiS'][challenge] && chal !== challenge && (!backlog.hasOwnProperty('BiS') || !backlog['BiS'].hasOwnProperty(chal))).length > 0;
-            challengeArr.push(`<div class="challenge bis-challenge noscroll clickable ${'BiS-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['BiS'] && !!checkedChallenges['BiS'][challenge]) && 'hide-backlog'} ${!activeSubTabs['bis'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', 'BiS', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['BiS'] && !!checkedChallenges['BiS'][challenge]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('BiS', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[${chunkInfo['challenges']['BiS'][challenge]['Label']}]</b> <span class="inner noscroll">${challenge.split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((challenge.split('|')[1]))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a>${challenge.split('~')[2]}</span></span></label></span> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(challenge)}', 'BiS', ${hasAlts})"><i class="fa-solid fa-sliders-h noscroll">${hasAlts ? `<i class="fa-solid fa-star burger-star noscroll"></i>` : ''}</i></span></div>`);
+            let taskEl = `<div class="challenge bis-challenge noscroll clickable ${'BiS-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['BiS'] && !!checkedChallenges['BiS'][challenge]) && 'hide-backlog'} ${!activeSubTabs['bis'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', 'BiS', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['BiS'] && !!checkedChallenges['BiS'][challenge]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('BiS', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[${chunkInfo['challenges']['BiS'][challenge]['Label']}]</b> <span class="inner noscroll">${challenge.split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((challenge.split('|')[1]))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a>${challenge.split('~')[2]}</span></span></label></span> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(challenge)}', 'BiS', ${hasAlts})"><i class="fa-solid fa-sliders-h noscroll">${hasAlts ? `<i class="fa-solid fa-star burger-star noscroll"></i>` : ''}</i></span></div>`;
+            !!favoriteTasks['BiS'] && favoriteTasks['BiS'].hasOwnProperty(challenge) ? favoriteTasksArr.push(taskEl.replaceAll('bis-challenge', 'favorite-challenge')) : challengeArr.push(taskEl);
             listOfTasks.push({ [challenge]: 'BiS', prefix: `[${$(`<span>${chunkInfo['challenges']['BiS'][challenge]['Label']}</span>`).text()}]` });
-            if (!activeTasks['BiS']) {
-                activeTasks['BiS'] = {};
+            if (!!favoriteTasks['BiS'] && favoriteTasks['BiS'].hasOwnProperty(challenge)) {
+                if (!activeTasks['Favorite']) {
+                    activeTasks['Favorite'] = {};
+                }
+                if (!activeTasks['Favorite']['BiS']) {
+                    activeTasks['Favorite']['BiS'] = {};
+                }
+                activeTasks['Favorite']['BiS'][challenge] = globalValids['BiS'][challenge];
+            } else {
+                if (!activeTasks['BiS']) {
+                    activeTasks['BiS'] = {};
+                }
+                activeTasks['BiS'][challenge] = globalValids['BiS'][challenge];
             }
-            activeTasks['BiS'][challenge] = globalValids['BiS'][challenge];
         }
     });
     !!globalValids['Quest'] && Object.keys(globalValids['Quest']).length > 0 && rules['Show Quest Tasks'] && challengeArr.push(`<div class="marker marker-quest noscroll" onclick="expandActive('quest')"><i class="expand-button fa-solid ${activeSubTabs['quest'] ? 'fa-caret-down' : 'fa-caret-right'} noscroll"></i><span class="noscroll">Quest Tasks</span></div>`);
     !!globalValids['Quest'] && rules['Show Quest Tasks'] && Object.keys(globalValids['Quest']).sort(function(a, b) { return a.replaceAll(/ /g, '_').replaceAll(/\|/g, '').replaceAll(/~/g, '').replaceAll(/%/g, '').replaceAll(/\(/g, '').replaceAll(/\)/g, '').replaceAll(/'/g, '').replaceAll(/\./g, '').replaceAll(/\:/g, '').replaceAll(/\//g, '').replaceAll('A_', '').replaceAll('The_', '').localeCompare(b.replaceAll(/ /g, '_').replaceAll(/\|/g, '').replaceAll(/~/g, '').replaceAll(/%/g, '').replaceAll(/\(/g, '').replaceAll(/\)/g, '').replaceAll(/'/g, '').replaceAll(/\./g, '').replaceAll(/\:/g, '').replaceAll(/\//g, '').replaceAll('A_', '').replaceAll('The_', '')) }).forEach((challenge) => {
         if ((!backlog['Quest'] || (!backlog['Quest'].hasOwnProperty(challenge) && !backlog['Quest'].hasOwnProperty(challenge.replaceAll('#', '/')))) && (!completedChallenges['Quest'] || (!completedChallenges['Quest'][challenge] && !completedChallenges['Quest'][challenge.replaceAll('#', '/')])) && globalValids['Quest'][challenge]) {
             if (chunkInfo['challenges']['Quest'][challenge].hasOwnProperty('QuestPoints')) {
-                challengeArr.push(`<div class="challenge quest-challenge noscroll clickable ${'Quest-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Quest'] && !!checkedChallenges['Quest'][challenge]) && 'hide-backlog'} ${!activeSubTabs['quest'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', 'Quest', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Quest'] && !!checkedChallenges['Quest'][challenge]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('Quest', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[Quest] <span class="inner noscroll"><a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a></b>: <a href='javascript:openQuestSteps("Quest", "${encodeRFC5987ValueChars(challenge)}")' class='internal-link noscroll'>${challenge.split('~')[2].substring(1)}</a></span></span></label></span> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(challenge)}', 'Quest')"><i class="fa-solid fa-sliders-h noscroll"></i></span></div>`);
+                let taskEl = `<div class="challenge quest-challenge noscroll clickable ${'Quest-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Quest'] && !!checkedChallenges['Quest'][challenge]) && 'hide-backlog'} ${!activeSubTabs['quest'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', 'Quest', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Quest'] && !!checkedChallenges['Quest'][challenge]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('Quest', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[Quest] <span class="inner noscroll"><a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a></b>: <a href='javascript:openQuestSteps("Quest", "${encodeRFC5987ValueChars(challenge)}")' class='internal-link noscroll'>${challenge.split('~')[2].substring(1)}</a></span></span></label></span> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(challenge)}', 'Quest')"><i class="fa-solid fa-sliders-h noscroll"></i></span></div>`;
+                !!favoriteTasks['Quest'] && favoriteTasks['Quest'].hasOwnProperty(challenge) ? favoriteTasksArr.push(taskEl.replaceAll('quest-challenge', 'favorite-challenge')) : challengeArr.push(taskEl);
                 listOfTasks.push({ [challenge]: 'Quest', prefix: `[Quest]` });
-                if (!activeTasks['Quest']) {
-                    activeTasks['Quest'] = {};
+                if (!!favoriteTasks['Quest'] && favoriteTasks['Quest'].hasOwnProperty(challenge)) {
+                    if (!activeTasks['Favorite']) {
+                        activeTasks['Favorite'] = {};
+                    }
+                    if (!activeTasks['Favorite']['Quest']) {
+                        activeTasks['Favorite']['Quest'] = {};
+                    }
+                    activeTasks['Favorite']['Quest'][challenge] = '';
+                } else {
+                    if (!activeTasks['Quest']) {
+                        activeTasks['Quest'] = {};
+                    }
+                    activeTasks['Quest'][challenge] = '';
                 }
-                activeTasks['Quest'][challenge] = '';
             } else if (!rules['Show Quest Tasks Complete']) {
-                challengeArr.push(`<div class="challenge quest-challenge noscroll clickable ${'Quest-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Quest'] && !!checkedChallenges['Quest'][challenge]) && 'hide-backlog'} ${!activeSubTabs['quest'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', 'Quest', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Quest'] && !!checkedChallenges['Quest'][challenge]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('Quest', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[Quest] <span class="inner noscroll"><a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a></b>: Up to <a href='javascript:openQuestSteps("Quest", "${encodeRFC5987ValueChars(challenge)}")' class='internal-link noscroll'>step ${challenge.split('~')[2]}</a></span></span></label></span> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(challenge)}', 'Quest')"><i class="fa-solid fa-sliders-h noscroll"></i></span></div>`);
+                let taskEl = `<div class="challenge quest-challenge noscroll clickable ${'Quest-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Quest'] && !!checkedChallenges['Quest'][challenge]) && 'hide-backlog'} ${!activeSubTabs['quest'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', 'Quest', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Quest'] && !!checkedChallenges['Quest'][challenge]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('Quest', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[Quest] <span class="inner noscroll"><a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a></b>: Up to <a href='javascript:openQuestSteps("Quest", "${encodeRFC5987ValueChars(challenge)}")' class='internal-link noscroll'>step ${challenge.split('~')[2]}</a></span></span></label></span> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(challenge)}', 'Quest')"><i class="fa-solid fa-sliders-h noscroll"></i></span></div>`;
+                !!favoriteTasks['Quest'] && favoriteTasks['Quest'].hasOwnProperty(challenge) ? favoriteTasksArr.push(taskEl.replaceAll('quest-challenge', 'favorite-challenge')) : challengeArr.push(taskEl);
                 listOfTasks.push({ [challenge]: 'Quest', prefix: `[Quest]` });
-                if (!activeTasks['Quest']) {
-                    activeTasks['Quest'] = {};
+                if (!!favoriteTasks['Quest'] && favoriteTasks['Quest'].hasOwnProperty(challenge)) {
+                    if (!activeTasks['Favorite']) {
+                        activeTasks['Favorite'] = {};
+                    }
+                    if (!activeTasks['Favorite']['Quest']) {
+                        activeTasks['Favorite']['Quest'] = {};
+                    }
+                    activeTasks['Favorite']['Quest'][challenge] = '';
+                } else {
+                    if (!activeTasks['Quest']) {
+                        activeTasks['Quest'] = {};
+                    }
+                    activeTasks['Quest'][challenge] = '';
                 }
-                activeTasks['Quest'][challenge] = '';
             }
         }
     });
     !!globalValids['Diary'] && Object.keys(globalValids['Diary']).length > 0 && rules['Show Diary Tasks'] && challengeArr.push(`<div class="marker marker-diary noscroll" onclick="expandActive('diary')"><i class="expand-button fa-solid ${activeSubTabs['diary'] ? 'fa-caret-down' : 'fa-caret-right'} noscroll"></i><span class="noscroll">Diary Tasks</span></div>`);
     !!globalValids['Diary'] && rules['Show Diary Tasks'] && Object.keys(globalValids['Diary']).forEach((challenge) => {
         if ((!backlog['Diary'] || (!backlog['Diary'].hasOwnProperty(challenge) && !backlog['Diary'].hasOwnProperty(challenge.replaceAll('#', '/')))) && (!completedChallenges['Diary'] || (!completedChallenges['Diary'][challenge] && !completedChallenges['Diary'][challenge.replaceAll('#', '/')])) && globalValids['Diary'][challenge] && (!rules['Show Diary Tasks Complete'] || chunkInfo['challenges']['Diary'][challenge].hasOwnProperty('ManualShow'))) {
-            challengeArr.push(`<div class="challenge diary-challenge noscroll clickable ${'Diary-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Diary'] && !!checkedChallenges['Diary'][challenge]) && 'hide-backlog'} ${!activeSubTabs['diary'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', 'Diary', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Diary'] && !!checkedChallenges['Diary'][challenge]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('Diary', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[Diary] <span class="inner noscroll"><a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a></b>: <a href='javascript:openQuestSteps("Diary", "${encodeRFC5987ValueChars(challenge)}")' class='internal-link noscroll'>${challenge.split('~')[2]}</a></span></span></label></span> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(challenge)}', 'Diary')"><i class="fa-solid fa-sliders-h noscroll"></i></span></div>`);
+            let taskEl = `<div class="challenge diary-challenge noscroll clickable ${'Diary-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Diary'] && !!checkedChallenges['Diary'][challenge]) && 'hide-backlog'} ${!activeSubTabs['diary'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', 'Diary', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Diary'] && !!checkedChallenges['Diary'][challenge]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('Diary', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[Diary] <span class="inner noscroll"><a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a></b>: <a href='javascript:openQuestSteps("Diary", "${encodeRFC5987ValueChars(challenge)}")' class='internal-link noscroll'>${challenge.split('~')[2]}</a></span></span></label></span> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(challenge)}', 'Diary')"><i class="fa-solid fa-sliders-h noscroll"></i></span></div>`;
+            !!favoriteTasks['Diary'] && favoriteTasks['Diary'].hasOwnProperty(challenge) ? favoriteTasksArr.push(taskEl.replaceAll('diary-challenge', 'favorite-challenge')) : challengeArr.push(taskEl);
             listOfTasks.push({ [challenge]: 'Diary', prefix: `[Diary]` });
-            if (!activeTasks['Diary']) {
-                activeTasks['Diary'] = {};
+            if (!!favoriteTasks['Diary'] && favoriteTasks['Diary'].hasOwnProperty(challenge)) {
+                if (!activeTasks['Favorite']) {
+                    activeTasks['Favorite'] = {};
+                }
+                if (!activeTasks['Favorite']['Diary']) {
+                    activeTasks['Favorite']['Diary'] = {};
+                }
+                activeTasks['Favorite']['Diary'][challenge] = '';
+            } else {
+                if (!activeTasks['Diary']) {
+                    activeTasks['Diary'] = {};
+                }
+                activeTasks['Diary'][challenge] = '';
             }
-            activeTasks['Diary'][challenge] = '';
         }
     });
     let doneSubMarker = {};
@@ -6555,12 +6767,23 @@ let setupCurrentChallenges = function(tempChallengeArr, noDisplay, noClear) {
     !!globalValids['Extra'] && Object.keys(globalValids['Extra']).sort(function(a, b) { return ((/\d/).test(a) && (/\d/).test(b) && chunkInfo['challenges']['Extra'].hasOwnProperty(a) && chunkInfo['challenges']['Extra'].hasOwnProperty(b) && (chunkInfo['challenges']['Extra'][a]['Label'] + a).split(/\([0-9]/)[0].localeCompare((chunkInfo['challenges']['Extra'][b]['Label'] + b).split(/\([0-9]/)[0]) === 0) ? (chunkInfo['challenges']['Extra'][a]['Label'] + a).match(/\d+/)[0] - (chunkInfo['challenges']['Extra'][b]['Label'] + b).match(/\d+/)[0] : chunkInfo['challenges']['Extra'].hasOwnProperty(a) && chunkInfo['challenges']['Extra'].hasOwnProperty(b) && (chunkInfo['challenges']['Extra'][a]['Label'] + a).split(/\([0-9]/)[0].localeCompare((chunkInfo['challenges']['Extra'][b]['Label'] + b).split(/\([0-9]/)[0]) }).forEach((challenge) => {
         if ((!backlog['Extra'] || (!backlog['Extra'].hasOwnProperty(challenge) && !backlog['Extra'].hasOwnProperty(challenge.replaceAll('#', '/')))) && (!completedChallenges['Extra'] || (!completedChallenges['Extra'][challenge] && !completedChallenges['Extra'][challenge.replaceAll('#', '/')]))) {
             if (!!chunkInfo['challenges']['Extra'][challenge] && chunkInfo['challenges']['Extra'][challenge]['Label'] === 'Kill X') {
-                challengeArr.push(`<div class="challenge extra-challenge noscroll clickable ${'Extra-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) && 'hide-backlog'} ${!activeSubTabs['extra'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', 'Extra', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('Extra', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[${chunkInfo['challenges']['Extra'][challenge]['Label']}]</b> <span class="inner noscroll">${challenge.split('~')[0].replaceAll(' X ', ' ' + rules['Kill X Amount'] + ' ')}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a>${challenge.split('~')[2]}</span></span></label></span> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(challenge)}', 'Extra')"><i class="fa-solid fa-sliders-h noscroll"></i></span></div>`);
+                let taskEl = `<div class="challenge extra-challenge noscroll clickable ${'Extra-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) && 'hide-backlog'} ${!activeSubTabs['extra'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', 'Extra', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('Extra', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[${chunkInfo['challenges']['Extra'][challenge]['Label']}]</b> <span class="inner noscroll">${challenge.split('~')[0].replaceAll(' X ', ' ' + rules['Kill X Amount'] + ' ')}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a>${challenge.split('~')[2]}</span></span></label></span> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(challenge)}', 'Extra')"><i class="fa-solid fa-sliders-h noscroll"></i></span></div>`;
+                !!favoriteTasks['Extra'] && favoriteTasks['Extra'].hasOwnProperty(challenge) ? favoriteTasksArr.push(taskEl.replaceAll('extra-challenge', 'favorite-challenge')) : challengeArr.push(taskEl);
                 listOfTasks.push({ [challenge]: 'Extra', prefix: `[${chunkInfo['challenges']['Extra'][challenge]['Label']}]` });
-                if (!activeTasks['Extra']) {
-                    activeTasks['Extra'] = {};
+                if (!!favoriteTasks['Extra'] && favoriteTasks['Extra'].hasOwnProperty(challenge)) {
+                    if (!activeTasks['Favorite']) {
+                        activeTasks['Favorite'] = {};
+                    }
+                    if (!activeTasks['Favorite']['Extra']) {
+                        activeTasks['Favorite']['Extra'] = {};
+                    }
+                    activeTasks['Favorite']['Extra'][challenge] = chunkInfo['challenges']['Extra'][challenge]['Label'];
+                } else {
+                    if (!activeTasks['Extra']) {
+                        activeTasks['Extra'] = {};
+                    }
+                    activeTasks['Extra'][challenge] = chunkInfo['challenges']['Extra'][challenge]['Label'];
                 }
-                activeTasks['Extra'][challenge] = chunkInfo['challenges']['Extra'][challenge]['Label'];
             } else if (!!chunkInfo['challenges']['Extra'][challenge] && chunkInfo['challenges']['Extra'][challenge]['Label'] === 'All Droptables') {
                 if (!doneSubMarker[`AllDroptables-${chunkInfo['challenges']['Extra'][challenge]['Monsters'][0].replaceAll('[+]', '').replaceAll('-mix', '').replaceAll('-npc', '').replaceAll('-object', '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll('!', '').replaceAll(/,/g, '')}`]) {
                     if (!activeSubTabs.hasOwnProperty(`AllDroptables-${chunkInfo['challenges']['Extra'][challenge]['Monsters'][0].replaceAll('[+]', '').replaceAll('-mix', '').replaceAll('-npc', '').replaceAll('-object', '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll('!', '').replaceAll(/,/g, '')}`)) {
@@ -6572,12 +6795,23 @@ let setupCurrentChallenges = function(tempChallengeArr, noDisplay, noClear) {
                     challengeArr.push(`<div class="marker submarker submarker-extra marker-AllDroptables-${chunkInfo['challenges']['Extra'][challenge]['Monsters'][0].replaceAll('[+]', '').replaceAll('-mix', '').replaceAll('-npc', '').replaceAll('-object', '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll('!', '').replaceAll(/,/g, '')} ${!activeSubTabs['extra'] ? 'stay-hidden-sub' : ''} noscroll" onclick="expandActive('AllDroptables-${chunkInfo['challenges']['Extra'][challenge]['Monsters'][0].replaceAll('[+]', '').replaceAll('-mix', '').replaceAll('-npc', '').replaceAll('-object', '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll('!', '')}', true)"><i class="expand-button fa-solid ${activeSubTabs['AllDroptables-' + chunkInfo['challenges']['Extra'][challenge]['Monsters'][0].replaceAll('[+]', '').replaceAll('-mix', '').replaceAll('-npc', '').replaceAll('-object', '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll('!', '')] ? 'fa-caret-down' : 'fa-caret-right'} noscroll"></i><span class="noscroll">${chunkInfo['challenges']['Extra'][challenge]['Monsters'][0].replaceAll('[+]', '').replaceAll('-mix', '').replaceAll('-npc', '').replaceAll('-object', '')} Droptable <span class="checkmark-all-btn ${(!testMode && (viewOnly || inEntry || locked)) ? "checkmark-all-btn-disabled" : ''}" title="Check-off all subtasks" onclick="toggleSubCheckbox(event, 'AllDroptables-${chunkInfo['challenges']['Extra'][challenge]['Monsters'][0].replaceAll('[+]', '').replaceAll('-mix', '').replaceAll('-npc', '').replaceAll('-object', '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll('!', '')}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}>✔</span></span></div>`);
                     doneSubMarker[`AllDroptables-${chunkInfo['challenges']['Extra'][challenge]['Monsters'][0].replaceAll('[+]', '').replaceAll('-mix', '').replaceAll('-npc', '').replaceAll('-object', '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll('!', '').replaceAll(/,/g, '')}`] = true;
                 }
-                challengeArr.push(`<div class="challenge extra-challenge noscroll clickable doubletab AllDroptables-${chunkInfo['challenges']['Extra'][challenge]['Monsters'][0].replaceAll('[+]', '').replaceAll('-mix', '').replaceAll('-npc', '').replaceAll('-object', '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase()}-challenge ${'Extra-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) && 'hide-backlog'} ${activeSubTabs.hasOwnProperty('AllDroptables-' + chunkInfo['challenges']['Extra'][challenge]['Monsters'][0].replaceAll('[+]', '').replaceAll('-mix', '').replaceAll('-npc', '').replaceAll('-object', '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll('!', '').replaceAll(/,/g, '')) && !activeSubTabs['AllDroptables-' + chunkInfo['challenges']['Extra'][challenge]['Monsters'][0].replaceAll('[+]', '').replaceAll('-mix', '').replaceAll('-npc', '').replaceAll('-object', '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll('!', '').replaceAll(/,/g, '')] ? 'stay-hidden-sub' : ''} ${!activeSubTabs['extra'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', 'Extra', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('Extra', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${(!!chunkInfo['challenges']['Extra'][challenge] ? ('<b class="noscroll">[' + chunkInfo['challenges']['Extra'][challenge]['Label'] + ']</b> ') : '')} <span class="inner noscroll">${challenge.split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a>${challenge.split('~')[2]}</span></span></label></span> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(challenge)}', 'Extra')"><i class="fa-solid fa-sliders-h noscroll"></i></span></div>`);
+                let taskEl = `<div class="challenge extra-challenge noscroll clickable doubletab AllDroptables-${chunkInfo['challenges']['Extra'][challenge]['Monsters'][0].replaceAll('[+]', '').replaceAll('-mix', '').replaceAll('-npc', '').replaceAll('-object', '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase()}-challenge ${'Extra-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) && 'hide-backlog'} ${activeSubTabs.hasOwnProperty('AllDroptables-' + chunkInfo['challenges']['Extra'][challenge]['Monsters'][0].replaceAll('[+]', '').replaceAll('-mix', '').replaceAll('-npc', '').replaceAll('-object', '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll('!', '').replaceAll(/,/g, '')) && !activeSubTabs['AllDroptables-' + chunkInfo['challenges']['Extra'][challenge]['Monsters'][0].replaceAll('[+]', '').replaceAll('-mix', '').replaceAll('-npc', '').replaceAll('-object', '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll('!', '').replaceAll(/,/g, '')] ? 'stay-hidden-sub' : ''} ${!activeSubTabs['extra'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', 'Extra', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('Extra', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${(!!chunkInfo['challenges']['Extra'][challenge] ? ('<b class="noscroll">[' + chunkInfo['challenges']['Extra'][challenge]['Label'] + ']</b> ') : '')} <span class="inner noscroll">${challenge.split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a>${challenge.split('~')[2]}</span></span></label></span> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(challenge)}', 'Extra')"><i class="fa-solid fa-sliders-h noscroll"></i></span></div>`;
+                !!favoriteTasks['Extra'] && favoriteTasks['Extra'].hasOwnProperty(challenge) ? favoriteTasksArr.push(taskEl.replaceAll('extra-challenge', 'favorite-challenge').replaceAll(`doubletab AllDroptables-${chunkInfo['challenges']['Extra'][challenge]['Monsters'][0].replaceAll('[+]', '').replaceAll('-mix', '').replaceAll('-npc', '').replaceAll('-object', '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase()}-challenge`, '')) : challengeArr.push(taskEl);
                 listOfTasks.push({ [challenge]: 'Extra', prefix: `${(!!chunkInfo['challenges']['Extra'][challenge] ? ('[' + chunkInfo['challenges']['Extra'][challenge]['Label'] + ']') : '')}` });
-                if (!activeTasks['Extra']) {
-                    activeTasks['Extra'] = {};
+                if (!!favoriteTasks['Extra'] && favoriteTasks['Extra'].hasOwnProperty(challenge)) {
+                    if (!activeTasks['Favorite']) {
+                        activeTasks['Favorite'] = {};
+                    }
+                    if (!activeTasks['Favorite']['Extra']) {
+                        activeTasks['Favorite']['Extra'] = {};
+                    }
+                    activeTasks['Favorite']['Extra'][challenge] = chunkInfo['challenges']['Extra'][challenge]['Label'];
+                } else {
+                    if (!activeTasks['Extra']) {
+                        activeTasks['Extra'] = {};
+                    }
+                    activeTasks['Extra'][challenge] = chunkInfo['challenges']['Extra'][challenge]['Label'];
                 }
-                activeTasks['Extra'][challenge] = chunkInfo['challenges']['Extra'][challenge]['Label'];
                 subCheckboxNames[`AllDroptables-${chunkInfo['challenges']['Extra'][challenge]['Monsters'][0].replaceAll('[+]', '').replaceAll('-mix', '').replaceAll('-npc', '').replaceAll('-object', '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll('!', '').replaceAll(/,/g, '')}`][challenge] = true;
             } else if (!!chunkInfo['challenges']['Extra'][challenge] && chunkInfo['challenges']['Extra'][challenge]['Label'] === 'All Shops') {
                 if (!doneSubMarker[`AllShops-${challenge.split(':')[0].replaceAll(/'/g, '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll('!', '').replaceAll(/,/g, '')}`]) {
@@ -6590,31 +6824,72 @@ let setupCurrentChallenges = function(tempChallengeArr, noDisplay, noClear) {
                     challengeArr.push(`<div class="marker submarker submarker-extra marker-AllShops-${challenge.split(':')[0].replaceAll(/'/g, '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll('!', '').replaceAll(/,/g, '')} ${!activeSubTabs['extra'] ? 'stay-hidden-sub' : ''} noscroll" onclick="expandActive('AllShops-${challenge.split(':')[0].replaceAll(/'/g, '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll('!', '').replaceAll(/,/g, '')}', true)"><i class="expand-button fa-solid ${activeSubTabs['AllShops-' + challenge.split(':')[0].replaceAll(/'/g, '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll('!', '').replaceAll(/,/g, '')] ? 'fa-caret-down' : 'fa-caret-right'} noscroll"></i><span class="noscroll">${challenge.split(':')[0]} Stock <span class="checkmark-all-btn ${(!testMode && (viewOnly || inEntry || locked)) ? "checkmark-all-btn-disabled" : ''}" title="Check-off all subtasks" onclick="toggleSubCheckbox(event, 'AllShops-${challenge.split(':')[0].replaceAll(/'/g, '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll('!', '').replaceAll(/,/g, '')}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}>✔</span></span></div>`);
                     doneSubMarker[`AllShops-${challenge.split(':')[0].replaceAll(/'/g, '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll('!', '').replaceAll(/,/g, '')}`] = true;
                 }
-                challengeArr.push(`<div class="challenge extra-challenge noscroll clickable doubletab AllShops-${challenge.split(':')[0].replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${'Extra-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) && 'hide-backlog'} ${activeSubTabs.hasOwnProperty('AllShops-' + challenge.split(':')[0].replaceAll(/'/g, '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll(/,/g, '')) && !activeSubTabs['AllShops-' + challenge.split(':')[0].replaceAll(/'/g, '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll('!', '').replaceAll(/,/g, '')] ? 'stay-hidden-sub' : ''} ${!activeSubTabs['extra'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', 'Extra', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('Extra', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${(!!chunkInfo['challenges']['Extra'][challenge] ? ('<b class="noscroll">[' + chunkInfo['challenges']['Extra'][challenge]['Label'] + ']</b> ') : '')} <span class="inner noscroll">${challenge.split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a>${challenge.split('~')[2]}</span></span></label></span> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(challenge)}', 'Extra')"><i class="fa-solid fa-sliders-h noscroll"></i></span></div>`);
+                let taskEl = `<div class="challenge extra-challenge noscroll clickable doubletab AllShops-${challenge.split(':')[0].replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${'Extra-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) && 'hide-backlog'} ${activeSubTabs.hasOwnProperty('AllShops-' + challenge.split(':')[0].replaceAll(/'/g, '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll(/,/g, '')) && !activeSubTabs['AllShops-' + challenge.split(':')[0].replaceAll(/'/g, '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll('!', '').replaceAll(/,/g, '')] ? 'stay-hidden-sub' : ''} ${!activeSubTabs['extra'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', 'Extra', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('Extra', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${(!!chunkInfo['challenges']['Extra'][challenge] ? ('<b class="noscroll">[' + chunkInfo['challenges']['Extra'][challenge]['Label'] + ']</b> ') : '')} <span class="inner noscroll">${challenge.split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a>${challenge.split('~')[2]}</span></span></label></span> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(challenge)}', 'Extra')"><i class="fa-solid fa-sliders-h noscroll"></i></span></div>`;
+                !!favoriteTasks['Extra'] && favoriteTasks['Extra'].hasOwnProperty(challenge) ? favoriteTasksArr.push(taskEl.replaceAll('extra-challenge', 'favorite-challenge').replaceAll(`doubletab AllShops-${challenge.split(':')[0].replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'}`, '')) : challengeArr.push(taskEl);
                 listOfTasks.push({ [challenge]: 'Extra', prefix: `${(!!chunkInfo['challenges']['Extra'][challenge] ? ('[' + chunkInfo['challenges']['Extra'][challenge]['Label'] + ']') : '')}` });
-                if (!activeTasks['Extra']) {
-                    activeTasks['Extra'] = {};
+                if (!!favoriteTasks['Extra'] && favoriteTasks['Extra'].hasOwnProperty(challenge)) {
+                    if (!activeTasks['Favorite']) {
+                        activeTasks['Favorite'] = {};
+                    }
+                    if (!activeTasks['Favorite']['Extra']) {
+                        activeTasks['Favorite']['Extra'] = {};
+                    }
+                    activeTasks['Favorite']['Extra'][challenge] = chunkInfo['challenges']['Extra'][challenge]['Label'];
+                } else {
+                    if (!activeTasks['Extra']) {
+                        activeTasks['Extra'] = {};
+                    }
+                    activeTasks['Extra'][challenge] = chunkInfo['challenges']['Extra'][challenge]['Label'];
                 }
-                activeTasks['Extra'][challenge] = chunkInfo['challenges']['Extra'][challenge]['Label'];
                 subCheckboxNames[`AllShops-${challenge.split(':')[0].replaceAll(/'/g, '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll('!', '').replaceAll(/,/g, '')}`][challenge] = true;
             } else {
-                challengeArr.push(`<div class="challenge extra-challenge noscroll clickable ${'Extra-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) && 'hide-backlog'} ${!activeSubTabs['extra'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', 'Extra', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('Extra', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${(!!chunkInfo['challenges']['Extra'][challenge] ? ('<b class="noscroll">[' + chunkInfo['challenges']['Extra'][challenge]['Label'] + ']</b> ') : '')} <span class="inner noscroll">${challenge.split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a>${challenge.split('~')[2]}</span></span></label></span> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(challenge)}', 'Extra')"><i class="fa-solid fa-sliders-h noscroll"></i></span></div>`);
-                listOfTasks.push({ [challenge]: 'Extra', prefix: `${(!!chunkInfo['challenges']['Extra'][challenge] ? ('[' + chunkInfo['challenges']['Extra'][challenge]['Label'] + ']') : '')}` });
-                if (!activeTasks['Extra']) {
-                    activeTasks['Extra'] = {};
-                }
+                let hasAlts = false;
                 if (!!chunkInfo['challenges']['Extra'][challenge] && chunkInfo['challenges']['Extra'][challenge]['Label'] === 'Every Drop') {
-                    activeTasks['Extra'][challenge.split('|')[1]] = chunkInfo['challenges']['Extra'][challenge]['Label'];
-                } else if (!!chunkInfo['challenges']['Extra'][challenge] && chunkInfo['challenges']['Extra'][challenge]['Label'] !== 'Every Drop') {
-                    activeTasks['Extra'][challenge] = chunkInfo['challenges']['Extra'][challenge]['Label'];
+                    if (!!altChallenges['Extra'] && !!altChallenges['Extra']['Every Drop ' + challenge.split('|')[1]] && altChallenges['Extra']['Every Drop ' + challenge.split('|')[1]] !== challenge) return;
+                    if ((!altChallenges['Extra'] || !altChallenges['Extra']['Every Drop ' + challenge.split('|')[1]]) && globalEveryDropAltMap[challenge.split('|')[1]].indexOf(challenge) !== 0) return;
+                    hasAlts = globalEveryDropAltMap[challenge.split('|')[1]].length > 1;
+                }
+                let taskEl = `<div class="challenge extra-challenge noscroll clickable ${'Extra-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) && 'hide-backlog'} ${!activeSubTabs['extra'] ? 'stay-hidden' : ''}" onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', 'Extra', 'current')"><label class="checkbox noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) ? "checked" : ''} class='noscroll' onclick="checkOffChallenge('Extra', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${(!!chunkInfo['challenges']['Extra'][challenge] ? ('<b class="noscroll">[' + chunkInfo['challenges']['Extra'][challenge]['Label'] + ']</b> ') : '')} <span class="inner noscroll">${challenge.split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a>${challenge.split('~')[2]}</span></span></label></span> <span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openActiveContextMenu('${encodeRFC5987ValueChars(challenge)}', 'Extra', ${hasAlts})"><i class="fa-solid fa-sliders-h noscroll">${hasAlts ? `<i class="fa-solid fa-star burger-star noscroll"></i>` : ''}</i></span></div>`;
+                !!favoriteTasks['Extra'] && favoriteTasks['Extra'].hasOwnProperty(challenge) ? favoriteTasksArr.push(taskEl.replaceAll('extra-challenge', 'favorite-challenge')) : challengeArr.push(taskEl);
+                listOfTasks.push({ [challenge]: 'Extra', prefix: `${(!!chunkInfo['challenges']['Extra'][challenge] ? ('[' + chunkInfo['challenges']['Extra'][challenge]['Label'] + ']') : '')}` });
+                if (!!favoriteTasks['Extra'] && favoriteTasks['Extra'].hasOwnProperty(challenge)) {
+                    if (!activeTasks['Favorite']) {
+                        activeTasks['Favorite'] = {};
+                    }
+                    if (!activeTasks['Favorite']['Extra']) {
+                        activeTasks['Favorite']['Extra'] = {};
+                    }
+                    if (!!chunkInfo['challenges']['Extra'][challenge] && chunkInfo['challenges']['Extra'][challenge]['Label'] === 'Every Drop') {
+                        activeTasks['Favorite']['Extra'][challenge.split('|')[1]] = chunkInfo['challenges']['Extra'][challenge]['Label'];
+                    } else if (!!chunkInfo['challenges']['Extra'][challenge] && chunkInfo['challenges']['Extra'][challenge]['Label'] !== 'Every Drop') {
+                        activeTasks['Favorite']['Extra'][challenge] = chunkInfo['challenges']['Extra'][challenge]['Label'];
+                    } else {
+                        activeTasks['Favorite']['Extra'][challenge] = '???';
+                    }
                 } else {
-                    activeTasks['Extra'][challenge] = '???';
+                    if (!activeTasks['Extra']) {
+                        activeTasks['Extra'] = {};
+                    }
+                    if (!!chunkInfo['challenges']['Extra'][challenge] && chunkInfo['challenges']['Extra'][challenge]['Label'] === 'Every Drop') {
+                        activeTasks['Extra'][challenge.split('|')[1]] = chunkInfo['challenges']['Extra'][challenge]['Label'];
+                    } else if (!!chunkInfo['challenges']['Extra'][challenge] && chunkInfo['challenges']['Extra'][challenge]['Label'] !== 'Every Drop') {
+                        activeTasks['Extra'][challenge] = chunkInfo['challenges']['Extra'][challenge]['Label'];
+                    } else {
+                        activeTasks['Extra'][challenge] = '???';
+                    }
                 }
             }
         }
     });
     if (challengeArr.length < 1) {
         challengeArr = [];
+    }
+    if (favoriteTasksArr.length > 0) {
+        if (!activeSubTabs.hasOwnProperty('favorite')) {
+            activeSubTabs['favorite'] = true;
+        }
+        challengeArr.unshift(...favoriteTasksArr);
+        challengeArr.unshift(`<div class="marker marker-favorite noscroll" onclick="expandActive('favorite')"><i class="expand-button fa-solid ${activeSubTabs['favorite'] ? 'fa-caret-down' : 'fa-caret-right'} noscroll"></i><span class="noscroll">Favorited Tasks</span></div>`);
     }
     let backlogArr = setupBacklogArr();
     let completedArr = [];
@@ -6659,10 +6934,62 @@ let setupCurrentChallengesFromSaved = function() {
     if (!activeTasks) {
         return;
     }
+    listOfTasksSaved = [];
     challengeArr = [];
+    if (activeTasks.hasOwnProperty('Favorite')) {
+        challengeArr.push(`<div class="marker marker-favorite noscroll" onclick="expandActive('favorite')"><i class="expand-button fa-solid ${activeSubTabs['favorite'] ? 'fa-caret-down' : 'fa-caret-right'} noscroll"></i><span class="noscroll">Favorited Tasks</span></div>`);
+        Object.keys(activeTasks['Favorite']).filter((skill) => skillNames.includes(skill)).sort().forEach((skill) => {
+            let skillTask = Object.keys(activeTasks['Favorite'][skill])[0];
+            if (!skillTask) return;
+            let level;
+            let boost;
+            if (activeTasks['Favorite'][skill][skillTask].match(/\{[0-9]+\}/g)) {
+                level = activeTasks['Favorite'][skill][skillTask].split('{')[0];
+                boost = activeTasks['Favorite'][skill][skillTask].match(/\{[0-9]+\}/g)[0].match(/\d+/)[0];
+            } else {
+                level = activeTasks['Favorite'][skill][skillTask];
+                boost = 0;
+            }
+            listOfTasksSaved.push({ [skillTask]: skill, prefix: `[${(boost > 0 ? (((level - boost) <= 0 ? 1 : (level - boost)) + '] (+' + boost + ')') : level + ']')} ${skill}:` });
+            challengeArr.push(`<div class="challenge favorite-challenge noscroll clickable ${skill + '-challenge'} ${(!!checkedChallenges[skill] && !!checkedChallenges[skill][skillTask]) ? "hide-backlog" : ''} ${!activeSubTabs['skill'] ? 'stay-hidden' : ''}"><label class="checkbox noscroll checkbox--disabled"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges[skill] && !!checkedChallenges[skill][skillTask]) ? "checked" : ''} class='noscroll' disabled><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[${(boost > 0 ? (((level - boost) <= 0 ? 1 : (level - boost)) + '] (+' + boost + ')') : level + ']')} <span class="inner noscroll">${skill}</b>: ${decodeQueryParam(skillTask.split('~')[0])}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(skillTask.split('|')[1])}" target="_blank">${decodeQueryParam(skillTask.split('~')[1].split('|').join(''))}</a>${decodeQueryParam(skillTask.split('~')[2])}</span></span></label></div>`);
+        });
+        !!activeTasks['Favorite']['BiS'] && Object.keys(activeTasks['Favorite']['BiS']).forEach((challenge) => {
+            listOfTasksSaved.push({ [challenge]: 'BiS', prefix: `[${$(`<span>${activeTasks['Favorite']['BiS'][challenge]}</span>`).text()}]` });
+            challengeArr.push(`<div class="challenge favorite-challenge noscroll clickable ${'BiS-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['BiS'] && !!checkedChallenges['BiS'][challenge]) && 'hide-backlog'} ${!activeSubTabs['bis'] ? 'stay-hidden' : ''}"><label class="checkbox noscroll checkbox--disabled"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['BiS'] && !!checkedChallenges['BiS'][challenge]) ? "checked" : ''} class='noscroll' disabled><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[${activeTasks['Favorite']['BiS'][challenge]}]</b> <span class="inner noscroll">${challenge.split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((challenge.split('|')[1]))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a>${challenge.split('~')[2]}</span></span></label></span></div>`);
+        });
+        !!activeTasks['Favorite']['Quest'] && Object.keys(activeTasks['Favorite']['Quest']).sort(function(a, b) { return a.replaceAll(/ /g, '_').replaceAll(/\|/g, '').replaceAll(/~/g, '').replaceAll(/%/g, '').replaceAll(/\(/g, '').replaceAll(/\)/g, '').replaceAll(/'/g, '').replaceAll(/\./g, '').replaceAll(/\:/g, '').replaceAll(/\//g, '').replaceAll('A_', '').replaceAll('The_', '').localeCompare(b.replaceAll(/ /g, '_').replaceAll(/\|/g, '').replaceAll(/~/g, '').replaceAll(/%/g, '').replaceAll(/\(/g, '').replaceAll(/\)/g, '').replaceAll(/'/g, '').replaceAll(/\./g, '').replaceAll(/\:/g, '').replaceAll(/\//g, '').replaceAll('A_', '').replaceAll('The_', '')) }).forEach((challenge) => {
+            listOfTasksSaved.push({ [challenge]: 'Quest', prefix: `[Quest]` });
+            if (!!chunkInfo['challenges']['Quest'][challenge] && chunkInfo['challenges']['Quest'][challenge].hasOwnProperty('QuestPoints')) {
+                challengeArr.push(`<div class="challenge favorite-challenge noscroll clickable ${'Quest-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Quest'] && !!checkedChallenges['Quest'][challenge]) && 'hide-backlog'} ${!activeSubTabs['quest'] ? 'stay-hidden' : ''}"><label class="checkbox noscroll checkbox--disabled"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Quest'] && !!checkedChallenges['Quest'][challenge]) ? "checked" : ''} class='noscroll' disabled><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[Quest] <span class="inner noscroll"><a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a></b>: ${challenge.split('~')[2].substring(1)}</span></span></label></span></div>`);
+            } else {
+                challengeArr.push(`<div class="challenge favorite-challenge noscroll clickable ${'Quest-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Quest'] && !!checkedChallenges['Quest'][challenge]) && 'hide-backlog'} ${!activeSubTabs['quest'] ? 'stay-hidden' : ''}"><label class="checkbox noscroll checkbox--disabled"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Quest'] && !!checkedChallenges['Quest'][challenge]) ? "checked" : ''} class='noscroll' disabled><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[Quest] <span class="inner noscroll"><a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a></b>: Up to step ${challenge.split('~')[2]}</span></span></label></span></div>`);
+            }
+        });
+        !!activeTasks['Favorite']['Diary'] && Object.keys(activeTasks['Favorite']['Diary']).forEach((challenge) => {
+            listOfTasksSaved.push({ [challenge]: 'Diary', prefix: `[Diary]` });
+            challengeArr.push(`<div class="challenge favorite-challenge noscroll clickable ${'Diary-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Diary'] && !!checkedChallenges['Diary'][challenge]) && 'hide-backlog'} ${!activeSubTabs['diary'] ? 'stay-hidden' : ''}"><label class="checkbox noscroll checkbox--disabled"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Diary'] && !!checkedChallenges['Diary'][challenge]) ? "checked" : ''} class='noscroll' disabled><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[Diary] <span class="inner noscroll"><a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a></b>: ${challenge.split('~')[2]}</span></span></label></span></div>`);
+        });
+        let doneSubMarker = {};
+        subCheckboxNames = {};
+        !!activeTasks['Favorite']['Extra'] && Object.keys(activeTasks['Favorite']['Extra']).sort(function(a, b) { return (activeTasks['Favorite']['Extra'][a] + a).split(/\([0-9]/)[0].localeCompare((activeTasks['Favorite']['Extra'][b] + b).split(/\([0-9]/)[0]) }).forEach((challenge) => {
+            listOfTasksSaved.push({ [challenge]: 'Extra', prefix: `${(!!activeTasks['Favorite']['Extra'][challenge] ? ('[' + activeTasks['Favorite']['Extra'][challenge] + ']') : '')}` });
+            if (activeTasks['Favorite']['Extra'][challenge] === 'Kill X') {
+                challengeArr.push(`<div class="challenge favorite-challenge noscroll clickable ${'Extra-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) && 'hide-backlog'} ${!activeSubTabs['extra'] ? 'stay-hidden' : ''}"><label class="checkbox noscroll checkbox--disabled"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) ? "checked" : ''} class='noscroll' disabled><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[${activeTasks['Favorite']['Extra'][challenge]}]</b> <span class="inner noscroll">${challenge.split('~')[0].replaceAll(' X ', ' ' + (rules['Kill X Amount'] || 'X') + ' ')}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a>${challenge.split('~')[2]}</span></span></label></span></div>`);
+            } else if (activeTasks['Favorite']['Extra'][challenge] === 'All Droptables') {
+                challengeArr.push(`<div class="challenge favorite-challenge noscroll clickable AllDroptables-${challenge.split(': ')[0].replaceAll('[+]', '').replaceAll('-mix', '').replaceAll('-npc', '').replaceAll('-object', '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase()}-challenge ${'Extra-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) && 'hide-backlog'} ${activeSubTabs.hasOwnProperty('AllDroptables-' + challenge.split(': ')[0].replaceAll('[+]', '').replaceAll('-mix', '').replaceAll('-npc', '').replaceAll('-object', '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll('!', '').replaceAll(/,/g, '')) && !activeSubTabs['AllDroptables-' + challenge.split(': ')[0].replaceAll('[+]', '').replaceAll('-mix', '').replaceAll('-npc', '').replaceAll('-object', '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll('!', '').replaceAll(/,/g, '')] ? 'stay-hidden-sub' : ''} ${!activeSubTabs['extra'] ? 'stay-hidden' : ''}"><label class="checkbox noscroll checkbox--disabled"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) ? "checked" : ''} class='noscroll' disabled><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${'<b class="noscroll">[' + activeTasks['Favorite']['Extra'][challenge] + ']</b> '} <span class="inner noscroll">${challenge.split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a>${challenge.split('~')[2]}</span></span></label></span></div>`);
+            } else if (activeTasks['Favorite']['Extra'][challenge] === 'All Shops') {
+                challengeArr.push(`<div class="challenge favorite-challenge noscroll clickable AllShops-${challenge.split(':')[0].replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${'Extra-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) && 'hide-backlog'} ${activeSubTabs.hasOwnProperty('AllShops-' + challenge.split(':')[0].replaceAll(/'/g, '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll(/,/g, '')) && !activeSubTabs['AllShops-' + challenge.split(':')[0].replaceAll(/'/g, '').replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase().replaceAll('(', '').replaceAll(')', '').replaceAll("'", '').replaceAll('!', '').replaceAll(/,/g, '')] ? 'stay-hidden-sub' : ''} ${!activeSubTabs['extra'] ? 'stay-hidden' : ''}"><label class="checkbox noscroll checkbox--disabled"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) ? "checked" : ''} class='noscroll' disabled><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${'<b class="noscroll">[' + activeTasks['Favorite']['Extra'][challenge] + ']</b> '} <span class="inner noscroll">${challenge.split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a>${challenge.split('~')[2]}</span></span></label></span></div>`);
+            } else if (activeTasks['Favorite']['Extra'][challenge] === 'Every Drop') {
+                challengeArr.push(`<div class="challenge favorite-challenge noscroll clickable ${'Extra-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) && 'hide-backlog'} ${!activeSubTabs['extra'] ? 'stay-hidden' : ''}"><label class="checkbox noscroll checkbox--disabled"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) ? "checked" : ''} class='noscroll' disabled><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${'<b class="noscroll">[' + activeTasks['Favorite']['Extra'][challenge] + ']</b> '} ?: <span class="inner noscroll"><a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge)}" target="_blank">${challenge}</a></span></span></label></span></div>`);
+            } else {
+                challengeArr.push(`<div class="challenge favorite-challenge noscroll clickable ${'Extra-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) && 'hide-backlog'} ${!activeSubTabs['extra'] ? 'stay-hidden' : ''}"><label class="checkbox noscroll checkbox--disabled"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) ? "checked" : ''} class='noscroll' disabled><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${'<b class="noscroll">[' + activeTasks['Favorite']['Extra'][challenge] + ']</b> '} <span class="inner noscroll">${challenge.split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a>${challenge.split('~')[2]}</span></span></label></span></div>`);
+            }
+        });
+    }
     Object.keys(activeTasks).filter((skill) => skillNames.includes(skill)).length > 0 && challengeArr.push(`<div class="marker marker-skill noscroll" onclick="expandActive('skill')"><i class="expand-button fa-solid ${activeSubTabs['skill'] ? 'fa-caret-down' : 'fa-caret-right'} noscroll"></i><span class="noscroll">Skill Tasks</span></div>`);
     Object.keys(activeTasks).filter((skill) => skillNames.includes(skill)).sort().forEach((skill) => {
         let skillTask = Object.keys(activeTasks[skill])[0];
+        if (!skillTask) return;
         let level;
         let boost;
         if (activeTasks[skill][skillTask].match(/\{[0-9]+\}/g)) {
@@ -6672,15 +6999,17 @@ let setupCurrentChallengesFromSaved = function() {
             level = activeTasks[skill][skillTask];
             boost = 0;
         }
+        listOfTasksSaved.push({ [skillTask]: skill, prefix: `[${(boost > 0 ? (((level - boost) <= 0 ? 1 : (level - boost)) + '] (+' + boost + ')') : level + ']')} ${skill}:` });
         challengeArr.push(`<div class="challenge skill-challenge noscroll clickable ${skill + '-challenge'} ${(!!checkedChallenges[skill] && !!checkedChallenges[skill][skillTask]) ? "hide-backlog" : ''} ${!activeSubTabs['skill'] ? 'stay-hidden' : ''}"><label class="checkbox noscroll checkbox--disabled"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges[skill] && !!checkedChallenges[skill][skillTask]) ? "checked" : ''} class='noscroll' disabled><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[${(boost > 0 ? (((level - boost) <= 0 ? 1 : (level - boost)) + '] (+' + boost + ')') : level + ']')} <span class="inner noscroll">${skill}</b>: ${decodeQueryParam(skillTask.split('~')[0])}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(skillTask.split('|')[1])}" target="_blank">${decodeQueryParam(skillTask.split('~')[1].split('|').join(''))}</a>${decodeQueryParam(skillTask.split('~')[2])}</span></span></label></div>`);
     });
-    challengeArr = challengeArr.filter(line => !line.includes('Extra-') && !line.includes('BiS-') && !line.includes('Quest-') && !line.includes('marker-extra') && !line.includes('marker-bis') && !line.includes('marker-quest'));
     !!activeTasks['BiS'] && Object.keys(activeTasks['BiS']).length > 0 && challengeArr.push(`<div class="marker marker-bis noscroll" onclick="expandActive('bis')"><i class="expand-button fa-solid ${activeSubTabs['bis'] ? 'fa-caret-down' : 'fa-caret-right'} noscroll"></i><span class="noscroll">BiS Tasks</span></div>`);
     !!activeTasks['BiS'] && Object.keys(activeTasks['BiS']).forEach((challenge) => {
+        listOfTasksSaved.push({ [challenge]: 'BiS', prefix: `[${$(`<span>${activeTasks['BiS'][challenge]}</span>`).text()}]` });
         challengeArr.push(`<div class="challenge bis-challenge noscroll clickable ${'BiS-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['BiS'] && !!checkedChallenges['BiS'][challenge]) && 'hide-backlog'} ${!activeSubTabs['bis'] ? 'stay-hidden' : ''}"><label class="checkbox noscroll checkbox--disabled"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['BiS'] && !!checkedChallenges['BiS'][challenge]) ? "checked" : ''} class='noscroll' disabled><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[${activeTasks['BiS'][challenge]}]</b> <span class="inner noscroll">${challenge.split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((challenge.split('|')[1]))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a>${challenge.split('~')[2]}</span></span></label></span></div>`);
     });
     !!activeTasks['Quest'] && Object.keys(activeTasks['Quest']).length > 0 && challengeArr.push(`<div class="marker marker-quest noscroll" onclick="expandActive('quest')"><i class="expand-button fa-solid ${activeSubTabs['quest'] ? 'fa-caret-down' : 'fa-caret-right'} noscroll"></i><span class="noscroll">Quest Tasks</span></div>`);
     !!activeTasks['Quest'] && Object.keys(activeTasks['Quest']).sort(function(a, b) { return a.replaceAll(/ /g, '_').replaceAll(/\|/g, '').replaceAll(/~/g, '').replaceAll(/%/g, '').replaceAll(/\(/g, '').replaceAll(/\)/g, '').replaceAll(/'/g, '').replaceAll(/\./g, '').replaceAll(/\:/g, '').replaceAll(/\//g, '').replaceAll('A_', '').replaceAll('The_', '').localeCompare(b.replaceAll(/ /g, '_').replaceAll(/\|/g, '').replaceAll(/~/g, '').replaceAll(/%/g, '').replaceAll(/\(/g, '').replaceAll(/\)/g, '').replaceAll(/'/g, '').replaceAll(/\./g, '').replaceAll(/\:/g, '').replaceAll(/\//g, '').replaceAll('A_', '').replaceAll('The_', '')) }).forEach((challenge) => {
+        listOfTasksSaved.push({ [challenge]: 'Quest', prefix: `[Quest]` });
         if (!!chunkInfo['challenges']['Quest'][challenge] && chunkInfo['challenges']['Quest'][challenge].hasOwnProperty('QuestPoints')) {
             challengeArr.push(`<div class="challenge quest-challenge noscroll clickable ${'Quest-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Quest'] && !!checkedChallenges['Quest'][challenge]) && 'hide-backlog'} ${!activeSubTabs['quest'] ? 'stay-hidden' : ''}"><label class="checkbox noscroll checkbox--disabled"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Quest'] && !!checkedChallenges['Quest'][challenge]) ? "checked" : ''} class='noscroll' disabled><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[Quest] <span class="inner noscroll"><a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a></b>: ${challenge.split('~')[2].substring(1)}</span></span></label></span></div>`);
         } else {
@@ -6689,12 +7018,14 @@ let setupCurrentChallengesFromSaved = function() {
     });
     !!activeTasks['Diary'] && Object.keys(activeTasks['Diary']).length > 0  && challengeArr.push(`<div class="marker marker-diary noscroll" onclick="expandActive('diary')"><i class="expand-button fa-solid ${activeSubTabs['diary'] ? 'fa-caret-down' : 'fa-caret-right'} noscroll"></i><span class="noscroll">Diary Tasks</span></div>`);
     !!activeTasks['Diary'] && Object.keys(activeTasks['Diary']).forEach((challenge) => {
+        listOfTasksSaved.push({ [challenge]: 'Diary', prefix: `[Diary]` });
         challengeArr.push(`<div class="challenge diary-challenge noscroll clickable ${'Diary-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Diary'] && !!checkedChallenges['Diary'][challenge]) && 'hide-backlog'} ${!activeSubTabs['diary'] ? 'stay-hidden' : ''}"><label class="checkbox noscroll checkbox--disabled"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Diary'] && !!checkedChallenges['Diary'][challenge]) ? "checked" : ''} class='noscroll' disabled><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[Diary] <span class="inner noscroll"><a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a></b>: ${challenge.split('~')[2]}</span></span></label></span></div>`);
     });
     let doneSubMarker = {};
     subCheckboxNames = {};
     !!activeTasks['Extra'] && Object.keys(activeTasks['Extra']).length > 0 && challengeArr.push(`<div class="marker marker-extra noscroll" onclick="expandActive('extra')"><i class="expand-button fa-solid ${activeSubTabs['extra'] ? 'fa-caret-down' : 'fa-caret-right'} noscroll"></i><span class="noscroll">Other Tasks</span></div>`);
     !!activeTasks['Extra'] && Object.keys(activeTasks['Extra']).sort(function(a, b) { return (activeTasks['Extra'][a] + a).split(/\([0-9]/)[0].localeCompare((activeTasks['Extra'][b] + b).split(/\([0-9]/)[0]) }).forEach((challenge) => {
+        listOfTasksSaved.push({ [challenge]: 'Extra', prefix: `${(!!activeTasks['Extra'][challenge] ? ('[' + activeTasks['Extra'][challenge] + ']') : '')}` });
         if (activeTasks['Extra'][challenge] === 'Kill X') {
             challengeArr.push(`<div class="challenge extra-challenge noscroll clickable ${'Extra-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'} ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) && 'hide-backlog'} ${!activeSubTabs['extra'] ? 'stay-hidden' : ''}"><label class="checkbox noscroll checkbox--disabled"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${(!!checkedChallenges['Extra'] && !!checkedChallenges['Extra'][challenge]) ? "checked" : ''} class='noscroll' disabled><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">[${activeTasks['Extra'][challenge]}]</b> <span class="inner noscroll">${challenge.split('~')[0].replaceAll(' X ', ' ' + (rules['Kill X Amount'] || 'X') + ' ')}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl(challenge.split('~')[1].split('|').join(''))}" target="_blank">${challenge.split('~')[1].split('|').join('')}</a>${challenge.split('~')[2]}</span></span></label></span></div>`);
         } else if (activeTasks['Extra'][challenge] === 'All Droptables') {
@@ -6842,9 +7173,66 @@ let calcFutureChallenges = function() {
     }
     tempSections = combineJSONs(tempSections, manualSections);
     myWorker2.terminate();
-    myWorker2 = new Worker("./worker.js?v=6.9.33");
+    myWorker2 = new Worker("./worker.js?v=6.9.59");
     myWorker2.onmessage = workerOnMessage;
-    myWorker2.postMessage(['future', chunks, rules, chunkInfo, skillNames, processingSkill, maybePrimary, combatSkills, monstersPlus, objectsPlus, chunksPlus, itemsPlus, mixPlus, npcsPlus, tasksPlus, tools, elementalRunes, manualTasks, completedChallenges, backlog, "1/" + rules['Rare Drop Amount'], universalPrimary, elementalStaves, rangedItems, boneItems, highestCurrent, dropTables, possibleAreas, randomLoot, magicTools, bossLogs, bossMonsters, minigameShops, manualEquipment, checkedChallenges, backloggedSources, altChallenges, manualMonsters, slayerLocked, passiveSkill, f2pSkills, assignedXpRewards, mid === diary2Tier, manualAreas, "1/" + rules['Secondary Primary Amount'], constructionLocked, mid === manualAreasOnly, tempSections, settings['optOutSections'], settings['optOutSectionsWater'], maxSkill, userTasks, manualPrimary, updateLevel]);
+    myWorker2.postMessage({
+        type: 'future',
+        chunks,
+        rules,
+        chunkInfo,
+        skillNames,
+        processingSkill,
+        maybePrimary,
+        combatSkills,
+        monstersPlus,
+        objectsPlus,
+        chunksPlus,
+        itemsPlus,
+        mixPlus,
+        npcsPlus,
+        tasksPlus,
+        tools,
+        elementalRunes,
+        manualTasks,
+        completedChallenges,
+        backlog,
+        rareDropNum: "1/" + rules['Rare Drop Amount'],
+        universalPrimary,
+        elementalStaves,
+        rangedItems,
+        boneItems,
+        highestCurrent,
+        dropTables,
+        possibleAreas,
+        randomLoot,
+        magicTools,
+        bossLogs,
+        bossMonsters,
+        minigameShops,
+        manualEquipment,
+        checkedChallenges,
+        backloggedSources,
+        altChallenges,
+        manualMonsters,
+        slayerLocked,
+        passiveSkill,
+        f2pSkills,
+        assignedXpRewards,
+        isDiary2Tier: mid === diary2Tier,
+        manualAreas,
+        secondaryPrimaryNum: "1/" + rules['Secondary Primary Amount'],
+        constructionLocked,
+        isOnlyManualAreas: mid === manualAreasOnly,
+        manualSections: tempSections,
+        optOutSections: settings['optOutSections'],
+        optOutSectionsWater: settings['optOutSectionsWater'],
+        maxSkill,
+        userTasks,
+        manualPrimary,
+        updateLevel,
+        unconnectedAreas,
+        clueCompleteNum: rules['Collection Log Clues Amount']
+    });
     workersOut['future'] = infoLockedId;
     workerOut = Object.keys(workersOut).filter((key) => workersOut[key] !== false).length;
 }
@@ -7534,7 +7922,7 @@ let findConnectedSections = function(chunksIn, sections) {
     let added = false;
     Object.keys(chunkInfo['sections']).filter((chunk) => chunksIn.hasOwnProperty(chunk)).forEach((chunk) => {
         Object.keys(chunkInfo['sections'][chunk]).filter((sec) => sec !== "0" && (!sections.hasOwnProperty(chunk) || !sections[chunk].hasOwnProperty(sec))).forEach((sec) => {
-            if (settings['optOutSectionsWater'] || (settings['optOutSections'] && !sec.includes('W')) || (chunkInfo['sections'][chunk][sec].filter((connection) => (connection.includes('-') ? (sections.hasOwnProperty(connection.split('-')[0]) && sections[connection.split('-')[0]].hasOwnProperty(connection.split('-')[1]) && sections[connection.split('-')[0]][connection.split('-')[1]]) : chunksIn.hasOwnProperty(connection))).length > 0) || (!!chunkInfo['chunks'][chunk] && chunkInfo['chunks'][chunk].hasOwnProperty('Sections') && !!chunkInfo['chunks'][chunk]['Sections'][sec] && chunkInfo['chunks'][chunk]['Sections'][sec].hasOwnProperty('Connect') && Object.keys(chunkInfo['chunks'][chunk]['Sections'][sec]['Connect']).filter((subChunk) => !!chunkInfo['chunks'][subChunk] && chunkInfo['chunks'][subChunk].hasOwnProperty('Name') && chunksIn.hasOwnProperty(chunkInfo['chunks'][subChunk]['Name']) && chunksIn[chunkInfo['chunks'][subChunk]['Name']] !== false && chunkInfo['chunks'][subChunk]['Name'] !== 'Zanaris').length > 0)) {
+            if (settings['optOutSectionsWater'] || (settings['optOutSections'] && !sec.includes('W')) || (chunkInfo['sections'][chunk][sec].filter((connection) => (connection.includes('-') ? (sections.hasOwnProperty(connection.split('-')[0]) && sections[connection.split('-')[0]].hasOwnProperty(connection.split('-')[1]) && sections[connection.split('-')[0]][connection.split('-')[1]]) : chunksIn.hasOwnProperty(connection))).length > 0) || (!!chunkInfo['chunks'][chunk] && chunkInfo['chunks'][chunk].hasOwnProperty('Sections') && !!chunkInfo['chunks'][chunk]['Sections'][sec] && chunkInfo['chunks'][chunk]['Sections'][sec].hasOwnProperty('Connect') && Object.keys(chunkInfo['chunks'][chunk]['Sections'][sec]['Connect']).filter((subChunk) => !!chunkInfo['chunks'][subChunk] && chunkInfo['chunks'][subChunk].hasOwnProperty('Name') && chunksIn.hasOwnProperty(chunkInfo['chunks'][subChunk]['Name']) && chunksIn[chunkInfo['chunks'][subChunk]['Name']] !== false && (!chunkInfo['chunks'][chunkInfo['chunks'][subChunk]['Name']].hasOwnProperty('Connect') || !Object.keys(chunkInfo['chunks'][chunkInfo['chunks'][subChunk]['Name']]['Connect']).includes(chunk) || (manualAreas.hasOwnProperty(chunkInfo['chunks'][subChunk]['Name']) && manualAreas[chunkInfo['chunks'][subChunk]['Name']])) && !unconnectedAreas.includes(chunkInfo['chunks'][subChunk]['Name'])).length > 0)) {
                 if (!sections[chunk]) {
                     sections[chunk] = {};
                 }
@@ -7968,12 +8356,12 @@ let openQuestSteps = function(skill, challenge) {
                     if (savedLastLine.length > 0 && line.split('|~')[0] !== savedLastLine.split('|~')[0]) {
                         $('.quest-steps-data').append('<hr class="quest-steps-hr" />');
                     }
-                    $('.quest-steps-data').append(`<div class='noscroll step${line === challenge ? ' highlighted' : ''}'><span class='noscroll step-step diary-size'>${line.split('|~')[1].replaceAll('Task ', diaryTierAbr[line.split('~')[1].split('|').join('').split('#')[1]])}</span><span class='noscroll step-description'>${chunkInfo['challenges'][skill][line]['Description']}</span><span class="quest-steps-info" onclick="showDetails('${encodeRFC5987ValueChars(line)}', '${skill}', '')"><i class="info-icon fa-solid fa-info-circle"></i></span></div>`);
+                    $('.quest-steps-data').append(`<div class='noscroll step${diaryProgress.hasOwnProperty(challenge.split('|')[1].split('#')[0]) && diaryProgress[challenge.split('|')[1].split('#')[0]]['allTasks'].includes(line) ? ' highlighted' : ''}${line === challenge ? ' extra-highlighted' : ''}'><span class='noscroll step-step diary-size'>${line.split('|~')[1].replaceAll('Task ', diaryTierAbr[line.split('~')[1].split('|').join('').split('#')[1]])}</span><span class='noscroll step-description'>${chunkInfo['challenges'][skill][line]['Description']}</span><span class="quest-steps-info" onclick="showDetails('${encodeRFC5987ValueChars(line)}', '${skill}', '')"><i class="info-icon fa-solid fa-info-circle"></i></span></div>`);
                     savedLastLine = line;
                 });
             } else {
                 Object.keys(chunkInfo['challenges'][skill]).filter(line => chunkInfo['challenges'][skill][line]['BaseQuest'] === quest && chunkInfo['challenges'][skill][line].hasOwnProperty('Description')).forEach((line) => {
-                    $('.quest-steps-data').append(`<div class='noscroll step${line === challenge ? ' highlighted' : ''}'><span class='noscroll step-step'>${line.split('|~')[1]}</span><span class='noscroll step-description'>${chunkInfo['challenges'][skill][line]['Description']}</span><span class="quest-steps-info" onclick="showDetails('${encodeRFC5987ValueChars(line)}', '${skill}', '')"><i class="info-icon fa-solid fa-info-circle"></i></span></div>`);
+                    $('.quest-steps-data').append(`<div class='noscroll step${questProgress.hasOwnProperty(challenge.split('|')[1].split('#')[0]) && (questProgress[challenge.split('|')[1].split('#')[0]].includes(line) || questProgress[challenge.split('|')[1].split('#')[0]] === 'Complete the quest') ? ' highlighted' : ''}${line === challenge ? ' extra-highlighted' : ''}'><span class='noscroll step-step'>${line.split('|~')[1]}</span><span class='noscroll step-description'>${chunkInfo['challenges'][skill][line]['Description']}</span><span class="quest-steps-info" onclick="showDetails('${encodeRFC5987ValueChars(line)}', '${skill}', '')"><i class="info-icon fa-solid fa-info-circle"></i></span></div>`);
                 });
             }
         }
@@ -7991,7 +8379,7 @@ let openQuestSteps = function(skill, challenge) {
                 behavior: 'auto',
             });
         } else {
-            !!$('.quest-steps-data .highlighted')[0] && $('.quest-steps-data .highlighted')[0].scrollIntoView({
+            !!$('.quest-steps-data .extra-highlighted')[0] && $('.quest-steps-data .extra-highlighted')[0].scrollIntoView({
                 behavior: 'auto',
                 block: 'center',
                 inline: 'center'
@@ -8226,6 +8614,14 @@ let searchMonsters = function() {
     });
     Object.keys(chunkInfo['shopItems']).forEach((shop) => {
         baseChunkDataTotal['Shops'][shop] = true;
+        Object.keys(chunkInfo['shopItems'][shop]).forEach((item) => {
+            baseChunkDataTotal['Items'][item] = true;
+        });
+    });
+    Object.keys(chunkInfo['codeItems']['boostItems']).forEach((skill) => {
+        Object.keys(chunkInfo['codeItems']['boostItems'][skill]).forEach((item) => {
+            baseChunkDataTotal['Items'][item] = true;
+        });
     });
     let monstersList = {...chunkInfo['drops'], ...chunkInfo['skillItems']['Slayer']};
     Object.keys(monstersList).forEach((monster) => {
@@ -8326,7 +8722,11 @@ let openManualAdd = function() {
                 if (!fullChallengeArr[challenge]) {
                     fullChallengeArr[challenge] = [];
                 }
-                fullChallengeArr[challenge].push(skill);
+                if (skill === 'Quest' || skill === 'Diary' || skill === 'Extra') {
+                    fullChallengeArr[challenge].unshift(skill);
+                } else {
+                    fullChallengeArr[challenge].push(skill);
+                }
             });
         }
     });
@@ -8345,7 +8745,7 @@ let searchManualTasks = function() {
     if (Object.keys(fullChallengeArr).filter(challenge => challenge.toLowerCase().replaceAll('~', '').replaceAll('|', '').includes(searchTemp)).length <= 100 || filterByChecked) {
         Object.keys(fullChallengeArr).filter(challenge => challenge.toLowerCase().replaceAll('~', '').replaceAll('|', '').includes(searchTemp)).sort().forEach((challenge) => {
             if (!filterByChecked || (!!manualTasks[fullChallengeArr[challenge][0]] && !!manualTasks[fullChallengeArr[challenge][0]][challenge])) {
-                $('.challenge-data').append(`<div class="noscroll result-item"><input class="noscroll" ${!!manualTasks[fullChallengeArr[challenge][0]] && !!manualTasks[fullChallengeArr[challenge][0]][challenge] && "checked"} type="checkbox" onclick="addManualTask('${encodeRFC5987ValueChars(challenge)}')" />${challenge.replaceAll(/~/g, '').replaceAll(/\|/g, '')}<span onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', '${fullChallengeArr[challenge][0]}', '')"><i class="info-icon fa-solid fa-info-circle"></i></span></div>`);
+                $('.challenge-data').append(`<div class="noscroll result-item"><input class="noscroll" ${!!manualTasks[fullChallengeArr[challenge][0]] && !!manualTasks[fullChallengeArr[challenge][0]][challenge] && "checked"} type="checkbox" onclick="addManualTask(this, '${encodeRFC5987ValueChars(challenge)}')" />${challenge.replaceAll(/~/g, '').replaceAll(/\|/g, '')}<span onclick="showDetails('${encodeRFC5987ValueChars(challenge)}', '${fullChallengeArr[challenge][0]}', '')"><i class="info-icon fa-solid fa-info-circle"></i></span></div>`);
             }
         });
     } else {
@@ -8363,16 +8763,17 @@ let changeFilterBy = function() {
 }
 
 // Adds the given challenge to the manual list
-let addManualTask = function(challenge) {
+let addManualTask = function(checkbox, challenge) {
+    let isChecked = $(checkbox).prop('checked');
     challenge = decodeQueryParam(challenge);
     fullChallengeArr[challenge].forEach((skill) => {
-        if (skill !== 'BiS' && (!manualTasks[skill] || !manualTasks[skill][challenge])) {
+        if (skill !== 'BiS' && (!manualTasks[skill] || !manualTasks[skill][challenge]) && isChecked) {
             if (!manualTasks[skill]) {
                 manualTasks[skill] = {};
             }
             manualTasks[skill][challenge] = chunkInfo['challenges'][skill][challenge]['Level'] || true;
             chunkInfo['challenges'][skill][challenge]['Manual'] = true;
-        } else if (skill !== 'BiS') {
+        } else if (skill !== 'BiS' && !!manualTasks[skill] && !!manualTasks[skill][challenge] && !isChecked) {
             delete manualTasks[skill][challenge];
             delete chunkInfo['challenges'][skill][challenge]['Manual'];
             delete chunkInfo['challenges'][skill][challenge]['ManualValid'];
@@ -8885,8 +9286,27 @@ let openSearchDetails = function(category, name, prevCategory, prevName) {
         }
         if (typeof baseChunkData[category][name][source] !== "boolean" && skills.includes(baseChunkData[category][name][source].split('-')[1])) {
             formattedSource += baseChunkData[category][name][source].split('-')[1].replaceAll(/\*/g, '');
-            formattedSource += ` (${source.replaceAll(/~\|/g, '').replaceAll(/\|~/g, '').replaceAll(/\*/g, '')})`;
-            formattedSource += `<span class='double-search-icon' onclick="showDetails('` + encodeRFC5987ValueChars(source).replaceAll(/\~/g, '\~\\').replaceAll(/\|/g, '\|\\') + `', '` + baseChunkData[category][name][source].split('-')[1].replaceAll(/\*/g, '') + `')"><i class="quest-icon fa-solid fa-info-circle"></i></span>`;
+            let tempFormattedSource;
+            let formattedSkillSource = (!!chunkInfo['challenges'][baseChunkData[category][name][source].split('-')[1]][source] ? chunkInfo['challenges'][baseChunkData[category][name][source].split('-')[1]][source]['Output'] : '') + `-${baseChunkData[category][name][source].split('-')[1]}`;
+            if (!!dropTablesGlobal[formattedSkillSource] && !!dropTablesGlobal[formattedSkillSource][name]) {
+                Object.keys(dropTablesGlobal[formattedSkillSource][name]).forEach((amount) => {
+                    tempFormattedSource = formattedSource;
+                    tempFormattedSource += ` (${source.replaceAll(/~\|/g, '').replaceAll(/\|~/g, '').replaceAll(/\*/g, '')}, qty: ${amount}, ${dropTablesGlobal[formattedSkillSource][name][amount]})`;
+                    tempFormattedSource += `<span class='double-search-icon' onclick="showDetails('` + encodeRFC5987ValueChars(source).replaceAll(/\~/g, '\~\\').replaceAll(/\|/g, '\|\\') + `', '` + baseChunkData[category][name][source].split('-')[1].replaceAll(/\*/g, '') + `')"><i class="quest-icon fa-solid fa-info-circle"></i></span>`;
+                    shouldRank = true;
+                    tempDroprate = dropTablesGlobal[formattedSkillSource][name][amount].includes('/') ? dropTablesGlobal[formattedSkillSource][name][amount].split('/')[0].replaceAll(',', '') / dropTablesGlobal[formattedSkillSource][name][amount].split('/')[1].replaceAll(',', '') : (dropTablesGlobal[formattedSkillSource][name][amount] === 'Always' ? 1 : 1/999999999999999);
+                    formattedSources.push(tempFormattedSource);
+                    rankings[tempFormattedSource] = {
+                        shouldRank,
+                        name: source,
+                        droprate: tempDroprate,
+                    };
+                    alreadyPushed = true;
+                });
+            } else {
+                formattedSource += ` (${source.replaceAll(/~\|/g, '').replaceAll(/\|~/g, '').replaceAll(/\*/g, '')})`;
+                formattedSource += `<span class='double-search-icon' onclick="showDetails('` + encodeRFC5987ValueChars(source).replaceAll(/\~/g, '\~\\').replaceAll(/\|/g, '\|\\') + `', '` + baseChunkData[category][name][source].split('-')[1].replaceAll(/\*/g, '') + `')"><i class="quest-icon fa-solid fa-info-circle"></i></span>`;
+            }
         } else if (typeof baseChunkData[category][name][source] !== "boolean" && !baseChunkData[category][name][source].includes('primary') && !baseChunkData[category][name][source].includes('secondary') && baseChunkData[category][name][source] !== 'shop') {
             formattedSource += `-${baseChunkData[category][name][source].replaceAll(/\*/g, '')}`;
         } else if (typeof baseChunkData[category][name][source] !== "boolean") {
@@ -9904,7 +10324,7 @@ let openPaint = function(id) {
             painted[id].forEach((color) => {
                 $(`.paint-data > .paint-option-container.${color.toLowerCase()}-tag`).addClass('selected-paint');
             });
-            savedPaintedColors = painted[id];
+            savedPaintedColors = [...painted[id]];
         } else {
             savedPaintedColors = [];
         }
@@ -9916,7 +10336,7 @@ let openPaint = function(id) {
 // Submits the paint modal
 let submitPaint = function() {
     let id = savedStickerId;
-    let colors = savedPaintedColors;
+    let colors = [...savedPaintedColors];
     if (colors.length !== 0) {
         painted[id] = colors;
     } else if (!!id && id.length > 0) {
@@ -10093,7 +10513,7 @@ let viewPrimaryMethodsOrTasks = function(skill, showTasks) {
         $('.methods-topbar').html(`<i class="manual-close pic fa-solid fa-times noscrollhard" onclick="closeMethods()"></i>`);
         let methods = checkPrimaryMethod(skill, globalValids, baseChunkData, true);
         Object.keys(methods).sort(function(a, b) { return methods[a] - methods[b] }).forEach((method) => {
-            $('.methods-data').append(`<div class='noscroll skill-method'><span>[${methods[method]}]: ${method.includes('~') ? `${method.replaceAll('*', '').split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((method.replaceAll('*', '').split('|')[1]))}" target="_blank">${method.replaceAll('*', '').split('~')[1].split('|').join('')}</a>${method.replaceAll('*', '').split('~')[2]}` : `${method.replaceAll('~', '').replaceAll('|', '').replaceAll('*', '')}`} ${chunkInfo['challenges'][skill].hasOwnProperty(method) ? `<span class='noscroll details-info' onclick="showDetails('${encodeRFC5987ValueChars(method)}', '${skill}', '')"><i class="challenge-icon fa-solid fa-info-circle noscroll"></i></span><span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openTrainingMethodsContextMenu('${encodeRFC5987ValueChars(method)}', '${skill}')"><i class="fa-solid fa-sliders-h noscroll"></i></span></span>` : ''}</div>`);
+            $('.methods-data').append(`<div class='noscroll skill-method ${!(!testMode && (viewOnly || inEntry || locked)) ? 'with-burger' : ''}'><span>[${methods[method]}]: ${method.includes('~') ? `${method.replaceAll('*', '').split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((method.replaceAll('*', '').split('|')[1]))}" target="_blank">${method.replaceAll('*', '').split('~')[1].split('|').join('')}</a>${method.replaceAll('*', '').split('~')[2]}` : `${method.replaceAll('~', '').replaceAll('|', '').replaceAll('*', '')}`} ${chunkInfo['challenges'][skill].hasOwnProperty(method) ? `<span class='noscroll details-info' onclick="showDetails('${encodeRFC5987ValueChars(method)}', '${skill}', '')"><i class="challenge-icon fa-solid fa-info-circle noscroll"></i></span><span class="burger noscroll${!testMode && (viewOnly || inEntry || locked) ? ' hidden-burger' : ''}" onclick="openTrainingMethodsContextMenu('${encodeRFC5987ValueChars(method)}', '${skill}')"><i class="fa-solid fa-sliders-h noscroll"></i></span></span>` : ''}</div>`);
         });
     }
     $('#methodsModal').show();
@@ -10119,6 +10539,7 @@ let checkOffAllTask = function(skill, task) {
     $('.methods-topbar').html(`${skill} Tasks <span class='noscroll ${Object.keys(globalValids[skill]).filter(task => !backlog.hasOwnProperty(skill) || !backlog[skill].hasOwnProperty(task)).length > completedNum ? 'yellow' : 'green'}'>(${completedNum}/${Object.keys(globalValids[skill]).filter(task => !backlog.hasOwnProperty(skill) || !backlog[skill].hasOwnProperty(task)).length})</span><i class="manual-close pic fa-solid fa-times noscrollhard" onclick="closeMethods()"></i>`);
     $(`.${skill}-tasks-button`).removeClass('yellow green').addClass(Object.keys(globalValids[skill]).filter(task => !backlog.hasOwnProperty(skill) || !backlog[skill].hasOwnProperty(task)).length > completedNum ? 'yellow' : 'green');
     $(`.${skill}-tasks-button > span`).text(`(${completedNum}/${Object.keys(globalValids[skill]).filter(task => !backlog.hasOwnProperty(skill) || !backlog[skill].hasOwnProperty(task)).length})`);
+    forceUpdatePluginOutput = true
     setData();
 }
 
@@ -10358,14 +10779,6 @@ let saveChunkSectionPicker = function() {
     if (Object.keys(manualSections[sectionChunkId]).length === 0) {
         delete manualSections[sectionChunkId];
     }
-    if (Object.keys(selectedSections).length === 0 && chunkSectionCalculateAfter) {
-        Object.keys(chunkInfo['sections'][sectionChunkId]).forEach((sec) => {
-            if (!unlockedSections[sectionChunkId]) {
-                unlockedSections[sectionChunkId] = {};
-            }
-            unlockedSections[sectionChunkId][sec] = true;
-        });
-    }
     let manualSectionsModified = {};
     !!manualSections && Object.keys(manualSections).forEach((chunk) => {
         if (!!tempChunks['unlocked'] && tempChunks['unlocked'].hasOwnProperty(chunk)) {
@@ -10377,7 +10790,7 @@ let saveChunkSectionPicker = function() {
     modalOutsideTime = Date.now();
     $('#chunkSectionPickerModal').remove();
     if (needsUpdating) {
-        calcCurrentChallengesCanvas(true, chunkSectionCalculateAfter, false, JSON.parse(JSON.stringify(unlockedSections)));
+        calcCurrentChallengesCanvas(true, chunkSectionCalculateAfter, false, JSON.parse(JSON.stringify(unlockedSections)), true);
         setData();
     }
 }
@@ -10420,7 +10833,7 @@ let submitCompleteTasks = function() {
 
 // Unlocks various parts of the chunk tasks panel
 let unlockChallenges = function() {
-    if (workerOut === 0) {
+    if (workerOut === 0 && globalSectionsValid) {
         $('.panel-active span.burger, .panel-backlog span.burger, .panel-completed span.arrow').removeClass('hidden-burger');
         $('.panel-active label.checkbox, .panel-areas label.checkbox').removeClass('checkbox--disabled');
         $('.panel-active label.checkbox input, .panel-areas label.checkbox input').attr('disabled', false);
@@ -10557,7 +10970,10 @@ let openActiveContextMenu = function(challenge, skill, hasAlts) {
     if (activeContextMenuChallengeOld !== challenge) {
         activeContextMenuChallenge = challenge;
         activeContextMenuSkill = skill;
+        let isFavorited = !!favoriteTasks[skill] && favoriteTasks[skill].hasOwnProperty(decodeQueryParam(challenge));
         hasAlts ? $('.active-context-menu-alternatives').show() : $('.active-context-menu-alternatives').hide();
+        !isFavorited ? $('.active-context-menu-favorite').show() : $('.active-context-menu-favorite').hide();
+        isFavorited ? $('.active-context-menu-unfavorite').show() : $('.active-context-menu-unfavorite').hide();
         let dims = getBrowserDim();
         let x = event.pageX + $(".active-context-menu").width() + 5 > dims['w'] ? dims['w'] - $(".active-context-menu").width() - 5 : event.pageX - 5;
         let y = event.pageY + $(".active-context-menu").height() + 5 > dims['h'] ? dims['h'] - $(".active-context-menu").height() - 5 : event.pageY - 5;
@@ -10644,7 +11060,7 @@ let showDetails = function(challenge, skill, dataType, isNested) {
             return;
         }
         searchDetailsModalOpen && closeSearchDetails();
-        let detailsKeys = ['ItemsDetails', 'ObjectsDetails', 'MonstersDetails', 'NPCsDetails', 'ChunksDetails', 'Skill RequirementsDetails'];
+        let detailsKeys = ['ItemsDetails', 'ObjectsDetails', 'MonstersDetails', 'NPCsDetails', 'ChunksDetails', 'Skill RequirementsDetails', 'Task RequirementsDetails'];
         let skills = [...skillNames];
         skills.push('Nonskill');
         detailsModalOpen = true;
@@ -10804,6 +11220,16 @@ let showDetails = function(challenge, skill, dataType, isNested) {
                             $('#details-data').append(`<span class="noscroll red"><b class="noscroll">${formattedSource}</b></span><br />`);
                         }
                     }
+                } else if (key === 'Task RequirementsDetails') {
+                    written = true;
+                    let taskSkill = el.split('||')[1];
+                    let taskName = el.split('||')[0];
+                    formattedSource = `<b class="noscroll">${(taskName).replaceAll(/\|/g, '').replaceAll(/~/g, '').replaceAll(/\*/g, '')}</b> [${taskSkill}]`;
+                    if (!!globalValids[taskSkill] && globalValids[taskSkill].hasOwnProperty(taskName)) {
+                        $('#details-data').append(`<span class="noscroll">${formattedSource}</span><br />`);
+                    } else {
+                        $('#details-data').append(`<span class="noscroll red">${formattedSource}</span><br />`);
+                    }
                 } else if (!!baseChunkDataIn[type]) {
                     let els = [];
                     formattedSource = ': ';
@@ -10937,12 +11363,16 @@ let showAlternatives = function(challenge, skill) {
     challenge = decodeQueryParam(challenge);
     challengeAltsModalOpen = true;
     $('#alts-data').empty();
-    !!globalValids[skill] && Object.keys(globalValids[skill]).filter(chal => !backlog.hasOwnProperty(skill) || !backlog[skill].hasOwnProperty(chal)).forEach((chal) => {
+    !!globalValids[skill] && Object.keys(globalValids[skill]).filter(chal => !backlog.hasOwnProperty(skill) || !backlog[skill].hasOwnProperty(chal)).sort().forEach((chal) => {
         if (skill === 'BiS' && globalValids[skill][chal] === globalValids[skill][challenge]) {
             $('#alts-data').append(`<div class="alt-challenge noscroll ${skill + '-alt-challenge'}"><label class="radio noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "radio--disabled" : ''}"><span class="radio__input noscroll"><input type="radio" name="radio" ${(!!highestOverall && Object.values(highestOverall).map(function(y) { return y.toLowerCase() }).includes(chal.split('|')[1].toLowerCase())) ? "checked" : ''} class='noscroll' onclick="checkOffAltChallenge('${skill}', '${encodeRFC5987ValueChars(chal)}', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="radio__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='currentColor' stroke='currentColor' d='M 12 12 m -7.5 0 a 7.5 7.5 90 1 0 15 0 a 7.5 7.5 90 1 0 -15 0' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll"><span class="inner noscroll">${skill}</b>: ${chal.split('~')[0]} <a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((chal.split('|')[1]))}" target="_blank">${chal.split('~')[1].split('|').join('')}</a> ${chal.split('~')[2]}</span></span></label></div>`);
         } else if (skill !== 'Quest' && skill !== 'Diary' && skill !== 'Extra') {
             if ((globalValids[skill][chal] - (globalValidsBoosts.hasOwnProperty(skill) && globalValidsBoosts[skill].hasOwnProperty(chal) ? globalValidsBoosts[skill][chal] : 0)) === (globalValids[skill][challenge] - (globalValidsBoosts.hasOwnProperty(skill) && globalValidsBoosts[skill].hasOwnProperty(challenge) ? globalValidsBoosts[skill][challenge] : 0)) && (!backlog.hasOwnProperty(skill) || !backlog[skill].hasOwnProperty(chal))) {
                 $('#alts-data').append(`<div class="alt-challenge noscroll ${skill + '-alt-challenge'}"><label class="radio noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "radio--disabled" : ''}"><span class="radio__input noscroll"><input type="radio" name="radio" ${(chal === challenge) ? "checked" : ''} class='noscroll' onclick="checkOffAltChallenge('${skill}', '${encodeRFC5987ValueChars(chal)}', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="radio__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='currentColor' stroke='currentColor' d='M 12 12 m -7.5 0 a 7.5 7.5 90 1 0 15 0 a 7.5 7.5 90 1 0 -15 0' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll"><span class="inner noscroll">${skill}</b>: ${chal.split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((chal.split('|')[1]))}" target="_blank">${chal.split('~')[1].split('|').join('')}</a>${chal.split('~')[2]}</span></span></label></div>`);
+            }
+        } else if (skill === 'Extra' && !!chunkInfo['challenges']['Extra'][challenge] && chunkInfo['challenges']['Extra'][challenge]['Label'] === 'Every Drop') {
+            if (globalEveryDropAltMap[challenge.split('|')[1]].includes(chal)) {
+                $('#alts-data').append(`<div class="alt-challenge noscroll ${skill + '-alt-challenge'}"><label class="radio noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "radio--disabled" : ''}"><span class="radio__input noscroll"><input type="radio" name="radio" ${(chal === challenge) ? "checked" : ''} class='noscroll' onclick="checkOffAltChallenge('${skill}', '${encodeRFC5987ValueChars(chal)}', '${encodeRFC5987ValueChars(challenge)}')" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="radio__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='currentColor' stroke='currentColor' d='M 12 12 m -7.5 0 a 7.5 7.5 90 1 0 15 0 a 7.5 7.5 90 1 0 -15 0' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll"><span class="inner noscroll">${'Other Tasks'}</b>: ${chal.split('~')[0]}<a class='link noscroll' href="${"https://oldschool.runescape.wiki/w/" + encodeForUrl((chal.split('|')[1]))}" target="_blank">${chal.split('~')[1].split('|').join('')}</a>${chal.split('~')[2]}</span></span></label></div>`);
             }
         } else if (globalValids[skill][chal] === globalValids[skill][challenge]) {
             $('#alts-data').empty();
@@ -10968,9 +11398,12 @@ let checkOffAltChallenge = function(skill, chal, originalChallenge) {
         !!globalValids[skill][chal] && globalValids[skill][chal].split(' BiS ')[0].split('/​').forEach((bit) => {
             altChallenges[skill][bit + ' BiS ' + globalValids[skill][chal].split(' BiS ')[1]] = chal;
         });
+    } else if (skill === 'Extra' && !!chunkInfo['challenges']['Extra'][originalChallenge] && chunkInfo['challenges']['Extra'][originalChallenge]['Label'] === 'Every Drop') {
+        altChallenges[skill]['Every Drop ' + originalChallenge.split('|')[1]] = chal;
     } else {
         !!chunkInfo['challenges'][skill][originalChallenge] && (altChallenges[skill][chunkInfo['challenges'][skill][originalChallenge]['Level'] - (globalValidsBoosts.hasOwnProperty(skill) && globalValidsBoosts[skill].hasOwnProperty(originalChallenge) ? globalValidsBoosts[skill][originalChallenge] : 0)] = chal);
     }
+    forceUpdatePluginOutput = true;
     setupCurrentChallenges(tempChallengeArrSaved, false, true);
     setData();
 }
@@ -11005,6 +11438,10 @@ let showOverlays = function(fromHelper) {
     if (!inEntry && !importMenuOpen && !manualModalOpen && !detailsModalOpen && !notesModalOpen && !highscoreMenuOpen && !helpMenuOpen) {
         !fromHelper && modal.generate('mapOverlaysModal', onMobile);
         $('#map-marker-btn').hasClass('notice-me') && $('#map-marker-btn').removeClass('notice-me');
+        selectedOverlayIds = [];
+        selectedOverlayIndex = 0;
+        overlayCloseLocation = -1;
+        drawCanvas();
         onMobile && hideMobileMenu();
         overlaysModalOpen = true;
         $('#overlays-data').empty();
@@ -11148,6 +11585,40 @@ let showNotes = function(challenge, skill, note) {
                                 shownSource = shownSource.split('|')[1].charAt(0).toUpperCase() + shownSource.split('|')[1].slice(1);
                             }
                             $('#notes-data').append(`<div class="notes-row double-indent noscroll"><label class="radio noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "radio--disabled" : ''}"><span class="radio__input noscroll"><input type="radio" name="radio" class='noscroll' onclick="saveNotesData(` + "`" + 'monsters' + "`, " + "`" + shownSource + "`" + `)" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="radio__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='currentColor' stroke='currentColor' d='M 12 12 m -7.5 0 a 7.5 7.5 90 1 0 15 0 a 7.5 7.5 90 1 0 -15 0' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">${shownSource}</b></span></label></div>`);
+                        } else if (typeof baseChunkDataIn[type][element][source] === 'string' && baseChunkDataIn[type][element][source] === 'shop') {
+                            let shownSource = source;
+                            if (shownSource.includes('|')) {
+                                shownSource = shownSource.split('|')[1].charAt(0).toUpperCase() + shownSource.split('|')[1].slice(1);
+                            }
+                            $('#notes-data').append(`<div class="notes-row double-indent noscroll"><label class="radio noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "radio--disabled" : ''}"><span class="radio__input noscroll"><input type="radio" name="radio" class='noscroll' onclick="saveNotesData(` + "`" + 'shops' + "`, " + "`" + shownSource + "`" + `)" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="radio__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='currentColor' stroke='currentColor' d='M 12 12 m -7.5 0 a 7.5 7.5 90 1 0 15 0 a 7.5 7.5 90 1 0 -15 0' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">${shownSource}</b></span></label></div>`);
+                        } else if (typeof baseChunkDataIn[type][element][source] === 'string' && baseChunkDataIn[type][element][source].includes('-Nonskill') && !!chunkInfo['challenges']['Nonskill'][source]) {
+                            detailsKeys.forEach((key) => {
+                                let type = key.split('Details')[0].toLowerCase();
+                                if ((!chunkInfo['challenges']['Nonskill'][source][key] || chunkInfo['challenges']['Nonskill'][source][key].length < 1) && !!chunkInfo['challenges']['Nonskill'][source][key.split('Details')[0]]) {
+                                    chunkInfo['challenges']['Nonskill'][source][key.split('Details')[0]].forEach((typeEl) => {
+                                        chunkInfo['challenges']['Nonskill'][source][key].push(typeEl);
+                                    });
+                                }
+                                !!chunkInfo['challenges']['Nonskill'][source][key] && chunkInfo['challenges']['Nonskill'][source][key].forEach((el) => {
+                                    let els = [];
+                                    if (!!chunkInfo['codeItems'][type + 'Plus'] && !!chunkInfo['codeItems'][type + 'Plus'][el]) {
+                                        let validElem = false;
+                                        chunkInfo['codeItems'][type + 'Plus'][el].forEach((elem) => {
+                                            if (!!baseChunkDataIn[type][elem]) {
+                                                els.push(elem);
+                                                validElem = true;
+                                            }
+                                        });
+                                        !validElem && els.push(el);
+                                        $('#notes-data').append(`<div class="noscroll"><b class="noscroll">${chunkInfo['codeItems'][type + 'PlusNames'][el]}:</b></div>`);
+                                        els.length > 0 && els.forEach((element) => {
+                                            $('#notes-data').append(`<div class="notes-row double-indent noscroll"><label class="radio noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "radio--disabled" : ''}"><span class="radio__input noscroll"><input type="radio" name="radio" class='noscroll' onclick="saveNotesData(` + "`" + type + "`, " + "`" + element + "`" + `)" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="radio__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='currentColor' stroke='currentColor' d='M 12 12 m -7.5 0 a 7.5 7.5 90 1 0 15 0 a 7.5 7.5 90 1 0 -15 0' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">${element}</b></span></label></div>`);
+                                        });
+                                    } else {
+                                        $('#notes-data').append(`<div class="notes-row double-indent noscroll"><label class="radio noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "radio--disabled" : ''}"><span class="radio__input noscroll"><input type="radio" name="radio" class='noscroll' onclick="saveNotesData(` + "`" + type + "`, " + "`" + el + "`" + `)" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="radio__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='currentColor' stroke='currentColor' d='M 12 12 m -7.5 0 a 7.5 7.5 90 1 0 15 0 a 7.5 7.5 90 1 0 -15 0' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">${el}</b></span></label></div>`);
+                                    }
+                                });
+                            });
                         }
                     });
                 });
@@ -11168,6 +11639,40 @@ let showNotes = function(challenge, skill, note) {
                             shownSource = shownSource.split('|')[1].charAt(0).toUpperCase() + shownSource.split('|')[1].slice(1);
                         }
                         $('#notes-data').append(`<div class="notes-row double-indent noscroll"><label class="radio noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "radio--disabled" : ''}"><span class="radio__input noscroll"><input type="radio" name="radio" class='noscroll' onclick="saveNotesData(` + "`" + 'monsters' + "`, " + "`" + shownSource + "`" + `)" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="radio__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='currentColor' stroke='currentColor' d='M 12 12 m -7.5 0 a 7.5 7.5 90 1 0 15 0 a 7.5 7.5 90 1 0 -15 0' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">${shownSource}</b></span></label></div>`);
+                    } else if (typeof baseChunkDataIn[type][el][source] === 'string' && baseChunkDataIn[type][el][source] === 'shop' && !source.includes('*')) {
+                        let shownSource = source;
+                        if (shownSource.includes('|')) {
+                            shownSource = shownSource.split('|')[1].charAt(0).toUpperCase() + shownSource.split('|')[1].slice(1);
+                        }
+                        $('#notes-data').append(`<div class="notes-row double-indent noscroll"><label class="radio noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "radio--disabled" : ''}"><span class="radio__input noscroll"><input type="radio" name="radio" class='noscroll' onclick="saveNotesData(` + "`" + 'shops' + "`, " + "`" + shownSource + "`" + `)" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="radio__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='currentColor' stroke='currentColor' d='M 12 12 m -7.5 0 a 7.5 7.5 90 1 0 15 0 a 7.5 7.5 90 1 0 -15 0' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">${shownSource}</b></span></label></div>`);
+                    } else if (typeof baseChunkDataIn[type][el][source] === 'string' && baseChunkDataIn[type][el][source].includes('-Nonskill') && !!chunkInfo['challenges']['Nonskill'][source]) {
+                        detailsKeys.forEach((key) => {
+                            let type = key.split('Details')[0].toLowerCase();
+                            if ((!chunkInfo['challenges']['Nonskill'][source][key] || chunkInfo['challenges']['Nonskill'][source][key].length < 1) && !!chunkInfo['challenges']['Nonskill'][source][key.split('Details')[0]]) {
+                                chunkInfo['challenges']['Nonskill'][source][key.split('Details')[0]].forEach((typeEl) => {
+                                    chunkInfo['challenges']['Nonskill'][source][key].push(typeEl);
+                                });
+                            }
+                            !!chunkInfo['challenges']['Nonskill'][source][key] && chunkInfo['challenges']['Nonskill'][source][key].forEach((el) => {
+                                let els = [];
+                                if (!!chunkInfo['codeItems'][type + 'Plus'] && !!chunkInfo['codeItems'][type + 'Plus'][el]) {
+                                    let validElem = false;
+                                    chunkInfo['codeItems'][type + 'Plus'][el].forEach((elem) => {
+                                        if (!!baseChunkDataIn[type][elem]) {
+                                            els.push(elem);
+                                            validElem = true;
+                                        }
+                                    });
+                                    !validElem && els.push(el);
+                                    $('#notes-data').append(`<div class="noscroll"><b class="noscroll">${chunkInfo['codeItems'][type + 'PlusNames'][el]}:</b></div>`);
+                                    els.length > 0 && els.forEach((element) => {
+                                        $('#notes-data').append(`<div class="notes-row double-indent noscroll"><label class="radio noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "radio--disabled" : ''}"><span class="radio__input noscroll"><input type="radio" name="radio" class='noscroll' onclick="saveNotesData(` + "`" + type + "`, " + "`" + element + "`" + `)" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="radio__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='currentColor' stroke='currentColor' d='M 12 12 m -7.5 0 a 7.5 7.5 90 1 0 15 0 a 7.5 7.5 90 1 0 -15 0' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">${element}</b></span></label></div>`);
+                                    });
+                                } else {
+                                    $('#notes-data').append(`<div class="notes-row double-indent noscroll"><label class="radio noscroll ${(!testMode && (viewOnly || inEntry || locked)) ? "radio--disabled" : ''}"><span class="radio__input noscroll"><input type="radio" name="radio" class='noscroll' onclick="saveNotesData(` + "`" + type + "`, " + "`" + el + "`" + `)" ${(!testMode && (viewOnly || inEntry || locked)) ? "disabled" : ''}><span class="radio__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='currentColor' stroke='currentColor' d='M 12 12 m -7.5 0 a 7.5 7.5 90 1 0 15 0 a 7.5 7.5 90 1 0 -15 0' /></svg></span></span><span class="radio__label noscroll"><b class="noscroll">${el}</b></span></label></div>`);
+                                }
+                            });
+                        });
                     }
                 });
             }
@@ -11218,6 +11723,9 @@ let applyPreset = function(preset) {
         if (rule === 'Kill X Amount') {
             rules[rule] = rulePresets[preset][rule];
             $('.x-num-input').val(rulePresets[preset][rule]);
+        } else if (rule === 'Collection Log Clues Amount') {
+            rules[rule] = rulePresets[preset][rule];
+            $('.clue-complete-num-input').val(rulePresets[preset][rule]);
         } else if (rule === 'Rare Drop Amount') {
             rules[rule] = rulePresets[preset][rule];
             $('.rare-num-input').val(rulePresets[preset][rule]);
@@ -11226,7 +11734,7 @@ let applyPreset = function(preset) {
             $('.secondary-primary-input').val(rulePresets[preset][rule]);
         } else {
             rules[rule] = rulePresets[preset].hasOwnProperty(rule);
-            $('.' + rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule input').prop('checked', rulePresets[preset].hasOwnProperty(rule));
+            $('.' + rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule > label > span > input').prop('checked', rulePresets[preset].hasOwnProperty(rule));
         }
     });
     !!rulePresets && !!rulePresets[preset] && checkOffRules();
@@ -11306,9 +11814,11 @@ let searchRules = function() {
         let ruleObj;
         Object.keys(ruleStructure).forEach((category) => {
             !!ruleStructure[category] && Object.keys(ruleStructure[category]).forEach((rule) => {
-                if (rule !== 'Kill X Amount' && rule !== 'Rare Drop Amount' && rule !== 'Secondary Primary Amount') {
+                if (rule !== 'Kill X Amount' && rule !== 'Collection Log Clues Amount' && rule !== 'Rare Drop Amount' && rule !== 'Secondary Primary Amount') {
                     if (rule === 'Kill X') {
                         ruleObj = `<div class="rule ${rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule'} noscroll"><label class="checkbox noscroll ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${rules[rule] ? "checked" : ''} class='noscroll' onclick="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${ruleNames[rule].split('X-amount')[0]}<input type='number' class='x-num-input' min='1' value="${rules['Kill X Amount']}" onchange="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "disabled" : ''} /> ${ruleNames[rule].split('X-amount')[1]}</span></label></div>`;
+                    } else if (rule === 'Collection Log Clues') {
+                        ruleObj = `<div class="rule ${rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule'} noscroll"><label class="checkbox noscroll ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${rules[rule] ? "checked" : ''} class='noscroll' onclick="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${ruleNames[rule].split('clue-amount')[0]}<input type='number' class='clue-complete-num-input' min='0' max='100' value="${rules['Collection Log Clues Amount']}" onchange="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "disabled" : ''} /> ${ruleNames[rule].split('clue-amount')[1]}</span></label></div>`;
                     } else if (rule === 'Rare Drop') {
                         ruleObj = `<div class="rule ${rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule'} noscroll"><span class='noscroll ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "checkbox--disabled" : ''}'>` + ruleNames[rule].split('/X')[0] + ` / <input type='number' class='rare-num-input' min='0' value="${rules['Rare Drop Amount']}" onchange="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "disabled" : ''} /> ` + ruleNames[rule].split('/X')[1] + '</span></div>';
                     } else if (rule === 'Secondary Primary') {
@@ -11323,7 +11833,11 @@ let searchRules = function() {
                     }
                     Array.isArray(ruleStructure[category][rule]) && ruleStructure[category][rule].forEach((subRule) => {
                         if (filteredRules.includes(subRule)) {
-                            $('.' + rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule').append(`<div class="rule ${subRule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule subrule'} noscroll"><label class="checkbox noscroll ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][subRule] === false) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${rules[subRule] ? "checked" : ''} class='noscroll' onclick="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][subRule] === false) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${ruleNames[subRule]}</span></label></div>`);
+                            if (subRule === 'Collection Log Clues') {
+                                $('.' + rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule').append(`<div class="rule ${subRule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule subrule'} noscroll"><label class="checkbox noscroll ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][subRule] === false) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${rules[subRule] ? "checked" : ''} class='noscroll' onclick="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][subRule] === false) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${ruleNames[subRule].split('clue-amount')[0]}<input type='number' class='clue-complete-num-input' min='0' max='100' value="${rules['Collection Log Clues Amount']}" onchange="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][subRule] === false) ? "disabled" : ''} /> ${ruleNames[subRule].split('clue-amount')[1]}</span></label></div>`);
+                            } else {
+                                $('.' + rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule').append(`<div class="rule ${subRule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule subrule'} noscroll"><label class="checkbox noscroll ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][subRule] === false) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${rules[subRule] ? "checked" : ''} class='noscroll' onclick="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][subRule] === false) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${ruleNames[subRule]}</span></label></div>`);
+                            }
                         } else {
                             $('.' + rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule').append(`<div class="rule hidden-rule ${subRule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule subrule'} noscroll"><label class="checkbox noscroll ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][subRule] === false) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${rules[subRule] ? "checked" : ''} class='noscroll' onclick="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][subRule] === false) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${ruleNames[subRule]}</span></label></div>`);
                         }
@@ -11373,9 +11887,11 @@ let showRules = function(isPage2) {
         if (onMobile) {
             Object.keys(ruleStructure).forEach((category) => {
                 !!ruleStructure[category] && Object.keys(ruleStructure[category]).forEach((rule) => {
-                    if (rule !== 'Kill X Amount' && rule !== 'Rare Drop Amount' && rule !== 'Secondary Primary Amount') {
+                    if (rule !== 'Kill X Amount' && rule !== 'Collection Log Clues Amount' && rule !== 'Rare Drop Amount' && rule !== 'Secondary Primary Amount') {
                         if (rule === 'Kill X') {
                             $(`.panel-${category.replaceAll(' ', '').toLowerCase()}`).append(`<div class="rule ${rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule'} noscroll"><label class="checkbox noscroll ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${rules[rule] ? "checked" : ''} class='noscroll' onclick="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${ruleNames[rule].split('X-amount')[0]}<input type='number' class='x-num-input' min='1' value="${rules['Kill X Amount']}" onchange="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "disabled" : ''} /> ${ruleNames[rule].split('X-amount')[1]}</span></label></div>`);
+                        } else if (rule === 'Collection Log Clues') {
+                            $(`.panel-${category.replaceAll(' ', '').toLowerCase()}`).append(`<div class="rule ${rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule'} noscroll"><label class="checkbox noscroll ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${rules[rule] ? "checked" : ''} class='noscroll' onclick="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${ruleNames[rule].split('clue-amount')[0]}<input type='number' class='clue-complete-num-input' min='0' max='100' value="${rules['Collection Log Clues Amount']}" onchange="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "disabled" : ''} /> ${ruleNames[rule].split('clue-amount')[1]}</span></label></div>`);
                         } else if (rule === 'Rare Drop') {
                             $(`.panel-${category.replaceAll(' ', '').toLowerCase()}`).append(`<div class="rule ${rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule'} noscroll"><span class='noscroll ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "checkbox--disabled" : ''}'>` + ruleNames[rule].split('/X')[0] + ` / <input type='number' class='rare-num-input' min='0' value="${rules['Rare Drop Amount']}" onchange="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "disabled" : ''} /> ` + ruleNames[rule].split('/X')[1] + '</span></div>');
                         } else if (rule === 'Secondary Primary') {
@@ -11384,7 +11900,11 @@ let showRules = function(isPage2) {
                             $(`.panel-${category.replaceAll(' ', '').toLowerCase()}`).append(`<div class="rule ${rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule'} noscroll"><label class="checkbox noscroll ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${rules[rule] ? "checked" : ''} class='noscroll' onclick="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${ruleNames[rule]}</span></label></div>`);
                         }
                         Array.isArray(ruleStructure[category][rule]) && ruleStructure[category][rule].forEach((subRule) => {
-                            $('.' + rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule').append(`<div class="rule ${subRule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule subrule'} noscroll"><label class="checkbox noscroll ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][subRule] === false) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${rules[subRule] ? "checked" : ''} class='noscroll' onclick="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][subRule] === false) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${ruleNames[subRule]}</span></label></div>`);
+                            if (subRule === 'Collection Log Clues') {
+                                $('.' + rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule').append(`<div class="rule ${subRule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule subrule'} noscroll"><label class="checkbox noscroll ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][subRule] === false) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${rules[subRule] ? "checked" : ''} class='noscroll' onclick="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][subRule] === false) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${ruleNames[subRule].split('clue-amount')[0]}<input type='number' class='clue-complete-num-input' min='0' max='100' value="${rules['Collection Log Clues Amount']}" onchange="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][subRule] === false) ? "disabled" : ''} /> ${ruleNames[subRule].split('clue-amount')[1]}</span></label></div>`);
+                            } else {
+                                $('.' + rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule').append(`<div class="rule ${subRule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule subrule'} noscroll"><label class="checkbox noscroll ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][subRule] === false) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${rules[subRule] ? "checked" : ''} class='noscroll' onclick="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][subRule] === false) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${ruleNames[subRule]}</span></label></div>`);
+                            }
                         });
                     }
                 });
@@ -11392,9 +11912,11 @@ let showRules = function(isPage2) {
         } else {
             Object.keys(ruleStructure).forEach((category) => {
                 !!ruleStructure[category] && Object.keys(ruleStructure[category]).forEach((rule) => {
-                    if (rule !== 'Kill X Amount' && rule !== 'Rare Drop Amount' && rule !== 'Secondary Primary Amount') {
+                    if (rule !== 'Kill X Amount' && rule !== 'Collection Log Clues Amount' && rule !== 'Rare Drop Amount' && rule !== 'Secondary Primary Amount') {
                         if (rule === 'Kill X') {
                             $(`.panel-${category.replaceAll(' ', '').toLowerCase()}`).append(`<div class="rule ${rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule'} noscroll"><label class="checkbox noscroll ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${rules[rule] ? "checked" : ''} class='noscroll' onclick="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${ruleNames[rule].split('X-amount')[0]}<input type='number' class='x-num-input' min='1' value="${rules['Kill X Amount']}" onchange="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "disabled" : ''} /> ${ruleNames[rule].split('X-amount')[1]}</span></label></div>`);
+                        } else if (rule === 'Collection Log Clues') {
+                            $(`.panel-${category.replaceAll(' ', '').toLowerCase()}`).append(`<div class="rule ${rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule'} noscroll"><label class="checkbox noscroll ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${rules[rule] ? "checked" : ''} class='noscroll' onclick="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${ruleNames[rule].split('clue-amount')[0]}<input type='number' class='clue-complete-num-input' min='0' max='100' value="${rules['Collection Log Clues Amount']}" onchange="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "disabled" : ''} /> ${ruleNames[rule].split('clue-amount')[1]}</span></label></div>`);
                         } else if (rule === 'Rare Drop') {
                             $(`.panel-${category.replaceAll(' ', '').toLowerCase()}`).append(`<div class="rule ${rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule'} noscroll"><span class='noscroll ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "checkbox--disabled" : ''}'>` + ruleNames[rule].split('/X')[0] + ` / <input type='number' class='rare-num-input' min='0' value="${rules['Rare Drop Amount']}" onchange="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "disabled" : ''} /> ` + ruleNames[rule].split('/X')[1] + '</span></div>');
                         } else if (rule === 'Secondary Primary') {
@@ -11403,7 +11925,11 @@ let showRules = function(isPage2) {
                             $(`.panel-${category.replaceAll(' ', '').toLowerCase()}`).append(`<div class="rule ${rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule'} noscroll"><label class="checkbox noscroll ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${rules[rule] ? "checked" : ''} class='noscroll' onclick="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][rule] === false) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${ruleNames[rule]}</span></label></div>`);
                         }
                         Array.isArray(ruleStructure[category][rule]) && ruleStructure[category][rule].forEach((subRule) => {
-                            $('.' + rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule').append(`<div class="rule ${subRule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule subrule'} noscroll"><label class="checkbox noscroll ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][subRule] === false) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${rules[subRule] ? "checked" : ''} class='noscroll' onclick="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][subRule] === false) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${ruleNames[subRule]}</span></label></div>`);
+                            if (subRule === 'Collection Log Clues') {
+                                $('.' + rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule').append(`<div class="rule ${subRule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule subrule'} noscroll"><label class="checkbox noscroll ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][subRule] === false) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${rules[subRule] ? "checked" : ''} class='noscroll' onclick="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][subRule] === false) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${ruleNames[subRule].split('clue-amount')[0]}<input type='number' class='clue-complete-num-input' min='0' max='100' value="${rules['Collection Log Clues Amount']}" onchange="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][subRule] === false) ? "disabled" : ''} /> ${ruleNames[subRule].split('clue-amount')[1]}</span></label></div>`);
+                            } else {
+                                $('.' + rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule').append(`<div class="rule ${subRule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule subrule'} noscroll"><label class="checkbox noscroll ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][subRule] === false) ? "checkbox--disabled" : ''}"><span class="checkbox__input noscroll"><input type="checkbox" name="checkbox" ${rules[subRule] ? "checked" : ''} class='noscroll' onclick="checkOffRules()" ${!testMode && (viewOnly || inEntry || locked || ruleStructure[category][subRule] === false) ? "disabled" : ''}><span class="checkbox__control noscroll"><svg viewBox='0 0 24 24' aria-hidden="true" focusable="false"><path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg></span></span><span class="radio__label noscroll">${ruleNames[subRule]}</span></label></div>`);
+                            }
                         });
                     }
                 });
@@ -11724,6 +12250,8 @@ let switchActiveContext = function(e, opt) {
             case "backlog": backlogChallenge(activeContextMenuChallenge, activeContextMenuSkill, '', e.altKey); break;
             case "backlog note": showNotes(encodeRFC5987ValueChars(activeContextMenuChallenge), activeContextMenuSkill, ''); break;
             case "alternatives": showAlternatives(activeContextMenuChallenge, activeContextMenuSkill, ''); break;
+            case "favorite": favoriteChallenge(activeContextMenuChallenge, activeContextMenuSkill, ''); break;
+            case "unfavorite": unfavoriteChallenge(activeContextMenuChallenge, activeContextMenuSkill, ''); break;
             case "details": showDetails(encodeRFC5987ValueChars(activeContextMenuChallenge), activeContextMenuSkill, ''); break;
         }
     }
@@ -11773,7 +12301,7 @@ let backlogChallenge = function(challenge, skill, note, noUpdate) {
     if (!backlog[skill]) {
         backlog[skill] = {};
     }
-    if (skill === 'Extra' || skill === 'Quest' || skill === 'Diary' || skill === 'BiS') {
+    if (skill === 'Extra' || skill === 'Quest' || skill === 'Diary' || skill === 'BiS' || (!!favoriteTasks[skill] && favoriteTasks[skill].hasOwnProperty(challenge))) {
         if (!!chunkInfo['challenges'][skill][challenge] && !!chunkInfo['challenges'][skill][challenge]['Skills']) {
             skill !== 'Quest' && skill !== 'Diary' && Object.keys(chunkInfo['challenges'][skill][challenge]['Skills']).forEach((subSkill) => {
                 if (!backlog[subSkill]) {
@@ -11805,7 +12333,7 @@ let backlogChallenge = function(challenge, skill, note, noUpdate) {
                 });
             }
         });
-        $(`.panel-active .challenge.${skill.toLowerCase() + '-challenge'}.${skill + '-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'}`).remove();
+        $(`.panel-active .challenge.${(!!favoriteTasks[skill] && favoriteTasks[skill].hasOwnProperty(challenge)) ? 'favorite-challenge' : (skill.toLowerCase() + '-challenge')}.${skill + ((skill === 'Extra' || skill === 'Quest' || skill === 'Diary' || skill === 'BiS') ? ('-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase()) : '') + '-challenge'}`).remove();
     } else {
         backlog[skill][challenge] = note;
         if (!!chunkInfo['challenges'][skill][challenge]['Skills']) {
@@ -11860,6 +12388,9 @@ let backlogChallenge = function(challenge, skill, note, noUpdate) {
             $(`.panel-active .challenge.skill-challenge.${skill + '-challenge'}`).remove();
         }
     }
+    if ($('.panel-active .favorite-challenge').length === 0) {
+        $('.marker-favorite').remove();
+    }
     if ($('.panel-active .skill-challenge').length === 0) {
         $('.marker-skill').remove();
     }
@@ -11890,6 +12421,17 @@ let backlogChallenge = function(challenge, skill, note, noUpdate) {
     $('.panel-backlog > i').css('line-height', '');
     (testMode || !(viewOnly || inEntry || locked)) && $('.panel-backlog').append(`<div class='noscroll backlogSources-container'><span class='noscroll backlogSources' onclick='backlogSources()'><i class="fa-solid fa-archive"></i>Backlog Sources</span></div>`);
     $('.panel-backlog').append(...backlogArr);
+    setData();
+}
+
+// Sends a challenge to the favorites
+let favoriteChallenge = function(challenge, skill) {
+    challenge = decodeQueryParam(challenge);
+    if (!favoriteTasks[skill]) {
+        favoriteTasks[skill] = {};
+    }
+    favoriteTasks[skill][challenge] = true;
+    setupCurrentChallenges(tempChallengeArrSaved, false, true);
     setData();
 }
 
@@ -11951,7 +12493,7 @@ let unbacklogChallenge = function(challenge, skill) {
         $(`.panel-backlog .challenge.${skill + '-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'}`).remove();
     } else {
         $(`.panel-backlog .challenge.${skill}-challenge`).each(function(index) {
-            if ($(this).text().includes(challenge.replaceAll(/\|/g, '').replaceAll(/~/g, '').replaceAll(/\./g, '').replaceAll(/\:/g, '').replaceAll(/\//g, ''))) {
+            if ($(this).text().replaceAll(/\|/g, '').replaceAll(/~/g, '').replaceAll(/\./g, '').replaceAll(/\:/g, '').replaceAll(/\//g, '').includes(challenge.replaceAll(/\|/g, '').replaceAll(/~/g, '').replaceAll(/\./g, '').replaceAll(/\:/g, '').replaceAll(/\//g, ''))) {
                 $(this).remove();
             }
         });
@@ -11960,6 +12502,17 @@ let unbacklogChallenge = function(challenge, skill) {
         $('.panel-backlog').append('No tasks currently backlogged.');
     }
     calcCurrentChallengesCanvas(true);
+    setData();
+}
+
+// Removes a challenge from the favorites
+let unfavoriteChallenge = function(challenge, skill) {
+    challenge = decodeQueryParam(challenge);
+    !!favoriteTasks[skill] && delete favoriteTasks[skill][challenge];
+    if (!!favoriteTasks[skill] && Object.keys(favoriteTasks[skill]).length === 0) {
+        !!favoriteTasks[skill] && delete favoriteTasks[skill];
+    }
+    setupCurrentChallenges(tempChallengeArrSaved, false, true);
     setData();
 }
 
@@ -11984,7 +12537,7 @@ let uncompleteChallenge = function(challenge, skill) {
         $(`.panel-completed .challenge.${skill + '-' + challenge.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-challenge'}`).remove();
     } else {
         $(`.panel-completed .challenge.${skill}-challenge`).each(function(index) {
-            if ($(this).text().includes(challenge.replaceAll(/\|/g, '').replaceAll(/~/g, '').replaceAll(/'/g, '').replaceAll(/\./g, '').replaceAll(/\:/g, '').replaceAll(/\//g, ''))) {
+            if ($(this).text().replaceAll(/\|/g, '').replaceAll(/~/g, '').replaceAll(/'/g, '').replaceAll(/\./g, '').replaceAll(/\:/g, '').replaceAll(/\//g, '').includes(challenge.replaceAll(/\|/g, '').replaceAll(/~/g, '').replaceAll(/'/g, '').replaceAll(/\./g, '').replaceAll(/\:/g, '').replaceAll(/\//g, ''))) {
                 $(this).remove();
             }
         });
@@ -12016,6 +12569,7 @@ let checkOffChallenge = function(skill, line, skip) {
         if (!skip) {
             $('.panel-active .challenge:has(input:checked)').addClass('hide-backlog');
             $('.panel-active .challenge:not(:has(input:checked))').removeClass('hide-backlog');
+            forceUpdatePluginOutput = true;
             setupCurrentChallenges(tempChallengeArrSaved, true);
             changeChallengeColor();
             setData();
@@ -12044,7 +12598,7 @@ let checkOffRules = function(didRedo, startup) {
     $('.panel-search').hasClass('visible') && (extraFilter = '.panel-search ');
     let redo = false;
     Object.keys(rules).forEach((rule) => {
-        if (subRuleDefault[rule] && rules[rule] !== $(extraFilter + '.' + rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule input').prop('checked')) {
+        if (subRuleDefault[rule] && rules[rule] !== $(extraFilter + '.' + rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule > label > span > input').prop('checked')) {
             $(extraFilter + '.' + rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule').children('.subrule').children('.checkbox').children('.checkbox__input').children('input').prop('checked', subRuleDefault[rule]);
             redo = true;
         }
@@ -12053,6 +12607,11 @@ let checkOffRules = function(didRedo, startup) {
                 $(extraFilter + '.x-num-input').val(1);
             }
             rules[rule] = $(extraFilter + '.x-num-input').val();
+        } else if (rule === 'Collection Log Clues Amount') {
+            if ($(extraFilter + '.clue-complete-num-input').val() < 0 || $(extraFilter + '.clue-complete-num-input').val() > 100 || !$(extraFilter + '.clue-complete-num-input').val()) {
+                $(extraFilter + '.clue-complete-num-input').val(100);
+            }
+            rules[rule] = $(extraFilter + '.clue-complete-num-input').val();
         } else if (rule === 'Rare Drop Amount') {
             if ($(extraFilter + '.rare-num-input').val() < 0 || !$(extraFilter + '.rare-num-input').val()) {
                 $(extraFilter + '.rare-num-input').val(0);
@@ -12064,7 +12623,7 @@ let checkOffRules = function(didRedo, startup) {
             }
             rules[rule] = $(extraFilter + '.secondary-primary-input').val();
         } else {
-            rules[rule] = $(extraFilter + '.' + rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule input').prop('checked');
+            rules[rule] = $(extraFilter + '.' + rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule > label > span > input').prop('checked');
         }
         if ($(extraFilter + '.' + rule.replaceAll(' ', '_').replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^\`{|}~]/g, '').toLowerCase() + '-rule').children('.subrule').length) {
             if ((rules[rule] || rule === 'Rare Drop') && (!(viewOnly || inEntry || locked) || testMode)) {
@@ -12138,6 +12697,7 @@ let checkOffSettings = function(didRedo, startup) {
     toggleTaskSidebar(settings['taskSidebar'], startup);
     toggleHiddenTasks(settings['hideChecked'] && actuallyHideChecked);
     toggleTaskSearchbar(settings['taskSearchbar'], startup);
+    togglePluginDataGeneration(settings['generatePluginData'], startup);
     settings['hideChecked'] ? $(`.tasks-checkmark`).show() : $(`.tasks-checkmark`).hide();
     changeChallengeColor();
     if (!startup) {
@@ -12257,6 +12817,19 @@ let toggleChangePinNewVis = function() {
 let toggleChangePin2NewVis = function() {
     $('.change-pin-eye3').toggleClass('fa-eye fa-eye-slash');
     $('.pin.old2.third').attr('type', $('.pin.old2.third').attr('type') === 'text' ? 'password' : 'text');
+}
+
+// Set the site to maintenance mode
+let setUnderMaintenance = function() {
+    isUnderMaintenance = true;
+    atHome = true;
+    $('.loading, .ui-loader-header').remove();
+    $('.menu, .menu2, .menu3, .menu4, .menu5, .menu6, .menu7, .menu8, .menu9, .menu10, .settings-menu, .topnav, #beta, .hiddenInfo, #entry-menu, #highscore-menu, #highscore-menu2, #import-menu, #help-menu, .canvasDiv, .menu11, .menu12, .menu13, .menu14').hide();
+    $('#home-menu, .entry-home-menu-container, .entry-home-menu-extra').hide();
+    onMobile && $('#amaintenance-menu').addClass('mobile');
+    $('.background-img').show();
+    $('#amaintenance-menu').show();
+    $('html, body').addClass('amaintenance');
 }
 
 // Checks the MID from the url
@@ -12569,6 +13142,11 @@ let loadData = async function(startup) {
             questLastStep['~|' + chunkInfo['challenges']['Quest'][name]['BaseQuest'] + '|~ Complete the quest'] = name;
         }
     });
+    databaseRef.child('underMaintenance').on('value', function(snap) {
+        if (snap.val()) {
+            setUnderMaintenance();
+        }
+    });
     myRef.child('chunkOrder').once('value', function(snap) {
         let shouldScroll = setSnap.hasOwnProperty('chunkOrder');
         let snapDiff = preloadHelper(snap, 'chunkOrder');
@@ -12665,6 +13243,7 @@ let loadData = async function(startup) {
         Object.keys(settingsTemp).forEach((setting) => {
             settings[setting] = settingsTemp[setting];
         });
+        if (isUnderMaintenance) return;
         toggleIds(settings['ids']);
         toggleVisibility(settings['highvis']);
         toggleTheme(settings['theme']);
@@ -12676,6 +13255,7 @@ let loadData = async function(startup) {
         toggleTopButtons(settings['topButtons'], 'startup');
         toggleTaskSidebar(settings['taskSidebar'], 'startup');
         toggleTaskSearchbar(settings['taskSearchbar'], 'startup');
+        togglePluginDataGeneration(settings['generatePluginData'], 'startup');
         settings['hideChecked'] ? $(`.tasks-checkmark`).show() : $(`.tasks-checkmark`).hide();
     });
     myRef.child('userName').once('value', function(snap) {
@@ -12885,6 +13465,11 @@ let loadData = async function(startup) {
         if (snapDiff === false) return;
         checkedAllTasks = !!snap.val() ? decodeObject(snap.val()) : {};
     });
+    myRef.child('chunkinfo/favoriteTasks').once('value', function(snap) {
+        let snapDiff = preloadHelper(snap, 'chunkinfo/favoriteTasks');
+        if (snapDiff === false) return;
+        favoriteTasks = !!snap.val() ? decodeObject(snap.val()) : {};
+    });
     myRef.child('chunkinfo/activeTasks').once('value', function(snap) {
         let snapDiff = preloadHelper(snap, 'chunkinfo/activeTasks');
         if (snapDiff === false) return;
@@ -12934,6 +13519,10 @@ let loadData = async function(startup) {
             rulesTemp['Secondary Primary Amount'] = "1";
         }
 
+        if (!rulesTemp.hasOwnProperty('Collection Log Clues Amount')) {
+            rulesTemp['Collection Log Clues Amount'] = "100";
+        }
+
         if (!rulesTemp.hasOwnProperty('Superheat Furnace')) {
             rulesTemp['Superheat Furnace'] = true;
         }
@@ -12968,6 +13557,10 @@ let loadData = async function(startup) {
 
         if (!rulesTemp.hasOwnProperty('Sea Charting')) {
             rulesTemp['Sea Charting'] = rulesTemp.hasOwnProperty('Show Diary Tasks') ? rulesTemp['Show Diary Tasks'] && (rulesTemp['Fossil Island Tasks'] || rulesTemp['Combat Diary Tasks'] || rulesTemp['Crewmates'] || rulesTemp['Sail Trimming'] || rulesTemp['Money Unlockables']) : false;
+        }
+        
+        if (!rulesTemp.hasOwnProperty('Fish Offcuts Valid Processing')) {
+            rulesTemp['Fish Offcuts Valid Processing'] = true;
         }
 
         !!rulesTemp && Object.keys(rulesTemp).forEach((rule) => {
@@ -13072,6 +13665,9 @@ let setUsername = function(old) {
 
 // Generates the plugin output object
 let createPluginOutput = function() {
+    if (onTestServer || testMode || recentlyTestMode || !signedIn) {
+        return;
+    }
     pluginOutput = [];
     listOfTasksPlugin.forEach((el) => {
         let name = Object.keys(el).filter((key) => key !== 'prefix')[0];
@@ -13116,6 +13712,12 @@ let createPluginOutput = function() {
             pluginOutput.push(rowObj);
         }
     });
+    if ((diff([...listOfTasksSaved].sort((a, b) => Object.keys(a)[0] < Object.keys(b)[0]), [...listOfTasksPlugin].sort((a, b) => Object.keys(a)[0] < Object.keys(b)[0])) || forceUpdatePluginOutput) && firebase.auth() && firebase.auth().currentUser && firebase.auth().currentUser.uid) {
+        listOfTasksSaved = JSON.parse(JSON.stringify(listOfTasksPlugin));
+        forceUpdatePluginOutput = false;
+        const userRef = firebase.storage().ref(`pluginOutputs/${firebase.auth().currentUser.uid}.json`);
+        userRef.putString(JSON.stringify(pluginOutput), 'raw', { contentType: 'application/json' });
+    }
 }
 
 // Converts given list of tasks into id-denotation
@@ -13144,7 +13746,7 @@ let setData = function() {
     if (onTestServer || testMode || recentlyTestMode || !signedIn) {
         return;
     }
-    createPluginOutput();
+    settings['generatePluginData'] && createPluginOutput();
     Object.keys(rules).forEach((rule) => {
         if (rules[rule] === undefined) {
             rules[rule] = false;
@@ -13224,7 +13826,8 @@ let setData = function() {
             info: chunkInfoOn,
             'rollingChunksOptions': settings['rollingChunksOptions'],
             'defaultChunkinfo': settings['defaultChunkinfo'],
-            'taskSearchbar': settings['taskSearchbar']
+            'taskSearchbar': settings['taskSearchbar'],
+            'generatePluginData': settings['generatePluginData']
         },
         chunkinfo: {
             checkedChallenges: encodeObject(convertToIds(checkedChallenges), true),
@@ -13245,7 +13848,8 @@ let setData = function() {
             manualSections: encodeObject(manualSections, true),
             prevValueLevelInput: encodeObject(prevValueLevelInput, true),
             checkedAllTasks: encodeObject(convertToIds(checkedAllTasks), true),
-            activeTasks: encodeObject(convertToIds(activeTasks), true)
+            activeTasks: encodeObject(convertToIds(activeTasks), true),
+            favoriteTasks: encodeObject(convertToIds(favoriteTasks), true)
         },
         chunks: {
             unlocked: unlockedJson,
@@ -13412,7 +14016,7 @@ let changeLocked = function() {
                 setTimeout(function() {
                     $('.lock-pin').removeClass('animated shake');
                 }, 500);
-            }, 1000);
+            }, 250);
         } else {
             myRef.child('pin').once('value', function(snap) {
                 if ((snap.val() && snap.val() === savedPin)) {
