@@ -28786,7 +28786,7 @@
 				"Not F2P": true
 			},
 			"Create a silklined herb sack": {
-				"Items": ["Herb sack", "Pristine sider silk"],
+				"Items": ["Herb sack", "Pristine spider silk"],
 				"Output": "Silklined herb sack",
 				"Not F2P": true
 			},
@@ -32067,8 +32067,8 @@
 				"ConnectsSections": true,
 				"Not F2P": true
 			},
-			"9275-1 to 9275-W1": {
-				"Sections": ["9275-1", "9275-W1"],
+			"9275-1 to 9275-W3": {
+				"Sections": ["9275-1", "9275-W3"],
 				"Tasks": {
 					"Use the mooring point at ~|Neitiznot|~": "Sailing"
 				},
@@ -39644,6 +39644,11 @@
 			"Charge trident of the seas": {
 				"Items": ["Uncharged trident", "Death rune", "Chaos rune", "Fire rune"],
 				"Output": "Trident of the seas (full)",
+				"Not F2P": true
+			},
+			"Charge the Sailor' amulet": {
+				"Items": ["Sailors' amulet (inert)", "Law rune", "Water rune"],
+				"Output": "Sailors' amulet",
 				"Not F2P": true
 			},
 			"Search the sacks in the digsite for a specimen jar*": {
@@ -54855,7 +54860,7 @@
 				"Chunks": ["11047-W1"],
 				"Level": 52,
 				"Items": ["AnyBoat[+]"],
-				"Object": ["Buoy (Sailing)"],
+				"Objects": ["Buoy (Sailing)"],
 				"Primary": false,
 				"Priority": 7,
 				"Tasks": {
@@ -54868,7 +54873,7 @@
 				"Chunks": ["11300-W1"],
 				"Level": 52,
 				"Items": ["AnyBoat[+]"],
-				"Object": ["Buoy (Sailing)"],
+				"Objects": ["Buoy (Sailing)"],
 				"Primary": false,
 				"Priority": 8,
 				"Tasks": {
@@ -55039,14 +55044,14 @@
 				"NoPet": true
 			},
 			"Dock at ~|Neitiznot|~": {
-				"Chunks": ["9275-W1"],
+				"Chunks": ["9275-W3"],
 				"Level": 68,
 				"Items": ["AnyBoat[+]"],
 				"Objects": ["Buoy (Sailing)"],
 				"Primary": false,
 				"Priority": 8,
 				"Tasks": {
-					"~~|The Fremennik Isles|~ Complete the quest": "Quest"
+					"~|The Fremennik Isles|~ Complete the quest": "Quest"
 				},
 				"NoBoost": true,
 				"NoPet": true
@@ -55560,7 +55565,7 @@
 				"Chunks": ["MooringRedRock[+]"],
 				"Level": 52,
 				"Items": ["AnyBoat[+]"],
-				"Object": ["MooringPoint[+]"],
+				"Objects": ["MooringPoint[+]"],
 				"Primary": false,
 				"Priority": 17,
 				"Tasks": {
@@ -55573,7 +55578,7 @@
 				"Chunks": ["MooringLastLight[+]"],
 				"Level": 52,
 				"Items": ["AnyBoat[+]"],
-				"Object": ["MooringPoint[+]"],
+				"Objects": ["MooringPoint[+]"],
 				"Primary": false,
 				"Priority": 18,
 				"Tasks": {
@@ -166765,7 +166770,8 @@
 			"Sections": {
 				"1": {
 					"Connect": {
-						"10105": true
+						"10105": true,
+						"Castle Drakan": true
 					},
 					"Monster": {
 						"Vyrewatch": 2,
@@ -169584,7 +169590,9 @@
 			"Connect": {
 				"10106": true,
 				"13977": true,
-				"14388": true
+				"14388": true,
+				"Vampyrium": true,
+				"Myreque hideout#Canifis/Mort Myre Hideout": true
 			},
 			"Monster": {
 				"Giant bat": 5
@@ -173098,7 +173106,8 @@
 			"Connect": {
 				"13877": true,
 				"13878": true,
-				"14232": true
+				"14232": true,
+				"Castle Drakan": true
 			},
 			"Monster": {
 				"Deadly red spider": 2,
@@ -175435,7 +175444,8 @@
 		},
 		"Vampyrium": {
 			"Connect": {
-				"10105": true
+				"10105": true,
+				"Castle Drakan": true
 			},
 			"Monster": {
 				"Ancient feral vyre": 8,
@@ -176780,7 +176790,7 @@
 			"MooringLledrithIsland[+]": ["8241-W2", "8241-1"],
 			"MooringDeepfinPoint[+]": ["7723-W2", "7723-1"],
 			"MooringJatizso[+]": ["9531-W2", "9531-1"],
-			"MooringNeitiznot[+]": ["9275-W1", "9275-1"],
+			"MooringNeitiznot[+]": ["9275-W3", "9275-1"],
 			"MooringRainbowsEnd[+]": ["9251-W1", "9251-1"],
 			"MooringPrifddinas[+]": ["8499-W2", "8499-2"],
 			"MooringSunbleakIsland[+]": ["8740-W1", "8740-1"],
