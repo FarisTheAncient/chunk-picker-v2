@@ -47926,7 +47926,7 @@
 			"Buy the ~|Quest point cape|~":{
 				"Category": ["Skillcape"],
 				"NPCs": ["Wise Old Man"],
-				"QuestPointsNeeded":321,
+				"QuestPointsNeeded":339,
 				"Output": "Quest point cape",
 				"Priority": 1,
 				"NoPet": true,
@@ -47935,7 +47935,7 @@
 			"Buy the ~|Quest point cape (t)|~":{
 				"Category": ["Skillcape"],
 				"NPCs": ["Wise Old Man"],
-				"QuestPointsNeeded":321,
+				"QuestPointsNeeded":339,
 				"Output": "Quest point cape (t)",
 				"Priority": 1,
 				"NoPet": true,
